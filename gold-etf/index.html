@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄金ETF投资助手 | 每日行情与建议</title>
+<style>
+:root {
+  --gold: #D4A843;
+  --gold-light: #F0D78C;
+  --gold-dark: #A07820;
+  --bg: #0D0F14;
+  --bg2: #151820;
+  --bg3: #1C2030;
+  --text: #E8E6E1;
+  --text2: #9CA3AF;
+  --green: #22C55E;
+  --red: #EF4444;
+  --blue: #3B82F6;
+  --border: rgba(212,168,67,0.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height:1.6; }
+a { color:var(--gold); text-decoration:none; }
+.container { max-width:960px; margin:0 auto; padding:16px; }
+
+/* Header */
+.header { text-align:center; padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+.header h1 { font-size:28px; font-weight:700; background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.header .sub { color:var(--text2); font-size:14px; margin-top:6px; }
+.header .date-badge { display:inline-block; margin-top:10px; background:rgba(212,168,67,0.12); color:var(--gold); padding:4px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+
+/* Cards */
+.card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px; }
+.card-title { font-size:16px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.card-title .icon { width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; }
+
+/* Price Board */
+.price-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.price-item { background:var(--bg3); border-radius:10px; padding:16px; text-align:center; }
+.price-item .label { font-size:12px; color:var(--text2); margin-bottom:6px; }
+.price-item .value { font-size:24px; font-weight:700; }
+.price-item .change { font-size:13px; margin-top:4px; font-weight:500; }
+.up { color:var(--green); }
+.down { color:var(--red); }
+
+/* Advice */
+.advice-box { background:linear-gradient(135deg,rgba(212,168,67,0.08),rgba(212,168,67,0.02)); border:1px solid rgba(212,168,67,0.25); border-radius:12px; padding:20px; margin-bottom:16px; }
+.advice-box .tag { display:inline-block; background:var(--gold); color:#000; padding:3px 12px; border-radius:4px; font-size:12px; font-weight:600; margin-bottom:10px; }
+.advice-box h3 { font-size:18px; margin-bottom:8px; }
+.advice-box p { font-size:14px; color:var(--text2); line-height:1.8; }
+
+/* Signal */
+.signal-bar { display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.signal-bar:last-child { border-bottom:none; }
+.signal-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.signal-bar .name { flex:1; font-size:14px; }
+.signal-bar .val { font-size:14px; font-weight:600; }
+
+/* ETF Table */
+.etf-table { width:100%; border-collapse:collapse; font-size:13px; }
+.etf-table th { text-align:left; padding:10px 8px; color:var(--text2); font-weight:500; border-bottom:1px solid var(--border); font-size:12px; }
+.etf-table td { padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.03); }
+.etf-table tr:hover { background:rgba(212,168,67,0.04); }
+.etf-table .etf-name { font-weight:600; color:var(--gold-light); }
+.etf-table .etf-code { color:var(--text2); font-size:12px; }
+.fee-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+.fee-low { background:rgba(34,197,94,0.15); color:var(--green); }
+.fee-mid { background:rgba(59,130,246,0.15); color:var(--blue); }
+.fee-high { background:rgba(239,68,68,0.15); color:var(--red); }
+
+/* Trend Chart (CSS-only) */
+.chart-container { position:relative; height:180px; margin:10px 0 0; }
+.chart-line { position:absolute; bottom:0; left:0; right:0; height:100%; }
+
+/* Factors */
+.factor-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.factor-card { background:var(--bg3); border-radius:8px; padding:14px; }
+.factor-card .f-label { font-size:12px; color:var(--text2); margin-bottom:4px; }
+.factor-card .f-value { font-size:15px; font-weight:600; }
+.factor-card .f-desc { font-size:12px; color:var(--text2); margin-top:4px; }
+
+/* Steps */
+.step-list { counter-reset:step; }
+.step-item { counter-increment:step; padding:12px 0 12px 44px; position:relative; border-bottom:1px solid rgba(255,255,255,0.04); }
+.step-item:last-child { border-bottom:none; }
+.step-item::before { content:counter(step); position:absolute; left:0; top:12px; width:28px; height:28px; background:var(--gold); color:#000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; }
+.step-item .step-title { font-weight:600; font-size:14px; margin-bottom:4px; }
+.step-item .step-desc { font-size:13px; color:var(--text2); }
+
+/* FAQ */
+.faq-item { padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { font-weight:600; font-size:14px; color:var(--gold-light); margin-bottom:4px; }
+.faq-a { font-size:13px; color:var(--text2); line-height:1.7; }
+
+/* Footer */
+.footer { text-align:center; padding:24px 0; color:var(--text2); font-size:12px; border-top:1px solid var(--border); margin-top:24px; }
+.footer .warn { color:var(--red); font-weight:500; margin-top:6px; }
+
+/* Tabs */
+.tabs { display:flex; gap:4px; margin-bottom:20px; background:var(--bg3); border-radius:10px; padding:4px; }
+.tab { flex:1; text-align:center; padding:10px 0; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; transition:all .2s; color:var(--text2); }
+.tab.active { background:var(--gold); color:#000; font-weight:600; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* Sparkline SVG */
+.sparkline { width:100%; height:80px; }
+
+/* Gauge */
+.gauge-wrap { text-align:center; padding:10px 0; }
+.gauge { width:180px; height:100px; margin:0 auto; position:relative; }
+.gauge-bg { fill:none; stroke:var(--bg3); stroke-width:12; }
+.gauge-fill { fill:none; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset .8s; }
+.gauge-label { position:absolute; bottom:0; left:50%; transform:translateX(-50%); font-size:28px; font-weight:700; }
+.gauge-text { font-size:13px; color:var(--text2); margin-top:8px; }
+
+@media(max-width:600px) {
+  .price-grid { grid-template-columns:1fr; }
+  .factor-grid { grid-template-columns:1fr; }
+  .header h1 { font-size:22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>🏦 黄金ETF投资助手</h1>
+    <div class="sub">每日行情追踪 × 小白也能看懂的投资建议</div>
+    <div class="date-badge" id="today-date">📅 2026年6月20日 · 周六</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('overview')">📊 今日速览</div>
+    <div class="tab" onclick="switchTab('etf')">🏆 ETF对比</div>
+    <div class="tab" onclick="switchTab('guide')">📖 小白指南</div>
+  </div>
+
+  <!-- Tab 1: Overview -->
+  <div class="tab-content active" id="tab-overview">
+
+    <!-- Price Board -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">💰</span> 实时金价</div>
+      <div class="price-grid">
+        <div class="price-item">
+          <div class="label">国际金价 (USD/盎司)</div>
+          <div class="value down" id="intl-price">4,155</div>
+          <div class="change down">▼ -1.53% 失守4200关口</div>
+        </div>
+        <div class="price-item">
+          <div class="label">国内金价 (CNY/克)</div>
+          <div class="value down" id="cny-price">~936</div>
+          <div class="change down">▼ 小幅回落</div>
+        </div>
+        <div class="price-item">
+          <div class="label">品牌首饰金 (元/克)</div>
+          <div class="value" style="color:var(--gold-light);">~1265~1279</div>
+          <div class="change" style="color:var(--red);">全线跌破1300！周大福1272</div>
+        </div>
+        <div class="price-item">
+          <div class="label">银行投资金条 (元/克)</div>
+          <div class="value" style="color:var(--gold-light);">~900~920</div>
+          <div class="change" style="color:var(--text2);">建行/工行参考价</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment Advice -->
+    <div class="advice-box">
+      <div class="tag">📌 今日建议</div>
+      <h3>空头占优，耐心等待企稳信号</h3>
+      <p>
+        6月19日国际金价暴跌2.32%，失守4200美元关口，报4155美元/盎司，创近三个月新低。本轮下跌核心驱动：美联储鹰派（9官员支持加息）+ 美伊和平协议（地缘溢价消退）+ 美元走强。<br><br>
+        <b>🎯 操作建议：</b>当前市场空头情绪占优，已有仓位控制仓位在10%以内；空仓者不要急于抄底，等待金价在$4100-4200区间企稳后再考虑分批介入。中长期投资者可逢回调关注机构目标价$4500-4900的布局机会。<b style="color:var(--red);">注意：首饰金全线跌破1300元/克，是近半年首次！</b>
+      </p>
+    </div>
+
+    <!-- Market Sentiment Gauge -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">📈</span> 市场情绪仪表</div>
+      <div class="gauge-wrap">
+        <div class="gauge">
+          <svg viewBox="0 0 200 110" width="180">
+            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-bg"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-fill" stroke="var(--red)" stroke-dasharray="251" stroke-dashoffset="175"/>
+          </svg>
+          <div class="gauge-label" style="color:var(--red);">30</div>
+        </div>
+        <div class="gauge-text">偏空 · 谨慎观望（0=极度恐慌，100=极度贪婪）</div>
+      </div>
+    </div>
+
+    <!-- Key Signals -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🔍</span> 关键信号</div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--green);"></div>
+        <div class="name">央行购金</div>
+        <div class="val up">45%央行计划增持，创历史新高</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">美联储</div>
+        <div class="val down">鹰派！9官员支持年内加息</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">美伊局势</div>
+        <div class="val down">和平协议已签→地缘溢价消退</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">技术面</div>
+        <div class="val down">失守4200，跌破200日均线</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">资金面</div>
+        <div class="val down">ETF持续流出，流动性紧</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--gold);"></div>
+        <div class="name">首饰金</div>
+        <div class="val" style="color:var(--gold);">首次跌破1300元/克！</div>
+      </div>
+    </div>
+
+    <!-- Macro Factors -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🌍</span> 宏观因素一览</div>
+      <div class="factor-grid">
+        <div class="factor-card">
+          <div class="f-label">美元指数</div>
+          <div class="f-value down">强势 ↑</div>
+          <div class="f-desc">加息预期升温→美元创一年新高</div>
+        </div>
+        <div class="factor-card">
+          <div class="f-label">美债实际收益率</div>
+          <div class="f-value up">上行 ↑</div>
+          <div class="f-desc">高利率环境→持有黄金成本增加</div>
+        </div>
+        <div class="factor-card">
+          <div class="f-label">国际油价</div>
+          <div class="f-value down">大幅下跌 ↓</div>
+          <div class="f-desc">美伊协议→霍尔木兹通航→油价回落</div>
+        </div>
+        <div class="factor-card">
+          <div class="f-label">通胀预期</div>
+          <div class="f-value" style="color:var(--gold);">回落中 →</div>
+          <div class="f-desc">油价下跌→通胀降温预期增强</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Institution Views -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">🏦</span> 机构目标价</div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--green);"></div>
+        <div class="name">花旗</div>
+        <div class="val up">3个月目标 $4,500 | 6-12月 $5,000</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--green);"></div>
+        <div class="name">巴克莱</div>
+        <div class="val up">建议增加黄金敞口</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">高盛</div>
+        <div class="val down">年底目标下调至 $4,900（-500）</div>
+      </div>
+      <div class="signal-bar">
+        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="name">摩根士丹利</div>
+        <div class="val down">下半年目标下调至 $5,200</div>
+      </div>
+    </div>
+
+    <!-- Key Price Levels -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">🎯</span> 关键价位（国际金价）</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--red);font-size:12px;width:36px;">阻力2</span>
+          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
+            <div style="position:absolute;right:10%;top:-2px;width:10px;height:10px;background:var(--red);border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:600;font-size:14px;">$4,300</span>
+          <span style="font-size:11px;color:var(--text2);">前支撑转阻力</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--red);font-size:12px;width:36px;">阻力1</span>
+          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
+            <div style="position:absolute;right:30%;top:-2px;width:10px;height:10px;background:var(--red);border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:600;font-size:14px;">$4,200</span>
+          <span style="font-size:11px;color:var(--text2);">已失守关口</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--blue);font-size:12px;width:36px;">现价</span>
+          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
+            <div style="position:absolute;left:45%;top:-2px;width:10px;height:10px;background:var(--blue);border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:700;font-size:15px;color:var(--blue);">$4,155</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--gold);font-size:12px;width:36px;">支撑1</span>
+          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
+            <div style="position:absolute;left:35%;top:-2px;width:10px;height:10px;background:var(--gold);border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:600;font-size:14px;">$4,100</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="color:var(--green);font-size:12px;width:36px;">支撑2</span>
+          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
+            <div style="position:absolute;left:15%;top:-2px;width:10px;height:10px;background:var(--green);border-radius:50%;"></div>
+          </div>
+          <span style="font-weight:600;font-size:14px;">$3,700</span>
+          <span style="font-size:11px;color:var(--text2);">分析师目标</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- This Week Watch -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">⚠️</span> 本周关注</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-title">6/17-18 美联储FOMC决议（已落地）</div>
+          <div class="step-desc">利率维持3.50%-3.75%，点阵图鹰派：9官员支持年内加息，9月降息概率从70%骤降至不足40%</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">6/19 美伊和平协议正式签署</div>
+          <div class="step-desc">美伊签署谅解备忘录，地缘溢价消退是金价回调主因之一，油价大幅下跌</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">6月非农就业数据（关注）</div>
+          <div class="step-desc">下周将公布6月非农就业和CPI数据，将影响美联储加息预期，金价短期方向选择关键</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab 2: ETF Comparison -->
+  <div class="tab-content" id="tab-etf">
+
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🏆</span> 黄金ETF对比（6月19日数据）</div>
+      <div style="overflow-x:auto;">
+        <table class="etf-table">
+          <thead>
+            <tr>
+              <th>基金名称</th>
+              <th>代码</th>
+              <th>最新净值</th>
+              <th>规模</th>
+              <th>年费率</th>
+              <th>跟踪标的</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="etf-name">华安黄金ETF</span><br><span style="font-size:11px;color:var(--gold);">⭐ 规模最大</span></td>
+              <td class="etf-code">518880</td>
+              <td class="down">~8.60</td>
+              <td>970亿</td>
+              <td><span class="fee-badge fee-mid">0.60%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">华夏黄金ETF</span><br><span style="font-size:11px;color:var(--green);">💡 费率最低</span></td>
+              <td class="etf-code">518850</td>
+              <td class="down">~8.30</td>
+              <td>百亿级</td>
+              <td><span class="fee-badge fee-low">0.20%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">工银黄金ETF</span><br><span style="font-size:11px;color:var(--green);">💡 同为最低费率</span></td>
+              <td class="etf-code">518660</td>
+              <td class="down">~8.25</td>
+              <td>42亿</td>
+              <td><span class="fee-badge fee-low">0.20%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">国泰黄金ETF</span></td>
+              <td class="etf-code">518800</td>
+              <td class="down">~8.65</td>
+              <td>118亿</td>
+              <td><span class="fee-badge fee-mid">0.50%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">易方达黄金ETF</span></td>
+              <td class="etf-code">159934</td>
+              <td class="down">~8.60</td>
+              <td>173亿</td>
+              <td><span class="fee-badge fee-mid">0.50%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">博时黄金ETF</span></td>
+              <td class="etf-code">159937</td>
+              <td class="down">~8.20</td>
+              <td>200亿</td>
+              <td><span class="fee-badge fee-mid">0.50%</span></td>
+              <td>Au99.99</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">富国上海金ETF</span></td>
+              <td class="etf-code">518680</td>
+              <td class="down">~8.60</td>
+              <td>—</td>
+              <td><span class="fee-badge fee-mid">0.40%</span></td>
+              <td>上海金SHAU</td>
+            </tr>
+            <tr>
+              <td><span class="etf-name">广发上海金ETF</span></td>
+              <td class="etf-code">518600</td>
+              <td class="down">~8.55</td>
+              <td>—</td>
+              <td><span class="fee-badge fee-mid">0.40%</span></td>
+              <td>上海金SHAU</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--text2);margin-top:10px;">📌 注：净值数据为估算值（基于金价~4155美元/盎司），实际数据待确认</p>
+      </div>
+    </div>
+
+    <!-- How to Choose -->
+    <div class="advice-box">
+      <div class="tag">🎯 怎么选？</div>
+      <h3>三步搞定黄金ETF选择</h3>
+      <p>
+        <b>第一步：看费率</b> → 长期持有选0.20%（华夏518850 / 工银518660），省下的就是赚到的<br>
+        <b>第二步：看流动性</b> → 华安518880日均成交超40亿，买卖价差最小，进出最方便<br>
+        <b>第三步：看跟踪标的</b> → Au99.99跟国际金价更紧；上海金SHAU人民币计价，避汇率波动<br><br>
+        <b>💡 阿森推荐：</b><br>
+        · 长期定投 → <b>华夏518850</b>（费率0.2%最低，长期持有成本优势大）<br>
+        · 短线波段 → <b>华安518880</b>（流动性最好，T+0进出快）<br>
+        · 不想操心汇率 → <b>富国518680</b>（上海金定价，纯人民币）
+      </p>
+    </div>
+
+    <!-- 518880 Spotlight -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">⭐</span> 华安黄金ETF 518880 亮点</div>
+      <div class="signal-bar">
+        <div class="name">规模</div>
+        <div class="val" style="color:var(--gold);">970亿 · 全市场第一</div>
+      </div>
+      <div class="signal-bar">
+        <div class="name">最新净值</div>
+        <div class="val down">~8.60元（估算，数据待确认）</div>
+      </div>
+      <div class="signal-bar">
+        <div class="name">资金流向</div>
+        <div class="val down">ETF持续流出，流动性收紧</div>
+      </div>
+      <div class="signal-bar">
+        <div class="name">场外联接</div>
+        <div class="val" style="color:var(--text2);">A:000216 / C:000217 / I:022653</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab 3: Beginner Guide -->
+  <div class="tab-content" id="tab-guide">
+
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(34,197,94,0.2);">📘</span> 什么是黄金ETF？</div>
+      <p style="font-size:14px;color:var(--text2);line-height:1.9;">
+        一句话：<b style="color:var(--text);">黄金ETF = 像买股票一样买黄金</b><br><br>
+        你不需要买金条、不用保管、不用鉴定真假。打开证券账户，输入代码（比如518880），像买卖股票一样操作就行。每1份ETF背后都有真金白银（上海黄金交易所的实物黄金）做支撑。<br><br>
+        <b style="color:var(--gold);">核心优势：</b><br>
+        · 门槛低：1手≈800~900元，比买金条便宜多了<br>
+        · 交易快：T+0，当天买当天就能卖<br>
+        · 费用低：年管理费0.2%~0.6%，比金店溢价（2~5%）低很多<br>
+        · 流动性好：随时买卖，不用担心卖不出去
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🛒</span> 怎么买？5步搞定</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-title">开证券账户</div>
+          <div class="step-desc">任选一家券商（华泰、中信、招商等），线上开户，5分钟搞定</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">转入资金</div>
+          <div class="step-desc">从银行卡转入你想投入的钱，建议先用闲钱试水</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">搜索代码</div>
+          <div class="step-desc">输入518880（华安）或518850（华夏），点进详情页</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">买入</div>
+          <div class="step-desc">1手=100份，约800~900元。可以一次性买，也可以分批买</div>
+        </div>
+        <div class="step-item">
+          <div class="step-title">持有或卖出</div>
+          <div class="step-desc">长期持有等涨，或短线买卖赚差价，T+0随时可以操作</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">🧠</span> 小白常见问题</div>
+      <div class="faq-item">
+        <div class="faq-q">Q：黄金ETF会不会亏钱？</div>
+        <div class="faq-a">A：会。金价涨你赚，金价跌你亏。但长期看（5~10年），黄金是对抗通胀的好工具，年化回报6%~8%。关键是别追涨杀跌，分批买入、长期持有。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：配置多少比例合适？</div>
+        <div class="faq-a">A：保守型5%，平衡型10%，激进型不超过15%。别把鸡蛋放一个篮子里，黄金是"保险"不是"赌注"。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：ETF和买金条哪个好？</div>
+        <div class="faq-a">A：投资选ETF（费用低、交易方便、无保管问题），结婚/送礼选金条/首饰（有实物和情感价值）。别把首饰当投资，金店溢价太高。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：现在能买吗？</div>
+        <div class="faq-a">A：当前金价$4,155已失守4200关键支撑，相比年初高点$5,595已回撤超25%，但仍未到分析师预期的$3,700目标位。短期偏空，建议耐心等待$4,000-4,100企稳后再分批布局。定投方式不受价格影响，是更好的选择。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：场内ETF和场外联接基金有啥区别？</div>
+        <div class="faq-a">A：场内ETF = 证券账户直接买卖，实时成交；场外联接 = 在基金App（天天基金/支付宝）申购赎回，按收盘价成交，适合没有证券账户的人。走势几乎一样，费率略高一点。</div>
+      </div>
+    </div>
+
+    <div class="advice-box">
+      <div class="tag">💡</div>
+      <h3>阿森的黄金投资三原则</h3>
+      <p>
+        <b>原则一：定投不梭哈</b><br>
+        每月固定金额买入，涨了少买，跌了多买。自动摊平成本，不用猜顶底。<br><br>
+        <b>原则二：仓位不超15%</b><br>
+        黄金是防守资产，不是进攻武器。总资产的5%~15%足够了，剩下的留给股票和债券。<br><br>
+        <b>原则三：持有至少3年</b><br>
+        短期金价受情绪和政策影响波动大，3年以上才能充分体现黄金的抗通胀价值。别因为一周跌了5%就慌。
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>数据来源：上海黄金交易所、Wind、新浪财经、每日经济新闻、汇通网</div>
+    <div style="margin-top:4px;">更新时间：2026-06-20 · 由阿森自动生成</div>
+    <div class="warn">⚠️ 以上内容仅供参考，不构成投资建议。市场有风险，投资需谨慎。</div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+// Auto-update date
+const now = new Date();
+const d = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+const days = ['日','一','二','三','四','五','六'];
+document.getElementById('today-date').textContent = '📅 ' + d + ' · 周' + days[now.getDay()];
+</script>
+</body>
+</html>

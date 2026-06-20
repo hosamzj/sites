@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026美加墨世界杯 · 实时追踪</title>
+<style>
+:root {
+  --bg: #080c1a;
+  --bg2: #0c1228;
+  --card: rgba(18,26,56,0.85);
+  --card-hover: rgba(24,36,72,0.95);
+  --glass: rgba(255,255,255,0.04);
+  --accent: #5b8af5;
+  --accent2: #7c5cf5;
+  --arg: #75aadb;
+  --arg-gold: #FFD700;
+  --gold: #f0c040;
+  --green: #34d399;
+  --red: #ff4757;
+  --orange: #ff8c42;
+  --text: #eef2ff;
+  --text2: #8b9dc3;
+  --text3: #5a6d8f;
+  --border: rgba(91,138,245,0.12);
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+/* ====== HERO ====== */
+.hero{position:relative;overflow:hidden;padding:56px 0 40px;text-align:center;background:linear-gradient(180deg,#0c1228 0%,#101a3e 40%,#0a1025 100%);}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(91,138,245,0.08) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(117,170,219,0.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(240,192,64,0.04) 0%,transparent 60%);animation:heroPulse 10s ease-in-out infinite;}
+@keyframes heroPulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.hero-badge{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(255,71,87,0.15),rgba(255,140,66,0.15));border:1px solid rgba(255,71,87,0.3);border-radius:30px;padding:6px 18px;font-size:0.78rem;font-weight:600;color:var(--orange);margin-bottom:16px;backdrop-filter:blur(8px);}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{position:relative;font-size:2.6rem;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#fff 0%,var(--arg) 40%,var(--arg-gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;text-shadow:0 0 60px rgba(117,170,219,0.3);}
+.hero .sub{position:relative;font-size:1rem;color:var(--text2);letter-spacing:6px;font-weight:500;}
+.hero .meta{position:relative;margin-top:20px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font-size:0.82rem;}
+.hero .meta span{padding:6px 16px;background:var(--glass);border:1px solid var(--border);border-radius:20px;color:var(--text2);backdrop-filter:blur(6px);}
+
+/* ====== TABS ====== */
+.tabs{position:sticky;top:0;z-index:100;background:rgba(8,12,26,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.tab-list{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:center;}
+.tab-list::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:16px 24px;font-size:0.88rem;font-weight:600;color:var(--text3);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.25s;white-space:nowrap;position:relative;}
+.tab-btn:hover{color:var(--text2);}
+.tab-btn.active{color:var(--arg-gold);border-bottom-color:var(--arg-gold);}
+.tab-btn .tab-icon{margin-right:4px;}
+
+/* ====== SECTIONS ====== */
+.section{display:none;padding:28px 0;}
+.section.active{display:block;}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.section-header .icon{font-size:1.5rem;}
+.section-header h2{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--text) 0%,var(--text2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-header .badge{font-size:0.7rem;padding:3px 10px;border-radius:10px;font-weight:600;}
+
+/* ====== VIDEO CARDS ====== */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.video-card{display:flex;flex-direction:column;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);text-decoration:none;color:var(--text);transition:all 0.3s;backdrop-filter:blur(8px);}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,0.4);border-color:rgba(251,114,153,0.3);}
+.video-thumb{position:relative;height:160px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;}
+.video-duration{position:absolute;top:8px;right:8px;font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(0,0,0,0.7);color:#fff;}
+.video-play-icon{font-size:2.5rem;color:rgba(255,255,255,0.7);text-shadow:0 2px 12px rgba(0,0,0,0.5);transition:all 0.25s;}
+.video-card:hover .video-play-icon{color:rgba(255,255,255,0.95);transform:scale(1.15);}
+.video-info{padding:14px 16px;}
+.video-title{font-size:0.88rem;font-weight:700;line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.video-meta{display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text3);}
+
+/* ====== FEATURED FOCUS (XHS-style) ====== */
+.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+.focus-card{position:relative;border-radius:var(--radius);overflow:hidden;height:200px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;}
+.focus-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+.focus-card .focus-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(0.5);}
+.focus-card .focus-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.85) 100%);}
+.focus-card .focus-content{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;z-index:1;}
+.focus-card .focus-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+.focus-card .focus-title{font-size:1.2rem;font-weight:800;line-height:1.3;margin-bottom:4px;}
+.focus-card .focus-desc{font-size:0.78rem;color:rgba(255,255,255,0.7);line-height:1.4;}
+.focus-card.arg-focus{border:1px solid rgba(240,192,64,0.3);}
+.focus-card.arg-focus .focus-bg{background:linear-gradient(135deg,#1a3060,#2a4a8a);}
+.focus-card.arg-focus .focus-tag{background:rgba(240,192,64,0.25);color:var(--arg-gold);border:1px solid rgba(240,192,64,0.4);}
+.focus-card.hot-focus .focus-bg{background:linear-gradient(135deg,#2a1a3e,#3a1a2e);}
+.focus-card.hot-focus .focus-tag{background:rgba(255,71,87,0.25);color:var(--red);border:1px solid rgba(255,71,87,0.4);}
+
+/* ====== MATCH CARDS ====== */
+.match-day{margin-bottom:24px;}
+.match-day .date-label{font-size:0.85rem;font-weight:700;color:var(--arg-gold);margin-bottom:10px;padding-left:4px;display:flex;align-items:center;gap:6px;}
+.match-day .date-label .date-dot{width:8px;height:8px;border-radius:50%;background:var(--arg-gold);}
+.match-card{background:var(--card);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;border:1px solid var(--border);transition:all 0.25s;backdrop-filter:blur(8px);}
+.match-card:hover{background:var(--card-hover);border-color:rgba(91,138,245,0.25);transform:translateX(4px);}
+.match-card.arg-match{border-left:3px solid var(--arg-gold);background:linear-gradient(135deg,rgba(18,26,56,0.9),rgba(26,48,96,0.6));}
+.match-card.live{border-color:rgba(255,71,87,0.4);box-shadow:0 0 12px rgba(255,71,87,0.1);}
+.match-card .time{font-size:0.8rem;color:var(--text2);min-width:55px;font-weight:700;font-variant-numeric:tabular-nums;}
+.match-card .teams{flex:1;display:flex;align-items:center;gap:8px;font-weight:700;font-size:0.92rem;}
+.match-card .teams .vs{color:var(--text3);font-size:0.75rem;font-weight:500;}
+.match-card .teams .flag{font-size:1.1rem;}
+.match-card .score{font-size:1rem;font-weight:800;color:var(--green);min-width:50px;text-align:center;font-variant-numeric:tabular-nums;}
+.match-card .live-tag{font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,71,87,0.2);color:var(--red);border:1px solid rgba(255,71,87,0.3);animation:blink 1.5s infinite;}
+.match-card .group-tag{font-size:0.68rem;color:var(--text3);background:var(--glass);padding:3px 10px;border-radius:10px;border:1px solid var(--border);}
+.match-card .venue{font-size:0.68rem;color:var(--text3);}
+
+/* ====== STANDINGS ====== */
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.group-card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);backdrop-filter:blur(8px);transition:border-color 0.25s;}
+.group-card:hover{border-color:rgba(91,138,245,0.25);}
+.group-card.arg-group{border:1px solid rgba(240,192,64,0.25);box-shadow:0 0 24px rgba(240,192,64,0.05);}
+.group-header{padding:12px 16px;font-weight:700;font-size:0.88rem;background:linear-gradient(135deg,rgba(91,138,245,0.1),rgba(91,138,245,0.03));border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.group-card.arg-group .group-header{background:linear-gradient(135deg,rgba(117,170,219,0.15),rgba(240,192,64,0.08));}
+.group-header .group-label{color:var(--accent);font-weight:800;}
+.group-card.arg-group .group-header .group-label{color:var(--arg-gold);}
+.standings-table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+.standings-table th{padding:8px 10px;text-align:left;color:var(--text3);font-weight:700;border-bottom:1px solid var(--border);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.5px;}
+.standings-table td{padding:8px 10px;border-bottom:1px solid rgba(91,138,245,0.06);}
+.standings-table tr:last-child td{border-bottom:none;}
+.standings-table .team{font-weight:700;display:flex;align-items:center;gap:6px;}
+.standings-table .flag{font-size:1rem;}
+.standings-table .pts{font-weight:800;color:var(--green);font-variant-numeric:tabular-nums;}
+.standings-table .qualify{background:rgba(52,211,153,0.04);}
+.standings-table .qualify td:first-child{border-left:2px solid var(--green);}
+
+/* ====== SCORERS ====== */
+.scorers-list{max-width:640px;}
+.scorer-row{display:flex;align-items:center;padding:12px 16px;background:var(--card);border-radius:var(--radius-sm);margin-bottom:8px;border:1px solid var(--border);gap:14px;transition:all 0.25s;backdrop-filter:blur(8px);}
+.scorer-row:hover{border-color:rgba(91,138,245,0.25);transform:translateX(4px);}
+.scorer-row .rank{font-size:0.85rem;font-weight:800;color:var(--text3);min-width:28px;text-align:center;}
+.scorer-row .rank.top{color:var(--arg-gold);font-size:1.1rem;}
+.scorer-row .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:linear-gradient(135deg,rgba(91,138,245,0.15),rgba(124,92,245,0.15));border:1px solid var(--border);}
+.scorer-row .info{flex:1;}
+.scorer-row .name{font-weight:700;font-size:0.92rem;}
+.scorer-row .nation{font-size:0.75rem;color:var(--text3);}
+.scorer-row .goals{font-size:1.15rem;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums;}
+
+/* ====== ARGENTINA ====== */
+.arg-hero{background:linear-gradient(135deg,#0e1f45 0%,#1a3872 50%,#0e1f45 100%);border-radius:20px;padding:36px;margin-bottom:24px;border:1px solid rgba(117,170,219,0.2);position:relative;overflow:hidden;text-align:center;}
+.arg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 40%,rgba(117,170,219,0.08) 0%,transparent 70%);}
+.arg-hero::after{content:'🏆';position:absolute;right:30px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:0.06;}
+.arg-hero .arg-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(240,192,64,0.2),rgba(117,170,219,0.15));border:1px solid rgba(240,192,64,0.35);border-radius:20px;padding:5px 16px;font-size:0.75rem;font-weight:700;color:var(--arg-gold);margin-bottom:14px;}
+.arg-hero h2{position:relative;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:2px;}
+.arg-hero .arg-sub{position:relative;color:rgba(255,255,255,0.6);font-size:0.88rem;letter-spacing:1px;}
+
+.arg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;}
+.arg-card{background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid rgba(117,170,219,0.12);backdrop-filter:blur(8px);transition:border-color 0.25s;}
+.arg-card:hover{border-color:rgba(117,170,219,0.25);}
+.arg-card h3{font-size:0.95rem;font-weight:800;margin-bottom:14px;color:var(--arg);display:flex;align-items:center;gap:8px;}
+.arg-card .player-list{font-size:0.82rem;line-height:2;color:var(--text2);}
+.arg-card .player-list .pos-label{color:var(--arg-gold);font-weight:700;margin-right:4px;font-size:0.78rem;}
+.arg-schedule{margin-top:0;}
+.arg-schedule .match-card{background:rgba(18,26,56,0.6);}
+
+/* Player cards (XHS style) */
+.squad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:8px;}
+.player-card{background:linear-gradient(180deg,rgba(91,138,245,0.08) 0%,var(--glass) 100%);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;transition:all 0.25s;}
+.player-card:hover{border-color:rgba(117,170,219,0.3);transform:translateY(-2px);}
+.player-card .player-avatar{width:44px;height:44px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:linear-gradient(135deg,rgba(117,170,219,0.2),rgba(240,192,64,0.1));border:2px solid rgba(117,170,219,0.3);}
+.player-card .player-name{font-size:0.78rem;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.player-card .player-pos{font-size:0.65rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.player-card.star .player-avatar{border-color:var(--arg-gold);box-shadow:0 0 12px rgba(240,192,64,0.15);}
+
+/* ====== NEWS (XHS-style cards) ====== */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+.news-item{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all 0.25s;backdrop-filter:blur(8px);cursor:pointer;}
+.news-item:hover{border-color:rgba(91,138,245,0.25);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.2);}
+.news-item.arg-news{border-left:3px solid var(--arg-gold);}
+.news-visual{height:80px;background:linear-gradient(135deg,rgba(91,138,245,0.08),rgba(124,92,245,0.06));display:flex;align-items:center;justify-content:center;position:relative;}
+.news-visual .news-emoji{font-size:2rem;opacity:0.6;}
+.news-visual .news-source-tag{position:absolute;top:8px;right:10px;font-size:0.6rem;padding:2px 8px;border-radius:4px;background:rgba(0,0,0,0.4);color:var(--text2);backdrop-filter:blur(4px);}
+.news-item.arg-news .news-visual{background:linear-gradient(135deg,rgba(117,170,219,0.12),rgba(240,192,64,0.06));}
+.news-body{padding:14px 16px;}
+.news-item .news-time{font-size:0.7rem;color:var(--text3);margin-bottom:6px;font-weight:500;}
+.news-item .news-title{font-weight:700;font-size:0.9rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.news-item .news-desc{font-size:0.78rem;color:var(--text2);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5;}
+
+/* ====== TRENDING ====== */
+.trending-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.trending-tag{font-size:0.75rem;padding:5px 14px;border-radius:20px;font-weight:600;cursor:pointer;transition:all 0.25s;border:1px solid var(--border);color:var(--text2);background:var(--glass);}
+.trending-tag:hover{border-color:rgba(91,138,245,0.3);color:var(--text);}
+.trending-tag.hot{background:linear-gradient(135deg,rgba(255,71,87,0.1),rgba(255,140,66,0.1));border-color:rgba(255,71,87,0.3);color:var(--orange);}
+.trending-tag.arg{background:linear-gradient(135deg,rgba(117,170,219,0.1),rgba(240,192,64,0.1));border-color:rgba(240,192,64,0.3);color:var(--arg-gold);}
+
+/* ====== FOOTER ====== */
+.footer{text-align:center;padding:36px 0;font-size:0.78rem;color:var(--text3);border-top:1px solid var(--border);margin-top:48px;}
+.footer .update-time{color:var(--arg-gold);font-weight:700;}
+.footer .sources{margin-top:8px;font-size:0.7rem;}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:768px){
+  .hero h1{font-size:1.7rem;letter-spacing:1px;}
+  .hero .sub{font-size:0.8rem;letter-spacing:3px;}
+  .hero .meta{gap:8px;}
+  .hero .meta span{font-size:0.72rem;padding:4px 12px;}
+  .groups-grid{grid-template-columns:1fr;}
+  .arg-grid{grid-template-columns:1fr;}
+  .focus-grid{grid-template-columns:1fr;}
+  .tab-btn{padding:12px 16px;font-size:0.82rem;}
+  .match-card{flex-wrap:wrap;gap:6px;}
+  .match-card .time{min-width:auto;}
+  .news-grid{grid-template-columns:1fr;}
+  .squad-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));}
+  .arg-hero{padding:24px 20px;}
+  .arg-hero h2{font-size:1.3rem;}
+}
+@media(max-width:480px){
+  .hero{padding:36px 0 28px;}
+  .hero h1{font-size:1.4rem;}
+  .focus-card{height:160px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+  <div class="hero-badge"><span class="dot"></span> LIVE · 小组赛第9日 · 第二轮</div>
+  <h1>2026 美加墨世界杯</h1>
+  <div class="sub">FIFA WORLD CUP 26 · LIVE TRACKER</div>
+  <div class="meta">
+    <span>🏟️ 16座城市 · 104场</span>
+    <span>⚽ 48支球队</span>
+    <span>📅 6.12 — 7.20</span>
+    <span>🇦🇷 重点关注阿根廷</span>
+  </div>
+</div>
+
+<!-- ====== TABS ====== -->
+<div class="tabs">
+  <div class="container">
+    <div class="tab-list">
+      <button class="tab-btn active" onclick="switchTab('schedule')"><span class="tab-icon">📅</span>赛程</button>
+      <button class="tab-btn" onclick="switchTab('standings')"><span class="tab-icon">🏆</span>积分榜</button>
+      <button class="tab-btn" onclick="switchTab('scorers')"><span class="tab-icon">👟</span>射手榜</button>
+      <button class="tab-btn" onclick="switchTab('argentina')"><span class="tab-icon">🇦🇷</span>阿根廷</button>
+      <button class="tab-btn" onclick="switchTab('news')"><span class="tab-icon">📰</span>新闻</button>
+      <button class="tab-btn" onclick="switchTab('videos')"><span class="tab-icon">🎬</span>视频</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ====== SCHEDULE ====== -->
+<div class="section active" id="sec-schedule">
+  <div class="section-header">
+    <span class="icon">📅</span>
+    <h2>小组赛赛程</h2>
+    <span class="badge" style="background:rgba(91,138,245,0.1);color:var(--accent);border:1px solid rgba(91,138,245,0.2);">北京时间</span>
+  </div>
+
+  <!-- Featured Focus (XHS style) -->
+  <div class="focus-grid">
+    <div class="focus-card arg-focus">
+      <div class="focus-bg"></div>
+      <div class="focus-overlay"></div>
+      <div class="focus-content">
+        <div class="focus-tag">🇦🇷 16球! 追平克洛泽历史第一</div>
+        <div class="focus-title">梅西戴帽!39岁创最年长纪录</div>
+        <div class="focus-desc">进球后落泪：父亲今年1月与重病斗争！200场里程碑，38岁357天成史上最年长戴帽球员</div>
+      </div>
+    </div>
+    <div class="focus-card hot-focus">
+      <div class="focus-bg"></div>
+      <div class="focus-overlay"></div>
+      <div class="focus-content">
+        <div class="focus-tag">🔥 6-0! 世界杯最大惨案</div>
+        <div class="focus-title">戴维帽子戏法!加拿大狂胜登顶</div>
+        <div class="focus-desc">B组东道主火力全开，9人应战+重伤离场，卡塔尔遭遇队史最大比分失利</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 1: June 12 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月12日 · 开幕日</div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇲🇽</span> 墨西哥 <span class="vs">vs</span> <span class="flag">🇿🇦</span> 南非</div>
+      <div class="score">2-0</div>
+      <div class="group-tag">A组</div>
+    </div>
+    <div class="match-card">
+      <div class="time">10:00</div>
+      <div class="teams"><span class="flag">🇰🇷</span> 韩国 <span class="vs">vs</span> <span class="flag">🇨🇿</span> 捷克</div>
+      <div class="score">2-1</div>
+      <div class="group-tag">A组</div>
+    </div>
+  </div>
+
+  <!-- Day 2: June 13 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月13日</div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇨🇦</span> 加拿大 <span class="vs">vs</span> <span class="flag">🇧🇦</span> 波黑</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">B组</div>
+    </div>
+    <div class="match-card live">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇺🇸</span> 美国 <span class="vs">vs</span> <span class="flag">🇵🇾</span> 巴拉圭</div>
+      <div class="live-tag">🔴 LIVE</div>
+      <div class="group-tag">D组</div>
+      <div class="venue">洛杉矶</div>
+    </div>
+  </div>
+
+  <!-- Day 3: June 14 - UPDATED -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月14日 · 爆冷日</div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇶🇦</span> 卡塔尔 <span class="vs">vs</span> <span class="flag">🇨🇭</span> 瑞士</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">B组</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇧🇷</span> 巴西 <span class="vs">vs</span> <span class="flag">🇲🇦</span> 摩洛哥</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">C组</div>
+    </div>
+    <div class="match-card">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇭🇹</span> 海地 <span class="vs">vs</span> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> 苏格兰</div>
+      <div class="group-tag">C组</div>
+      <div class="venue">波士顿</div>
+    </div>
+    <div class="match-card">
+      <div class="time">12:00</div>
+      <div class="teams"><span class="flag">🇦🇺</span> 澳大利亚 <span class="vs">vs</span> <span class="flag">🇹🇷</span> 土耳其</div>
+      <div class="group-tag">D组</div>
+      <div class="venue">温哥华</div>
+    </div>
+  </div>
+
+  <!-- Day 4: June 15 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月15日</div>
+    <div class="match-card">
+      <div class="time">01:00</div>
+      <div class="teams"><span class="flag">🇩🇪</span> 德国 <span class="vs">vs</span> <span class="flag">🇨🇼</span> 库拉索</div>
+      <div class="group-tag">E组</div>
+      <div class="venue">休斯敦</div>
+    </div>
+    <div class="match-card">
+      <div class="time">04:00</div>
+      <div class="teams"><span class="flag">🇳🇱</span> 荷兰 <span class="vs">vs</span> <span class="flag">🇯🇵</span> 日本</div>
+      <div class="group-tag">F组</div>
+      <div class="venue">达拉斯</div>
+    </div>
+    <div class="match-card">
+      <div class="time">07:00</div>
+      <div class="teams"><span class="flag">🇨🇮</span> 科特迪瓦 <span class="vs">vs</span> <span class="flag">🇪🇨</span> 厄瓜多尔</div>
+      <div class="group-tag">E组</div>
+      <div class="venue">费城</div>
+    </div>
+    <div class="match-card">
+      <div class="time">10:00</div>
+      <div class="teams"><span class="flag">🇸🇪</span> 瑞典 <span class="vs">vs</span> <span class="flag">🇹🇳</span> 突尼斯</div>
+      <div class="group-tag">F组</div>
+      <div class="venue">蒙特雷</div>
+    </div>
+  </div>
+
+  <!-- Day 5: June 16 - UPDATED -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月16日</div>
+    <div class="match-card">
+      <div class="time">00:00</div>
+      <div class="teams"><span class="flag">🇪🇸</span> 西班牙 <span class="vs">vs</span> <span class="flag">🇨🇻</span> 佛得角</div>
+      <div class="score">0-0 🔥冷门</div>
+      <div class="group-tag">H组</div>
+      <div class="venue">亚特兰大</div>
+    </div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇧🇪</span> 比利时 <span class="vs">vs</span> <span class="flag">🇪🇬</span> 埃及</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">G组</div>
+      <div class="venue">西雅图</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇸🇦</span> 沙特 <span class="vs">vs</span> <span class="flag">🇺🇾</span> 乌拉圭</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">H组</div>
+      <div class="venue">迈阿密</div>
+    </div>
+    <div class="match-card">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇮🇷</span> 伊朗 <span class="vs">vs</span> <span class="flag">🇳🇿</span> 新西兰</div>
+      <div class="group-tag">G组</div>
+      <div class="venue">波士顿</div>
+    </div>
+  </div>
+
+  <!-- Day 6: June 17 ⭐ ARGENTINA -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot" style="background:var(--arg-gold);"></span>6月17日 ⭐ 阿根廷开门红</div>
+    <div class="match-card arg-match">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇫🇷</span> 法国 <span class="vs">vs</span> <span class="flag">🇸🇳</span> 塞内加尔</div>
+      <div class="score">3-1</div>
+      <div class="group-tag">I组</div>
+      <div class="venue">新泽西</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇮🇶</span> 伊拉克 <span class="vs">vs</span> <span class="flag">🇳🇴</span> 挪威</div>
+      <div class="score">1-4</div>
+      <div class="group-tag">I组</div>
+      <div class="venue">波士顿</div>
+    </div>
+    <div class="match-card arg-match">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇦🇷</span> <strong>阿根廷</strong> <span class="vs">vs</span> <span class="flag">🇩🇿</span> 阿尔及利亚</div>
+      <div class="score">3-0 ✅</div>
+      <div class="group-tag">J组</div>
+      <div class="venue">堪萨斯城</div>
+    </div>
+    <div class="match-card">
+      <div class="time">12:00</div>
+      <div class="teams"><span class="flag">🇦🇹</span> 奥地利 <span class="vs">vs</span> <span class="flag">🇯🇴</span> 约旦</div>
+      <div class="score">3-1</div>
+      <div class="group-tag">J组</div>
+      <div class="venue">旧金山</div>
+    </div>
+  </div>
+
+  <!-- Day 7: June 18 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月18日 · C罗首秀</div>
+    <div class="match-card">
+      <div class="time">01:00</div>
+      <div class="teams"><span class="flag">🇵🇹</span> 葡萄牙 <span class="vs">vs</span> <span class="flag">🇨🇩</span> 刚果(金)</div>
+      <div class="score">1-1</div>
+      <div class="group-tag">K组</div>
+      <div class="venue">休斯敦</div>
+    </div>
+    <div class="match-card">
+      <div class="time">04:00</div>
+      <div class="teams"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰 <span class="vs">vs</span> <span class="flag">🇭🇷</span> 克罗地亚</div>
+      <div class="score">4-2</div>
+      <div class="group-tag">L组</div>
+      <div class="venue">达拉斯</div>
+    </div>
+    <div class="match-card">
+      <div class="time">07:00</div>
+      <div class="teams"><span class="flag">🇬🇭</span> 加纳 <span class="vs">vs</span> <span class="flag">🇵🇦</span> 巴拿马</div>
+      <div class="score">1-0</div>
+      <div class="group-tag">L组</div>
+      <div class="venue">多伦多</div>
+    </div>
+    <div class="match-card">
+      <div class="time">10:00</div>
+      <div class="teams"><span class="flag">🇺🇿</span> 乌兹别克 <span class="vs">vs</span> <span class="flag">🇨🇴</span> 哥伦比亚</div>
+      <div class="group-tag">K组</div>
+      <div class="venue">墨西哥城</div>
+    </div>
+  </div>
+
+  <!-- June 19 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月19日 · 第二轮进行中</div>
+    <div class="match-card">
+      <div class="time">00:00</div>
+      <div class="teams"><span class="flag">🇨🇿</span> 捷克 <span class="vs">vs</span> <span class="flag">🇿🇦</span> 南非</div>
+      <div class="score">1-1 ✅</div>
+      <div class="group-tag">A组 R2</div>
+      <div class="venue">亚特兰大</div>
+    </div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇨🇭</span> 瑞士 <span class="vs">vs</span> <span class="flag">🇧🇦</span> 波黑</div>
+      <div class="score">4-1 🔥</div>
+      <div class="group-tag">B组 R2</div>
+      <div class="venue">洛杉矶</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇨🇦</span> 加拿大 <span class="vs">vs</span> <span class="flag">🇶🇦</span> 卡塔尔</div>
+      <div class="score">6-0 🔥🔥</div>
+      <div class="group-tag">B组 R2</div>
+      <div class="venue">温哥华</div>
+    </div>
+    <div class="match-card live">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇲🇽</span> 墨西哥 <span class="vs">vs</span> <span class="flag">🇰🇷</span> 韩国</div>
+      <div class="score">0-0</div>
+      <div class="live-tag">🔴 LIVE</div>
+      <div class="group-tag">A组 R2</div>
+      <div class="venue">瓜达拉哈拉</div>
+    </div>
+  </div>
+
+  <!-- Day 9: June 20 - NEW -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot" style="background:#34d399;"></span>6月20日 · 美国提前出线 🔵</div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇺🇸</span> 美国 <span class="vs">vs</span> <span class="flag">🇦🇺</span> 澳大利亚</div>
+      <div class="score">2-0 ✅</div>
+      <div class="group-tag">D组 R2</div>
+      <div class="venue">西雅图</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇲🇦</span> 摩洛哥 <span class="vs">vs</span> <span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> 苏格兰</div>
+      <div class="score">1-0 ✅</div>
+      <div class="group-tag">C组 R2</div>
+      <div class="venue">堪萨斯城</div>
+    </div>
+    <div class="match-card live">
+      <div class="time">08:30</div>
+      <div class="teams"><span class="flag">🇧🇷</span> 巴西 <span class="vs">vs</span> <span class="flag">🇭🇹</span> 海地</div>
+      <div class="live-tag">🔴 即将</div>
+      <div class="group-tag">C组 R2</div>
+      <div class="venue">波士顿</div>
+    </div>
+    <div class="match-card live">
+      <div class="time">11:00</div>
+      <div class="teams"><span class="flag">🇹🇷</span> 土耳其 <span class="vs">vs</span> <span class="flag">🇵🇾</span> 巴拉圭</div>
+      <div class="live-tag">🔴 即将</div>
+      <div class="group-tag">D组 R2</div>
+      <div class="venue">洛杉矶</div>
+    </div>
+  </div>
+
+  <!-- June 21 Preview -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot" style="background:#5b8af5;"></span>6月21日 · 明日预告</div>
+    <div class="match-card">
+      <div class="time">00:00</div>
+      <div class="teams"><span class="flag">🇩🇪</span> 德国 <span class="vs">vs</span> <span class="flag">🇨🇮</span> 科特迪瓦</div>
+      <div class="group-tag">E组 R2</div>
+      <div class="venue">休斯敦</div>
+    </div>
+    <div class="match-card">
+      <div class="time">03:00</div>
+      <div class="teams"><span class="flag">🇳🇱</span> 荷兰 <span class="vs">vs</span> <span class="flag">🇸🇪</span> 瑞典</div>
+      <div class="group-tag">F组 R2</div>
+      <div class="venue">达拉斯</div>
+    </div>
+    <div class="match-card">
+      <div class="time">06:00</div>
+      <div class="teams"><span class="flag">🇺🇾</span> 乌拉圭 <span class="vs">vs</span> <span class="flag">🇸🇦</span> 沙特</div>
+      <div class="group-tag">H组 R2</div>
+      <div class="venue">迈阿密</div>
+    </div>
+    <div class="match-card">
+      <div class="time">09:00</div>
+      <div class="teams"><span class="flag">🇪🇸</span> 西班牙 <span class="vs">vs</span> <span class="flag">🇪🇬</span> 埃及</div>
+      <div class="group-tag">H组 R2</div>
+      <div class="venue">亚特兰大</div>
+    </div>
+  </div>
+
+  <!-- June 22 ⭐ ARGENTINA R2 -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot" style="background:var(--arg-gold);"></span>6月22日 ⭐ 阿根廷第二战</div>
+    <div class="match-card arg-match">
+      <div class="time">01:00</div>
+      <div class="teams"><span class="flag">🇦🇷</span> <strong>阿根廷</strong> <span class="vs">vs</span> <span class="flag">🇦🇹</span> 奥地利</div>
+      <div class="group-tag">J组 R2</div>
+      <div class="venue">阿灵顿</div>
+    </div>
+    <div class="match-card">
+      <div class="time">05:00</div>
+      <div class="teams"><span class="flag">🇫🇷</span> 法国 <span class="vs">vs</span> <span class="flag">🇮🇶</span> 伊拉克</div>
+      <div class="group-tag">I组 R2</div>
+    </div>
+    <div class="match-card">
+      <div class="time">08:00</div>
+      <div class="teams"><span class="flag">🇳🇴</span> 挪威 <span class="vs">vs</span> <span class="flag">🇸🇳</span> 塞内加尔</div>
+      <div class="group-tag">I组 R2</div>
+    </div>
+    <div class="match-card">
+      <div class="time">11:00</div>
+      <div class="teams"><span class="flag">🇯🇴</span> 约旦 <span class="vs">vs</span> <span class="flag">🇩🇿</span> 阿尔及利亚</div>
+      <div class="group-tag">J组 R2</div>
+    </div>
+  </div>
+
+  <!-- Remaining rounds -->
+  <div class="match-day">
+    <div class="date-label"><span class="date-dot"></span>6月23-28日 · 第三轮 & 淘汰赛</div>
+    <div style="padding:16px 20px;background:var(--card);border-radius:var(--radius-sm);border:1px solid var(--border);color:var(--text2);font-size:0.85rem;line-height:1.8;backdrop-filter:blur(8px);">
+      <p>📌 <strong>6月23日</strong> K/L组第二轮 · <strong>6月24日</strong> A/B/C组第三轮 · <strong>6月25日</strong> E/F组第三轮 · <strong>6月26日</strong> D组第三轮 · <strong>6月27日</strong> G/H/I组第三轮</p>
+      <p>⭐ <strong>6月28日 10:00</strong> 🇦🇷 <strong>阿根廷</strong> vs 🇯🇴 约旦（J组第三轮 · 阿灵顿）</p>
+      <p>🏟️ <strong>6月29日起</strong> 进入32强淘汰赛 · <strong>7月20日 03:00</strong> 决赛（大都会人寿体育场）</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== STANDINGS ====== -->
+<div class="section" id="sec-standings">
+  <div class="section-header">
+    <span class="icon">🏆</span>
+    <h2>小组积分榜</h2>
+    <span class="badge" style="background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.2);">🟢 晋级线</span>
+  </div>
+  <div class="groups-grid">
+
+    <!-- Group A -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">A组</span><span style="font-size:0.7rem;color:var(--text3)">首轮已完</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr class="qualify"><td>1</td><td class="team"><span class="flag">🇲🇽</span> 墨西哥</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>+2</td><td class="pts">3</td></tr>
+        <tr class="qualify"><td>2</td><td class="team"><span class="flag">🇰🇷</span> 韩国</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td class="pts">3</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇨🇿</span> 捷克</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇿🇦</span> 南非</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>-2</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group B -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">B组</span><span style="font-size:0.7rem;color:var(--text3)">1场已赛</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr class="qualify"><td>1</td><td class="team"><span class="flag">🇨🇦</span> 加拿大</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="pts">1</td></tr>
+        <tr class="qualify"><td>2</td><td class="team"><span class="flag">🇧🇦</span> 波黑</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="pts">1</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇶🇦</span> 卡塔尔</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇨🇭</span> 瑞士</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group C - UPDATED -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">C组</span><span style="font-size:0.7rem;color:#34d399">🇲🇦 摩洛哥领跑</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇲🇦</span> 摩洛哥</td><td>2</td><td>1</td><td>1</td><td>0</td><td>2</td><td>1</td><td>+1</td><td class="pts">4</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> 苏格兰</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>+1</td><td class="pts">3</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇧🇷</span> 巴西</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="pts">1</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇭🇹</span> 海地</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>-1</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group D - UPDATED -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">D组</span><span style="font-size:0.7rem;color:#34d399">🇺🇸 美国提前出线!</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇺🇸</span> 美国 ✅</td><td>2</td><td>2</td><td>0</td><td>0</td><td>6</td><td>1</td><td>+5</td><td class="pts">6</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇦🇺</span> 澳大利亚</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td class="pts">3</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇹🇷</span> 土耳其</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇵🇾</span> 巴拉圭</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>4</td><td>-3</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group E -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">E组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇩🇪</span> 德国</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇨🇼</span> 库拉索</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇨🇮</span> 科特迪瓦</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇪🇨</span> 厄瓜多尔</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group F -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">F组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇳🇱</span> 荷兰</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇯🇵</span> 日本</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇸🇪</span> 瑞典</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇹🇳</span> 突尼斯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group G -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">G组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇧🇪</span> 比利时</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇪🇬</span> 埃及</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇮🇷</span> 伊朗</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇳🇿</span> 新西兰</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group H -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">H组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇪🇸</span> 西班牙</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇨🇻</span> 佛得角</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇸🇦</span> 沙特</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇺🇾</span> 乌拉圭</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group I -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">I组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇫🇷</span> 法国</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇸🇳</span> 塞内加尔</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇮🇶</span> 伊拉克</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇳🇴</span> 挪威</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group J ⭐ ARGENTINA - UPDATED -->
+    <div class="group-card arg-group">
+      <div class="group-header"><span class="group-label">⭐ J组 · 阿根廷所在组</span><span style="font-size:0.7rem;color:var(--arg-gold)">卫冕冠军</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇦🇷</span> 阿根廷 ✅</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>0</td><td>+3</td><td class="pts">3</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇦🇹</span> 奥地利</td><td>1</td><td>1</td><td>0</td><td>0</td><td>3</td><td>1</td><td>+2</td><td class="pts">3</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇩🇿</span> 阿尔及利亚</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>-3</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇯🇴</span> 约旦</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>3</td><td>-2</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group K -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">K组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🇵🇹</span> 葡萄牙</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇨🇩</span> 刚果(金)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇺🇿</span> 乌兹别克</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇨🇴</span> 哥伦比亚</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+
+    <!-- Group L -->
+    <div class="group-card">
+      <div class="group-header"><span class="group-label">L组</span></div>
+      <table class="standings-table">
+        <tr><th></th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净</th><th>分</th></tr>
+        <tr><td>1</td><td class="team"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>2</td><td class="team"><span class="flag">🇭🇷</span> 克罗地亚</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>3</td><td class="team"><span class="flag">🇬🇭</span> 加纳</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+        <tr><td>4</td><td class="team"><span class="flag">🇵🇦</span> 巴拿马</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCORERS ====== -->
+<div class="section" id="sec-scorers">
+  <div class="section-header">
+    <span class="icon">👟</span>
+    <h2>射手榜</h2>
+  </div>
+  <div class="scorers-list">
+    <!-- 🥇🥇 并列第一 -->
+    <div class="scorer-row" style="border-color:rgba(240,192,64,0.3);">
+      <div class="rank top">🥇🥇</div>
+      <div class="avatar">👑</div>
+      <div class="info"><div class="name">梅西 & 戴维 并列!</div><div class="nation">🇦🇷 阿根廷 / 🇨🇦 加拿大 · 各3球</div></div>
+      <div class="goals">3</div>
+    </div>
+    <div class="scorer-row" style="border-color:rgba(240,192,64,0.2);">
+      <div class="rank">🥇🥇</div>
+      <div class="avatar">🏆</div>
+      <div class="info"><div class="name">乔纳森·戴维</div><div class="nation">🇨🇦 加拿大 · 帽子戏法(6-0)</div></div>
+      <div class="goals">3</div>
+    </div>
+    <!-- 🥈 并列第二 -->
+    <div class="scorer-row">
+      <div class="rank">🥈</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">姆巴佩</div><div class="nation">🇫🇷 法国 · 2球</div></div>
+      <div class="goals">2</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">🥈</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">哈兰德</div><div class="nation">🇳🇴 挪威 · 梅开二度</div></div>
+      <div class="goals">2</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">🥈</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">凯恩</div><div class="nation">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰 · 2球</div></div>
+      <div class="goals">2</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">🥈</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">巴洛贡</div><div class="nation">🇺🇸 美国 · 连续参与进球</div></div>
+      <div class="goals">2</div>
+    </div>
+    <!-- 新进球球员 -->
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">弗里曼</div><div class="nation">🇺🇸 美国 · 头球破门</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">塞巴里</div><div class="nation">🇲🇦 摩洛哥 · 本届第2球</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">胡希</div><div class="nation">🇶🇦 卡塔尔</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">维尼修斯</div><div class="nation">🇧🇷 巴西</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">胡利安·基尼奥内斯</div><div class="nation">🇲🇽 墨西哥</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">拉季斯拉夫·克雷伊奇</div><div class="nation">🇨🇿 捷克</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">黄仁范</div><div class="nation">🇰🇷 韩国</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">吴贤揆</div><div class="nation">🇰🇷 韩国</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">Cyle Larin</div><div class="nation">🇨🇦 加拿大</div></div>
+      <div class="goals">1</div>
+    </div>
+    <div class="scorer-row">
+      <div class="rank">=</div>
+      <div class="avatar">⚽</div>
+      <div class="info"><div class="name">Jovo Lukić</div><div class="nation">🇧🇦 波黑</div></div>
+      <div class="goals">1</div>
+    </div>
+  </div>
+  <p style="margin-top:20px;font-size:0.82rem;color:var(--text3);text-align:center;">💡 已进行7个比赛日，共41球 | 阿根廷3-0阿尔及利亚·梅西3球·戴维3球</p>
+</div>
+
+<!-- ====== ARGENTINA ====== -->
+<div class="section" id="sec-argentina">
+  <div class="arg-hero">
+    <div class="arg-badge">🏆 卫冕冠军 · FIFA排名第1</div>
+    <h2>🇦🇷 阿根廷</h2>
+    <div class="arg-sub">J组 · 三届世界杯冠军 · 2022卡塔尔世界杯冠军</div>
+  </div>
+
+  <div class="arg-grid">
+    <!-- Schedule -->
+    <div class="arg-card">
+      <h3>📅 小组赛程</h3>
+      <div class="arg-schedule">
+        <div class="match-card arg-match">
+          <div class="time">6/17 09:00</div>
+          <div class="teams"><span class="flag">🇦🇷</span> 阿根廷 <span class="vs">vs</span> <span class="flag">🇩🇿</span> 阿尔及利亚</div>
+          <div class="score">3-0 ✅ 帽子戏法!</div>
+          <div class="venue">堪萨斯城</div>
+        </div>
+        <div class="match-card arg-match">
+          <div class="time">6/22 01:00</div>
+          <div class="teams"><span class="flag">🇦🇷</span> 阿根廷 <span class="vs">vs</span> <span class="flag">🇦🇹</span> 奥地利</div>
+          <div class="venue">阿灵顿</div>
+        </div>
+        <div class="match-card arg-match">
+          <div class="time">6/28 10:00</div>
+          <div class="teams"><span class="flag">🇯🇴</span> 约旦 <span class="vs">vs</span> <span class="flag">🇦🇷</span> 阿根廷</div>
+          <div class="venue">阿灵顿</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Squad (XHS player card style) -->
+    <div class="arg-card" style="grid-column:1/-1;">
+      <h3>👥 26人大名单</h3>
+      <div class="squad-grid">
+        <div class="player-card star"><div class="player-avatar">👑</div><div class="player-name">梅西</div><div class="player-pos">10 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">🧤</div><div class="player-name">马丁内斯</div><div class="player-pos">1 · 门将</div></div>
+        <div class="player-card"><div class="player-avatar">🧤</div><div class="player-name">鲁利</div><div class="player-pos">12 · 门将</div></div>
+        <div class="player-card"><div class="player-avatar">🧤</div><div class="player-name">穆索</div><div class="player-pos">23 · 门将</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">罗梅罗</div><div class="player-pos">2 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">奥塔门迪</div><div class="player-pos">6 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">莫利纳</div><div class="player-pos">4 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">塔利亚菲科</div><div class="player-pos">3 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">利桑德罗</div><div class="player-pos">13 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">梅迪纳</div><div class="player-pos">15 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">塞内西</div><div class="player-pos">19 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">🛡️</div><div class="player-name">蒙铁尔</div><div class="player-pos">22 · 后卫</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">德保罗</div><div class="player-pos">7 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">恩佐</div><div class="player-pos">5 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">麦卡利斯特</div><div class="player-pos">8 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">帕雷德斯</div><div class="player-pos">14 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">洛塞尔索</div><div class="player-pos">16 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">帕拉西奥斯</div><div class="player-pos">17 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚙️</div><div class="player-name">巴尔科</div><div class="player-pos">18 · 中场</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">劳塔罗</div><div class="player-pos">9 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">阿尔瓦雷斯</div><div class="player-pos">11 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">N·冈萨雷斯</div><div class="player-pos">20 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">阿尔马达</div><div class="player-pos">21 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">尼科·帕斯</div><div class="player-pos">24 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">朱·西蒙尼</div><div class="player-pos">25 · 前锋</div></div>
+        <div class="player-card"><div class="player-avatar">⚽</div><div class="player-name">洛佩斯</div><div class="player-pos">26 · 前锋</div></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.72rem;color:var(--text3);">📝 塞内西递补入选，顶替受伤退出的巴列尔迪（6月12日更新）</p>
+    </div>
+
+    <!-- Key Info -->
+    <div class="arg-card">
+      <h3>⭐ 核心看点</h3>
+      <div class="player-list">
+        <span class="pos-label">👑 梅西:</span> 38岁357天，世界杯历史最年长帽子戏法，16球追平克洛泽并列射手王<br>
+        <span class="pos-label">⚠️ 父亲:</span> 豪尔赫结肠癌病情恶化，1月起住院治疗，进球献父亲<br>
+        <span class="pos-label">🧤 马丁内斯:</span> 2022金手套，确认参赛<br>
+        <span class="pos-label">⚽ 阿尔瓦雷斯:</span> 首战替补表现出色，竞争首发位置领先劳塔罗<br>
+        <span class="pos-label">⚠️ 蒙铁尔:</span> 肌肉不适单独恢复，莫利纳可能顶替首发右后卫<br>
+        <span class="pos-label">🏆 次轮:</span> 6月22日01:00 vs 奥地利，锁定出线关键战
+      </div>
+    </div>
+
+    <!-- Path -->
+    <div class="arg-card">
+      <h3>🗺️ 淘汰赛路线</h3>
+      <div class="player-list">
+        <span class="pos-label">J组第一:</span> 32强 vs H组第二（大概率乌拉圭）→ 16强可能 vs 土耳其 → 八强 vs 巴西或葡萄牙 → 半决赛 vs 英格兰 → 决赛 vs 法国/西班牙<br><br>
+        <span class="pos-label">J组第二:</span> 失去半区保护，提前遭遇强敌<br><br>
+        <span class="pos-label">💡 梅罗相遇:</span> 若阿根廷J组第一 + 葡萄牙K组第一，八强堪萨斯城相遇！
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== NEWS ====== -->
+<div class="section" id="sec-news">
+  <div class="section-header">
+    <span class="icon">📰</span>
+    <h2>新闻速递</h2>
+  </div>
+  <div class="trending-bar">
+    <span class="trending-tag arg hot">🔥 造谣!主播谎称梅西父亲去世</span>
+    <span class="trending-tag arg hot">🇦🇷 总统米莱怒斥媒体</span>
+    <span class="trending-tag hot">🇺🇸 美国提前出线</span>
+    <span class="trending-tag hot">🇲🇦 摩洛哥2连胜领跑C组</span>
+    <span class="trending-tag arg">🇦🇷 梅西父亲结肠癌恶化</span>
+    <span class="trending-tag">🇧🇷 巴西今晚出战</span>
+    <span class="trending-tag">🇹🇷 土耳其vs巴拉圭</span>
+    <span class="trending-tag">👑 38岁最年长戴帽</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(240,192,64,0.15),rgba(117,170,219,0.1));">
+        <div class="news-emoji">👑❤️</div>
+        <div class="news-source-tag">图片报</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月19日 09:00</div>
+        <div class="news-title">🏆 进球后落泪!梅西父亲今年1月起与重病斗争</div>
+        <div class="news-desc">图片报确认：梅西68岁父亲豪尔赫自今年1月与重病斗争。进球后动情落泪：进球献给父亲！父亲病情在世界杯前曾恶化。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(255,71,87,0.12),rgba(255,140,66,0.08));">
+        <div class="news-emoji">🇨🇦🔥</div>
+        <div class="news-source-tag">智道足球</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月19日 08:23</div>
+        <div class="news-title">戴维帽子戏法!加拿大6-0狂胜卡塔尔登顶B组</div>
+        <div class="news-desc">东道主火力全开：拉林首开纪录+戴维梅开二度+帽子戏法，9人作战+科内重伤离场。6-0创本届最大比分惨案！</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(91,138,245,0.12),rgba(124,92,245,0.08));">
+        <div class="news-emoji">🇨🇭</div>
+        <div class="news-source-tag">央视新闻</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月19日 05:09</div>
+        <div class="news-title">瑞士4-1大胜波黑!曼赞比20岁双响创纪录</div>
+        <div class="news-desc">20岁247天成世界杯最年轻替补双响！扎卡连续三届世界杯进球。波黑穆哈雷莫维奇染红，瑞士下半场3球逆转！</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(255,140,66,0.12),rgba(255,71,87,0.08));">
+        <div class="news-emoji">🇵🇹</div>
+        <div class="news-source-tag">央视新闻</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月18日 06:07</div>
+        <div class="news-title">C罗首秀创历史！41岁第六届世界杯，葡萄牙1-1刚果金</div>
+        <div class="news-desc">41岁C罗首发登场，成为世界杯历史首位六届参赛球员！虽然未能进球，但已创造足坛无法超越的里程碑。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(255,71,87,0.08),rgba(255,140,66,0.06));">
+        <div class="news-emoji">🇬🇭</div>
+        <div class="news-source-tag">澎湃新闻</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月18日 09:06</div>
+        <div class="news-title">加纳1-0巴拿马！补时绝杀迎28年首胜</div>
+        <div class="news-desc">伊伦基补时阶段门前包抄绝杀！55万人口小国首次参赛虽败犹荣，加纳2脚射正进1球效率惊人。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(34,211,153,0.08),rgba(240,192,64,0.06));">
+        <div class="news-emoji">🇦🇷</div>
+        <div class="news-source-tag">AP通讯社</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月16日 08:00</div>
+        <div class="news-title">斯卡洛尼确认：梅西明天确定出战！身体状态良好</div>
+        <div class="news-desc">阿根廷主帅赛前发布会表示："全队状况良好，除了尼科·帕斯有轻伤，其他人都没有严重问题。梅西看起来状态很棒，他会出战对阵阿尔及利亚的比赛。"</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual">
+        <div class="news-emoji">🇧🇷</div>
+        <div class="news-source-tag">央视体育</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月14日 08:37</div>
+        <div class="news-title">五星巴西1-1摩洛哥！塞巴里破门维尼修斯救主</div>
+        <div class="news-desc">摩洛哥21分钟先下一城，32分钟维尼修斯爆射扳平。内马尔因伤缺阵，巴西队身价9.3亿欧却场面被动，遭遇近3次对阵摩洛哥的第2场不胜。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(34,211,153,0.08),rgba(240,192,64,0.06));">
+        <div class="news-emoji">🇦🇷</div>
+        <div class="news-source-tag">ESPN</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月14日 08:30</div>
+        <div class="news-title">重磅！阿根廷8名伤员全部恢复合练，大马丁确认首发</div>
+        <div class="news-desc">队医Gaston Edul确认：朱利安(阿尔瓦雷斯)、帕雷德斯、罗梅罗、尼科·帕斯、尼科·冈萨雷斯、莫利纳、蒙铁尔均已参与全队合练。塔利亚菲科仍是唯一缺席者。6月16日对阵阿尔及利亚。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual">
+        <div class="news-emoji">⚠️</div>
+        <div class="news-source-tag">OneFootball</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 09:49</div>
+        <div class="news-title">塔利亚菲科至少缺席前两场小组赛，斯卡洛尼24小时最后决断</div>
+        <div class="news-desc">左后卫塔利亚菲科小腿伤势恢复缓慢，确认缺席至少前两场小组赛。FIFA规定首战前24小时可换人，斯卡洛尼强硬表态："无法达到最低要求的球员将被淘汰。"塞内西或梅达纳可替代。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(117,170,219,0.06));">
+        <div class="news-emoji">⚔️</div>
+        <div class="news-source-tag">Gazzetta</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 14:28</div>
+        <div class="news-title">劳塔罗力压阿尔瓦雷斯，有望首发搭档梅西</div>
+        <div class="news-desc">阿尔瓦雷斯虽已恢复轻度训练，但无法展现完全竞技状态。劳塔罗因此大概率首发。塞内西可客串左后卫替代塔利亚菲科。梅西将迎来第200场国家队比赛。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual">
+        <div class="news-emoji">🏥</div>
+        <div class="news-source-tag">官方</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 08:25</div>
+        <div class="news-title">塞内西递补入选阿根廷世界杯名单，顶替受伤巴列尔迪</div>
+        <div class="news-desc">29岁中后卫塞内西刚以自由身加盟热刺，上赛季代表伯恩茅斯出战39场贡献5次助攻，已启程前往国家队驻地。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(117,170,219,0.06));">
+        <div class="news-emoji">🏆</div>
+        <div class="news-source-tag">红星新闻</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月10日</div>
+        <div class="news-title">梅西C罗世界杯三种相遇可能：八强、16强或决赛</div>
+        <div class="news-desc">阿根廷与葡萄牙从未在世界杯交手。若双双小组第一，7月11日堪萨斯城八强相遇（概率最高）。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(91,138,245,0.08),rgba(124,92,245,0.06));">
+        <div class="news-emoji">📺</div>
+        <div class="news-source-tag">达摩财经</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月11日</div>
+        <div class="news-title">小红书世界杯预约人数达3000万，全节目单公布</div>
+        <div class="news-desc">小红书上线世界杯频道，3000万用户完成观赛预约。阿根廷、葡萄牙球迷圈3天突破8万成员。阿尔瓦雷斯、罗马诺等入驻。免费直播104场比赛。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual">
+        <div class="news-emoji">🎙️</div>
+        <div class="news-source-tag">评论</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 18:58</div>
+        <div class="news-title">克洛普炮轰揭幕战：两队战术糟糕，比赛毫无含金量</div>
+        <div class="news-desc">MagentaTV专家克洛普严厉批评墨西哥vs南非的揭幕战，质疑墨西哥在11打9情况下还被反击。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(255,71,87,0.08),rgba(255,140,66,0.06));">
+        <div class="news-emoji">🏆</div>
+        <div class="news-source-tag">体坛周报</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 23:37</div>
+        <div class="news-title">克洛泽：梅西有能力打破我的世界杯进球纪录</div>
+        <div class="news-desc">德国传奇射手克洛泽表示："我认为我的纪录会在本届世界杯被打破梅西可以做到这一点。我一直是梅西的球迷，他是个天才。"克洛泽16球纪录待破。</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-visual">
+        <div class="news-emoji">🇨🇦</div>
+        <div class="news-source-tag">央视体育</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月13日 06:03</div>
+        <div class="news-title">加拿大1-1波黑！队史世界杯首个积分</div>
+        <div class="news-desc">东道主加拿大在多伦多主场1-1战平波黑，40岁老将哲科21分钟头球首开纪录，第79分钟拉林替补登场2分钟扳平。加拿大终结6连败魔咒，16年首拿积分！</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual" style="background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(117,170,219,0.06));">
+        <div class="news-emoji">🧤</div>
+        <div class="news-source-tag">Sports Mole</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 20:25</div>
+        <div class="news-title">大马丁伤愈确认参赛！Fabrizio Romano：已通过体检</div>
+        <div class="news-desc">阿根廷门将马丁内斯已通过必要医疗检查，阿斯顿维拉门神将出战对阵阿尔及利亚首战。据悉他在周四训练中已能佩戴双手套参与合练。</div>
+      </div>
+    </div>
+    <div class="news-item arg-news">
+      <div class="news-visual">
+        <div class="news-emoji">⚠️</div>
+        <div class="news-source-tag">懂球帝</div>
+      </div>
+      <div class="news-body">
+        <div class="news-time">6月12日 21:43</div>
+        <div class="news-title">阿媒：阿根廷左路告急！塔利亚菲科+尼科·冈萨雷斯均有伤</div>
+        <div class="news-desc">阿根廷左路因伤病出现严重隐患，塔利亚菲科比目鱼肌问题基本无缘首战，尼科·冈萨雷斯肌肉超负荷也让情况变得不确定。斯卡洛尼头疼中。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ====== VIDEOS ====== -->
+<div class="section" id="sec-videos">
+  <div class="section-header">
+    <span class="icon">🎬</span>
+    <h2>热门视频</h2>
+    <span class="badge" style="background:rgba(251,114,153,0.1);color:#fb7299;border:1px solid rgba(251,114,153,0.2);">B站精选</span>
+  </div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.bilibili.com/video/BV1J7EQ6tEhi" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#1a3060,#2a4a8a);">
+        <span class="video-duration">12:55</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">【真实解说】球王登场，阿根廷3比0冰岛！8w人欢呼</div>
+        <div class="video-meta"><span>真实球迷汇</span><span>59.4万播放</span></div>
+      </div>
+    </a>
+    <a class="video-card" href="https://www.bilibili.com/video/BV1ubVZ62E6U" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#2a1a3e,#3a2a5e);">
+        <span class="video-duration">7:08</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">解析阿根廷世界杯大名单：边路有短板但阵容更扎实！</div>
+        <div class="video-meta"><span>司马尘</span><span>17.8万播放</span></div>
+      </div>
+    </a>
+    <a class="video-card" href="https://www.bilibili.com/video/BV1sREY6JEzZ" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#1a3a2e,#2a5a4e);">
+        <span class="video-duration">63:16</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">万字解析阿根廷世界杯前瞻！新老交替谁来接替梅西？</div>
+        <div class="video-meta"><span>霍顿李</span><span>3.5万播放</span></div>
+      </div>
+    </a>
+    <a class="video-card" href="https://www.bilibili.com/video/BV1tXEq6TEXi" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#3a2a1a,#5a4a2a);">
+        <span class="video-duration">4:51</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">2026年世界杯开幕式4K高清</div>
+        <div class="video-meta"><span>ai蘑菇菌</span><span>12.5万播放</span></div>
+      </div>
+    </a>
+    <a class="video-card" href="https://www.bilibili.com/video/BV1jR7D6JELK" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#2a1a1a,#4a2a2a);">
+        <span class="video-duration">14:35</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">48队大乱斗，2026世界杯十大最热门球队！</div>
+        <div class="video-meta"><span>世界波WORLDBOOOO</span><span>17.1万播放</span></div>
+      </div>
+    </a>
+    <a class="video-card" href="https://www.bilibili.com/video/BV1CLEv69E1D" target="_blank">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#1a2a4a,#2a3a5a);">
+        <span class="video-duration">8:42</span>
+        <span class="video-play-icon">▶</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">看完热身赛，我更相信阿根廷有机会争冠了</div>
+        <div class="video-meta"><span>阿暴宇宙编辑室</span><span>1.1万播放</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="footer">
+  <p>⚽ 2026美加墨世界杯实时追踪 · 数据每日更新</p>
+  <p class="update-time">最后更新：2026年6月20日 09:30 (北京时间)</p>
+  <p class="sources">数据来源：FIFA官网 · 新华社 · ESPN · 央视新闻 · 图片报 · 澎湃新闻 · B站 | ⭐ 阿根廷专区特别关注</p>
+</div>
+
+<script>
+function switchTab(name){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  event.target.closest('.tab-btn').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

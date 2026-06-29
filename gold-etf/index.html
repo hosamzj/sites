@@ -129,7 +129,7 @@ a { color:var(--gold); text-decoration:none; }
   <div class="header">
     <h1>🏦 黄金ETF投资助手</h1>
     <div class="sub">每日行情追踪 × 小白也能看懂的投资建议</div>
-    <div class="date-badge" id="today-date">📅 2026年6月28日 · 周日</div>
+    <div class="date-badge" id="today-date">📅 2026年6月29日 · 周一</div>
   </div>
 
   <!-- Tabs -->
@@ -148,23 +148,23 @@ a { color:var(--gold); text-decoration:none; }
       <div class="price-grid">
         <div class="price-item">
           <div class="label">国际金价 (USD/盎司)</div>
-          <div class="value down">$4,044</div>
-          <div class="change up">▲ +0.44% 昨收盘价 $4,044</div>
+          <div class="value" style="color:var(--green);">$4,081</div>
+          <div class="change up">▲ +1.89% 昨收盘价 $4,073</div>
         </div>
         <div class="price-item">
           <div class="label">国内金价 (CNY/克)</div>
-          <div class="value down">~875</div>
-          <div class="change down">▼ 沪金失守900，跌回870区间</div>
+          <div class="value" style="color:var(--green);">~894</div>
+          <div class="change up">▲ 沪金反弹至893，暂稳900下方</div>
         </div>
         <div class="price-item">
           <div class="label">品牌首饰金 (元/克)</div>
-          <div class="value" style="color:var(--gold-light);">~1268~1277</div>
-          <div class="change" style="color:var(--red);">全线跌破1300！周大福1277</div>
+          <div class="value" style="color:var(--gold-light);">~1235~1240</div>
+          <div class="change" style="color:var(--gold);">平稳！周大福1238/周生生1240</div>
         </div>
         <div class="price-item">
           <div class="label">华安ETF净值 518880</div>
-          <div class="value" style="color:var(--red);">8.5201</div>
-          <div class="change down">▼ -0.51% 规模901亿仍居首位</div>
+          <div class="value" style="color:var(--text);">~8.52</div>
+          <div class="change up">▲ 略有反弹 规模901亿仍居首位</div>
         </div>
       </div>
     </div>
@@ -172,11 +172,11 @@ a { color:var(--gold); text-decoration:none; }
     <!-- Investment Advice -->
     <div class="advice-box">
       <div class="tag">📌 今日建议</div>
-      <h3>黄金失守$4000！考验关键支撑，观望为主</h3>
+      <h3>金价小幅反弹！关键价位争夺，多空博弈加剧</h3>
       <p>
-        6月25日国际金价暴跌3.37%，跌破4000美元心理关口至$3,983美元/盎司，创去年11月以来新低。国内沪金同步失守900元，报~875元/克。较1月峰值$5,594累计跌幅近29%，年内涨幅全部回吐。<br><br>
-        <b>🎯 操作建议：</b>空头情绪极度主导，已有仓位控制在10%以内；空仓者<strong style="color:var(--red);">不急于抄底</strong>，耐心等待$4,000关口能否收复再做决策。美元指数创13个月新高，美联储9月加息概率飙升至70%，短期利空云集。<br>
-        <b style="color:var(--green);">中长期布局：</b>央行89%仍计划增持，长期逻辑未变，可考虑分批定投积累筹码，不追涨不杀跌。
+        6月29日国际金价报$4,081/盎司，小幅反弹+1.89%，国内沪金~894元/克。从1月高点$5,598累计回撤约27%，仍处于年内低位区间。<br><br>
+        <b>🎯 操作建议：</b>金价跌破$4,000后迎来技术性反弹，但9月美联储加息预期仍在59%，短期多空博弈激烈。建议已有仓位控制在<strong style="color:var(--gold);">10%以内</strong>；空仓者可关注<strong style="color:var(--green);">定投布局</strong>机会，不追涨不杀跌。<br>
+        <b style="color:var(--green);">中长期逻辑：</b>89%央行计划增持、央行连续19个月购金、全球去美元化大趋势未变，黄金长期配置价值仍在。
       </p>
     </div>
 
@@ -187,11 +187,11 @@ a { color:var(--gold); text-decoration:none; }
         <div class="gauge">
           <svg viewBox="0 0 200 110" width="180">
             <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-bg"/>
-            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-fill" stroke="var(--red)" stroke-dasharray="251" stroke-dashoffset="200"/>
+            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-fill" stroke="var(--gold)" stroke-dasharray="251" stroke-dashoffset="150"/>
           </svg>
-          <div class="gauge-label" style="color:var(--red);">20</div>
+          <div class="gauge-label" style="color:var(--gold);">40</div>
         </div>
-        <div class="gauge-text">极度谨慎 · 空头主导（0=极度恐慌，100=极度贪婪）</div>
+        <div class="gauge-text">谨慎偏空 · 等待方向确认（0=极度恐慌，100=极度贪婪）</div>
       </div>
     </div>
 
@@ -201,32 +201,32 @@ a { color:var(--gold); text-decoration:none; }
       <div class="signal-bar">
         <div class="signal-dot" style="background:var(--red);"></div>
         <div class="name">ETF流出</div>
-        <div class="val" style="color:var(--red);">6月净流出超121亿，仅广发上海金净流入</div>
+        <div class="val" style="color:var(--red);">连续5周净流出，6月规模缩减362亿</div>
       </div>
       <div class="signal-bar">
         <div class="signal-dot" style="background:var(--green);"></div>
         <div class="name">央行购金</div>
-        <div class="val up">89%央行计划增持，创历史新高</div>
+        <div class="val up">89%央行计划增持，连续19个月增持</div>
       </div>
       <div class="signal-bar">
         <div class="signal-dot" style="background:var(--red);"></div>
         <div class="name">美联储</div>
-        <div class="val down">鹰派！9月加息概率飙升至70%</div>
+        <div class="val down">鹰派！9月加息预期59%，略有回落</div>
       </div>
       <div class="signal-bar">
         <div class="signal-dot" style="background:var(--red);"></div>
         <div class="name">美元指数</div>
-        <div class="val down">101.71！创13个月新高</div>
+        <div class="val down">强势！黄金与地缘政治"脱钩"</div>
       </div>
       <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="signal-dot" style="background:var(--gold);"></div>
         <div class="name">技术面</div>
-        <div class="val down">跌破4000！年内涨幅全部回吐</div>
+        <div class="val" style="color:var(--gold);">反弹至4081，$4000关口暂时收复</div>
       </div>
       <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
+        <div class="signal-dot" style="background:var(--gold);"></div>
         <div class="name">首饰金</div>
-        <div class="val" style="color:var(--red);">全线跌破1300元/克！</div>
+        <div class="val" style="color:var(--gold);">1235~1240元/克，趋于平稳</div>
       </div>
     </div>
 
@@ -237,7 +237,7 @@ a { color:var(--gold); text-decoration:none; }
         <div class="factor-card">
           <div class="f-label">美元指数</div>
           <div class="f-value down">强势 ↑</div>
-          <div class="f-desc">加息预期升温→美元创一年新高</div>
+          <div class="f-desc">加息预期+美伊冲突→美元走强</div>
         </div>
         <div class="factor-card">
           <div class="f-label">美债实际收益率</div>
@@ -246,13 +246,13 @@ a { color:var(--gold); text-decoration:none; }
         </div>
         <div class="factor-card">
           <div class="f-label">国际油价</div>
-          <div class="f-value down">大幅下跌 ↓</div>
-          <div class="f-desc">美伊协议→霍尔木兹通航→油价回落</div>
+          <div class="f-value down">高位回落 ↓</div>
+          <div class="f-desc">美伊协议预期→霍尔木兹通航→油价承压</div>
         </div>
         <div class="factor-card">
           <div class="f-label">通胀预期</div>
-          <div class="f-value" style="color:var(--gold);">回落中 →</div>
-          <div class="f-desc">油价下跌→通胀降温预期增强</div>
+          <div class="f-value" style="color:var(--gold);">高位震荡 →</div>
+          <div class="f-desc">PCE 3.4%/CPI 4.2%，通胀黏性较强</div>
         </div>
       </div>
     </div>
@@ -303,19 +303,19 @@ a { color:var(--gold); text-decoration:none; }
           <span style="font-size:11px;color:var(--text2);">已失守关口</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--red);font-size:12px;width:36px;">现价</span>
+          <span style="color:var(--blue);font-size:12px;width:36px;">现价</span>
           <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:48%;top:-2px;width:10px;height:10px;background:var(--blue);border-radius:50%;"></div>
+            <div style="position:absolute;left:35%;top:-2px;width:10px;height:10px;background:var(--blue);border-radius:50%;"></div>
           </div>
-          <span style="font-weight:700;font-size:15px;color:var(--blue);">$4,044</span>
+          <span style="font-weight:700;font-size:15px;color:var(--blue);">$4,081</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
           <span style="color:var(--gold);font-size:12px;width:36px;">支撑1</span>
           <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:38%;top:-2px;width:10px;height:10px;background:var(--gold);border-radius:50%;"></div>
+            <div style="position:absolute;left:40%;top:-2px;width:10px;height:10px;background:var(--gold);border-radius:50%;"></div>
           </div>
           <span style="font-weight:600;font-size:14px;">$4,000</span>
-          <span style="font-size:11px;color:var(--text2);">关键心理关口（已跌破！）</span>
+          <span style="font-size:11px;color:var(--text2);">关键关口（已收复，需观察能否守住）</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
           <span style="color:var(--green);font-size:12px;width:36px;">支撑2</span>
@@ -330,19 +330,19 @@ a { color:var(--gold); text-decoration:none; }
 
     <!-- This Week Watch -->
     <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">⚠️</span> 本周重点数据</div>
+      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">⚠️</span> 下周关注重点</div>
       <div class="step-list">
         <div class="step-item">
-          <div class="step-title">周一（6/23）美国标普全球PMI初值</div>
-          <div class="step-desc">制造业+服务业PMI，将反映美国经济运行状况，影响美联储加息预期</div>
+          <div class="step-title">周三（7/2）美国ADP就业数据</div>
+          <div class="step-desc">俗称"小非农"，反映私营部门就业状况，影响周五非农预期</div>
         </div>
         <div class="step-item">
-          <div class="step-title">周四（6/25）美国GDP终值 + PCE物价指数</div>
-          <div class="step-desc">PCE是美联储最看重指标！若高于预期，加息概率上升，金价承压</div>
+          <div class="step-title">周四（7/3）美联储纪要 + 初请失业金</div>
+          <div class="step-desc">关注官员对加息路径的最新表态，警惕超预期鹰派信号</div>
         </div>
         <div class="step-item">
-          <div class="step-title">周五（6/26）密歇根消费者信心指数</div>
-          <div class="step-desc">反映消费者对未来经济预期，影响通胀预期和利率路径</div>
+          <div class="step-title">周五（7/4）美国6月非农就业</div>
+          <div class="step-desc">重磅！若就业超预期，加息预期再升温，金价承压；若不及预期，情绪缓和可能推动反弹</div>
         </div>
       </div>
     </div>
@@ -559,7 +559,7 @@ a { color:var(--gold); text-decoration:none; }
   <!-- Footer -->
   <div class="footer">
     <div>数据来源：上海黄金交易所、Wind、新浪财经、证券时报、经济日报、上海证券报</div>
-    <div style="margin-top:4px;">更新时间：2026-06-27 · 由阿森自动生成</div>
+    <div style="margin-top:4px;">更新时间：2026-06-29 · 由阿森自动生成</div>
     <div class="warn">⚠️ 以上内容仅供参考，不构成投资建议。市场有风险，投资需谨慎。</div>
   </div>
 

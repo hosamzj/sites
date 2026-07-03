@@ -185,6 +185,19 @@ a{color:var(--accent);text-decoration:none;}
 .trending-tag.hot{background:linear-gradient(135deg,rgba(255,71,87,0.1),rgba(255,140,66,0.1));border-color:rgba(255,71,87,0.3);color:var(--orange);}
 .trending-tag.arg{background:linear-gradient(135deg,rgba(117,170,219,0.1),rgba(240,192,64,0.1));border-color:rgba(240,192,64,0.3);color:var(--arg-gold);}
 
+/* ====== GOLDEN BOOT ODDS ====== */
+.odds-row{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-radius:var(--radius-sm);margin-bottom:8px;border:1px solid var(--border);transition:all 0.25s;backdrop-filter:blur(8px);}
+.odds-row:hover{border-color:rgba(91,138,245,0.25);transform:translateX(4px);}
+.odds-rank{font-size:0.9rem;font-weight:800;color:var(--text3);min-width:24px;text-align:center;}
+.odds-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:var(--glass);border:1px solid var(--border);}
+.odds-info{flex:1;min-width:0;}
+.odds-name{font-weight:700;font-size:0.9rem;margin-bottom:2px;}
+.odds-detail{font-size:0.72rem;color:var(--text3);}
+.odds-goals{font-size:1rem;font-weight:800;color:var(--green);min-width:40px;text-align:center;font-variant-numeric:tabular-nums;}
+.odds-value{font-size:1rem;font-weight:800;color:var(--text2);min-width:48px;text-align:center;font-variant-numeric:tabular-nums;}
+.odds-bar-wrap{width:60px;height:6px;border-radius:3px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.odds-bar{height:100%;border-radius:3px;transition:width 0.6s ease;}
+
 /* ====== FOOTER ====== */
 .footer{text-align:center;padding:36px 0;font-size:0.78rem;color:var(--text3);border-top:1px solid var(--border);margin-top:48px;}
 .footer .update-time{color:var(--arg-gold);font-weight:700;}
@@ -238,6 +251,7 @@ a{color:var(--accent);text-decoration:none;}
       <button class="tab-btn" onclick="switchTab('scorers')"><span class="tab-icon">👟</span>射手榜</button>
       <button class="tab-btn" onclick="switchTab('argentina')"><span class="tab-icon">🇦🇷</span>阿根廷</button>
       <button class="tab-btn" onclick="switchTab('news')"><span class="tab-icon">📰</span>新闻</button>
+      <button class="tab-btn" onclick="switchTab('goldenboot')"><span class="tab-icon">🏅</span>金靴赔率</button>
       <button class="tab-btn" onclick="switchTab('videos')"><span class="tab-icon">🎬</span>视频</button>
     </div>
   </div>
@@ -1329,6 +1343,117 @@ a{color:var(--accent);text-decoration:none;}
     </div>
   </div>
   <p style="margin-top:20px;font-size:0.82rem;color:var(--text3);text-align:center;">💡 16强已出10席：加拿大🇨🇦 巴西🇧🇷 巴拉圭🇵🇾 摩洛哥🇲🇦 挪威🇳🇴 法国🇫🇷 墨西哥🇲🇽 英格兰🏴󠁧󠁢󠁥󠁮󠁧󠁿 比利时🇧🇪 美国🇺🇸 · 三东道主全部晋级!</p>
+</div>
+
+<!-- ====== GOLDEN BOOT ODDS ====== -->
+<div class="section" id="sec-goldenboot">
+  <div class="section-header">
+    <span class="icon">🏅</span>
+    <h2>金靴奖赔率</h2>
+    <span class="badge" style="background:rgba(240,192,64,0.15);color:var(--arg-gold);border:1px solid rgba(240,192,64,0.3);">更新至7月3日</span>
+  </div>
+
+  <div style="margin-bottom:20px;padding:16px 20px;background:linear-gradient(135deg,rgba(240,192,64,0.08),rgba(117,170,219,0.05));border-radius:var(--radius);border:1px solid rgba(240,192,64,0.2);">
+    <div style="font-size:0.85rem;color:var(--text2);line-height:1.6;">
+      <strong style="color:var(--arg-gold);">⚡ 核心看点：</strong>梅西与姆巴佩同以6球并列金靴榜，赔率极为接近。明早阿根廷vs佛得角，梅西进球即可巩固领先优势。
+    </div>
+  </div>
+
+  <div style="max-width:720px;">
+    <!-- 赔率说明 -->
+    <div style="font-size:0.78rem;color:var(--text3);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+      <span>📊 金靴奖夺冠赔率排行（赔率越低=越被看好）</span>
+      <span style="font-size:0.7rem;">数据更新于 2026-07-03</span>
+    </div>
+
+    <!-- #1 姆巴佩 -->
+    <div class="odds-row" style="border-color:rgba(91,138,245,0.4);background:linear-gradient(135deg,rgba(91,138,245,0.08),rgba(18,26,56,0.9));">
+      <div class="odds-rank" style="color:var(--accent);">1</div>
+      <div class="odds-avatar">🇫🇷</div>
+      <div class="odds-info">
+        <div class="odds-name">姆巴佩 <span style="font-size:0.7rem;color:var(--text3);">🇫🇷 法国</span></div>
+        <div class="odds-detail">本届6球 · 总18球 · 淘汰赛进球王</div>
+      </div>
+      <div class="odds-goals">6球</div>
+      <div class="odds-value" style="color:var(--accent);">2.25</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:90%;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
+    </div>
+
+    <!-- #2 梅西 -->
+    <div class="odds-row" style="border-color:rgba(240,192,64,0.5);background:linear-gradient(135deg,rgba(240,192,64,0.06),rgba(18,26,56,0.9));">
+      <div class="odds-rank" style="color:var(--arg-gold);">2</div>
+      <div class="odds-avatar">🇦🇷</div>
+      <div class="odds-info">
+        <div class="odds-name">梅西 <span style="font-size:0.7rem;color:var(--arg-gold);">🇦🇷 阿根廷 · 历史射手王</span></div>
+        <div class="odds-detail">本届6球 · 总19球🏆 · 7月4日战佛得角</div>
+      </div>
+      <div class="odds-goals" style="color:var(--arg-gold);">6球</div>
+      <div class="odds-value" style="color:var(--arg-gold);">2.37</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:85%;background:linear-gradient(90deg,var(--arg-gold),var(--arg));"></div></div>
+    </div>
+
+    <!-- #3 凯恩 -->
+    <div class="odds-row">
+      <div class="odds-rank">3</div>
+      <div class="odds-avatar">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+      <div class="odds-info">
+        <div class="odds-name">凯恩 <span style="font-size:0.7rem;color:var(--text3);">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span></div>
+        <div class="odds-detail">本届5球 · 总13球超贝利 · 双响+绝杀</div>
+      </div>
+      <div class="odds-goals">5球</div>
+      <div class="odds-value">5.50</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:36%;background:linear-gradient(90deg,var(--green),#2ab781);"></div></div>
+    </div>
+
+    <!-- #4 哈兰德 -->
+    <div class="odds-row">
+      <div class="odds-rank">4</div>
+      <div class="odds-avatar">🇳🇴</div>
+      <div class="odds-info">
+        <div class="odds-name">哈兰德 <span style="font-size:0.7rem;color:var(--text3);">🇳🇴 挪威</span></div>
+        <div class="odds-detail">本届5球 · 淘汰赛86分钟绝杀</div>
+      </div>
+      <div class="odds-goals">5球</div>
+      <div class="odds-value">6.00</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:33%;background:linear-gradient(90deg,var(--green),#2ab781);"></div></div>
+    </div>
+
+    <!-- #5 登贝莱 -->
+    <div class="odds-row">
+      <div class="odds-rank">5</div>
+      <div class="odds-avatar">🇫🇷</div>
+      <div class="odds-info">
+        <div class="odds-name">登贝莱 <span style="font-size:0.7rem;color:var(--text3);">🇫🇷 法国</span></div>
+        <div class="odds-detail">本届4球 · 法国进攻核心</div>
+      </div>
+      <div class="odds-goals">4球</div>
+      <div class="odds-value">11.0</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:18%;background:var(--text3);"></div></div>
+    </div>
+
+    <!-- #6 维尼修斯 -->
+    <div class="odds-row">
+      <div class="odds-rank">6</div>
+      <div class="odds-avatar">🇧🇷</div>
+      <div class="odds-info">
+        <div class="odds-name">维尼修斯 <span style="font-size:0.7rem;color:var(--text3);">🇧🇷 巴西</span></div>
+        <div class="odds-detail">本届4球 · 巴西头号射手</div>
+      </div>
+      <div class="odds-goals">4球</div>
+      <div class="odds-value">13.0</div>
+      <div class="odds-bar-wrap"><div class="odds-bar" style="width:15%;background:var(--text3);"></div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:16px 20px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);max-width:720px;">
+    <div style="font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:8px;">💡 赔率解读</div>
+    <div style="font-size:0.8rem;color:var(--text2);line-height:1.8;">
+      • 姆巴佩和梅西赔率极为接近（2.25 vs 2.37），金靴之争白热化<br>
+      • 凯恩/哈兰德5球落后，需球队走得更远才有机会<br>
+      • 阿根廷vs佛得角（7月4日06:00）是梅西拉开差距的关键战<br>
+      • 佛得角541铁桶阵防守稳固，但Opta预测阿根廷89%晋级
+    </div>
+  </div>
 </div>
 
 <!-- ====== ARGENTINA ====== -->

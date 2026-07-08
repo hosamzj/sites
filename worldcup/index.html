@@ -246,13 +246,13 @@ a{color:var(--accent);text-decoration:none;}
 <div class="tabs">
   <div class="container">
     <div class="tab-list">
-      <button class="tab-btn active" onclick="switchTab('schedule', this)"><span class="tab-icon">📅</span>赛程</button>
-      <button class="tab-btn" onclick="switchTab('standings', this)"><span class="tab-icon">🏆</span>积分榜</button>
-      <button class="tab-btn" onclick="switchTab('scorers', this)"><span class="tab-icon">👟</span>射手榜</button>
-      <button class="tab-btn" onclick="switchTab('argentina', this)"><span class="tab-icon">🇦🇷</span>阿根廷</button>
-      <button class="tab-btn" onclick="switchTab('news', this)"><span class="tab-icon">📰</span>新闻</button>
-      <button class="tab-btn" onclick="switchTab('goldenboot', this)"><span class="tab-icon">🏅</span>金靴赔率</button>
-      <button class="tab-btn" onclick="switchTab('videos', this)"><span class="tab-icon">🎬</span>视频</button>
+      <button class="tab-btn active" data-tab="schedule"><span class="tab-icon">📅</span>赛程</button>
+      <button class="tab-btn" data-tab="standings"><span class="tab-icon">🏆</span>积分榜</button>
+      <button class="tab-btn" data-tab="scorers"><span class="tab-icon">👟</span>射手榜</button>
+      <button class="tab-btn" data-tab="argentina"><span class="tab-icon">🇦🇷</span>阿根廷</button>
+      <button class="tab-btn" data-tab="news"><span class="tab-icon">📰</span>新闻</button>
+      <button class="tab-btn" data-tab="goldenboot"><span class="tab-icon">🏅</span>金靴赔率</button>
+      <button class="tab-btn" data-tab="videos"><span class="tab-icon">🎬</span>视频</button>
     </div>
   </div>
 </div>
@@ -2339,13 +2339,26 @@ a{color:var(--accent);text-decoration:none;}
 </div>
 
 <script>
-function switchTab(name, btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sec-'+name).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+(function(){
+  var btns = document.querySelectorAll('.tab-btn');
+  var secs = document.querySelectorAll('.section');
+  function activate(name){
+    for(var i=0;i<secs.length;i++) secs[i].className='section';
+    for(var i=0;i<btns.length;i++) btns[i].className='tab-btn';
+    var target=document.getElementById('sec-'+name);
+    if(target) target.className='section active';
+    var activeBtn=document.querySelector('.tab-btn[data-tab="'+name+'"]');
+    if(activeBtn) activeBtn.className='tab-btn active';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function(e){
+      e.preventDefault();
+      var tab=this.getAttribute('data-tab');
+      if(tab) activate(tab);
+    });
+  }
+})();
 </script>
 </body>
 </html>

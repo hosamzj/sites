@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国到格拉斯哥/爱丁堡 9月航班对比</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0; padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      padding: 32px;
+    }
+    h1 {
+      text-align: center;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+    .notice {
+      background: #fffaf0;
+      border-left: 4px solid #ed8936;
+      padding: 16px;
+      margin-bottom: 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    h2 {
+      color: #2d3748;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    th {
+      background: #4a5568;
+      color: white;
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    tr:hover { background: #f7fafc; }
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag-direct { background: #c6f6d5; color: #22543d; }
+    .tag-stop1 { background: #bee3f8; color: #2a4365; }
+    .tag-stop2 { background: #feebc8; color: #744210; }
+    .price-low { color: #38a169; font-weight: 700; }
+    .price-mid { color: #d69e2e; font-weight: 700; }
+    .price-high { color: #e53e3e; font-weight: 700; }
+    .best { background: #f0fff4 !important; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .card {
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #2d3748;
+    }
+    .card .recommend {
+      color: #38a169;
+      font-weight: 700;
+    }
+    .tips {
+      background: #ebf8ff;
+      border-left: 4px solid #4299e1;
+      padding: 16px;
+      margin-top: 32px;
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+    .tips h3 { margin-top: 0; }
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      color: #a0aec0;
+      font-size: 13px;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 16px; }
+      table { font-size: 12px; }
+      th, td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🇨🇳 中国 → 格拉斯哥 / 爱丁堡</h1>
+    <p class="subtitle">2025 年 9 月 10–12 日 经济舱出行方案对比 · 北京 / 上海 / 香港出发</p>
+
+    <div class="notice">
+      <strong>重要说明：</strong>实时票价和具体航班排班会随时变动。本页基于 Google 航班、FlightConnections 等公开数据整理，实际价格请以航空公司官网或携程/飞猪/Google Flights 为准。格拉斯哥（GLA）无中国直飞，通常需飞爱丁堡（EDI）再转地面交通约 1 小时到格拉斯哥。
+    </div>
+
+    <h2>一、按出发地对比</h2>
+
+    <h3>北京（PEK）→ 爱丁堡 / 格拉斯哥</h3>
+    <table>
+      <tr><th>路线</th><th>转机</th><th>预估往返价格</th><th>去程时长</th><th>特点</th></tr>
+      <tr class="best">
+        <td>北京 → 爱丁堡（海南航空）</td>
+        <td><span class="tag tag-direct">直飞</span></td>
+        <td class="price-high">¥7,000–12,000+</td>
+        <td>10h10m</td>
+        <td>中国唯一直飞苏格兰航线，最省时省心</td>
+      </tr>
+      <tr>
+        <td>北京 → 阿姆斯特丹 → 格拉斯哥（荷航）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-mid">¥6,000–9,000</td>
+        <td>19h15m</td>
+        <td>性价比高，衔接稳定</td>
+      </tr>
+      <tr>
+        <td>北京 → 伦敦 → 格拉斯哥/爱丁堡（英航/国航+英航）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-high">¥7,000–11,000</td>
+        <td>15–17h</td>
+        <td>转机快，但需英国过境签证</td>
+      </tr>
+      <tr>
+        <td>北京 → 法兰克福 → 爱丁堡（汉莎）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-mid">¥6,500–10,000</td>
+        <td>19h20m</td>
+        <td>稳定可靠，适合商务出行</td>
+      </tr>
+    </table>
+
+    <h3>上海浦东（PVG）→ 爱丁堡 / 格拉斯哥</h3>
+    <table>
+      <tr><th>路线</th><th>转机</th><th>预估往返价格</th><th>去程时长</th><th>特点</th></tr>
+      <tr>
+        <td>上海 → 伦敦 → 格拉斯哥/爱丁堡（东航/维珍+英航）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-high">¥7,500–12,000</td>
+        <td>15–17h</td>
+        <td>从上海出发最快</td>
+      </tr>
+      <tr class="best">
+        <td>上海 → 法兰克福 → 爱丁堡/格拉斯哥（汉莎）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-mid">¥7,000–11,000</td>
+        <td>19–20h</td>
+        <td>性价比高，衔接稳定</td>
+      </tr>
+      <tr>
+        <td>上海 → 阿姆斯特丹 → 格拉斯哥/爱丁堡（荷航）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-mid">¥7,000–10,500</td>
+        <td>19–21h</td>
+        <td>性价比好，适合苏州出发</td>
+      </tr>
+      <tr>
+        <td>上海 → 巴黎 → 阿姆斯特丹 → 格拉斯哥（法航+荷航）</td>
+        <td><span class="tag tag-stop2">2 转</span></td>
+        <td class="price-low">¥6,500–9,500</td>
+        <td>20–22h</td>
+        <td>省钱但多转一次</td>
+      </tr>
+    </table>
+
+    <h3>香港（HKG）→ 爱丁堡 / 格拉斯哥</h3>
+    <table>
+      <tr><th>路线</th><th>转机</th><th>预估往返价格</th><th>去程时长</th><th>特点</th></tr>
+      <tr class="best">
+        <td>香港 → 巴黎 → 阿姆斯特丹 → 格拉斯哥（法航+荷航）</td>
+        <td><span class="tag tag-stop2">2 转</span></td>
+        <td class="price-low">¥5,500–6,500</td>
+        <td>21h35m</td>
+        <td>三方案中最便宜</td>
+      </tr>
+      <tr>
+        <td>香港 → 迪拜 → 格拉斯哥（阿联酋航空）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-mid">¥7,200–8,800</td>
+        <td>24h30m</td>
+        <td>服务好，但价格稍高</td>
+      </tr>
+      <tr>
+        <td>香港 → 伦敦 → 格拉斯哥（英航）</td>
+        <td><span class="tag tag-stop1">1 转</span></td>
+        <td class="price-high">¥8,800–11,000</td>
+        <td>18h45m</td>
+        <td>快，但需英国过境签</td>
+      </tr>
+      <tr>
+        <td>香港 → 曼谷 → 迪拜 → 格拉斯哥（阿联酋航空）</td>
+        <td><span class="tag tag-stop2">2 转</span></td>
+        <td class="price-mid">¥7,900–9,500</td>
+        <td>22h10m</td>
+        <td>一般不建议</td>
+      </tr>
+    </table>
+
+    <h2>二、综合推荐排序</h2>
+    <div class="summary-grid">
+      <div class="card">
+        <h3>🥇 最省时</h3>
+        <p><span class="recommend">北京 → 爱丁堡（海南航空直飞）</span></p>
+        <p>仅 10 小时 10 分钟，中国唯一直飞苏格兰航线，适合不愿折腾的人。</p>
+      </div>
+      <div class="card">
+        <h3>🥈 离家最近</h3>
+        <p><span class="recommend">上海浦东 → 法兰克福/阿姆斯特丹 → 爱丁堡/格拉斯哥</span></p>
+        <p>从苏州出发最方便，高铁到浦东约 1–2 小时，无需先北上或南下。</p>
+      </div>
+      <div class="card">
+        <h3>🥉 最省钱</h3>
+        <p><span class="recommend">香港 → 巴黎/阿姆斯特丹 → 格拉斯哥</span></p>
+        <p>通常比北京/上海便宜 1,000–3,000 元，适合能接受先到香港的人。</p>
+      </div>
+    </div>
+
+    <h2>三、针对你（苏州）的最终建议</h2>
+    <table>
+      <tr><th>你的优先级</th><th>推荐方案</th><th>理由</th></tr>
+      <tr>
+        <td>最省事</td>
+        <td>苏州 → 北京 → 直飞爱丁堡 → 火车/大巴到格拉斯哥</td>
+        <td>直飞最省时，但需先去北京</td>
+      </tr>
+      <tr>
+        <td>离家最近</td>
+        <td>苏州 → 上海浦东 → 法兰克福/阿姆斯特丹 → 爱丁堡/格拉斯哥</td>
+        <td>不用奔波到其他城市，一天内可达</td>
+      </tr>
+      <tr>
+        <td>最省钱</td>
+        <td>苏州 → 香港 → 巴黎/阿姆斯特丹 → 格拉斯哥</td>
+        <td>票价最低，但需先花时间到香港</td>
+      </tr>
+    </table>
+
+    <div class="tips">
+      <h3>💡 下一步操作建议</h3>
+      <ol>
+        <li><strong>先确认海南航空直飞：</strong>上海南航空官网/携程/飞猪搜「北京 → 爱丁堡」，日期选 9 月 10–12 日，看是否有直飞及价格。</li>
+        <li><strong>同时搜上海和香港：</strong>用 Google Flights / Skyscanner 对比「上海浦东 → 格拉斯哥/爱丁堡」和「香港 → 格拉斯哥」。</li>
+        <li><strong>注意签证：</strong>经伦敦转机需英国过境签证；经阿姆斯特丹/法兰克福/巴黎转机需确认申根过境要求。</li>
+        <li><strong>灵活日期：</strong>9 月开学季价格波动大，前后 1–2 天可能差几百到上千元。</li>
+      </ol>
+    </div>
+
+    <footer>
+      生成时间：2026-07-13 · 数据仅供参考，请以实时查询为准
+    </footer>
+  </div>
+</body>
+</html>

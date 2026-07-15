@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多多研究报告中心 | 知识库</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 100px 0 80px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+        .section { padding: 60px 0; }
+        .section h2 {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-light);
+        }
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .report-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .report-card:hover {
+            border-color: var(--accent-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .report-card .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .report-card .tag-weekly { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .report-card .tag-research { background: rgba(100, 149, 237, 0.15); color: #6495ed; border: 1px solid rgba(100, 149, 237, 0.3); }
+        .report-card h3 {
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        .report-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        .report-card .meta {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .report-card .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            align-self: flex-start;
+        }
+        .report-card .btn:hover {
+            background: var(--accent-light);
+            text-decoration: none;
+        }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; }
+        .footer a { color: var(--accent-light); text-decoration: none; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 60px 0 50px 0; }
+            .report-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>多多研究报告中心</h1>
+            <p>AI 行业简报、中西哲学研究、企业数字化转型思考，统一归档于一处。</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>最新报告</h2>
+            <div class="report-grid">
+                <div class="report-card">
+                    <div class="tag tag-research">Research Report</div>
+                    <h3>中西哲学比较与 AI 时代的中国智慧</h3>
+                    <p>从儒释道、阳明心学到古希腊哲学与现代科学的深层对话，探讨 AI 时代中国智慧的独特价值。</p>
+                    <div class="meta">2026年7月15日 · 哲学研究 · 多多</div>
+                    <a href="chinese-western-philosophy-ai-report-redesign.html" class="btn">阅读报告 →</a>
+                </div>
+
+                <div class="report-card">
+                    <div class="tag tag-weekly">Weekly Report</div>
+                    <h3>AI Agent、M365 Copilot 与汽车零部件行业 AI 应用</h3>
+                    <p>前沿 AI 资讯、微软 Copilot 动态、汽车零部件行业智能体应用方案与落地案例。</p>
+                    <div class="meta">2026年7月15日 · AI 行业简报 · 多多</div>
+                    <a href="ai-weekly-report-2026-07-15-redesign.html" class="btn">阅读报告 →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 多多 维护 · 报告托管于 <a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+</body>
+</html>

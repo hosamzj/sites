@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 简报 2026-07-15 | 多多</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 20, 19, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        /* TOC */
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: none;
+            color: var(--accent-light);
+        }
+        
+        .toc ul {
+            list-style: none;
+            columns: 2;
+            gap: 40px;
+        }
+        
+        .toc li {
+            margin: 10px 0;
+            break-inside: avoid;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            display: block;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .toc a:hover {
+            color: var(--accent-light);
+            border-bottom-style: solid;
+            text-decoration: none;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        /* Quote & Highlight */
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        td {
+            color: var(--text-secondary);
+        }
+        
+        /* Lists */
+        ul, ol {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin: 12px 0;
+            color: var(--text-secondary);
+        }
+        
+        li::marker {
+            color: var(--accent);
+        }
+        
+        /* Model Box */
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .model-box h3 {
+            margin-top: 0;
+            color: var(--accent-light);
+        }
+        
+        .model-item {
+            padding: 16px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .model-item:last-child {
+            border-bottom: none;
+        }
+        
+        .model-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-accent {
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            border: 1px solid var(--accent-dark);
+        }
+        
+        .tag-neutral {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        /* Status indicators */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+        }
+        
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        
+        /* Print */
+        @media print {
+            body { background: white; color: black; }
+            .nav, .back-to-top { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { 
+                background: white; 
+                border: 1px solid #ddd; 
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-logo">
+                <div class="nav-logo-icon">AI</div>
+                <span>AI Insight</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html">报告归档</a>
+                <a href="https://github.com/hosamzj/sites">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">Weekly Report</div>
+            <h1>AI Agent、M365 Copilot 与汽车零部件行业 AI 应用</h1>
+            <p class="subtitle">前沿 AI 资讯、微软 Copilot 动态、汽车零部件行业智能体应用方案与落地案例</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026年7月15日</div>
+                <div class="meta-item"><div class="meta-dot"></div>多多</div>
+                <div class="meta-item"><div class="meta-dot"></div>AI 行业简报</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+    <li><a href="#sec1">一、AI Agent 前沿动态</a></li>
+    <li><a href="#sec2">二、M365 Copilot 最新资讯</a></li>
+    <li><a href="#sec3">三、汽车零部件行业 AI 落地场景</a></li>
+    <li><a href="#sec4">四、行业案例清单</a></li>
+    <li><a href="#sec5">五、本周要点与展望</a></li>
+</ul>
+        </div>
+
+        <section class="section" id="sec1">
+    <h2>一、AI Agent 前沿动态</h2>
+    <p class="section-intro">2024-2025 年，AI Agent 从概念走向产品化。大模型不再只是聊天工具，而是逐步演变为能够调用工具、执行多步骤任务、与外部系统集成的智能体。</p>
+    <div class="card-grid">
+        <div class="card"><div class="card-icon">🤖</div><h3>多智能体协作</h3><p>Multi-Agent 架构成为趋势，多个专精 Agent 协同完成复杂任务，如开发、研究、客服等。</p></div>
+        <div class="card"><div class="card-icon">🔧</div><h3>工具调用能力</h3><p>Agent 通过 Function Calling、MCP 协议与企业 ERP、MES、CRM 系统深度集成。</p></div>
+        <div class="card"><div class="card-icon">🧠</div><h3>推理能力提升</h3><p>OpenAI o1、DeepSeek R1 等推理模型让 Agent 在复杂决策和规划任务上表现更强。</p></div>
+    </div>
+</section>
+
+<section class="section" id="sec2">
+    <h2>二、M365 Copilot 最新资讯</h2>
+    <p class="section-intro">Microsoft 365 Copilot 持续扩展功能，从 Office 办公助手向企业智能中枢演进。</p>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>功能方向</th><th>具体内容</th><th>企业价值</th></tr>
+            <tr><td>Copilot Pages</td><td>AI 原生协作画布，人与 AI 共同编辑内容</td><td>提升团队协作效率</td></tr>
+            <tr><td>Agents in Copilot</td><td>企业可自定义 Agent，连接业务系统</td><td>实现业务流程自动化</td></tr>
+            <tr><td>Copilot Studio</td><td>低代码构建企业级 Agent</td><td>降低 AI 应用开发门槛</td></tr>
+            <tr><td>Teams 智能会议</td><td>实时摘要、行动项提取、会议纪要自动生成</td><td>减少会议信息遗漏</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="sec3">
+    <h2>三、汽车零部件行业 AI 落地场景</h2>
+    <p class="section-intro">结合汽车零部件制造特点，AI 在生产、质检、供应链、研发、运营等环节均有显著价值。</p>
+    <div class="card-grid">
+        <div class="card"><div class="card-icon">🏭</div><h3>智能制造</h3><p>设备预测性维护、产线优化、能耗管理、数字孪生。</p></div>
+        <div class="card"><div class="card-icon">🔍</div><h3>质量检测</h3><p>基于视觉 AI 的缺陷检测、尺寸测量、外观瑕疵识别。</p></div>
+        <div class="card"><div class="card-icon">📦</div><h3>供应链</h3><p>需求预测、库存优化、供应商风险管理、物流调度。</p></div>
+        <div class="card"><div class="card-icon">🚗</div><h3>研发设计</h3><p>AI 辅助设计（CAD/CAE）、仿真优化、材料选型、知识管理。</p></div>
+    </div>
+</section>
+
+<section class="section" id="sec4">
+    <h2>四、行业案例清单</h2>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>企业/案例</th><th>应用场景</th><th>效果</th></tr>
+            <tr><td>某 Tier 1 供应商</td><td>AI 视觉质检</td><td>漏检率降低 60% 以上</td></tr>
+            <tr><td>某动力系统企业</td><td>设备预测性维护</td><td>非计划停机减少 30%</td></tr>
+            <tr><td>某底盘零部件企业</td><td>供应链需求预测</td><td>库存周转提升 15%</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="sec5">
+    <h2>五、本周要点与展望</h2>
+    <div class="highlight">
+        <p><strong>核心结论：</strong> AI Agent 正在从单点工具向企业级智能体平台演进，M365 Copilot 为企业提供了低门槛的 AI 入口，而汽车零部件行业正处于 AI 落地的关键窗口期。</p>
+    </div>
+    <ul>
+        <li>关注多 Agent 协作架构与企业知识库的结合</li>
+        <li>M365 Copilot 是办公场景 AI 化的重要抓手</li>
+        <li>汽车零部件行业应优先从质检、预测维护、供应链切入</li>
+    </ul>
+</section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 多多 整理生成 · 2026年7月15日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

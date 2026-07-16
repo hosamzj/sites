@@ -4,173 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>多多研究报告中心 | 知识库</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #141413;
-            --bg-elevated: #1c1c1a;
-            --bg-card: #232320;
-            --bg-hover: #2a2a26;
-            --text-primary: #faf9f5;
-            --text-secondary: #b0aea5;
-            --text-tertiary: #87867f;
+            --card: #232320;
             --accent: #c96442;
-            --accent-light: #d97757;
-            --accent-dark: #a65032;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
             --border: #30302e;
-            --border-light: #3d3d3a;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
-            background: var(--bg);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .hero {
-            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
-            padding: 100px 0 80px 0;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(201, 100, 66, 0.1) 0%, transparent 70%);
-            pointer-events: none;
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
         }
-        .hero-content { position: relative; z-index: 1; }
-        .hero h1 {
-            font-family: Georgia, serif;
-            font-size: 3.5rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
         }
-        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; }
-        .section { padding: 60px 0; }
-        .section h2 {
-            font-family: Georgia, serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--accent-light);
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
         }
-        .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
         .report-card {
-            background: var(--bg-card);
+            background: var(--card);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 32px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         .report-card:hover {
-            border-color: var(--accent-dark);
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent);
         }
-        .report-card .tag {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .report-card .eyebrow {
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
-            align-self: flex-start;
-        }
-        .report-card .tag-weekly { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
-        .report-card .tag-research { background: rgba(100, 149, 237, 0.15); color: #6495ed; border: 1px solid rgba(100, 149, 237, 0.3); }
-        .report-card .tag-geo { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
-        .report-card h3 {
-            font-family: Georgia, serif;
-            font-size: 1.4rem;
-            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--accent);
             margin-bottom: 12px;
-            color: var(--text-primary);
         }
-        .report-card p { color: var(--text-secondary); font-size: 0.95rem; flex-grow: 1; margin-bottom: 20px; }
-        .report-card .meta { color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 20px; }
-        .report-card .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            align-self: flex-start;
+        .report-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
-        .report-card .btn:hover { background: var(--accent-light); text-decoration: none; }
-        .footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
-        .footer p { color: var(--text-tertiary); font-size: 0.9rem; }
-        .footer a { color: var(--accent-light); text-decoration: none; }
+        .report-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .report-card .meta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero { padding: 60px 0 50px 0; }
+            .title { font-size: 32px; }
             .report-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="container hero-content">
-            <h1>多多研究报告中心</h1>
-            <p>AI 行业简报、中西哲学研究、地缘政治与市场分析，统一归档于一处。</p>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="section">
-            <h2>最新报告</h2>
-            <div class="report-grid">
-                <div class="report-card">
-                    <div class="tag tag-geo">Geopolitical Weekly</div>
-                    <h3>美伊冲突下的全球资产观察</h3>
-                    <p>聚焦石油、美元、黄金、美债、美股走势，深度分析 TEL（泰科电子）投资价值与地缘风险。</p>
-                    <div class="meta">2026年7月16日 · 地缘政治与市场 · 多多</div>
-                    <a href="geopolitical-market-report-2026-07-16.html" class="btn">阅读报告 →</a>
-                </div>
-
-                <div class="report-card">
-                    <div class="tag tag-research">Research Report</div>
-                    <h3>中西哲学比较与 AI 时代的中国智慧</h3>
-                    <p>从儒释道、阳明心学到古希腊哲学与现代科学的深层对话，探讨 AI 时代中国智慧的独特价值。</p>
-                    <div class="meta">2026年7月15日 · 哲学研究 · 多多</div>
-                    <a href="chinese-western-philosophy-ai-report-redesign.html" class="btn">阅读报告 →</a>
-                </div>
-
-                <div class="report-card">
-                    <div class="tag tag-weekly">Weekly Report</div>
-                    <h3>AI Agent、M365 Copilot 与汽车零部件行业 AI 应用</h3>
-                    <p>前沿 AI 资讯、微软 Copilot 动态、汽车零部件行业智能体应用方案与落地案例。</p>
-                    <div class="meta">2026年7月15日 · AI 行业简报 · 多多</div>
-                    <a href="ai-weekly-report-2026-07-15-redesign.html" class="btn">阅读报告 →</a>
-                </div>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">多</div>
+                <div class="logo-text">DuoDuo Research</div>
             </div>
-        </section>
-    </main>
+            <h1 class="title">研究报告中心</h1>
+            <p class="subtitle">AI 行业、地缘市场、中国汽车产业等领域的定期研究与深度分析</p>
+        </header>
 
-    <footer class="footer">
-        <div class="container">
-            <p>由 多多 维护 · 报告托管于 <a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        <div class="report-grid">
+            <a href="ai-weekly-report-2026-07-15.html" class="report-card">
+                <div class="eyebrow">AI Weekly Report</div>
+                <h2>AI 行业简报</h2>
+                <p>追踪 AI Agent、M365 Copilot、汽车零部件行业 AI 落地与前沿技术动态。</p>
+                <div class="meta">
+                    <span>每周一更新</span>
+                    <span>→ 查看报告</span>
+                </div>
+            </a>
+
+            <a href="chinese-western-philosophy-ai-report.html" class="report-card">
+                <div class="eyebrow">Philosophy Research</div>
+                <h2>中西哲学比较与 AI 时代的中国智慧</h2>
+                <p>从儒释道到阳明心学，探讨中国哲学对 AI 时代的价值与启发。</p>
+                <div class="meta">
+                    <span>专题研究</span>
+                    <span>→ 查看报告</span>
+                </div>
+            </a>
+
+            <a href="geopolitical-market-report-2026-07-16.html" class="report-card">
+                <div class="eyebrow">Geopolitical Weekly</div>
+                <h2>地缘政治与市场周报</h2>
+                <p>聚焦美伊冲突对石油、黄金、美元、美债、美股的影响，深度分析 TEL 泰科电子。</p>
+                <div class="meta">
+                    <span>每周更新</span>
+                    <span>→ 查看报告</span>
+                </div>
+            </a>
+
+            <a href="china-auto-sales-report-2026-07-16.html" class="report-card">
+                <div class="eyebrow">China Auto Weekly</div>
+                <h2>中国汽车销量周报</h2>
+                <p>全国汽车销量、同比与预测，Top5 车企新能源与燃油车结构，国内与出口对比。</p>
+                <div class="meta">
+                    <span>每周更新</span>
+                    <span>→ 查看报告</span>
+                </div>
+            </a>
         </div>
-    </footer>
+
+        <footer class="footer">
+            <p>© 2026 多多研究报告中心 · 数据来源于公开渠道，仅供参考</p>
+        </footer>
+    </div>
 </body>
 </html>

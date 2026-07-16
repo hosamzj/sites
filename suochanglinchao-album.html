@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所长林超专辑：AI时代的技术浪潮、资本周期和财富机遇</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 20, 19, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        /* TOC */
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: none;
+            color: var(--accent-light);
+        }
+        
+        .toc ul {
+            list-style: none;
+            columns: 2;
+            gap: 40px;
+        }
+        
+        .toc li {
+            margin: 10px 0;
+            break-inside: avoid;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            display: block;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .toc a:hover {
+            color: var(--accent-light);
+            border-bottom-style: solid;
+            text-decoration: none;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        /* Quote & Highlight */
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        td {
+            color: var(--text-secondary);
+        }
+        
+        /* Lists */
+        ul, ol {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin: 12px 0;
+            color: var(--text-secondary);
+        }
+        
+        li::marker {
+            color: var(--accent);
+        }
+        
+        /* Model Box */
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .model-box h3 {
+            margin-top: 0;
+            color: var(--accent-light);
+        }
+        
+        .model-item {
+            padding: 16px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .model-item:last-child {
+            border-bottom: none;
+        }
+        
+        .model-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-accent {
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            border: 1px solid var(--accent-dark);
+        }
+        
+        .tag-neutral {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        /* Status indicators */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+        }
+        
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        
+        /* Print */
+        @media print {
+            body { background: white; color: black; }
+            .nav, .back-to-top { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { 
+                background: white; 
+                border: 1px solid #ddd; 
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-logo">
+                <div class="nav-logo-icon">S</div>
+                <span>所长林超专辑</span>
+            </div>
+            <div class="nav-links">
+                <a href="https://hosamzj.github.io/sites/">首页</a>
+                <a href="https://hosamzj.github.io/sites/">报告归档</a>
+                <a href="https://github.com/hosamzj/sites">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">Bilibili Creator Insights</div>
+            <h1>所长林超专辑</h1>
+            <p class="subtitle">深度解析《AI时代的技术浪潮、资本周期和财富机遇》——从技术产业链到资本周期，再到个人与企业机遇，系统理解AI时代的底层逻辑。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026-07-16</div>
+                <div class="meta-item"><div class="meta-dot"></div>多多</div>
+                <div class="meta-item"><div class="meta-dot"></div>优质内容源追踪</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+    <li><a href="#sec1">一、所长林超是谁</a></li>
+    <li><a href="#sec2">二、所长林超近期视频精选</a></li>
+    <li><a href="#sec3">三、重点分析：AI时代的技术浪潮、资本周期和财富机遇</a></li>
+    <li><a href="#sec4">四、对汽车零部件行业的启示</a></li>
+    <li><a href="#sec5">五、投资机遇与风险提示</a></li>
+    <li><a href="#sec6">六、如何持续追踪所长林超</a></li>
+    <li><a href="#sec7">七、总结</a></li>
+</ul>
+
+        </div>
+
+        
+<section id="sec1" class="section">
+    <h2>一、所长林超是谁</h2>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">👤</div>
+            <h3>身份</h3>
+            <p>香港涌现集团联合创始人、投资人、科技博主，B站知名财经科技 UP 主。</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>著作</h3>
+            <p>《跨学科通识课》《开窍》，擅长用跨学科框架解释复杂经济科技问题。</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>内容风格</h3>
+            <p>产业链全景图、周期思维、宏观叙事与个人机遇结合，深入浅出。</p>
+        </div>
+    </div>
+    <div class="highlight">
+        <p><strong>为什么值得关注：</strong>所长林超不是纯技术博主，而是把 AI、资本周期、财富机遇、个体行动串联起来的"认知地图型"创作者。他的观点对企业家、投资人、IT 管理者都有参考价值，尤其适合需要从战略高度理解 AI 产业的人。</p>
+    </div>
+</section>
+
+<section id="sec2" class="section">
+    <h2>二、所长林超近期视频精选</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>发布日期</th>
+                    <th>视频标题</th>
+                    <th>播放量</th>
+                    <th>核心主题</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV18HNi6aENR" target="_blank">聊聊韩股暴跌暴涨，和长鑫&海力士上市</a></td>
+                    <td>67,524</td>
+                    <td>存储大涨之后，为什么估值依然不高？本期对谈中，拆解韩股回调背后的四股力量，以及海力士、三星、长鑫面临的供需变化。从周期品到定制化基础设施，从 AI Agent、...</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV1eaN26vEsQ" target="_blank">AI时代的技术浪潮、资本周期和财富机遇 | 付鹏x所长林超x投研部杨摸鱼【商业财经视频播客|人生Beta版 EP01】</a></td>
+                    <td>458,829</td>
+                    <td>🎙️B站首档独家自制商业财经视频播客《人生 Beta 版》EP01 上线啦！
+首期节目，由@所长林超 @付鹏的财经世界 @投研部杨摸鱼 一起聊聊AI时代的技术浪...</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV1U1RTBTEVa" target="_blank">超指数分化世界！</a></td>
+                    <td>850,098</td>
+                    <td>最近两年，我跑遍全球，得到一个越来越清晰的结论：
+这个世界正在被AI撕裂成超指数级分化的平行世界
+本期用一张12层AI产业链全景图，一次性讲透：
+
+从能源 → ...</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV1JssaeVE1s" target="_blank">中国或许正在迈入一个全新的周期</a></td>
+                    <td>490,808</td>
+                    <td>AI / 科技 / 财经</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV19f421D77A" target="_blank">AI手机核弹袭来</a></td>
+                    <td>401,046</td>
+                    <td>WWDC发布会后，一个比你还了解你自己的AI万能助理新时代越来越近了，我们如何适应这巨大的改变？社会游戏规则又会发生什么样的根本变化？...</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.bilibili.com/video/BV16s421w77K" target="_blank">今天像极了200年前的世界</a></td>
+                    <td>761,285</td>
+                    <td>AI / 科技 / 财经</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <p class="section-intro">近期内容高度聚焦 AI、资本周期、存储与半导体、全球宏观，形成了一个清晰的"AI时代生存指南"系列。</p>
+</section>
+
+<section id="sec3" class="section">
+    <h2>三、重点分析：AI时代的技术浪潮、资本周期和财富机遇</h2>
+    <div class="highlight">
+        <p><strong>视频：</strong><a href="https://www.bilibili.com/video/BV1eaN26vEsQ" target="_blank">AI时代的技术浪潮、资本周期和财富机遇 | 付鹏 x 所长林超 x 投研部杨摸鱼</a></p>
+        <p><strong>时长：</strong>约59分钟 | <strong>播放量：</strong>45.9万+ | <strong>收藏：</strong>5,806</p>
+        <p><strong>嘉宾：</strong>所长林超（科技博主/投资人）、付鹏（财经世界）、投研部杨摸鱼（投研研究员）</p>
+    </div>
+
+    <h3>3.1 视频章节脉络</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>章节</th>
+                    <th>时间段</th>
+                    <th>核心议题</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>引入</td><td>0:00 - 1:59</td><td>三位嘉宾登场，节目定位</td></tr>
+                <tr><td>AI对金融业与商业的影响</td><td>2:00 - 11:11</td><td>AI如何改变信息、交易、组织</td></tr>
+                <tr><td>美联储决策框架受挑战</td><td>11:12 - 16:42</td><td>新生产要素冲击传统宏观政策</td></tr>
+                <tr><td>AI上下游的投资逻辑</td><td>16:43 - 24:18</td><td>从能源到应用的产业链利润分配</td></tr>
+                <tr><td>周期复盘：英伟达怎么变成老登股</td><td>24:19 - 32:46</td><td>成长股到现金流股的估值演变</td></tr>
+                <tr><td>上游虹吸、AI真空期、年中杀估值</td><td>32:47 - 41:55</td><td>上游拥挤与下游兑现的落差</td></tr>
+                <tr><td>互联网泡沫会重演吗</td><td>41:56 - 48:19</td><td>泡沫与巨头的历史对照</td></tr>
+                <tr><td>普通人如何找AI机遇</td><td>48:20 - 53:09</td><td>个体行动路径与认知升级</td></tr>
+                <tr><td>彩蛋：来自AI的提问</td><td>53:10 - 59:01</td><td>AI反问人类核心价值</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>3.2 核心观点提炼</h3>
+
+    <div class="model-box">
+        <h3>AI 重塑金融与经济</h3>
+        <ul>
+            <li>数据、算力、算法成为新的生产要素，传统宏观框架需要更新</li>
+            <li>算力期货、24小时交易可能从概念走向现实</li>
+            <li>美联储等传统央行的决策框架受到挑战</li>
+        </ul>
+    </div>
+
+    <div class="model-box">
+        <h3>AI 投资周期</h3>
+        <ul>
+            <li>AI 超级周期中存在产业周期、流动性、杠杆的“真空”风险</li>
+            <li>上游（算力、存储、光模块）过度拥挤，利润被虹吸</li>
+            <li>市场从追逐增长转向追逐现金流和确定性</li>
+            <li>“所有人在等一个ChatGPT时刻”——下游应用爆发前，上游可能面临估值杀</li>
+        </ul>
+    </div>
+
+    <div class="model-box">
+        <h3>英伟达与龙头演变</h3>
+        <ul>
+            <li>英伟达从成长股逐步演变为“老登股”——分红回购逻辑增强</li>
+            <li>这反映 AI 基础设施层进入成熟阶段，估值中枢下移</li>
+            <li>但短期内上游仍是利润最确定的环节</li>
+        </ul>
+    </div>
+
+    <div class="model-box">
+        <h3>泡沫与机遇</h3>
+        <ul>
+            <li>AI 可能与互联网泡沫类似：泡沫后诞生真正巨头，但过程伴随洗牌</li>
+            <li>泡沫不可怕，可怕的是在泡沫顶部用永久性杠杆</li>
+            <li>普通人要在 AI 时代找红利，需“艺高”+“人胆大”</li>
+        </ul>
+    </div>
+
+    <div class="model-box">
+        <h3>普通人的AI红利</h3>
+        <ul>
+            <li>掌握 AI 工具，提升个人生产力</li>
+            <li>在垂直领域建立独特认知和影响力</li>
+            <li>关注新平台（如B站、小红书、抖音）的内容红利</li>
+            <li>敢于从0到1尝试，而不是只做旁观者</li>
+        </ul>
+    </div>
+
+    <h3>3.3 所长林超的独特视角</h3>
+    <div class="card-grid">
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>跨学科思维</h3>
+            <p>所长林超擅长用产业链全景图和跨学科框架解释复杂问题</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>周期思维</h3>
+            <p>强调技术浪潮、资本周期、政策周期的共振</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>个体赋能</h3>
+            <p>不仅关注宏观投资，更关注普通人如何借势</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>内容化表达</h3>
+            <p>用视频、播客、书籍将复杂知识转化为大众可理解的内容</p>
+        </div>
+    </div>
+</section>
+
+<section id="sec4" class="section">
+    <h2>四、对汽车零部件行业的启示</h2>
+    <div class="quote">
+        "AI 时代的制造业价值正在从'设备+劳动力'向'数据+算法+算力'迁移。汽车零部件企业不能只盯着产线，还要盯着数据流和决策流。"
+    </div>
+    <ul>
+        <li>AI 时代的制造业价值正在从“设备+劳动力”向“数据+算法+算力”迁移</li>
+        <li>汽车零部件企业需关注：AI 质检、预测性维护、智能排产等已成熟的落地场景</li>
+        <li>上游算力/存储成本下降，将加速中小企业 AI 应用普及</li>
+        <li>资本周期波动下，企业应优先选择 ROI 清晰、数据基础好的场景投入</li>
+        <li>M365 Copilot 等办公 AI 工具是低门槛、高覆盖的切入点</li>
+    </ul>
+    <div class="highlight">
+        <p><strong>给 IT 负责人的行动建议：</strong>优先选择 ROI 清晰、数据基础好的场景（如视觉质检、预测性维护、M365 Copilot 办公提效），先建立胜利案例，再逐步扩展到智能排产、供应链优化等复杂场景。</p>
+    </div>
+</section>
+
+<section id="sec5" class="section">
+    <h2>五、投资机遇与风险提示</h2>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>机遇</h3>
+            <ul>
+                <li>AI 下游应用爆发前的布局窗口</li>
+                <li>国产替代（算力、存储、模型）</li>
+                <li>垂直行业 AI 解决方案</li>
+                <li>内容创作者和 AI 工具使用者</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>风险</h3>
+            <ul>
+                <li>上游过度拥挤，估值波动大</li>
+                <li>AI 应用兑现不及预期</li>
+                <li>流动性收紧导致杀估值</li>
+                <li>杠杆资金在泡沫中受伤</li>
+                <li>技术迭代快，企业容易被颠覆</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="sec6" class="section">
+    <h2>六、如何持续追踪所长林超</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>平台</th>
+                    <th>链接</th>
+                    <th>内容类型</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>B站个人空间</td><td><a href="https://space.bilibili.com/520155988" target="_blank">space.bilibili.com/520155988</a></td><td>长视频、播客、课程</td></tr>
+                <tr><td>重点分析视频</td><td><a href="https://www.bilibili.com/video/BV1eaN26vEsQ" target="_blank">AI时代的技术浪潮、资本周期和财富机遇</a></td><td>商业财经播客 EP01</td></tr>
+                <tr><td>最新视频</td><td><a href="https://www.bilibili.com/video/BV18HNi6aENR" target="_blank">聊聊韩股暴跌暴涨，和长鑫&海力士上市</a></td><td>存储与AI数据中心</td></tr>
+                <tr><td>代表作</td><td><a href="https://www.bilibili.com/video/BV1U1RTBTEVa" target="_blank">超指数分化世界！</a></td><td>12层AI产业链全景图</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="sec7" class="section">
+    <h2>七、总结</h2>
+    <div class="highlight">
+        <p>所长林超的《AI时代的技术浪潮、资本周期和财富机遇》是一期高信息密度的跨界对话。它没有给出简单的"买或不买"建议，而是提供了一张理解 AI 时代的认知地图：</p>
+        <ul>
+            <li><strong>技术层面：</strong>AI 产业链从能源到应用，层层传导，上游虹吸是阶段性现象</li>
+            <li><strong>资本层面：</strong>AI 超级周期中存在产业周期、流动性、杠杆的复杂共振，泡沫与机遇并存</li>
+            <li><strong>个人层面：</strong>AI 红利不只属于大公司，普通人也能通过"艺高+人胆大"找到机会</li>
+            <li><strong>企业层面：</strong>汽车零部件企业应优先落地 ROI 清晰的 AI 场景，把数据变成资产</li>
+        </ul>
+        <p style="margin-top: 1rem;">这份专辑将持续追踪所长林超的最新内容，并提炼出对你工作最有价值的部分。</p>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 多多 整理生成 · 2026-07-16</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -57,11 +57,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; }
         .section { padding: 60px 0; }
         .section h2 {
             font-family: Georgia, serif;
@@ -69,11 +65,7 @@
             margin-bottom: 2rem;
             color: var(--accent-light);
         }
-        .report-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
-        }
+        .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
         .report-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -102,6 +94,7 @@
         }
         .report-card .tag-weekly { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
         .report-card .tag-research { background: rgba(100, 149, 237, 0.15); color: #6495ed; border: 1px solid rgba(100, 149, 237, 0.3); }
+        .report-card .tag-geo { background: rgba(74, 222, 128, 0.12); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
         .report-card h3 {
             font-family: Georgia, serif;
             font-size: 1.4rem;
@@ -109,17 +102,8 @@
             margin-bottom: 12px;
             color: var(--text-primary);
         }
-        .report-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
-        .report-card .meta {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
+        .report-card p { color: var(--text-secondary); font-size: 0.95rem; flex-grow: 1; margin-bottom: 20px; }
+        .report-card .meta { color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 20px; }
         .report-card .btn {
             display: inline-flex;
             align-items: center;
@@ -133,16 +117,8 @@
             transition: all 0.2s ease;
             align-self: flex-start;
         }
-        .report-card .btn:hover {
-            background: var(--accent-light);
-            text-decoration: none;
-        }
-        .footer {
-            background: var(--bg-elevated);
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            text-align: center;
-        }
+        .report-card .btn:hover { background: var(--accent-light); text-decoration: none; }
+        .footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
         .footer p { color: var(--text-tertiary); font-size: 0.9rem; }
         .footer a { color: var(--accent-light); text-decoration: none; }
         @media (max-width: 768px) {
@@ -156,7 +132,7 @@
     <header class="hero">
         <div class="container hero-content">
             <h1>多多研究报告中心</h1>
-            <p>AI 行业简报、中西哲学研究、企业数字化转型思考，统一归档于一处。</p>
+            <p>AI 行业简报、中西哲学研究、地缘政治与市场分析，统一归档于一处。</p>
         </div>
     </header>
 
@@ -164,6 +140,14 @@
         <section class="section">
             <h2>最新报告</h2>
             <div class="report-grid">
+                <div class="report-card">
+                    <div class="tag tag-geo">Geopolitical Weekly</div>
+                    <h3>美伊冲突下的全球资产观察</h3>
+                    <p>聚焦石油、美元、黄金、美债、美股走势，深度分析 TEL（泰科电子）投资价值与地缘风险。</p>
+                    <div class="meta">2026年7月16日 · 地缘政治与市场 · 多多</div>
+                    <a href="geopolitical-market-report-2026-07-16.html" class="btn">阅读报告 →</a>
+                </div>
+
                 <div class="report-card">
                     <div class="tag tag-research">Research Report</div>
                     <h3>中西哲学比较与 AI 时代的中国智慧</h3>

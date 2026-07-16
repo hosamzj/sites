@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地缘政治与市场周报 | 2026年07月16日</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 20, 19, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        /* TOC */
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: none;
+            color: var(--accent-light);
+        }
+        
+        .toc ul {
+            list-style: none;
+            columns: 2;
+            gap: 40px;
+        }
+        
+        .toc li {
+            margin: 10px 0;
+            break-inside: avoid;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            display: block;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .toc a:hover {
+            color: var(--accent-light);
+            border-bottom-style: solid;
+            text-decoration: none;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        /* Quote & Highlight */
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        td {
+            color: var(--text-secondary);
+        }
+        
+        /* Lists */
+        ul, ol {
+            padding-left: 28px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin: 12px 0;
+            color: var(--text-secondary);
+        }
+        
+        li::marker {
+            color: var(--accent);
+        }
+        
+        /* Model Box */
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .model-box h3 {
+            margin-top: 0;
+            color: var(--accent-light);
+        }
+        
+        .model-item {
+            padding: 16px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .model-item:last-child {
+            border-bottom: none;
+        }
+        
+        .model-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-accent {
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            border: 1px solid var(--accent-dark);
+        }
+        
+        .tag-neutral {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        /* Status indicators */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+        }
+        
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        
+        /* Print */
+        @media print {
+            body { background: white; color: black; }
+            .nav, .back-to-top { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { 
+                background: white; 
+                border: 1px solid #ddd; 
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-logo">
+                <div class="nav-logo-icon">M</div>
+                <span>Market Insight</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html">报告归档</a>
+                <a href="https://github.com/hosamzj/sites">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">Geopolitical Weekly</div>
+            <h1>美伊冲突下的全球资产观察</h1>
+            <p class="subtitle">聚焦石油、美元、黄金、美债、美股走势，深度分析 TEL（泰科电子）投资价值与地缘风险</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026年07月16日</div>
+                <div class="meta-item"><div class="meta-dot"></div>多多</div>
+                <div class="meta-item"><div class="meta-dot"></div>地缘政治与市场周报</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            
+<ul>
+    <li><a href="#sec1">一、本周地缘局势要点</a></li>
+    <li><a href="#sec2">二、大类资产表现</a></li>
+    <li><a href="#sec3">三、重点资产影响分析</a></li>
+    <li><a href="#sec4">四、TEL（泰科电子）深度分析</a></li>
+    <li><a href="#sec5">五、本周观点与风险提示</a></li>
+</ul>
+        </div>
+
+        
+<section class="section" id="sec1">
+    <h2>一、本周地缘局势要点</h2>
+    <p class="section-intro">美伊冲突持续牵动全球市场神经。紧张局势升级推高能源供应风险，避险情绪阶段性升温，但市场似乎已部分消化冲突预期。本周需关注霍尔木兹海峡航运风险、美国政策表态以及各方军事行动升级可能性。</p>
+    
+    <div class="highlight">
+        <p><strong>核心观察：</strong>当前市场处于“地缘风险溢价”与“经济基本面韧性”的博弈中。若冲突升级并威胁石油供应，油价可能快速冲高；若局势可控，市场焦点将回归美联储政策与企业盈利。</p>
+    </div>
+    
+    <ul>
+        <li>霍尔木兹海峡作为全球约20%石油运输通道，任何航运中断都将迅速推高油价</li>
+        <li>美元指数在地缘不确定中表现相对坚挺，受益于避险需求</li>
+        <li>黄金作为传统避险资产，在冲突升级周期中通常受到资金青睐</li>
+        <li>美股短期波动加剧，但科技龙头和工业企业的韧性仍值得关注</li>
+    </ul>
+</section>
+
+<section class="section" id="sec2">
+    <h2>二、大类资产表现</h2>
+    <p class="section-intro">以下为最新交易日收盘数据及较前一交易日变化。数据反映市场对美伊冲突的即时定价。</p>
+    
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>资产</th>
+                <th>最新价格</th>
+                <th>日涨跌幅</th>
+                <th>解读</th>
+            </tr>
+            <tr>
+                <td>🛢️ WTI 原油</td>
+                <td>$79.51</td>
+                <td><span class="status status-warning>"><span class="status-dot"></span>-0.11%</span></td>
+                <td>地缘风险已部分定价，关注霍尔木兹供应风险</td>
+            </tr>
+            <tr>
+                <td>🛢️ 布伦特原油</td>
+                <td>$84.73</td>
+                <td><span class="status status-warning>"><span class="status-dot"></span>-0.26%</span></td>
+                <td>全球基准油价，反映中东供应预期</td>
+            </tr>
+            <tr>
+                <td>🥇 黄金</td>
+                <td>$4040.8</td>
+                <td><span class="status status-warning>"><span class="status-dot"></span>-0.08%</span></td>
+                <td>避险需求温和，金价高位震荡</td>
+            </tr>
+            <tr>
+                <td>💵 美元指数</td>
+                <td>100.51</td>
+                <td><span class="status status-success>"><span class="status-dot"></span>+0.01%</span></td>
+                <td>避险属性支撑美元，但涨幅受限</td>
+            </tr>
+            <tr>
+                <td>📜 10Y 美债收益率</td>
+                <td>4.55%</td>
+                <td><span class="status status-warning>"><span class="status-dot"></span>-0.87%</span></td>
+                <td>收益率回落，资金流入避险资产</td>
+            </tr>
+            <tr>
+                <td>📈 标普500</td>
+                <td>754.81</td>
+                <td><span class="status status-success>"><span class="status-dot"></span>+0.4%</span></td>
+                <td>大盘小幅上涨，韧性仍存</td>
+            </tr>
+            <tr>
+                <td>💻 纳斯达克</td>
+                <td>717.74</td>
+                <td><span class="status status-warning>"><span class="status-dot"></span>-0.27%</span></td>
+                <td>科技股相对承压，波动加大</td>
+            </tr>
+            <tr>
+                <td>🏭 道琼斯</td>
+                <td>525.95</td>
+                <td><span class="status status-success>"><span class="status-dot"></span>+0.24%</span></td>
+                <td>工业股表现稳健，受益于防御性配置</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="sec3">
+    <h2>三、重点资产影响分析</h2>
+    
+    <h3>3.1 石油：地缘冲突的核心风向标</h3>
+    <p>美伊冲突对石油市场的影响最直接。伊朗是重要的石油生产和运输国，若冲突波及霍尔木兹海峡，全球约20%的海运石油将面临中断风险。当前 WTI 和布伦特油价虽然已包含一定风险溢价，但仍有进一步上涨空间。</p>
+    
+    <div class="card-grid">
+        <div class="card"><div class="card-icon">⬆️</div><h3>冲突升级</h3><p>油价可能冲高至90-100美元区间，能源股、化工品受益。</p></div>
+        <div class="card"><div class="card-icon">➡️</div><h3>局势僵持</h3><p>油价维持75-85美元区间震荡，等待新催化剂。</p></div>
+        <div class="card"><div class="card-icon">⬇️</div><h3>冲突缓和</h3><p>地缘溢价消退，油价回落至70-75美元区间。</p></div>
+    </div>
+
+    <h3>3.2 黄金：避险资金的传统港湾</h3>
+    <p>黄金在战争和不确定性升温时通常受益。但需注意：如果美元同步走强，黄金的涨幅可能受限。当前金价处于高位，短期继续上行动力取决于冲突是否进一步升级。</p>
+
+    <h3>3.3 美元：避险需求与政策预期的博弈</h3>
+    <p>美元指数受益于全球避险资金流入。但美联储降息预期、美国财政赤字和经济增长放缓可能限制美元上行空间。在美伊冲突中，美元通常表现坚挺。</p>
+
+    <h3>3.4 美债：资金流向安全资产</h3>
+    <p>10Y和2Y美债收益率下降，显示资金流入债市避险。若冲突升级，长端收益率可能进一步下行；但若通胀预期因油价飙升而升温，收益率可能反弹。</p>
+
+    <h3>3.5 美股：结构性分化大于系统性风险</h3>
+    <p>美股短期内受到避险情绪扰动，但结构性分化明显。能源、军工、公用事业等防御性板块相对受益；科技股和成长板块因利率和供应链担忧而承压。</p>
+</section>
+
+<section class="section" id="sec4">
+    <h2>四、TEL（泰科电子）深度分析</h2>
+    
+    <p class="section-intro">TE Connectivity（TEL）是全球领先的连接器与传感器制造商，业务覆盖交通、工业、通信、数据中心和能源基础设施。在地缘冲突中，其股价受到多重因素影响。</p>
+
+    <h3>4.1 最新股价与技术面</h3>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>解读</th>
+            </tr>
+            <tr><td>当前股价</td><td>$201.34</td><td>接近52周区间中位</td></tr>
+            <tr><td>日涨跌幅</td><td>+0.18%</td><td>小幅上涨，表现相对稳健</td></tr>
+            <tr><td>20日均线</td><td>$202.59</td><td>当前股价略低于20日均线</td></tr>
+            <tr><td>50日均线</td><td>$205.99</td><td>处于中期下行通道中</td></tr>
+            <tr><td>52周区间</td><td>$173.54 - $252.56</td><td>距高点约20.3%，距低点约16.0%</td></tr>
+            <tr><td>市值</td><td>$58.8B</td><td>工业连接器领域龙头</td></tr>
+        </table>
+    </div>
+
+    <h3>4.2 基本面分析</h3>
+    <div class="table-wrapper">
+        <table>
+            <tr><th>指标</th><th>数值</th><th>分析</th></tr>
+            <tr><td>PE(TTM)</td><td>20.5</td><td>估值处于合理区间，不算昂贵</td></tr>
+            <tr><td>远期PE</td><td>15.9</td><td>市场预期未来盈利增长</td></tr>
+            <tr><td>PB</td><td>4.44</td><td>资产溢价合理，反映工业龙头地位</td></tr>
+            <tr><td>营收增长</td><td>14.5%</td><td>营收保持正增长，基本面稳健</td></tr>
+            <tr><td>利润率</td><td>15.5%</td><td>盈利能力较强，处于行业中上水平</td></tr>
+            <tr><td>股息率</td><td>1.48%</td><td>提供稳定现金流回报，适合防御型配置</td></tr>
+            <tr><td>分析师目标价</td><td>$258.65</td><td>较当前有约28.5%上行空间</td></tr>
+            <tr><td>分析师评级</td><td>BUY</td><td>整体看好，但需关注宏观风险</td></tr>
+        </table>
+    </div>
+
+    <h3>4.3 地缘冲突对 TEL 的双向影响</h3>
+    <div class="model-box">
+        <h3>正面影响</h3>
+        <div class="model-item"><strong>军工与航空航天需求</strong>冲突升级提升国防开支，军用连接器、传感器需求增加。TEL 在航空航天与国防领域有深厚布局。</div>
+        <div class="model-item"><strong>能源基础设施投资</strong>能源安全重要性上升，电网、油气基础设施、新能源投资增加，带动高压连接器与传感器需求。</div>
+        <div class="model-item"><strong>数据中心与通信</strong>地缘政治推动数字基础设施自主化，数据中心、通信网络建设需求持续，TEL 的高速连接器业务受益。</div>
+    </div>
+
+    <div class="model-box">
+        <h3>负面影响</h3>
+        <div class="model-item"><strong>汽车业务承压</strong>TEL 最大收入来源是汽车（约40%）。油价上涨抑制消费需求，汽车销量下滑将拖累连接器订单。</div>
+        <div class="model-item"><strong>供应链扰动</strong>全球供应链因地缘紧张面临原材料涨价、物流受阻，影响毛利率和交付。</div>
+        <div class="model-item"><strong>估值压力</strong>市场避险情绪升温时，工业周期股通常被抛售，TEL 可能面临估值收缩。</div>
+    </div>
+
+    <h3>4.4 综合判断</h3>
+    <div class="highlight">
+        <p><strong>TEL 当前状态：</strong>股价处于52周中低位，估值合理，基本面稳健。地缘冲突对 TEL 是双向影响：短期可能因市场避险情绪承压，但中长期受益于能源基础设施、军工、数据中心投资。分析师目标价显示约 28.5% 上行空间。</p>
+    </div>
+</section>
+
+<section class="section" id="sec5">
+    <h2>五、本周观点与风险提示</h2>
+
+    <h3>5.1 核心观点</h3>
+    <ul>
+        <li><strong>地缘风险仍高：</strong>美伊冲突短期内难以根本缓和，油价和避险资产波动率将维持高位。</li>
+        <li><strong>资产配置建议：</strong>适度增配黄金、能源资产、美元现金；降低高估值成长股敞口。</li>
+        <li><strong>TEL 定位：</strong>属于“风险与机遇并存”的工业龙头。当前估值合理，但需警惕汽车周期下行和宏观需求走弱。</li>
+        <li><strong>关注催化剂：</strong>霍尔木兹航运状况、美国制裁政策、OPEC 产量决策、TEL 季度财报指引。</li>
+    </ul>
+
+    <h3>5.2 风险提示</h3>
+    <div class="quote">
+        本报告基于公开数据整理，不构成投资建议。金融市场存在高度不确定性，地缘冲突、政策变化、经济周期均可能导致资产价格大幅波动。投资决策请结合自身风险承受能力，并咨询专业投资顾问。
+    </div>
+
+    <h3>5.3 下周观察重点</h3>
+    <ul>
+        <li>美伊双方军事动态与外交表态</li>
+        <li>美国能源信息署（EIA）原油库存与产量数据</li>
+        <li>美联储主席讲话与利率预期变化</li>
+        <li>TEL 相关新闻、订单动态与行业报告</li>
+    </ul>
+</section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 多多 整理生成 · 2026年07月16日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -66,6 +66,70 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+        .category-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.2s ease;
+        }
+        .category-nav a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .section {
+            margin-bottom: 64px;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .section-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .section-all {
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .section-all:hover {
+            color: var(--accent-light);
+        }
         .report-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -113,6 +177,26 @@
             display: flex;
             justify-content: space-between;
         }
+        .history-list {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .history-list a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .history-list a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+        }
         .footer {
             text-align: center;
             margin-top: 80px;
@@ -122,9 +206,14 @@
         @media (max-width: 768px) {
             .title { font-size: 32px; }
             .report-grid { grid-template-columns: 1fr; }
+            .section-header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
         }
     </style>
-<!-- deploy: 2026-07-20T10:30 -->
+<!-- deploy: 2026-07-20T11:30 -->
 </head>
 <body>
     <div class="container">
@@ -137,69 +226,136 @@
             <p class="subtitle">AI 行业、地缘市场、中国汽车产业等领域的定期研究与深度分析</p>
         </header>
 
-        <div class="report-grid">
-<a href="geopolitical-market-report-2026-07-20.html" class="report-card">
-                <div class="eyebrow">Geopolitical Weekly</div>
-                <h2>地缘政治与市场周报</h2>
-                <p>聚焦美伊冲突、中东局势、中美关系、欧盟贸易政策对 TEL / APH / 能源 / 美债 / 美股的影响。</p>
-                <div class="meta">
-                    <span>2026-07-20</span>
-                    <span>→ 查看报告</span>
+        <nav class="category-nav">
+            <a href="#geopolitical">市场与地缘</a>
+            <a href="#ai-tech">AI 与科技</a>
+            <a href="#auto">中国汽车</a>
+            <a href="#research">专题研究</a>
+        </nav>
+
+        <section class="section" id="geopolitical">
+            <div class="section-header">
+                <div>
+                    <div class="section-title"><span class="icon">🌐</span> 市场与地缘</div>
+                    <div class="section-desc">聚焦地缘政治、全球资产与重点标的（TEL / APH）的每周跟踪</div>
                 </div>
-            </a>
+                <a class="section-all" href="#">查看全部 →</a>
+            </div>
+            <div class="report-grid">
+                <a href="geopolitical-market-report-2026-07-20.html" class="report-card">
+                    <div class="eyebrow">Geopolitical Weekly</div>
+                    <h2>地缘政治与市场周报</h2>
+                    <p>聚焦美伊冲突、中东局势、中美关系、欧盟贸易政策对 TEL / APH / 能源 / 美债 / 美股的影响。</p>
+                    <div class="meta">
+                        <span>2026-07-20</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+                <a href="geopolitical-market-report-2026-07-16.html" class="report-card">
+                    <div class="eyebrow">Geopolitical Weekly</div>
+                    <h2>地缘政治与市场周报</h2>
+                    <p>聚焦美伊冲突对石油、黄金、美元、美债、美股的影响，深度分析 TEL 泰科电子。</p>
+                    <div class="meta">
+                        <span>2026-07-16</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-
-            <a href="ai-weekly-report-2026-07-16.html" class="report-card">
-                <div class="eyebrow">AI Weekly Report</div>
-                <h2>AI 行业简报（新版）</h2>
-                <p>追踪 AI Agent、M365 Copilot、汽车零部件行业 AI 落地与前沿技术动态，结合 JustSayAI 早晚报与人民公园说AI视角。</p>
-                <div class="meta">
-                    <span>2026.07.16</span>
-                    <span>→ 查看报告</span>
+        <section class="section" id="ai-tech">
+            <div class="section-header">
+                <div>
+                    <div class="section-title"><span class="icon">🤖</span> AI 与科技</div>
+                    <div class="section-desc">AI 行业动态、M365 Copilot 落地与科技创作者观点精选</div>
                 </div>
-            </a>
+                <a class="section-all" href="#">查看全部 →</a>
+            </div>
+            <div class="report-grid">
+                <a href="ai-weekly-report-2026-07-16.html" class="report-card">
+                    <div class="eyebrow">AI Weekly Report</div>
+                    <h2>AI 行业简报（新版）</h2>
+                    <p>追踪 AI Agent、M365 Copilot、汽车零部件行业 AI 落地与前沿技术动态。</p>
+                    <div class="meta">
+                        <span>2026-07-16</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+                <a href="suochanglinchao-album.html" class="report-card">
+                    <div class="eyebrow">Creator Insights</div>
+                    <h2>所长林超专辑</h2>
+                    <p>深度解析B站科技博主所长林超，提炼对汽车零部件行业的启示。</p>
+                    <div class="meta">
+                        <span>2026-07-16</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+            </div>
+            <div class="history-list">
+                <a href="ai-weekly-report-2026-07-15.html">AI 简报 07-15</a>
+                <a href="ai-weekly-report-2026-07-15-redesign.html">AI 简报 07-15（redesign）</a>
+            </div>
+        </section>
 
-            <a href="chinese-western-philosophy-ai-report.html" class="report-card">
-                <div class="eyebrow">Philosophy Research</div>
-                <h2>中西哲学比较与 AI 时代的中国智慧</h2>
-                <p>从儒释道到阳明心学，探讨中国哲学对 AI 时代的价值与启发。</p>
-                <div class="meta">
-                    <span>专题研究</span>
-                    <span>→ 查看报告</span>
+        <section class="section" id="auto">
+            <div class="section-header">
+                <div>
+                    <div class="section-title"><span class="icon">🚗</span> 中国汽车</div>
+                    <div class="section-desc">中国汽车销量、产业链动态与 AI 算力基础设施的每周观察</div>
                 </div>
-            </a>
+                <a class="section-all" href="#">查看全部 →</a>
+            </div>
+            <div class="report-grid">
+                <a href="china-auto-sales-report-2026-07-17.html" class="report-card">
+                    <div class="eyebrow">China Auto Weekly</div>
+                    <h2>中国汽车销量周报</h2>
+                    <p>全国汽车销量、同比与预测，Top5 车企新能源与燃油车结构，国内与出口对比，产业链 × AI 算力联动。</p>
+                    <div class="meta">
+                        <span>2026-07-17</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+                <a href="china-auto-sales-report-2026-07-16.html" class="report-card">
+                    <div class="eyebrow">China Auto Weekly</div>
+                    <h2>中国汽车销量周报</h2>
+                    <p>中国汽车市场销量跟踪、车企格局与产业链机会。</p>
+                    <div class="meta">
+                        <span>2026-07-16</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <a href="geopolitical-market-report-2026-07-16.html" class="report-card">
-                <div class="eyebrow">Geopolitical Weekly</div>
-                <h2>地缘政治与市场周报</h2>
-                <p>聚焦美伊冲突对石油、黄金、美元、美债、美股的影响，深度分析 TEL 泰科电子。</p>
-                <div class="meta">
-                    <span>每周更新</span>
-                    <span>→ 查看报告</span>
+        <section class="section" id="research">
+            <div class="section-header">
+                <div>
+                    <div class="section-title"><span class="icon">📚</span> 专题研究</div>
+                    <div class="section-desc">跨领域深度专题，哲学、文化与技术趋势的长线思考</div>
                 </div>
-            </a>
-
-            <a href="china-auto-sales-report-2026-07-17.html" class="report-card">
-                <div class="eyebrow">China Auto Weekly</div>
-                <h2>中国汽车销量周报</h2>
-                <p>全国汽车销量、同比与预测，Top5 车企新能源与燃油车结构，国内与出口对比，产业链 × AI 算力联动（TEL vs APH）。</p>
-                <div class="meta">
-                    <span>每周更新</span>
-                    <span>→ 查看报告</span>
-                </div>
-            </a>
-
-            <a href="suochanglinchao-album.html" class="report-card">
-                <div class="eyebrow">Creator Insights</div>
-                <h2>所长林超专辑</h2>
-                <p>深度解析B站科技博主所长林超，重点分析《AI时代的技术浪潮、资本周期和财富机遇》，提炼对汽车零部件行业的启示。</p>
-                <div class="meta">
-                    <span>2026.07.16</span>
-                    <span>→ 查看报告</span>
-                </div>
-            </a>
-
-        </div>
+                <a class="section-all" href="#">查看全部 →</a>
+            </div>
+            <div class="report-grid">
+                <a href="chinese-western-philosophy-ai-report.html" class="report-card">
+                    <div class="eyebrow">Philosophy Research</div>
+                    <h2>中西哲学比较与 AI 时代的中国智慧</h2>
+                    <p>从儒释道到阳明心学，探讨中国哲学对 AI 时代的价值与启发。</p>
+                    <div class="meta">
+                        <span>专题研究</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+                <a href="chinese-western-philosophy-ai-report-redesign.html" class="report-card">
+                    <div class="eyebrow">Philosophy Research</div>
+                    <h2>中西哲学比较与 AI 时代的中国智慧（Redesign）</h2>
+                    <p> redesigned 版本的中西哲学比较专题研究。</p>
+                    <div class="meta">
+                        <span>专题研究</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+            </div>
+        </section>
 
         <footer class="footer">
             <p>© 2026 多多研究报告中心 · 数据来源于公开渠道，仅供参考</p>

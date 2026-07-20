@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱震海频道每周精选 | 2026-07-14 ~ 2026-07-20</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .date-range {
+            display: inline-block;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .summary li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .summary li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 8px;
+            font-weight: bold;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            background: #000;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: rgba(201, 100, 66, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+        .thumbnail-link:hover .play-icon {
+            opacity: 1;
+        }
+        .video-info {
+            padding: 28px;
+        }
+        .video-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+        .description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            color: var(--accent-light);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_lIwW6yoXAobONFnDSxq6DJotbsEV4nX3MT0cd6som55Q=s72-c-k-c0x00ffffff-no-rj" alt="邱震海">
+                <span>邱震海 · YouTube 频道</span>
+            </div>
+            <h1 class="title">频道每周精选</h1>
+            <p class="subtitle">香港全球化中心（CGHK）和震海会创始人，用"说真话、说实话、说人话"解读国际风云。</p>
+            <div class="date-range">2026-07-14 ~ 2026-07-20</div>
+        </header>
+
+        <section class="summary">
+            <h2>📌 本周核心议题</h2>
+            <ul>
+                <li>中东局势与特朗普外交</li><li>中美关系与大国博弈</li><li>欧洲安全与北约动向</li><li>中国企业出海与海外战略</li>
+            </ul>
+        </section>
+
+        <section class="video-list">
+            
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=5DOBkqJ3-oQ" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/5DOBkqJ3-oQ/hqdefault.jpg" alt="企业可以出海，为什么军队不能？中国正在面对一道战略考题" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=5DOBkqJ3-oQ" target="_blank">企业可以出海，为什么军队不能？中国正在面对一道战略考题</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.19</span>
+                    <span class="views">👁 8.9K 次观看</span>
+                </div>
+                <p class="description">2004年，我提出中国海军要走出去。2012年，我们又提出要建立至少10个海外军事基地。20年过去，当中国迈向世界大国，军队海外部署究竟处于什么状态？今天趁着周末，系统复盘中国军队对外发展的战略历程，直面现实，思考大国崛起不可回避的安全课题。</p>
+                <a href="https://www.youtube.com/watch?v=5DOBkqJ3-oQ" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+    
+
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=bt7NYQAUeJc" target="_blank" class="thumbnail-link">
+                <img src="https://i3.ytimg.com/vi/bt7NYQAUeJc/hqdefault.jpg" alt="对伊二轮打击刚打响，美军暗筹突袭古巴，川普为中期选举急红了眼" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=bt7NYQAUeJc" target="_blank">对伊二轮打击刚打响，美军暗筹突袭古巴，川普为中期选举急红了眼</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.16</span>
+                    <span class="views">👁 7.3K 次观看</span>
+                </div>
+                <p class="description">7月11日，特朗普对伊朗发动第二轮攻击，这场毫无明确战略目标的军事行动，本质是为中期选举抢筹码。如今五角大楼被曝秘密研究攻打古巴的方案，内外交困、走投无路的特朗普，会在选举前铤而走险吗？更多精彩内容欢迎收看《震海听风》今日解读。</p>
+                <a href="https://www.youtube.com/watch?v=bt7NYQAUeJc" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+    
+
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=CAtn6E_X498" target="_blank" class="thumbnail-link">
+                <img src="https://i4.ytimg.com/vi/CAtn6E_X498/hqdefault.jpg" alt="特朗普二度宣战，马克龙罕见亮剑，美法同一天释放两大信号" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=CAtn6E_X498" target="_blank">特朗普二度宣战，马克龙罕见亮剑，美法同一天释放两大信号</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.14</span>
+                    <span class="views">👁 2.1万 次观看</span>
+                </div>
+                <p class="description">7月14日，特朗普正式对伊发起“第二波”军事打击，美伊数月和谈彻底破裂，60天倒计时直逼中期选举。同日法国国庆日，马克龙罕见亮剑，呼吁使用核力量构筑欧洲自主防务，可当下欧洲右翼正加速抬头，未来两个月，全球局势将何去何从？详细解读请收看本期视频。</p>
+                <a href="https://www.youtube.com/watch?v=CAtn6E_X498" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+    
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：<a href="https://www.youtube.com/@%E9%82%B1%E9%9C%87%E6%B5%B7-e9d" target="_blank">@邱震海-e9d</a> · 自动生成于 2026-07-20</p>
+        </footer>
+    </div>
+</body>
+</html>

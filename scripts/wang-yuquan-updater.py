@@ -314,6 +314,9 @@ def analyze_video(v):
     elif '数字封建主义' in title or '平台经济' in title or '超级APP' in title:
         themes = ['平台经济', '数字封建主义', 'AI应用']
         summary = '王煜全分析 AI 带来的文明级认知变革，以及超级 APP 对传统数字帝国商业模式的颠覆。'
+    elif '刘润' in title or '颠覆生活的可能性' in title or '人工智能有哪些' in title:
+        themes = ['AI颠覆', '未来生活', '刘润对话']
+        summary = '王煜全做客刘润商学，探讨人工智能将如何颠覆日常生活、工作方式与商业形态。'
     elif '出海' in title or '出海都有哪些坑' in title:
         themes = ['企业出海', '全球化', '商业战略']
         summary = '王煜全谈中国企业出海：被动出海必然大浪淘沙，只有主动分析未来政治经济格局的企业才能成为真正赢家。'

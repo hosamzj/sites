@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱震海频道每周精选 | 2026-07-28 ~ 2026-08-03</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .date-range {
+            display: inline-block;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .summary li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .summary li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 8px;
+            font-weight: bold;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            background: #000;
+            min-height: 180px;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: rgba(201, 100, 66, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+        .thumbnail-link:hover .play-icon {
+            opacity: 1;
+        }
+        .video-info {
+            padding: 28px;
+        }
+        .video-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            color: var(--accent-light);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span>专题研究<span>→</span>邱震海频道每周精选
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_lIwW6yoXAobONFnDSxq6DJotbsEV4nX3MT0cd6som55Q=s72-c-k-c0x00ffffff-no-rj" alt="邱震海">
+                <span>邱震海 · YouTube 频道</span>
+            </div>
+            <h1 class="title">频道每周精选</h1>
+            <p class="subtitle">香港全球化中心（CGHK）和震海会创始人、德国图宾根大学博士。用"说真话、说实话、说人话"带您了解国际风云及其背后的发展趋势。</p>
+            <div class="date-range">2026-07-28 ~ 2026-08-03</div>
+        </header>
+
+        <section class="summary">
+            <h2>📌 本周核心议题</h2>
+            <ul>
+<li>本周频道更新 5 条视频，覆盖 2026-07-28 ~ 2026-08-03 时间段。</li>
+<li>特朗普外交与中东僵局：美伊谈判重启与军事威胁交替，伊朗强硬回应浇灭美方幻想</li>
+<li>中美关系与大国博弈：美方急派亲信访华，中方握有底牌，关税与科技博弈持续</li>
+<li>俄乌战争与欧洲安全：俄乌中东硝烟在里海“合流”，北约动向与大国沉默值得警惕</li>
+<li>美国大选前地缘洗牌：华盛顿一天两场关键会晤，乌以首脑同步示好特朗普</li>
+            </ul>
+        </section>
+
+        <section class="video-list">
+
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=I_L8CJbiKtQ" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/I_L8CJbiKtQ/hqdefault.jpg" alt="特朗普喊打又喊停，美伊刚重启谈判，就被伊朗当众泼了一盆冷水" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=I_L8CJbiKtQ" target="_blank">特朗普喊打又喊停，美伊刚重启谈判，就被伊朗当众泼了一盆冷水</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.03</span>
+                    <span class="views">👁 6.3K 次观看</span>
+                </div>
+                <p class="description">一波三折！特朗普扬言重拳打击伊朗后骤然收手，美伊将于中东时间周一下午重启谈判。伊朗意图拖延至美国中期选举，双方分歧巨大，谈判难有实质进展。值得留意，如今中东局势对东亚股市几乎失去影响，点击观看本期视频，带你深度详解国际变局如何影响资本市场。</p>
+                <a href="https://www.youtube.com/watch?v=I_L8CJbiKtQ" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=ldoGqmTNrwk" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/ldoGqmTNrwk/hqdefault.jpg" alt="特朗普急派亲信再访中国，中方三张底牌在手，美国该拿什么交换？" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=ldoGqmTNrwk" target="_blank">特朗普急派亲信再访中国，中方三张底牌在手，美国该拿什么交换？</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.01</span>
+                    <span class="views">👁 1.7万 次观看</span>
+                </div>
+                <p class="description">美伊冲突紧绷、美国中期选举进入倒计时，特朗普深陷内政与地缘战局双重被动，急需中方斡旋解围。中美密集启动经贸、外交多层级磋商，美方特使拟访华铺垫9月峰会，中方三张底牌在手，美国该拿什么交换？更多精彩内容欢迎收看《震海听风》今日解读。</p>
+                <a href="https://www.youtube.com/watch?v=ldoGqmTNrwk" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=T-nBmL-pZaE" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/T-nBmL-pZaE/hqdefault.jpg" alt="俄乌中东硝烟在里海“合流”，特朗普最怕的混战来了——普京沉默，泽连斯基挑拨，中方如何落子？" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=T-nBmL-pZaE" target="_blank">俄乌中东硝烟在里海“合流”，特朗普最怕的混战来了——普京沉默，泽连斯基挑拨，中方如何落子？</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.30</span>
+                    <span class="views">👁 1.1万 次观看</span>
+                </div>
+                <p class="description">俄乌战争与美伊冲突，两场21世纪最关键的地缘博弈正在交织。特朗普试图将两场战争切割，却发现局势越来越复杂：泽连斯基想借伊朗问题拉拢美国、普京表面沉寂，暗中博弈持续、沙特半推半就被卷入战局......各国伺机火中取栗，当下或许正是中方布局的关键时机。</p>
+                <a href="https://www.youtube.com/watch?v=T-nBmL-pZaE" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=UgqOEhhx4qk" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/UgqOEhhx4qk/hqdefault.jpg" alt="华盛顿一天两场关键会晤，乌以首脑同时示好，特朗普借机重新布局" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=UgqOEhhx4qk" target="_blank">华盛顿一天两场关键会晤，乌以首脑同时示好，特朗普借机重新布局</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.29</span>
+                    <span class="views">👁 5.6K 次观看</span>
+                </div>
+                <p class="description">借已故参议员格雷厄姆追悼仪式，泽连斯基、内塔尼亚胡同日到访白宫，表面握手言和，实则各怀心思。普京近期刻意拿捏特朗普，叠加中期选举选情惨淡，特朗普开始策略性转向乌克兰，拟派亲信赴基辅启动俄乌和谈，俄乌冲突能否迎转折？</p>
+                <a href="https://www.youtube.com/watch?v=UgqOEhhx4qk" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=ld_de4z8IGE" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/ld_de4z8IGE/hqdefault.jpg" alt="中美冷热信号交织，一手大棒一手对话，大选临近特朗普能否破局？" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=ld_de4z8IGE" target="_blank">中美冷热信号交织，一手大棒一手对话，大选临近特朗普能否破局？</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.07.28</span>
+                    <span class="views">👁 8.5K 次观看</span>
+                </div>
+                <p class="description">美伊战事进退两难，多重地缘冲突难以收尾。大选在即美国双线操作，对华施压与对话同步推进。薛瑞福访华归来，中美博弈迎来微妙窗口期，后续发展充满变数。</p>
+                <a href="https://www.youtube.com/watch?v=ld_de4z8IGE" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：<a href="https://www.youtube.com/@%E9%82%B1%E9%9C%87%E6%B5%B7-e9d" target="_blank">@邱震海-e9d</a> · 自动生成于 2026-08-04</p>
+        </footer>
+    </div>
+</body>
+</html>

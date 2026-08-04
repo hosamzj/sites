@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-王煜全 2024-2025 AI 视频专题自动更新脚本
+王煜全 2024-2026 AI 视频专题自动更新脚本
 - 搜索 YouTube 上王煜全相关视频
-- 获取 2024-2025 年视频的完整元数据
+- 获取 2024-2026 年视频的完整元数据
 - 生成 HTML 专题报告并更新 index.html
 - git commit/push
 """
@@ -12,7 +12,7 @@ from datetime import datetime
 from pathlib import Path
 
 REPO_DIR = Path("/private/tmp/sites")
-OUTPUT_FILE = REPO_DIR / "wang-yuquan-ai-2024-2025.html"
+OUTPUT_FILE = REPO_DIR / "wang-yuquan-ai-2024-2026.html"
 INDEX_FILE = REPO_DIR / "index.html"
 
 SEARCH_QUERIES = [
@@ -33,7 +33,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王煜全 2024-2025 AI 与科技视频专题 | DuoDuo Research</title>
+    <title>王煜全 2024-2026 AI 与科技视频专题 | DuoDuo Research</title>
     <style>
         :root { --bg: #141413; --card: #1e1e1c; --card-hover: #252522; --accent: #c96442; --accent-light: #e07a55; --text: #faf9f5; --text-secondary: #b0aea5; --border: #30302e; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -108,7 +108,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </nav>
     <div class="breadcrumb">
-        <a href="index.html">研究报告中心</a><span>→</span>AI 与科技<span>→</span>王煜全 2024-2025 专题
+        <a href="index.html">研究报告中心</a><span>→</span>AI 与科技<span>→</span>王煜全 2024-2026 专题
     </div>
     <div class="container">
         <header class="header">
@@ -116,8 +116,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 <img src="https://yt3.googleusercontent.com/ytc/AIdro_mXl5yWVrKvoM8Fm9Ll0eRr4Zpo6waoBndRvRfQ49bD8w=s72-c-k-c0x00ffffff-no-rj" alt="王煜全">
                 <span>王煜全 · 科技投资人</span>
             </div>
-            <h1 class="title">王煜全 2024-2025 AI 与科技视频专题</h1>
-            <p class="subtitle">汇总王煜全官方频道及第三方频道在 2024-2025 年发布的 AI、科技投资与未来趋势相关视频，附链接与内容概述。</p>
+            <h1 class="title">王煜全 2024-2026 AI 与科技视频专题</h1>
+            <p class="subtitle">汇总王煜全官方频道及第三方频道在 2024-2026 年发布的 AI、科技投资与未来趋势相关视频，附链接与内容概述。</p>
             <div class="date-range">更新时间：__REPORT_DATE__</div>
         </header>
 
@@ -133,7 +133,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
 
         <section class="summary">
-            <h2>🎯 2024-2025 核心关注方向</h2>
+            <h2>🎯 2024-2026 核心关注方向</h2>
             <ul>
                 <li><strong>AI 革命的历史韵脚：</strong>《前哨大会2024》以历次技术革命为镜，预测 AI 泡沫、洗牌与产业落地的时间线。</li>
                 <li><strong>AI 时代竞争力与学习法则：</strong>反复强调 AI 作为"外脑"的定位，提出问题驱动学习与持续迭代的认知升级路径。</li>
@@ -252,7 +252,7 @@ def collect_videos():
     filtered = []
     for v in enriched:
         upload_date = v.get('upload_date')
-        if not upload_date or upload_date[:4] not in ('2024', '2025'):
+        if not upload_date or upload_date[:4] not in ('2024', '2025', '2026'):
             continue
         text = f"{v.get('title','')} {v.get('description','')} {v.get('channel','')}"
         if "王煜全" not in text and "Wang Yuquan" not in text:
@@ -299,6 +299,21 @@ def analyze_video(v):
     elif '前哨大会2023' in title:
         themes = ['变革时代', '年度演讲', '行动指南']
         summary = '王煜全 2023 年度演讲，聚焦全球经济转型、AI 与自动化浪潮，给出变革时代的行动指南。'
+    elif '2029' in title and 'AI泡沫' in title or 'AI泡沫' in title and '破裂' in title or 'AI泡沫' in title and '破灭' in title:
+        themes = ['AI泡沫预测', '2029预测', '科技投资']
+        summary = '王煜全预测 AI 泡沫将在 2029 年左右破裂，之后经历洗牌，2030 年代真正繁荣，强调当前是布局窗口。'
+    elif 'AI预测' in title or '最新AI预测' in title or '八大' in title and 'AI' in title:
+        themes = ['AI预测', '趋势洞察', '未来科技']
+        summary = '王煜全最新 AI 预测合集，涵盖技术趋势、产业应用和投资机会。'
+    elif 'AI制药' in title or '生物制药' in title or 'AI医药' in title:
+        themes = ['AI制药', '生物科技', '数字健康']
+        summary = '王煜全讨论 AI 在制药和生物科技领域的应用，预测生物制药将在三年内成为热点。'
+    elif 'AI编程' in title or '编程' in title and 'AI' in title:
+        themes = ['AI编程', '软件开发', '未来工作']
+        summary = '王煜全将 AI 编程视为时代信号，认为 2030 年后将迎来繁荣期。'
+    elif '数字封建主义' in title or '平台经济' in title or '超级APP' in title:
+        themes = ['平台经济', '数字封建主义', 'AI应用']
+        summary = '王煜全分析 AI 带来的文明级认知变革，以及超级 APP 对传统数字帝国商业模式的颠覆。'
     elif '出海' in title or '出海都有哪些坑' in title:
         themes = ['企业出海', '全球化', '商业战略']
         summary = '王煜全谈中国企业出海：被动出海必然大浪淘沙，只有主动分析未来政治经济格局的企业才能成为真正赢家。'
@@ -372,7 +387,7 @@ def generate_report(videos):
 def update_index_html():
     """Ensure index.html links to the report."""
     content = INDEX_FILE.read_text(encoding='utf-8')
-    if 'wang-yuquan-ai-2024-2025.html' in content:
+    if 'wang-yuquan-ai-2024-2026.html' in content:
         return
     # Add card to AI section if not present
     if 'wang-yuquan-ai-' not in content:
@@ -382,12 +397,12 @@ def update_index_html():
         if ai_section_start != -1:
             grid_pos = content.find(grid_marker, ai_section_start)
             if grid_pos != -1:
-                card = '''\n                <a href="wang-yuquan-ai-2024-2025.html" class="report-card">
+                card = '''\n                <a href="wang-yuquan-ai-2024-2026.html" class="report-card">
                     <div class="eyebrow">Creator Insights</div>
                     <h2>王煜全 AI 长播客专题</h2>
-                    <p>汇总王煜全官方频道及第三方频道在 2024-2025 年发布的 AI、科技投资与未来趋势相关视频，附链接与内容概述。</p>
+                    <p>汇总王煜全官方频道及第三方频道在 2024-2026 年发布的 AI、科技投资与未来趋势相关视频，附链接与内容概述。</p>
                     <div class="meta">
-                        <span>2024-2025</span>
+                        <span>2024-2026</span>
                         <span>→ 查看报告</span>
                     </div>
                 </a>'''
@@ -395,7 +410,7 @@ def update_index_html():
         history_marker = '<div class="history-list">'
         ai_history_pos = content.find(history_marker, ai_section_start)
         if ai_history_pos != -1:
-            link = '\n                <a href="wang-yuquan-ai-2024-2025.html">王煜全 2024-2025</a>'
+            link = '\n                <a href="wang-yuquan-ai-2024-2026.html">王煜全 2024-2026</a>'
             content = content[:ai_history_pos + len(history_marker)] + link + content[ai_history_pos + len(history_marker):]
         INDEX_FILE.write_text(content, encoding='utf-8')
 
@@ -405,7 +420,7 @@ def git_push():
     try:
         subprocess.run(["git", "add", "-A"], cwd=REPO_DIR, check=True)
         subprocess.run(
-            ["git", "commit", "-m", f"auto: update 王煜全 2024-2025 专题 ({datetime.now().strftime('%Y-%m-%d')})"],
+            ["git", "commit", "-m", f"auto: update 王煜全 2024-2026 专题 ({datetime.now().strftime('%Y-%m-%d')})"],
             cwd=REPO_DIR, check=False
         )
         for _ in range(3):
@@ -427,7 +442,7 @@ def git_push():
 
 
 def main():
-    print("Collecting Wang Yuquan 2024-2025 videos...")
+    print("Collecting Wang Yuquan 2024-2026 videos...")
     videos = collect_videos()
     print(f"Found {len(videos)} videos")
 

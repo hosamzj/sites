@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王煜全 AI 长播客专题 | 2026-08-04</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .date-range {
+            display: inline-block;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .summary li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .summary li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 8px;
+            font-weight: bold;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            background: #000;
+            min-height: 180px;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: rgba(201, 100, 66, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+        .thumbnail-link:hover .play-icon {
+            opacity: 1;
+        }
+        .duration-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .video-info {
+            padding: 28px;
+        }
+        .video-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .theme-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .theme-tags span {
+            font-size: 12px;
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.12);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        .description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            color: var(--accent-light);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .notice {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid rgba(201, 100, 66, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span>AI 与科技<span>→</span>王煜全 AI 长播客专题
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_mXl5yWVrKvoM8Fm9Ll0eRr4Zpo6waoBndRvRfQ49bD8w=s72-c-k-c0x00ffffff-no-rj" alt="王煜全">
+                <span>王煜全 · YouTube 频道</span>
+            </div>
+            <h1 class="title">王煜全 AI 长播客专题</h1>
+            <p class="subtitle">追踪海银资本创始合伙人、科技投资人王煜全的 YouTube 长视频与年度演讲，聚焦 AI 时代竞争力、科技投资与未来产业趋势。</p>
+            <div class="date-range">更新时间：2026-08-04</div>
+        </header>
+
+        <div class="notice">
+            📌 说明：本页为王煜全长视频（≥30 分钟）专题索引。因频道视频暂未开放字幕，当前摘要基于标题、描述与公开主题推断生成；如需逐字稿深度解析，可后续通过 Whisper 转录补充。
+        </div>
+
+        <section class="summary">
+            <h2>🎯 核心关注方向</h2>
+            <ul>
+                <li><strong>AI 时代的学习与竞争力：</strong>王煜全近一年反复提及"3 步进入 AI 学习时代"，强调将 AI 作为外脑、以问题驱动学习。</li>
+                <li><strong>技术革命的历史韵脚：</strong>2024《前哨大会》以历史视角预测 AI 革命泡沫、洗牌与落地周期，呼吁在狂热中保持理性。</li>
+                <li><strong>生物科技与健康革命：</strong>最新对谈 LifeQ CEO，关注可穿戴设备、连续健康数据与数字医疗的产业化机会。</li>
+                <li><strong>服务规模化与产业重构：</strong>从 2021 到 2024，持续关注电动车、远程协作、平台经济与新制造范式的演进。</li>
+            </ul>
+        </section>
+
+        <section class="summary">
+            <h2>🏷️ 主题标签分布</h2>
+            <ul>
+                <li><strong>AI学习</strong>（2 个视频）</li><li><strong>教育变革</strong>（2 个视频）</li><li><strong>知识管理</strong>（2 个视频）</li><li><strong>终身学习</strong>（2 个视频）</li><li><strong>可穿戴健康</strong>（1 个视频）</li><li><strong>数字医疗</strong>（1 个视频）</li><li><strong>生物科技</strong>（1 个视频）</li><li><strong>长寿科技</strong>（1 个视频）</li><li><strong>AI未来预测</strong>（1 个视频）</li><li><strong>技术革命</strong>（1 个视频）</li><li><strong>产业趋势</strong>（1 个视频）</li><li><strong>投资逻辑</strong>（1 个视频）</li><li><strong>AI竞争力</strong>（1 个视频）</li><li><strong>个人成长</strong>（1 个视频）</li><li><strong>企业战略</strong>（1 个视频）</li><li><strong>学习方法论</strong>（1 个视频）</li><li><strong>变革时代</strong>（1 个视频）</li><li><strong>行动指南</strong>（1 个视频）</li><li><strong>年度演讲</strong>（1 个视频）</li><li><strong>科技投资</strong>（1 个视频）</li><li><strong>服务规模化</strong>（1 个视频）</li><li><strong>平台经济</strong>（1 个视频）</li><li><strong>疫情后时代</strong>（1 个视频）</li><li><strong>创新地图</strong>（1 个视频）</li>
+            </ul>
+        </section>
+
+        <section class="video-list">
+            
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=7ypvjXwwDL0" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/7ypvjXwwDL0/maxresdefault.jpg" alt="An Interview with LifeQ's CEO: Uncovering the Health Revolution Behind Wearable Technology" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">1:35:28</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=7ypvjXwwDL0" target="_blank">An Interview with LifeQ's CEO: Uncovering the Health Revolution Behind Wearable Technology</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2025.08.10</span>
+            <span class="views">👁 732 次观看</span>
+            <span class="duration">⏱ 1:35:28</span>
+        </div>
+        <div class="theme-tags">可穿戴健康 · 数字医疗 · 生物科技 · 长寿科技</div>
+        <p class="description">王煜全对谈 LifeQ CEO Laurie，探讨可穿戴设备背后的健康革命。话题涉及基于连续生理数据的健康监测、个性化医疗、预防医学以及数字健康产业的未来趋势。</p>
+        <a href="https://www.youtube.com/watch?v=7ypvjXwwDL0" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=NnY4McosWoU" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/NnY4McosWoU/maxresdefault.jpg" alt="前哨大会2024｜历史的韵脚-AI革命的未来预测" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">3:52:02</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=NnY4McosWoU" target="_blank">前哨大会2024｜历史的韵脚-AI革命的未来预测</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2024.11.15</span>
+            <span class="views">👁 2,262 次观看</span>
+            <span class="duration">⏱ 3:52:02</span>
+        </div>
+        <div class="theme-tags">AI未来预测 · 技术革命 · 产业趋势 · 投资逻辑</div>
+        <p class="description">王煜全 2024 年度《前哨大会》演讲，以"历史的韵脚"为主线，回顾历次技术革命规律，预测 AI 革命的演进路径、泡沫与机遇，并给出面向企业与个人的行动建议。</p>
+        <a href="https://www.youtube.com/watch?v=NnY4McosWoU" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=5Zw_pmPChXA" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi_webp/5Zw_pmPChXA/maxresdefault.webp" alt="AI时代的竞争力法则" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">2:24:21</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=5Zw_pmPChXA" target="_blank">AI时代的竞争力法则</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2024.09.29</span>
+            <span class="views">👁 412 次观看</span>
+            <span class="duration">⏱ 2:24:21</span>
+        </div>
+        <div class="theme-tags">AI竞争力 · 个人成长 · 企业战略 · 学习方法论</div>
+        <p class="description">系统阐述 AI 时代个人与企业如何构建可持续竞争力：从理解 AI 能力边界、掌握人机协作方法，到重塑知识结构、建立面向未来的决策框架。</p>
+        <a href="https://www.youtube.com/watch?v=5Zw_pmPChXA" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=ql8kOsZZPew" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/ql8kOsZZPew/maxresdefault.jpg" alt="嘉宾李诗民：3步进入AI学习时代" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">1:54:24</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=ql8kOsZZPew" target="_blank">嘉宾李诗民：3步进入AI学习时代</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2024.08.02</span>
+            <span class="views">👁 112 次观看</span>
+            <span class="duration">⏱ 1:54:24</span>
+        </div>
+        <div class="theme-tags">AI学习 · 教育变革 · 知识管理 · 终身学习</div>
+        <p class="description">提出"3 步进入 AI 学习时代"的方法论：理解 AI 作为外脑的定位、建立以问题为导向的学习路径、形成持续迭代的知识系统，帮助普通人在 AI 时代保持领先。</p>
+        <a href="https://www.youtube.com/watch?v=ql8kOsZZPew" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=vfAgXh_UzCw" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/vfAgXh_UzCw/maxresdefault.jpg" alt="3步进入AI学习时代" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">1:54:24</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=vfAgXh_UzCw" target="_blank">3步进入AI学习时代</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2024.07.31</span>
+            <span class="views">👁 89 次观看</span>
+            <span class="duration">⏱ 1:54:24</span>
+        </div>
+        <div class="theme-tags">AI学习 · 教育变革 · 知识管理 · 终身学习</div>
+        <p class="description">提出"3 步进入 AI 学习时代"的方法论：理解 AI 作为外脑的定位、建立以问题为导向的学习路径、形成持续迭代的知识系统，帮助普通人在 AI 时代保持领先。</p>
+        <a href="https://www.youtube.com/watch?v=vfAgXh_UzCw" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=dZj_cPpzCpI" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/dZj_cPpzCpI/maxresdefault.jpg" alt="王煜全年度演讲｜前哨大会2023变革时代的行动指南" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">3:31:24</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=dZj_cPpzCpI" target="_blank">王煜全年度演讲｜前哨大会2023变革时代的行动指南</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2024.01.10</span>
+            <span class="views">👁 794 次观看</span>
+            <span class="duration">⏱ 3:31:24</span>
+        </div>
+        <div class="theme-tags">变革时代 · 行动指南 · 年度演讲 · 科技投资</div>
+        <p class="description">王煜全 2023 年度演讲《变革时代的行动指南》，聚焦全球经济转型、科技产业重构、AI 与自动化浪潮，以及如何在不确定环境中抓住确定性机会。</p>
+        <a href="https://www.youtube.com/watch?v=dZj_cPpzCpI" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+<div class="video-card">
+    <a href="https://www.youtube.com/watch?v=kBug57aafE8" target="_blank" class="thumbnail-link">
+        <img src="https://i.ytimg.com/vi/kBug57aafE8/maxresdefault.jpg" alt="前哨大会2021 服务规模化时代 | 全球科技创新地图 InnovationMap" loading="lazy">
+        <div class="play-icon">▶</div>
+        <div class="duration-badge">1:53:23</div>
+    </a>
+    <div class="video-info">
+        <h3><a href="https://www.youtube.com/watch?v=kBug57aafE8" target="_blank">前哨大会2021 服务规模化时代 | 全球科技创新地图 InnovationMap</a></h3>
+        <div class="video-meta">
+            <span class="date">📅 2021.12.18</span>
+            <span class="views">👁 1,115 次观看</span>
+            <span class="duration">⏱ 1:53:23</span>
+        </div>
+        <div class="theme-tags">服务规模化 · 平台经济 · 疫情后时代 · 创新地图</div>
+        <p class="description">《前哨大会 2021》聚焦"服务规模化"时代，讨论电动车、元宇宙、数字货币、在线教育、远程办公等趋势，以及如何在剧变中寻找确定性机会。</p>
+        <a href="https://www.youtube.com/watch?v=kBug57aafE8" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+    </div>
+</div>
+
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：<a href="https://www.youtube.com/channel/UCLm1Ufx86Ce1axU5NGBgZmQ" target="_blank">@王煜全</a> · 自动生成于 2026-08-04</p>
+        </footer>
+    </div>
+</body>
+</html>

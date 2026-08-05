@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于 Fortinet 硬件的 SD-WAN 网络架构实战指南 | DuoDuo Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .toc h2 { margin-top: 0; font-size: 1.4rem; border-bottom: none; color: var(--accent-light); }
+        .toc ul { list-style: none; columns: 2; gap: 40px; }
+        .toc li { margin: 10px 0; break-inside: avoid; }
+        .toc a { color: var(--text-secondary); display: block; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .toc a:hover { color: var(--accent-light); border-bottom-style: solid; text-decoration: none; }
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        .section-intro { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .card-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        .highlight p:last-child { margin-bottom: 0; }
+        .table-wrapper { overflow-x: auto; margin: 32px 0; border: 1px solid var(--border); border-radius: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-hover); }
+        td { color: var(--text-secondary); }
+        ul, ol { padding-left: 28px; margin: 20px 0; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        li::marker { color: var(--accent); }
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .model-box h3 { margin-top: 0; color: var(--accent-light); }
+        .model-item { padding: 16px 0; border-bottom: 1px dashed var(--border); }
+        .model-item:last-child { border-bottom: none; }
+        .model-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-accent { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .tag-neutral { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); }
+        .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .video-card:hover {
+            border-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: var(--bg-elevated);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .video-card .video-info {
+            padding: 20px 24px;
+        }
+        .video-card h4 { margin: 0 0 8px 0; font-size: 1.1rem; }
+        .video-card p { margin: 0; font-size: 0.9rem; color: var(--text-tertiary); }
+        .video-card .meta {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+        .diagram-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            overflow-x: auto;
+        }
+        .diagram-wrapper svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            min-width: 700px;
+        }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 8px; }
+        .footer a { color: var(--accent-light); }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+            .diagram-wrapper svg { min-width: 100%; }
+        }
+        @media print {
+            body { background: white; color: black; }
+            .navbar, .back-to-top, .breadcrumb { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { background: white; border: 1px solid #ddd; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#ai-tech">AI 与科技</a><span>→</span>基于 Fortinet 硬件的 SD-WAN 网络架构实战指南
+    </div>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">AI 与科技 · Network Architecture</div>
+            <h1>基于 Fortinet 硬件的 SD-WAN 网络架构实战指南</h1>
+            <p class="subtitle">从传统 WAN 痛点到 Secure SD-WAN 落地：FortiGate 硬件平台、SD-WAN 设计模式、零接触部署与视频学习资源一站式梳理。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026-08-05</div>
+                <div class="meta-item"><div class="meta-dot"></div>DuoDuo Research</div>
+                <div class="meta-item"><div class="meta-dot"></div>AI 与科技</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#sec-what-is-sdwan">01. 什么是 SD-WAN？</a></li>
+                <li><a href="#sec-why">02. 为什么需要 Secure SD-WAN？</a></li>
+                <li><a href="#sec-components">03. Fortinet Secure SD-WAN 核心组件</a></li>
+                <li><a href="#sec-hardware">04. FortiGate 硬件形态与选型</a></li>
+                <li><a href="#sec-architecture">05. 典型架构设计模式</a></li>
+                <li><a href="#sec-logic">06. 配置逻辑与关键概念</a></li>
+                <li><a href="#sec-deploy">07. 部署与运维实践</a></li>
+                <li><a href="#sec-auto">08. 汽车 / 制造业应用启示</a></li>
+                <li><a href="#sec-videos">09. 视频学习资源</a></li>
+                <li><a href="#sec-summary">10. 总结与建议</a></li>
+                <li><a href="#sec-references">11. 参考来源</a></li>
+            </ul>
+        </div>
+
+        <section class="section" id="sec-what-is-sdwan">
+            <h2>01. 什么是 SD-WAN？</h2>
+            <p class="section-intro">SD-WAN（Software-Defined Wide Area Network，软件定义广域网）并不是某一种单一设备，而是一套通过网络控制器与策略编排，把底层物理链路（MPLS、宽带、4G/5G）与上层业务流量解耦的广域网架构。</p>
+
+            <h3>从传统 WAN 到 SD-WAN 的演进</h3>
+            <p>传统 WAN 通常采用“hub-and-spoke”星型结构：每个分支机构的流量都要先回传到总部数据中心或 Hub，再经过安全栈（防火墙、IPS、Web 代理）后访问互联网或 SaaS。这种模型在 MPLS 时代运行良好，但面临三个明显瓶颈：</p>
+            <ul>
+                <li><strong>流量绕远：</strong>访问 Office 365、Zoom、SaaS 的流量要先回总部，体验差、带宽浪费。</li>
+                <li><strong>链路绑定：</strong>核心业务过度依赖昂贵的 MPLS，新增链路需要逐台配置路由与安全策略。</li>
+                <li><strong>安全堆叠复杂：</strong>分支往往同时存在路由器、防火墙、交换机、AP、WAN 优化器等多台设备，运维成本高。</li>
+            </ul>
+
+            <p>SD-WAN 的核心思路是：在分支边缘用一台统一设备（如 FortiGate）同时承担 NGFW、路由、SD-WAN 控制器、LAN 接入控制器等角色，通过策略定义“哪些应用走哪条链路”，并基于实时链路质量（延迟、抖动、丢包）动态切换。</p>
+
+            <div class="highlight">
+                <p><strong>SD-WAN 的四个核心能力：</strong>链路聚合与多路径传输、应用识别与智能选路、集中策略编排、原生安全集成（NGFW + IPS + SSL 检测）。</p>
+            </div>
+        </section>
+
+        <section class="section" id="sec-why">
+            <h2>02. 为什么需要 Secure SD-WAN？</h2>
+            <p class="section-intro">Fortinet 将其方案称为 <strong>Secure SD-WAN</strong>，强调 SD-WAN 不能只是“选路工具”，必须把安全内建到同一平台，避免为追求灵活性而引入新的攻击面。</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>数字化体验</h3>
+                    <p>SaaS、云应用、视频会议成为生产工具，要求分支到云的流量路径更短、更稳定。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>降低 WAN 成本</h3>
+                    <p>用宽带、4G/5G 替代或补充 MPLS，实现混合链路，降低每兆带宽成本。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>安全内建</h3>
+                    <p>分支直接访问互联网（DIA）必须同时做 IPS、Web 过滤、DNS 过滤、反病毒，而不是把安全全部交给总部。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3>简化运维</h3>
+                    <p>通过 FortiManager 统一模板、零接触部署（ZTP），实现数百个分支的快速上线。</p>
+                </div>
+            </div>
+
+            <h3>传统分支 vs. Secure SD-WAN 分支</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>维度</th><th>传统 WAN 分支</th><th>Fortinet Secure SD-WAN 分支</th></tr>
+                    <tr><td>边缘设备</td><td>路由器 + 防火墙 + 交换机 + AP 等多台设备</td><td>FortiGate 单一平台 + FortiSwitch/FortiAP（FortiLink）</td></tr>
+                    <tr><td>互联网出口</td><td>流量回传总部或区域中心</td><td>本地安全直联互联网（DIA）</td></tr>
+                    <tr><td>链路选择</td><td>静态路由 + 主备切换</td><td>基于应用与 SLA 动态选路</td></tr>
+                    <tr><td>部署上线</td><td>工程师现场逐台配置</td><td>零接触部署（ZTP），远程下发模板</td></tr>
+                    <tr><td>安全策略</td><td>总部集中策略，分支弱防护</td><td>分支具备完整 NGFW 能力</td></tr>
+                    <tr><td>可视与分析</td><td>多平台日志割裂</td><td>FortiManager + FortiAnalyzer 统一视图</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="sec-components">
+            <h2>03. Fortinet Secure SD-WAN 核心组件</h2>
+            <p class="section-intro">Fortinet 的方案把 SD-WAN 建立在 FortiOS 操作系统之上，核心平台是 FortiGate；再围绕 FortiManager、FortiAnalyzer、FortiSwitch、FortiAP、FortiExtender 等组件形成完整的分支到云端架构。</p>
+
+            <div class="model-box">
+                <h3>组件全景</h3>
+                <div class="model-item">
+                    <strong>FortiGate</strong>
+                    <p>既是 NGFW，也是 SD-WAN 边缘控制器。FortiOS 内置 SD-WAN 功能，支持应用识别、多链路负载、IPSec/ADVPN 叠加网、身份策略、流量整形等。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiManager</strong>
+                    <p>集中管理与编排控制台。可以批量下发设备配置、SD-WAN 模板、策略包、零接触部署（ZTP）配置，并与 FortiAnalyzer 集成在同一界面。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiAnalyzer</strong>
+                    <p>日志聚合与分析平台，把安全事件、SD-WAN 流量、链路质量、应用性能等数据转化为可视化报告，支持自动报表。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiSwitch / FortiAP</strong>
+                    <p>通过 FortiLink 技术，FortiGate 可直接作为 LAN 交换机与无线 AP 的控制器，实现“安全即端口”——每个端口/SSID 都继承防火墙策略。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiExtender</strong>
+                    <p>4G/5G 无线 WAN 扩展模块，作为主链路故障时的备用链路，或作为临时站点快速上线。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiGuard / FortiSandbox</strong>
+                    <p>威胁情报、应用签名、AI 驱动的恶意软件分析，持续更新到 FortiGate，确保应用识别与安全策略始终最新。</p>
+                </div>
+            </div>
+
+            <div class="diagram-wrapper">
+                <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#232320;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1c1c1a;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <style>
+                        text { font-family: Inter, system-ui, sans-serif; fill: #faf9f5; font-size: 12px; }
+                        .title { font-size: 14px; font-weight: 600; }
+                        .small { font-size: 10px; fill: #b0aea5; }
+                        .box { fill: url(#cardGrad); stroke: #30302e; stroke-width: 1; rx: 10; filter: url(#shadow); }
+                        .accent { fill: #c96442; }
+                        .line { stroke: #30302e; stroke-width: 2; fill: none; }
+                        .green-line { stroke: #4ade80; stroke-width: 2; fill: none; stroke-dasharray: 4,4; }
+                        .orange-line { stroke: #c96442; stroke-width: 2; fill: none; }
+                    </style>
+
+                    <!-- Cloud / Internet / SaaS -->
+                    <rect x="320" y="20" width="260" height="70" class="box" />
+                    <text x="450" y="45" text-anchor="middle" class="title">云端 / 互联网 / SaaS</text>
+                    <text x="450" y="62" text-anchor="middle" class="small">Office 365 / AWS / Azure / SaaS</text>
+                    <text x="450" y="78" text-anchor="middle" class="small">FortiGuard 威胁情报</text>
+
+                    <!-- HQ / Data Center -->
+                    <rect x="320" y="130" width="260" height="90" class="box" />
+                    <text x="450" y="155" text-anchor="middle" class="title">🏢 总部 / 数据中心（Hub）</text>
+                    <text x="450" y="175" text-anchor="middle" class="small">FortiGate 7000/6000/5000/4000 系列</text>
+                    <text x="450" y="192" text-anchor="middle" class="small">IPSec/ADVPN Hub · NGFW · 数据中心边界</text>
+
+                    <!-- FortiManager / FortiAnalyzer -->
+                    <rect x="620" y="130" width="240" height="90" class="box" />
+                    <text x="740" y="155" text-anchor="middle" class="title">🖥️ 集中管理分析</text>
+                    <text x="740" y="175" text-anchor="middle" class="small">FortiManager：策略 · ZTP · 模板</text>
+                    <text x="740" y="192" text-anchor="middle" class="small">FortiAnalyzer：日志 · 报表 · 可视化</text>
+
+                    <!-- Branch Office -->
+                    <rect x="60" y="280" width="320" height="200" class="box" />
+                    <text x="220" y="305" text-anchor="middle" class="title">🏭 分支机构（Branch/Spoke）</text>
+                    <rect x="120" y="325" width="200" height="70" rx="8" fill="#2a2a26" stroke="#c96442" stroke-width="1.5" />
+                    <text x="220" y="350" text-anchor="middle" class="title" fill="#d97757">FortiGate</text>
+                    <text x="220" y="370" text-anchor="middle" class="small">SD-WAN + NGFW + 路由 + 控制器</text>
+                    <rect x="90" y="415" width="80" height="40" rx="6" fill="#1c1c1a" stroke="#30302e" />
+                    <text x="130" y="435" text-anchor="middle" class="small">MPLS</text>
+                    <text x="130" y="448" text-anchor="middle" class="small">3 Mbps</text>
+                    <rect x="180" y="415" width="80" height="40" rx="6" fill="#1c1c1a" stroke="#30302e" />
+                    <text x="220" y="435" text-anchor="middle" class="small">宽带</text>
+                    <text x="220" y="448" text-anchor="middle" class="small">100 Mbps</text>
+                    <rect x="270" y="415" width="80" height="40" rx="6" fill="#1c1c1a" stroke="#30302e" />
+                    <text x="310" y="435" text-anchor="middle" class="small">4G/5G</text>
+                    <text x="310" y="448" text-anchor="middle" class="small">FortiExtender</text>
+
+                    <!-- LAN Edge -->
+                    <rect x="420" y="280" width="420" height="200" class="box" />
+                    <text x="630" y="305" text-anchor="middle" class="title">🌐 LAN / 接入层（FortiLink）</text>
+                    <rect x="480" y="325" width="140" height="70" rx="8" fill="#2a2a26" stroke="#30302e" />
+                    <text x="550" y="350" text-anchor="middle" class="title">FortiSwitch</text>
+                    <text x="550" y="370" text-anchor="middle" class="small">POE 交换机 · 端口级安全</text>
+                    <rect x="650" y="325" width="140" height="70" rx="8" fill="#2a2a26" stroke="#30302e" />
+                    <text x="720" y="350" text-anchor="middle" class="title">FortiAP</text>
+                    <text x="720" y="370" text-anchor="middle" class="small">无线接入点 · SSID 防火墙化</text>
+                    <rect x="520" y="415" width="230" height="40" rx="6" fill="#1c1c1a" stroke="#30302e" />
+                    <text x="635" y="435" text-anchor="middle" class="small">PC / 产线终端 / IoT / 语音 / 视频</text>
+                    <text x="635" y="448" text-anchor="middle" class="small">身份策略 · 分段隔离</text>
+
+                    <!-- Connection lines -->
+                    <path d="M220 280 L220 250 L450 250 L450 220" class="orange-line" />
+                    <path d="M450 200 L450 180 L220 180 L220 130" class="orange-line" />
+                    <path d="M450 220 L450 180" class="orange-line" />
+                    <path d="M580 180 L620 180" class="line" />
+                    <path d="M340 395 L340 450 L450 450 L450 220" class="green-line" />
+                    <path d="M340 450 L340 470 L450 470 L450 450" class="green-line" />
+                    <path d="M340 360 L420 360" class="line" />
+                    <text x="290" y="260" fill="#c96442" font-size="11">IPSec/ADVPN 叠加网</text>
+                    <text x="350" y="200" fill="#c96442" font-size="11">MPLS/宽带混合链路</text>
+                    <text x="600" y="170" fill="#87867f" font-size="11">策略/日志</text>
+                </svg>
+                <p style="text-align: center; color: var(--text-tertiary); font-size: 0.85rem; margin-top: 16px;">图：Fortinet Secure SD-WAN 典型企业分支到总部/云端架构示意</p>
+            </div>
+
+            <h3>FortiGate 作为统一边缘平台</h3>
+            <p>Fortinet 的架构思路是“设备整合（Edge Consolidation）”。FortiGate 不再是单纯的防火墙，而是：</p>
+            <ul>
+                <li>SD-WAN 路径控制器</li>
+                <li>应用识别引擎（含加密流量识别）</li>
+                <li>NGFW / IPS / 反病毒 / Web 过滤</li>
+                <li>路由与交换控制器（FortiLink）</li>
+                <li>零接触部署代理</li>
+            </ul>
+            <p>这意味着分支机构可以用一台 FortiGate 替代传统路由器、独立防火墙、WAN 优化器、交换机控制器、无线控制器等多个设备，显著降低 CapEx 和 OpEx。</p>
+        </section>
+
+        <section class="section" id="sec-hardware">
+            <h2>04. FortiGate 硬件形态与选型</h2>
+            <p class="section-intro">FortiGate 产品线覆盖从个人远程办公到大型数据中心，都运行同一套 FortiOS 操作系统，因此策略可以在不同型号之间无缝迁移。选择型号时主要关注吞吐量、接口数量、SD-WAN 隧道数量、冗余电源与扩展插槽。</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>系列</th><th>典型场景</th><th>关键特点</th></tr>
+                    <tr><td>FortiGate 40/60/80 系列</td><td>小型分支、远程办公、SD-Branch</td><td>桌面型、内置 PoE、Wi-Fi 可选、4G/5G 扩展、低功耗</td></tr>
+                    <tr><td>FortiGate 100/200 系列</td><td>中型分支、区域办公室</td><td>1U 机架、多 GE 接口、较高 IPS/NGFW 吞吐、支持冗余电源</td></tr>
+                    <tr><td>FortiGate 400/600/800 系列</td><td>大型分支、园区、区域总部</td><td>10G 接口、更高并发会话、支持多端口扩展卡</td></tr>
+                    <tr><td>FortiGate 1000/2000/3000 系列</td><td>企业总部、数据中心、云网关</td><td>万兆/40G 接口、高可用集群、大容量 VPN 隧道</td></tr>
+                    <tr><td>FortiGate 4000/6000/7000 系列</td><td>大型数据中心、运营商、云服务提供商</td><td>Chassis 形态、超高吞吐、模块化扩展、冗余设计</td></tr>
+                    <tr><td>FortiGate-VM</td><td>公有云、私有云、NFV</td><td>虚拟形态、按吞吐量授权、可在 AWS/Azure/GCP/阿里云等部署</td></tr>
+                </table>
+            </div>
+
+            <div class="highlight">
+                <p><strong>选型提示：</strong>汽车/制造业分支往往有产线终端、AGV、质检设备等 IoT 流量。建议中型分支至少选择 FortiGate 100F/200F 系列，确保具备足够的 GE 接口、PoE 输出、IPS 吞吐余量；总部或区域中心可根据并发隧道数与混合云流量选择 400F/600F/800F 或更高型号。</p>
+            </div>
+        </section>
+
+        <section class="section" id="sec-architecture">
+            <h2>05. 典型架构设计模式</h2>
+            <p class="section-intro">Fortinet 官方文档《SD-WAN Architecture for Enterprise》总结了多种常见设计模式。企业应根据数据中心数量、云采用程度、合规要求与分支规模进行组合。</p>
+
+            <h3>模式一：单数据中心 + 分支混合链路（Hub-and-Spoke）</h3>
+            <p>最经典的企业 WAN 模式：总部/数据中心作为 Hub，分支机构通过 MPLS + 宽带两条链路接入。FortiGate 在分支创建 SD-WAN 虚拟接口，包含 MPLS 成员与 IPSec 宽带成员；总部同样配置双 Hub 或 Active-Passive 网关。</p>
+            <ul>
+                <li>内部业务流量优先走 MPLS，互联网/SaaS 流量走本地宽带直出（DIA）。</li>
+                <li>当 MPLS 故障时，关键应用自动切换到 IPSec 隧道；同时通过 SLA 探测实时评估链路质量。</li>
+            </ul>
+
+            <h3>模式二：双数据中心主备网关</h3>
+            <p>企业有两个数据中心或区域总部时，可配置 Primary/Secondary 网关。每个分支的 SD-WAN 规则同时指向两个 Hub，并根据延迟、丢包等 SLA 指标选择最佳 Hub。该模式适合跨地域业务、灾备要求高的场景。</p>
+
+            <h3>模式三：Direct Internet Access（DIA）本地互联网直出</h3>
+            <p>SaaS 流量（Microsoft 365、Salesforce、Zoom、Teams）不再回传总部，而是直接在分支通过宽带链路安全出网。FortiGate 的本地 NGFW 能力确保分支 DIA 不会成为安全短板。</p>
+
+            <h3>模式四：Cloud On-Ramp 多云接入</h3>
+            <p>在 AWS/Azure/GCP/阿里云等部署 FortiGate-VM 作为 Cloud Gateway，与总部和分支建立 IPSec 或 ADVPN 隧道。分支访问云应用的流量可以就近进入云网关，避免“云到数据中心再绕回云”的迂回路。</p>
+
+            <h3>模式五：SD-Branch（安全分支）</h3>
+            <p>把 LAN 也纳入统一安全管理：FortiGate 通过 FortiLink 管理 FortiSwitch 和 FortiAP，SSID 与交换机端口直接映射为防火墙接口。这样每个端口、每个无线 VLAN 都可以执行 NGFW 策略、网络分段、NAC 与访客隔离。</p>
+
+            <div class="quote">
+                “FortiGate is the platform for that. FortiOS is the underlying operating system … but it's much more than just WAN path control, application awareness and application steering. We're really talking about Secure SD-WAN, including identity-based policy and edge consolidation.”
+                <br><span style="font-style: normal; font-size: 0.9rem; color: var(--text-tertiary);">— Fortinet SD-WAN Architecture & Demo, Tech Field Day</span>
+            </div>
+        </section>
+
+        <section class="section" id="sec-logic">
+            <h2>06. 配置逻辑与关键概念</h2>
+            <p class="section-intro">理解 FortiOS 中的 SD-WAN 配置对象是落地的前提。核心对象包括：SD-WAN 成员（Member）、SD-WAN 区域（Zone）、SD-WAN 规则（Rule）与性能 SLA（Performance SLA）。</p>
+
+            <div class="model-box">
+                <h3>核心对象</h3>
+                <div class="model-item">
+                    <strong>SD-WAN 成员（Member）</strong>
+                    <p>可以是物理接口、VLAN 接口、聚合接口、IPSec/GRE/IPIP 隧道，甚至 FortiExtender 蜂窝接口。每个成员代表一条可用的 WAN 路径，需要配置网关、成本、带宽上下行。</p>
+                </div>
+                <div class="model-item">
+                    <strong>SD-WAN 区域（Zone）</strong>
+                    <p>一组 SD-WAN 成员的逻辑集合。最常见的是把“物理 WAN 接口”放入一个 Zone，把“IPSec 隧道/Overlay”放入另一个 Zone。规则可以按 Zone 指定选路范围。</p>
+                </div>
+                <div class="model-item">
+                    <strong>SD-WAN 规则（Rule）</strong>
+                    <p>基于源/目的地址、应用、用户、服务、DSCP 等条件匹配流量，并指定策略动作：最优链路、负载均衡、溢出（Spillover）、强制某条链路、优先级排序等。</p>
+                </div>
+                <div class="model-item">
+                    <strong>性能 SLA（Performance SLA）</strong>
+                    <p>周期性探测目标服务器（如 DNS、ICMP、HTTP、FortiGuard 服务器），衡量延迟、抖动、丢包。SLA 结果触发链路切换或静态路由更新。FortiOS 支持被动探测（利用真实流量）与主动探测两种模式。</p>
+                </div>
+                <div class="model-item">
+                    <strong>静态路由与接口</strong>
+                    <p>默认路由指向 SD-WAN 虚拟接口（virtual-wan-link），而不是单条物理链路。防火墙策略必须允许流量通过 SD-WAN 接口。</p>
+                </div>
+            </div>
+
+            <h3>Underlay 与 Overlay</h3>
+            <p><strong>Underlay（底层网络）</strong>是物理链路本身：MPLS、宽带、4G/5G。它们负责点到点的 IP 可达。<strong>Overlay（叠加网络）</strong>是跑在 Underlay 之上的逻辑隧道，通常用 IPSec 或 ADVPN 建立，把不同分支与数据中心/云网关组成一张加密、可路由、策略统一的虚拟网络。</p>
+            <p>Fortinet 的 ADVPN（Auto-Discovery VPN）是一种优化型全互联方案：分支之间默认通过 Hub 学习路由，当需要直接通信时动态建立按需隧道，解决传统 Full-Mesh 隧道数量爆炸的问题。</p>
+
+            <h3>应用识别（Application Awareness）</h3>
+            <p>FortiGate 的 SD-WAN 选路可以精确到应用级别。例如：</p>
+            <ul>
+                <li>语音/视频（Zoom、Teams、SIP）优先选择低延迟、低抖动链路。</li>
+                <li>ERP/OA 流量优先走 MPLS 或总部 IPSec 隧道。</li>
+                <li>云存储备份可以走低成本宽带，并设置带宽限制。</li>
+                <li>未知或高风险流量强制经过 IPS、Web 过滤、沙箱检测。</li>
+            </ul>
+            <p>FortiGuard 应用签名库持续更新，对加密流量也能通过 SNI 或深度识别技术进行判断。</p>
+        </section>
+
+        <section class="section" id="sec-deploy">
+            <h2>07. 部署与运维实践</h2>
+            <p class="section-intro">从 5 分钟快速配置到数千分支的零接触部署，Fortinet 提供了从手工到自动化的完整部署路径。关键是把基础配置（接口、路由、SLA、规则）抽象为模板，再通过 FortiManager 批量推送。</p>
+
+            <h3>5 分钟快速配置（单台 FortiGate）</h3>
+            <p>以“Setup SD-WAN in Under 5 Minutes”视频中的配置为例，单台 FortiGate 上 SD-WAN 的最小配置步骤为：</p>
+            <ol>
+                <li>确认 WAN 接口已配置 IP 与网关。</li>
+                <li>在 <strong>Network → SD-WAN</strong> 中创建 SD-WAN 成员，把各 WAN 接口加入虚拟 SD-WAN 接口。</li>
+                <li>添加默认静态路由，目标 0.0.0.0/0 指向 <code>virtual-wan-link</code>。</li>
+                <li>确保防火墙策略允许内网到 <code>virtual-wan-link</code> 的流量。</li>
+                <li>创建 <strong>Performance SLA</strong>，探测目标服务器并设置延迟/抖动/丢包阈值。</li>
+                <li>创建 <strong>SD-WAN 规则</strong>，按应用或目的地址指定选路策略（如 Spillover、Best Quality、Manual 等）。</li>
+            </ol>
+
+            <h3>零接触部署（ZTP）与模板化</h3>
+            <p>对于大量分支，手工逐台配置不现实。FortiManager 提供：</p>
+            <ul>
+                <li><strong>Device Manager：</strong>统一纳管所有 FortiGate，支持按模型/地区/角色分组。</li>
+                <li><strong>Provisioning Templates：</strong>预定义系统设置、接口、管理员、DNS、NTP 等。</li>
+                <li><strong>Policy Packages：</strong>统一的防火墙策略、SD-WAN 模板、VPN 配置。</li>
+                <li><strong>SD-WAN Overlay Wizard：</strong>四步向导即可创建双 Hub 或 Full-Mesh（ADVPN）叠加网，自动生成 IPSec 隧道、BGP/OSPF 路由、SD-WAN 区域与规则。</li>
+                <li><strong>Zero Touch Provisioning：</strong>新设备接入互联网后自动联系 FortiManager 或 FortiDeploy，拉取配置文件并上线。</li>
+            </ul>
+
+            <h3>运维监控</h3>
+            <p>FortiManager 提供拓扑视图、SD-WAN 链路性能、应用流量分布、设备健康度等仪表盘；FortiAnalyzer 则提供安全事件、日志审计、合规报表。两者集成后，管理员可以在一个界面中完成“网络 + 安全”的统一运维。</p>
+
+            <div class="highlight">
+                <p><strong>部署最佳实践：</strong>先在实验室用 2 台 FortiGate 跑通 Hub-Spoke + ADVPN；再抽取配置为 FortiManager 模板；最后在小批量分支试点验证 SLA 阈值与选路策略，确认无误后再批量推广。</p>
+            </div>
+        </section>
+
+        <section class="section" id="sec-auto">
+            <h2>08. 汽车 / 制造业应用启示</h2>
+            <p class="section-intro">对于汽车与零部件制造行业，SD-WAN 不仅是网络优化工具，更是支撑工厂数字化、供应链协同、远程办公与全球研发协作的关键基础设施。</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏭</div>
+                    <h3>工厂与产线互联</h3>
+                    <p>总部、区域工厂、物流中心、研发中心通过混合链路互联，MES/ERP/PLM 流量走稳定 MPLS/IPSec，普通办公流量走本地宽带。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>IoT 与 OT 安全分段</h3>
+                    <p>FortiGate + FortiSwitch 通过 FortiLink 把产线 PLC、AGV、质检设备划入独立 VLAN，并执行 NGFW 策略，避免 IoT 威胁横向移动。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">☁️</div>
+                    <h3>云研发与 PLM 上云</h3>
+                    <p>全球研发团队访问公有云上的 PLM、CAD、仿真平台时，通过 Cloud On-Ramp 就近接入，降低跨国链路延迟。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚗</div>
+                    <h3>供应链与经销商网络</h3>
+                    <p>供应商、经销商、4S 门店数量多且分散，可用 FortiGate 40F/60F 桌面型设备 + ZTP 快速上线，统一安全策略。</p>
+                </div>
+            </div>
+
+            <h3>与 AI/Copilot 的协同</h3>
+            <p>随着 Microsoft 365 Copilot 等 AI 助手在汽车企业落地，员工对 Teams、SharePoint、OneDrive 的访问体验直接影响生产力。SD-WAN 可以基于应用识别把 Copilot 相关流量优先调度到质量最好的链路，并通过 DIA 本地出网，避免回传总部带来的延迟。</p>
+        </section>
+
+        <section class="section" id="sec-videos">
+            <h2>09. 视频学习资源</h2>
+            <p class="section-intro">以下视频来自 Fortinet 官方及技术社区，覆盖快速配置、官方演示、架构深度解析与 SD-Branch 概念，可按需观看。</p>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/WyxwCgWgF2E" title="Fortinet Tutorial: Setup SDWAN In Under 5 Minutes!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet Tutorial: Setup SDWAN In Under 5 Minutes!</h4>
+                        <p>快速上手：接口、SD-WAN 成员、静态路由、Performance SLA、SD-WAN 规则的最小配置演示。</p>
+                        <div class="meta"><span>🔥 新手入门</span><span>约 5 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/7R1InlpBKgs" title="Fortinet Secure SD-WAN 7.2 Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet Secure SD-WAN 7.2 Demo</h4>
+                        <p>官方演示：FortiManager 统一编排、SD-WAN Overlay 向导、ADVPN、ZTP、Analytics 与安全能力。</p>
+                        <div class="meta"><span>🎬 官方演示</span><span>约 19 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/lS1F5gsyIAI" title="Fortinet SD-WAN Architecture & Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet SD-WAN Architecture & Demo</h4>
+                        <p>Tech Field Day 深度解析：架构组件、身份策略、边缘整合、Underlay/Overlay 设计。</p>
+                        <div class="meta"><span>📚 架构深度</span><span>约 59 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/wk6iT36zf0A" title="Fortinet SD-Branch Architecture" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet SD-Branch Architecture</h4>
+                        <p>官方短视频：FortiGate + FortiSwitch + FortiAP + FortiExtender 如何构成安全分支。</p>
+                        <div class="meta"><span>⚡ 概念速览</span><span>约 3 分钟</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>中文延伸阅读</h3>
+            <p>若希望从中文视角理解 SD-WAN 基础概念，可参考 B 站/YouTube 上的技术解读：</p>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=Jj07jEz9078" target="_blank">《你一定想不到，红遍全网的 SD-WAN，竟然如此简单》</a> — 用通俗方式解释 SD-WAN 核心思想。</li>
+                <li><a href="https://www.youtube.com/watch?v=37-DBfNR3Xk" target="_blank">《5 分钟告诉你真正的 SD-WAN 究竟是什么》</a> — 快速建立对 SD-WAN 与传统 MPLS 差异的认知。</li>
+            </ul>
+        </section>
+
+        <section class="section" id="sec-summary">
+            <h2>10. 总结与建议</h2>
+            <p class="section-intro">Fortinet Secure SD-WAN 的本质是把“网络连接”与“安全防御”合并到同一平台，让企业既能享受混合链路的成本优势，又不会因为分支本地出网而牺牲安全性。</p>
+
+            <div class="highlight">
+                <p><strong>给汽车/制造企业的落地建议：</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>从痛点切入：</strong>优先改造视频会议体验差、SaaS 访问慢、MPLS 成本高的分支。</li>
+                    <li><strong>统一平台：</strong>分支尽量用 FortiGate 统一承载 NGFW + SD-WAN + LAN 控制器，减少设备堆叠。</li>
+                    <li><strong>先试点再推广：</strong>选择 2~3 个典型分支 + 1 个数据中心，跑通 Hub-Spoke + DIA + ADVPN 后再模板化。</li>
+                    <li><strong>安全不放松：</strong>分支本地互联网直出必须启用 IPS、DNS 过滤、Web 过滤、反病毒，并接入 FortiAnalyzer 统一分析。</li>
+                    <li><strong>为 AI 应用预留带宽：</strong>在 SD-WAN 规则中识别 Teams/SharePoint/Copilot 等应用，设置高优先级 SLA 策略。</li>
+                </ul>
+            </div>
+
+            <p>随着汽车企业加速上云、全球化协作与智能制造，SD-WAN 将从“网络优化项目”升级为“数字基础设施底座”。Fortinet 的硬件平台 + 统一操作系统 + 集中管理编排，为这一转型提供了可扩展、可复制的落地路径。</p>
+        </section>
+
+        <section class="section" id="sec-references">
+            <h2>11. 参考来源</h2>
+            <ul>
+                <li>Fortinet, <em>Secure SD-WAN Architecture Components</em>, Reference Architecture PDF.</li>
+                <li>Fortinet, <em>Secure SD-WAN Reference Architecture</em>, White Paper.</li>
+                <li>Fortinet, <em>SD-WAN / SD-Branch Architecture for Enterprise</em>, 7.0 Technical Guide.</li>
+                <li>Fortinet Docs, <em>SD-WAN designs and architectures</em> (FortiGate / FortiOS 7.6.4).</li>
+                <li>Fortinet, <em>SD-WAN Architecture for Enterprise</em> (FortiOS 7.2.0 / 7.6.0).</li>
+                <li>YouTube: Fortinet Tutorial: Setup SDWAN In Under 5 Minutes! (Firewalls.com).</li>
+                <li>YouTube: Fortinet Secure SD-WAN 7.2 Demo (Fortinet).</li>
+                <li>YouTube: Fortinet SD-WAN Architecture & Demo (Tech Field Day).</li>
+                <li>YouTube: Fortinet SD-Branch Architecture (Fortinet).</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 DuoDuo Research 整理生成 · 2026-08-05</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

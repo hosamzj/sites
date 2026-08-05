@@ -414,7 +414,7 @@
         <div class="container hero-content">
             <div class="eyebrow">AI 与科技 · Network Architecture</div>
             <h1>基于 Fortinet 硬件的 SD-WAN 网络架构实战指南</h1>
-            <p class="subtitle">从传统 WAN 痛点到 Secure SD-WAN 落地：FortiGate 硬件平台、SD-WAN 设计模式、零接触部署与视频学习资源一站式梳理。</p>
+            <p class="subtitle">从传统 WAN 痛点到 Secure SD-WAN 落地：FortiGate 硬件平台、FortiOS 7.6 / Unified SASE / AI 运维、SD-WAN 设计模式、零接触部署与视频学习资源一站式梳理。</p>
             <div class="meta">
                 <div class="meta-item"><div class="meta-dot"></div>2026-08-05</div>
                 <div class="meta-item"><div class="meta-dot"></div>DuoDuo Research</div>
@@ -434,10 +434,12 @@
                 <li><a href="#sec-architecture">05. 典型架构设计模式</a></li>
                 <li><a href="#sec-logic">06. 配置逻辑与关键概念</a></li>
                 <li><a href="#sec-deploy">07. 部署与运维实践</a></li>
-                <li><a href="#sec-auto">08. 汽车 / 制造业应用启示</a></li>
-                <li><a href="#sec-videos">09. 视频学习资源</a></li>
-                <li><a href="#sec-summary">10. 总结与建议</a></li>
-                <li><a href="#sec-references">11. 参考来源</a></li>
+                <li><a href="#sec-licensing">08. 授权模式与行业认可</a></li>
+                <li><a href="#sec-76">09. FortiOS 7.6 与 Unified SASE 新能力</a></li>
+                <li><a href="#sec-auto">10. 汽车 / 制造业应用启示</a></li>
+                <li><a href="#sec-videos">11. 视频学习资源</a></li>
+                <li><a href="#sec-summary">12. 总结与建议</a></li>
+                <li><a href="#sec-references">13. 参考来源</a></li>
             </ul>
         </div>
 
@@ -503,7 +505,7 @@
 
         <section class="section" id="sec-components">
             <h2>03. Fortinet Secure SD-WAN 核心组件</h2>
-            <p class="section-intro">Fortinet 的方案把 SD-WAN 建立在 FortiOS 操作系统之上，核心平台是 FortiGate；再围绕 FortiManager、FortiAnalyzer、FortiSwitch、FortiAP、FortiExtender 等组件形成完整的分支到云端架构。</p>
+            <p class="section-intro">Fortinet 的方案把 SD-WAN 建立在 FortiOS 操作系统之上（最新为 FortiOS 7.6），核心平台是 FortiGate；再围绕 FortiManager、FortiAnalyzer、FortiSwitch、FortiAP、FortiExtender、FortiAI 与 FortiAIOps 等组件形成完整的分支到云端架构。</p>
 
             <div class="model-box">
                 <h3>组件全景</h3>
@@ -530,6 +532,18 @@
                 <div class="model-item">
                     <strong>FortiGuard / FortiSandbox</strong>
                     <p>威胁情报、应用签名、AI 驱动的恶意软件分析，持续更新到 FortiGate，确保应用识别与安全策略始终最新。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiAI / FortiAI-Assist</strong>
+                    <p>FortiOS 7.6 将生成式 AI 能力深度集成到 FortiManager 与 FortiAnalyzer，支持自然语言查询、配置辅助、故障排查与文档检索，帮助 IT 团队编排和自动化整个 Secure SD-WAN 基础设施。</p>
+                </div>
+                <div class="model-item">
+                    <strong>FortiAIOps</strong>
+                    <p>基于 AI/ML 的 IT 运维平台，采集 FortiGate、FortiSwitch、FortiAP、SD-WAN、FortiExtender 的数据，实现异常检测、事件关联、预测性分析与根因定位，降低 NOC 工单量。</p>
+                </div>
+                <div class="model-item">
+                    <strong>Digital Experience Monitoring (DEM)</strong>
+                    <p>内置数字体验监控，从终端、ISP、SD-WAN 链路到 SaaS/私有应用，统一关联用户体验与网络性能，实现实时问题定位。</p>
                 </div>
             </div>
 
@@ -637,6 +651,8 @@
                 <table>
                     <tr><th>系列</th><th>典型场景</th><th>关键特点</th></tr>
                     <tr><td>FortiGate 40/60/80 系列</td><td>小型分支、远程办公、SD-Branch</td><td>桌面型、内置 PoE、Wi-Fi 可选、4G/5G 扩展、低功耗</td></tr>
+                    <tr><td>FortiGate 90G 系列</td><td>中小型分支、园区接入</td><td>桌面型、更高 NGFW/SD-WAN 吞吐、5G 就绪、内置 SSD 日志</td></tr>
+                    <tr><td>FortiGate Rugged 60F 系列</td><td>工厂、仓库、电力、油气、户外严苛 OT 环境</td><td>加固型设计、宽温、抗振动/EMI、DIN 导轨安装、内置 LTE 可选、IEC 61850-3 / IEEE 1613 认证</td></tr>
                     <tr><td>FortiGate 100/200 系列</td><td>中型分支、区域办公室</td><td>1U 机架、多 GE 接口、较高 IPS/NGFW 吞吐、支持冗余电源</td></tr>
                     <tr><td>FortiGate 400/600/800 系列</td><td>大型分支、园区、区域总部</td><td>10G 接口、更高并发会话、支持多端口扩展卡</td></tr>
                     <tr><td>FortiGate 1000/2000/3000 系列</td><td>企业总部、数据中心、云网关</td><td>万兆/40G 接口、高可用集群、大容量 VPN 隧道</td></tr>
@@ -672,6 +688,12 @@
 
             <h3>模式五：SD-Branch（安全分支）</h3>
             <p>把 LAN 也纳入统一安全管理：FortiGate 通过 FortiLink 管理 FortiSwitch 和 FortiAP，SSID 与交换机端口直接映射为防火墙接口。这样每个端口、每个无线 VLAN 都可以执行 NGFW 策略、网络分段、NAC 与访客隔离。</p>
+
+            <h3>模式六：SD-WAN Overlay-as-a-Service（OaaS）</h3>
+            <p>对于不想自建和维护 Hub 基础设施的企业，FortiGate Cloud Advanced 提供 SaaS 化的 SD-WAN 叠加网服务。Fortinet 托管地理冗余的 Hub，企业通过点击式界面配置分支互联与策略，显著降低部署门槛与运维成本。</p>
+
+            <h3>模式七：Unified SASE 混合部署</h3>
+            <p>在已有 FortiGate SD-WAN 的基础上，通过 FortiSASE 将安全能力平滑延伸到云端 PoP 与远程用户。同一策略引擎同时管理分支 SD-WAN 规则与云端 SSE 规则，实现“本地直连 SaaS + 云端安全栈”的混合架构，避免推倒重来。</p>
 
             <div class="quote">
                 “FortiGate is the platform for that. FortiOS is the underlying operating system … but it's much more than just WAN path control, application awareness and application steering. We're really talking about Secure SD-WAN, including identity-based policy and edge consolidation.”
@@ -723,8 +745,8 @@
         </section>
 
         <section class="section" id="sec-deploy">
-            <h2>07. 部署与运维实践</h2>
-            <p class="section-intro">从 5 分钟快速配置到数千分支的零接触部署，Fortinet 提供了从手工到自动化的完整部署路径。关键是把基础配置（接口、路由、SLA、规则）抽象为模板，再通过 FortiManager 批量推送。</p>
+            <h2>07. 部署与 AI 辅助运维实践</h2>
+            <p class="section-intro">从 5 分钟快速配置到数千分支的零接触部署，Fortinet 提供了从手工到自动化的完整部署路径。关键是把基础配置（接口、路由、SLA、规则）抽象为模板，再通过 FortiManager 批量推送。FortiOS 7.6 进一步引入 FortiAI 与 FortiAIOps，让部署后的运维从被动告警转向预测性、AI 辅助的主动管理。</p>
 
             <h3>5 分钟快速配置（单台 FortiGate）</h3>
             <p>以“Setup SD-WAN in Under 5 Minutes”视频中的配置为例，单台 FortiGate 上 SD-WAN 的最小配置步骤为：</p>
@@ -750,13 +772,118 @@
             <h3>运维监控</h3>
             <p>FortiManager 提供拓扑视图、SD-WAN 链路性能、应用流量分布、设备健康度等仪表盘；FortiAnalyzer 则提供安全事件、日志审计、合规报表。两者集成后，管理员可以在一个界面中完成“网络 + 安全”的统一运维。</p>
 
+            <h3>FortiAI 与 FortiAIOps 辅助运维</h3>
+            <p>部署上线只是第一步，持续运维才是价值兑现的关键。FortiOS 7.6 通过 AI 能力降低运维复杂度：</p>
+            <ul>
+                <li><strong>FortiAI-Assist：</strong>在 FortiManager 中通过自然语言询问配置、排错、监控指标，AI 会基于文档与实时数据给出建议。</li>
+                <li><strong>FortiAIOps：</strong>自动学习 SD-WAN 链路与应用流量的基线，识别异常模式，预测潜在故障，并给出修复建议。</li>
+                <li><strong>DEM + Underlay Monitoring：</strong>从终端到 SaaS 应用的全链路体验监控，让问题定位从“链路是否通”细化到“应用体验是否受影响”。</li>
+            </ul>
+
             <div class="highlight">
-                <p><strong>部署最佳实践：</strong>先在实验室用 2 台 FortiGate 跑通 Hub-Spoke + ADVPN；再抽取配置为 FortiManager 模板；最后在小批量分支试点验证 SLA 阈值与选路策略，确认无误后再批量推广。</p>
+                <p><strong>部署最佳实践：</strong>先在实验室用 2 台 FortiGate 跑通 Hub-Spoke + ADVPN；再抽取配置为 FortiManager 模板；最后在小批量分支试点验证 SLA 阈值与选路策略，确认无误后再批量推广。上线后开启 FortiAIOps 与 DEM，持续收集基线数据，为 AI 辅助优化提供依据。</p>
             </div>
         </section>
 
+
+        <section class="section" id="sec-licensing">
+            <h2>08. 授权模式与行业认可</h2>
+            <p class="section-intro">理解 Fortinet 的采购与授权模式，有助于企业在规划 SD-WAN 时避免预算与合规风险。Fortinet 近年来持续将 SD-WAN 与其安全服务深度绑定，并通过行业分析师报告验证其市场地位。</p>
+
+            <h3>SD-WAN 不再额外收费</h3>
+            <p>Fortinet 的核心策略是“安全驱动网络（Security-Driven Networking）”：SD-WAN 功能作为 FortiOS 的内置模块，<strong>在所有 FortiGate 型号上均可免费启用</strong>，无需为 SD-WAN 本身支付单独的带宽许可或按流量计费。企业真正需要采购的是：</p>
+            <ul>
+                <li><strong>FortiGate 硬件或虚拟机：</strong>按性能与接口形态选型。</li>
+                <li><strong>FortiCare 支持服务：</strong>硬件保修、固件更新、技术支持。</li>
+                <li><strong>FortiGuard 安全服务包：</strong>应用控制、IPS、Web 过滤、DNS 过滤、反病毒、沙箱、威胁情报等；SD-WAN 所需的应用识别与 SLA 监控也依赖这些服务包。</li>
+                <li><strong>FortiManager / FortiAnalyzer / FortiCloud：</strong>集中管理、日志分析、云服务按需订阅。</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>采购模式变化：</strong>截至 2026 年 1 月，Fortinet 不再单独销售 SD-WAN、SASE、Attack Surface 等独立 SKU，而是统一通过 FortiGuard AI 驱动的安全服务包进行采购。这意味着新签单必须把 SD-WAN 放在整体安全与网络架构中评估，而不是单独谈判一个 SD-WAN 模块。</p>
+            </div>
+
+            <h3>行业分析师认可</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Gartner SD-WAN 魔力象限</h3>
+                    <p>Fortinet 连续多年被评为 Gartner WAN Edge 基础设施 / SD-WAN 魔力象限领导者（Leader），强调其通过单一操作系统与 ASIC 加速实现网络与安全融合的能力。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>Gartner SASE 魔力象限</h3>
+                    <p>在 2026 Gartner SASE Platforms 魔力象限中，Fortinet 被评为“挑战者（Challenger）”，其统一 SASE 愿景（SD-WAN + SSE 在同一 OS 上）被认为是主要差异化优势。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Critical Capabilities 领先</h3>
+                    <p>2026 Gartner Critical Capabilities for SASE Platforms 报告中，Fortinet 在“Secure Branch Network Modernization”用例排名第一，“Sovereign SASE”用例排名第二。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="sec-76">
+            <h2>09. FortiOS 7.6 与 Unified SASE 新能力</h2>
+            <p class="section-intro">FortiOS 7.6 是 Fortinet 最新一代操作系统，将 SD-WAN 从独立的广域网优化工具，升级为统一安全访问服务边缘（Unified SASE）的核心底座。关键变化在于：网络、安全、AI 运维、零信任访问共享同一操作系统、同一策略引擎、同一数据模型。</p>
+
+            <h3>Fortinet Unified SASE：SD-WAN + SSE 融合</h3>
+            <p>传统 SASE 市场把 SD-WAN 与 SSE（安全服务边缘，包括 SWG、CASB、ZTNA、FWaaS）拆分成不同供应商或不同控制台。Fortinet 的策略是：</p>
+            <ul>
+                <li><strong>同一 OS（FortiOS）：</strong>分支 FortiGate 跑 SD-WAN，云端 / PoP 跑 FortiSASE，策略一致。</li>
+                <li><strong>同一控制台（FortiManager）：</strong>统一编排 SD-WAN overlay、SSE 安全策略、ZTNA 访问规则。</li>
+                <li><strong>同一数据模型：</strong>SD-WAN、SSE、端点、零信任共享遥测、DEM 数据与日志。</li>
+                <li><strong>灵活部署：</strong>既可保留现有 FortiGate 硬件，也可通过 FortiSASE 云服务按需扩展，无需推倒重来。</li>
+            </ul>
+            <p>对企业而言，这降低了“SD-WAN 改造后还要再上一轮 SASE”的重复投资，也避免了多个供应商之间的策略碎片。</p>
+
+            <h3>FortiAI 与 FortiAI-Assist</h3>
+            <p>Fortinet 将原先的 Fortinet Advisor 统一更名为 <strong>FortiAI</strong>，并在 FortiOS 7.6 中深度集成到 FortiManager 与 FortiAnalyzer：</p>
+            <ul>
+                <li>自然语言查询：IT 人员可用对话方式询问配置、监控、故障、文档。</li>
+                <li>配置辅助与自动化：AI 协助生成策略、验证部署、推荐优化。</li>
+                <li>事件研判：结合 FortiAnalyzer 数据湖，快速定位 SD-WAN 链路或安全事件根因。</li>
+            </ul>
+
+            <h3>FortiAIOps for SD-WAN</h3>
+            <p>FortiAIOps 是面向 Fortinet 网络的 AI/ML 运维平台。在 SD-WAN 场景中，它提供：</p>
+            <ul>
+                <li>SD-WAN 接口健康、SLA 趋势、应用流量的可视化与异常检测。</li>
+                <li>基于历史数据预测链路退化，提前触发策略调整。</li>
+                <li>将 WLAN、LAN、SD-WAN、LTE/5G 网关的告警统一关联，减少误报和工单量。</li>
+            </ul>
+
+            <h3>Underlay & Application Monitoring Service</h3>
+            <p>这是 FortiOS 7.6 在 SD-WAN 监控层面的重要增强。通过 FortiManager 与 FortiGuard Labs 的 SaaS/云应用数据库，它可以：</p>
+            <ul>
+                <li>监控 ISP 链路、路径、应用三层性能。</li>
+                <li>基于真实应用体验（而不仅是链路通断）做智能选路。</li>
+                <li>让 IT 团队优先处理影响关键业务的网络问题，而不是被大量链路告警淹没。</li>
+            </ul>
+
+            <h3>Overlay-as-a-Service</h3>
+            <p>FortiGate Cloud Advanced 提供 <strong>SD-WAN Overlay-as-a-Service</strong>：企业无需自建 Hub 或管理复杂的 IPSec/BGP 配置，即可通过 SaaS 化控制台快速建立分支互联。特点包括：</p>
+            <ul>
+                <li>Fortinet 托管的地理冗余 Hub。</li>
+                <li>点击式策略配置，降低技术门槛。</li>
+                <li>减少自建 Hub 的硬件、机房、运维成本。</li>
+            </ul>
+
+            <h3>Universal ZTNA 与分布式执行</h3>
+            <p>FortiOS 7.6 将零信任网络访问（ZTNA）内建到 SD-WAN 平台中：</p>
+            <ul>
+                <li>基于用户身份、设备 posture、应用风险，动态决定是否允许访问。</li>
+                <li>每 60 秒进行一次 posture 检查，持续验证而非一次性认证。</li>
+                <li>支持 50+ 端点属性，实现精细化访问控制。</li>
+                <li>流量在最合适的边缘（分支、云端、PoP）解密与检测，避免“ hair-pinning”绕回数据中心。</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>总结 7.6 核心升级：</strong>从“SD-WAN 是选路工具”升级为“SD-WAN 是统一安全网络底座”，整合了 AI 辅助运维、SSE/SASE、ZTNA、DEM、Overlay-as-a-Service 与 ASIC 加速的分布式安全执行。</p>
+            </div>
+        </section>
         <section class="section" id="sec-auto">
-            <h2>08. 汽车 / 制造业应用启示</h2>
+            <h2>10. 汽车 / 制造业应用启示</h2>
             <p class="section-intro">对于汽车与零部件制造行业，SD-WAN 不仅是网络优化工具，更是支撑工厂数字化、供应链协同、远程办公与全球研发协作的关键基础设施。</p>
 
             <div class="card-grid">
@@ -782,15 +909,65 @@
                 </div>
             </div>
 
+            <h3>OT 环境：FortiGate Rugged 60F 加固方案</h3>
+            <p>汽车制造工厂的产线、仓库、室外堆场、变电站等 OT 环境，对网络设备有特殊要求：宽温、抗振动、抗电磁干扰、DIN 导轨安装、直流供电等。Fortinet 推出了首款面向 OT 环境的 SD-WAN 设备 <strong>FortiGate Rugged 60F</strong>：</p>
+            <ul>
+                <li>通过 IEC 61850-3 与 IEEE 1613 认证，适用于电力、工业控制场景。</li>
+                <li>在紧凑机身内集成 SD-WAN、高级路由、NGFW 三大能力。</li>
+                <li>支持 DIN 导轨或标准机架安装，内置 LTE 可选。</li>
+                <li>能在极端温度、湿度、振动、EMI 环境下稳定运行。</li>
+            </ul>
+            <p>典型案例：<strong>Sullair Argentina</strong> 在关键基础设施资产网络中部署 Fortinet Secure SD-WAN，实现了 OT 环境的可靠互联与安全防护。汽车企业可参考此模式，将 Rugged 60F 用于冲压、焊装、涂装、总装等产线边缘或远程仓库。</p>
+
             <h3>与 AI/Copilot 的协同</h3>
-            <p>随着 Microsoft 365 Copilot 等 AI 助手在汽车企业落地，员工对 Teams、SharePoint、OneDrive 的访问体验直接影响生产力。SD-WAN 可以基于应用识别把 Copilot 相关流量优先调度到质量最好的链路，并通过 DIA 本地出网，避免回传总部带来的延迟。</p>
+            <p>随着 Microsoft 365 Copilot 等 AI 助手在汽车企业落地，员工对 Teams、SharePoint、OneDrive 的访问体验直接影响生产力。SD-WAN 可以基于应用识别把 Copilot 相关流量优先调度到质量最好的链路，并通过 DIA 本地出网，避免回传总部带来的延迟。FortiOS 7.6 的 DEM 功能还能持续监控这些 AI 应用的终端体验，帮助 IT 在问题影响业务前主动修复。</p>
         </section>
 
         <section class="section" id="sec-videos">
-            <h2>09. 视频学习资源</h2>
+            <h2>11. 视频学习资源</h2>
             <p class="section-intro">以下视频来自 Fortinet 官方及技术社区，覆盖快速配置、官方演示、架构深度解析与 SD-Branch 概念，可按需观看。</p>
 
             <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/1dt8lV2bzQ0" title="Fortinet Secure SD-WAN 7.6 – a solution overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet Secure SD-WAN 7.6 – a solution overview</h4>
+                        <p>官方 7.6 解决方案概览，涵盖 FortiAI 辅助、Unified SASE、DEM 与新一代应用感知选路。</p>
+                        <div class="meta"><span>🎬 官方 7.6</span><span>约 10 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/x7Mu256ukHo" title="Integrating Fortinet Secure SD-WAN and FortiSASE (SSE)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Integrating Fortinet Secure SD-WAN and FortiSASE</h4>
+                        <p>演示如何在几分钟内把 Secure SD-WAN 扩展到 FortiSASE，实现统一安全策略与混合办公接入。</p>
+                        <div class="meta"><span>🌐 SASE 融合</span><span>约 8 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/z8CS4hJLdhY" title="SD-WAN Overlay-as-a-Service" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>SD-WAN Overlay-as-a-Service</h4>
+                        <p>FortiGate Cloud 提供的 SaaS 化 SD-WAN 叠加网，无需自建 Hub，快速实现分支互联。</p>
+                        <div class="meta"><span>☁️ OaaS</span><span>约 5 分钟</span></div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/b2CWWBua7no" title="Fortinet Secure SD-WAN customer panel – IHG, Itau & Grupo Bimbo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fortinet Secure SD-WAN 客户 panel</h4>
+                        <p>IHG、Itau、Grupo Bimbo 等企业分享在数千个站点部署 Fortinet SD-WAN 的经验与业务收益。</p>
+                        <div class="meta"><span>💼 客户案例</span><span>约 35 分钟</span></div>
+                    </div>
+                </div>
                 <div class="video-card">
                     <div class="video-wrapper">
                         <iframe src="https://www.youtube-nocookie.com/embed/WyxwCgWgF2E" title="Fortinet Tutorial: Setup SDWAN In Under 5 Minutes!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -842,7 +1019,7 @@
         </section>
 
         <section class="section" id="sec-summary">
-            <h2>10. 总结与建议</h2>
+            <h2>12. 总结与建议</h2>
             <p class="section-intro">Fortinet Secure SD-WAN 的本质是把“网络连接”与“安全防御”合并到同一平台，让企业既能享受混合链路的成本优势，又不会因为分支本地出网而牺牲安全性。</p>
 
             <div class="highlight">
@@ -860,13 +1037,22 @@
         </section>
 
         <section class="section" id="sec-references">
-            <h2>11. 参考来源</h2>
+            <h2>13. 参考来源</h2>
             <ul>
                 <li>Fortinet, <em>Secure SD-WAN Architecture Components</em>, Reference Architecture PDF.</li>
                 <li>Fortinet, <em>Secure SD-WAN Reference Architecture</em>, White Paper.</li>
-                <li>Fortinet, <em>SD-WAN / SD-Branch Architecture for Enterprise</em>, 7.0 Technical Guide.</li>
-                <li>Fortinet Docs, <em>SD-WAN designs and architectures</em> (FortiGate / FortiOS 7.6.4).</li>
-                <li>Fortinet, <em>SD-WAN Architecture for Enterprise</em> (FortiOS 7.2.0 / 7.6.0).</li>
+                <li>Fortinet, <em>SD-WAN / SD-Branch Architecture for Enterprise</em>, 7.0 / 7.6 Technical Guide.</li>
+                <li>Fortinet Docs, <em>SD-WAN designs and architectures</em> (FortiGate / FortiOS 7.6.6).</li>
+                <li>Fortinet, <em>What is Secure SD-WAN</em>, Product Page (FortiOS 7.6).</li>
+                <li>Fortinet, <em>Operational Technology Needs a Specialized SD-WAN Solution</em>, Blog (FortiGate Rugged 60F).</li>
+                <li>Fortinet, <em>FortiAIOps</em> and <em>SD-WAN Monitoring</em>, Document Library.</li>
+                <li>Gartner, <em>Magic Quadrant for SD-WAN / WAN Edge Infrastructure</em>, multiple years.</li>
+                <li>Gartner, <em>Magic Quadrant for SASE Platforms</em>, 2026.</li>
+                <li>SDxCentral, <em>Fortinet unleashes FortiOS 7.6 with SASE, genAI and platform updates</em>, 2024.</li>
+                <li>YouTube: Fortinet Secure SD-WAN 7.6 – a solution overview (Fortinet).</li>
+                <li>YouTube: Integrating Fortinet Secure SD-WAN and FortiSASE (Fortinet).</li>
+                <li>YouTube: SD-WAN Overlay-as-a-Service (Fortinet).</li>
+                <li>YouTube: Fortinet Secure SD-WAN customer panel – IHG, Itau & Grupo Bimbo (Fortinet).</li>
                 <li>YouTube: Fortinet Tutorial: Setup SDWAN In Under 5 Minutes! (Firewalls.com).</li>
                 <li>YouTube: Fortinet Secure SD-WAN 7.2 Demo (Fortinet).</li>
                 <li>YouTube: Fortinet SD-WAN Architecture & Demo (Tech Field Day).</li>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 世界杯总结 | Sam 的球迷报告</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e1a;--card:#131829;--card2:#1a2038;
+  --accent:#4fc3f7;--accent2:#29b6f6;
+  --arg1:#75aadb;--arg2:#ffffff;
+  --gold:#ffd54f;--silver:#b0bec5;--bronze:#cd7f32;
+  --text:#e0e0e0;--text2:#90a4ae;
+  --green:#66bb6a;--red:#ef5350;
+  --border:rgba(255,255,255,0.06);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  background:linear-gradient(135deg,#0a0e1a 0%,#0d1b3e 30%,#1a3a5c 60%,#75aadb 100%)}
+.hero::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(117,170,219,0.03) 60px,rgba(117,170,219,0.03) 120px);
+  animation:stripe 20s linear infinite}
+@keyframes stripe{from{transform:translateX(0)}to{transform:translateX(120px)}}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:2rem}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-2px;
+  background:linear-gradient(135deg,#fff 0%,#75aadb 50%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:0.5rem;text-shadow:0 0 60px rgba(117,170,219,0.3)}
+.hero .subtitle{font-size:clamp(1rem,3vw,1.5rem);color:var(--arg2);opacity:0.85;margin-bottom:1rem}
+.hero .flag-bar{display:flex;justify-content:center;gap:0;margin:1.5rem auto;width:200px;height:6px;border-radius:3px;overflow:hidden}
+.hero .flag-bar span{flex:1}
+.hero .flag-bar span:nth-child(1){background:#75aadb}
+.hero .flag-bar span:nth-child(2){background:#fff}
+.hero .flag-bar span:nth-child(3){background:#75aadb}
+.hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-top:2rem}
+.hero .meta-item{background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;padding:0.75rem 1.25rem;font-size:0.9rem}
+.hero .meta-item strong{color:var(--accent);display:block;font-size:1.2rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);
+  animation:bounce 2s infinite;font-size:0.85rem}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+/* Section */
+.section{padding:4rem 0}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:0.5rem;
+  display:flex;align-items:center;gap:0.75rem}
+.section-title .emoji{font-size:1.3em}
+.section-desc{color:var(--text2);margin-bottom:2rem;font-size:1rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 auto;max-width:1200px}
+
+/* Cards */
+.card-grid{display:grid;gap:1.25rem}
+.card-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card-grid.cols-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;
+  transition:transform 0.3s,box-shadow 0.3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.card.highlight{border-color:var(--arg1);background:linear-gradient(135deg,var(--card) 0%,rgba(117,170,219,0.08) 100%)}
+.card-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text2);margin-bottom:0.5rem}
+.card-value{font-size:1.8rem;font-weight:800;margin-bottom:0.25rem}
+.card-sub{font-size:0.85rem;color:var(--text2)}
+
+/* Podium */
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:1rem;margin:2rem 0;flex-wrap:wrap}
+.podium-item{text-align:center;border-radius:16px 16px 0 0;padding:1.5rem 1rem;min-width:140px;
+  transition:transform 0.3s}
+.podium-item:hover{transform:scale(1.05)}
+.podium-item.first{background:linear-gradient(180deg,rgba(255,213,79,0.15),rgba(255,213,79,0.02));
+  border:1px solid rgba(255,213,79,0.2);min-height:220px;order:2}
+.podium-item.second{background:linear-gradient(180deg,rgba(176,190,197,0.12),rgba(176,190,197,0.02));
+  border:1px solid rgba(176,190,197,0.15);min-height:180px;order:1}
+.podium-item.third{background:linear-gradient(180deg,rgba(205,127,50,0.12),rgba(205,127,50,0.02));
+  border:1px solid rgba(205,127,50,0.15);min-height:150px;order:3}
+.podium-rank{font-size:2.5rem;margin-bottom:0.5rem}
+.podium-team{font-size:1.1rem;font-weight:700;margin-bottom:0.25rem}
+.podium-detail{font-size:0.8rem;color:var(--text2)}
+
+/* Table */
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.9rem}
+th{background:var(--card2);color:var(--accent);font-weight:600;text-align:left;padding:0.75rem 1rem;
+  position:sticky;top:0;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px}
+td{padding:0.65rem 1rem;border-bottom:1px solid var(--border)}
+tr:hover td{background:rgba(255,255,255,0.02)}
+tr.highlight-row td{background:rgba(117,170,219,0.06);font-weight:600}
+.champion-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#ffb300);color:#000;
+  font-size:0.7rem;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:6px}
+
+/* Argentina Section */
+.arg-section{background:linear-gradient(135deg,rgba(117,170,219,0.05) 0%,rgba(255,255,255,0.02) 100%);
+  border:1px solid rgba(117,170,219,0.15);border-radius:20px;padding:2rem;margin:2rem 0}
+.arg-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.arg-header h3{font-size:1.4rem;font-weight:800;
+  background:linear-gradient(90deg,var(--arg1),#fff,var(--arg1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.arg-stripe{height:4px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--arg1) 0px,var(--arg1) 20px,#fff 20px,#fff 40px);margin-bottom:1.5rem}
+
+/* Messi Section */
+.messi-card{background:linear-gradient(135deg,var(--card) 0%,rgba(117,170,219,0.12) 100%);
+  border:2px solid var(--arg1);border-radius:20px;padding:2rem;position:relative;overflow:hidden}
+.messi-card::before{content:'10';position:absolute;right:-10px;top:-20px;font-size:8rem;font-weight:900;
+  color:rgba(117,170,219,0.06);line-height:1;pointer-events:none}
+.messi-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:1.5rem 0}
+.messi-stat{text-align:center;padding:1rem;background:rgba(255,255,255,0.04);border-radius:12px}
+.messi-stat .num{font-size:2rem;font-weight:800;color:var(--arg1)}
+.messi-stat .label{font-size:0.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+
+/* Stats bar */
+.stat-bar{display:flex;align-items:center;gap:0.75rem;margin:0.5rem 0}
+.stat-bar .bar-label{min-width:80px;font-size:0.85rem;color:var(--text2)}
+.stat-bar .bar-track{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.stat-bar .bar-fill{height:100%;border-radius:4px;transition:width 1.5s ease}
+.stat-bar .bar-val{min-width:40px;text-align:right;font-size:0.85rem;font-weight:600}
+
+/* Timeline */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:1.5rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:8px;width:12px;height:12px;
+  border-radius:50%;border:2px solid var(--arg1);background:var(--bg)}
+.timeline-item.win::before{background:var(--green);border-color:var(--green)}
+.timeline-item.loss::before{background:var(--red);border-color:var(--red)}
+.timeline-round{font-size:0.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+.timeline-match{font-weight:600;margin:0.25rem 0}
+.timeline-score{font-size:1.1rem;font-weight:800}
+.timeline-score.win{color:var(--green)}
+.timeline-score.loss{color:var(--red)}
+
+/* Records */
+.record-item{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);
+  border-radius:12px;border:1px solid var(--border);margin-bottom:0.75rem;transition:transform 0.2s}
+.record-item:hover{transform:translateX(4px)}
+.record-icon{font-size:1.5rem;min-width:40px;text-align:center}
+.record-text{flex:1}
+.record-text strong{color:var(--accent)}
+
+/* Final match card */
+.final-card{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  border:1px solid rgba(79,195,247,0.2);border-radius:20px;padding:2.5rem;text-align:center;margin:2rem 0}
+.final-vs{display:flex;align-items:center;justify-content:center;gap:2rem;margin:1.5rem 0;flex-wrap:wrap}
+.final-team{text-align:center}
+.final-team .name{font-size:1.3rem;font-weight:800;margin-top:0.5rem}
+.final-team .flag{font-size:3rem}
+.final-score-box{font-size:3rem;font-weight:900;color:var(--accent);
+  text-shadow:0 0 30px rgba(79,195,247,0.3)}
+.final-aet{font-size:0.9rem;color:var(--gold);margin-top:0.25rem}
+.final-scorer{margin-top:1rem;font-size:1rem;color:var(--text2)}
+.final-scorer strong{color:var(--gold)}
+
+/* Key moments */
+.moment-card{background:var(--card);border-radius:12px;padding:1.25rem;border:1px solid var(--border);
+  margin-bottom:1rem;display:flex;gap:1rem;align-items:flex-start}
+.moment-card .moment-icon{font-size:1.5rem;min-width:40px;text-align:center;padding-top:2px}
+.moment-card .moment-text{flex:1}
+.moment-card .moment-title{font-weight:700;margin-bottom:0.25rem}
+.moment-card .moment-desc{font-size:0.85rem;color:var(--text2)}
+
+/* Awards */
+.award-row{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);
+  border-radius:12px;border:1px solid var(--border);margin-bottom:0.75rem}
+.award-medal{font-size:2rem;min-width:50px;text-align:center}
+.award-info{flex:1}
+.award-name{font-weight:700;font-size:1.1rem}
+.award-winner{color:var(--accent);font-size:0.95rem}
+.award-detail{color:var(--text2);font-size:0.8rem}
+
+/* Footer */
+footer{text-align:center;padding:3rem 1.5rem;color:var(--text2);font-size:0.85rem;
+  border-top:1px solid var(--border)}
+footer .love{color:var(--arg1)}
+
+/* Tabs */
+.tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab-btn{padding:0.5rem 1.25rem;border-radius:20px;border:1px solid var(--border);
+  background:transparent;color:var(--text2);cursor:pointer;font-size:0.85rem;transition:all 0.3s}
+.tab-btn.active,.tab-btn:hover{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero{min-height:80vh}
+  .section{padding:2.5rem 0}
+  .card{padding:1.25rem}
+  .podium{flex-direction:column;align-items:center}
+  .podium-item{order:unset!important;min-height:auto!important;width:100%;max-width:300px;border-radius:12px}
+  .podium-item.first{order:unset}
+  .final-vs{gap:1rem}
+  .final-team .flag{font-size:2rem}
+  .final-score-box{font-size:2rem}
+  .messi-stats{grid-template-columns:repeat(2,1fr)}
+  .arg-section{padding:1.25rem}
+  .messi-card{padding:1.25rem}
+}
+
+/* Animations */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s,transform 0.6s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.75rem 1.5rem;
+  background:rgba(10,14,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform 0.3s}
+.nav.show{transform:translateY(0)}
+.nav-brand{font-weight:800;font-size:1rem;display:flex;align-items:center;gap:0.5rem}
+.nav-links{display:flex;gap:1rem}
+.nav-links a{color:var(--text2);font-size:0.85rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* Counter animation */
+.counter{display:inline-block}
+
+/* Trophy animation */
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 5px rgba(255,213,79,0.3))}50%{filter:drop-shadow(0 0 20px rgba(255,213,79,0.6))}}
+.trophy-glow{animation:glow 3s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">⚽ 2026 World Cup</div>
+  <div class="nav-links">
+    <a href="#summary">总结</a>
+    <a href="#argentina">阿根廷</a>
+    <a href="#messi">梅西</a>
+    <a href="#history">历史</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="flag-bar"><span></span><span></span><span></span></div>
+    <h1>2026 FIFA 世界杯</h1>
+    <p class="subtitle">🇺🇸 美国 · 🇨🇦 加拿大 · 🇲🇽 墨西哥</p>
+    <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem">48支球队 · 104场比赛 · 16座城市<br>首届48队制世界杯 · 2026年6月11日 - 7月19日</p>
+    <div class="meta">
+      <div class="meta-item"><strong>🏆 西班牙</strong>第2次夺冠</div>
+      <div class="meta-item"><strong>🥈 阿根廷</strong>卫冕失败</div>
+      <div class="meta-item"><strong>🥉 英格兰</strong>6-4胜法国</div>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ 向下滚动查看详情</div>
+</section>
+
+<!-- Section: 2026 Summary -->
+<section class="section" id="summary">
+  <div class="container">
+    <div class="section-title"><span class="emoji">🏆</span> 2026 世界杯总结</div>
+    <p class="section-desc">首届48队制世界杯，在美国、加拿大、墨西哥三国联办下圆满落幕。西班牙时隔16年再捧大力神杯。</p>
+
+    <!-- Final Match -->
+    <div class="final-card fade-up">
+      <div class="card-label" style="color:var(--gold);font-size:0.85rem;letter-spacing:2px">🏟️ 决赛 · 2026年7月19日 · 纽约大都会人寿体育场</div>
+      <div class="final-vs">
+        <div class="final-team">
+          <div class="flag">🇦🇷</div>
+          <div class="name">阿根廷</div>
+        </div>
+        <div>
+          <div class="final-score-box">0 - 1</div>
+          <div class="final-aet">加时赛 · 106'</div>
+        </div>
+        <div class="final-team">
+          <div class="flag">🇪🇸</div>
+          <div class="name">西班牙</div>
+        </div>
+      </div>
+      <div class="final-scorer">⚽ 进球：<strong>费兰·托雷斯</strong> 106'（尼科·威廉斯助攻）</div>
+      <p style="color:var(--text2);font-size:0.85rem;margin-top:1rem">
+        常规时间0-0，恩佐·费尔南德斯第93分钟两黄变一红被罚下，阿根廷少打一人进入加时。<br>
+        加时赛第106分钟，尼科·威廉斯左路传中，罗德里头球摆渡，费兰·托雷斯凌空抽射破门。<br>
+        阿根廷全场仅2次射门0射正，25次犯规6黄1红。马丁内斯决赛11次扑救创世界杯决赛纪录。
+      </p>
+      <div style="display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap">
+        <div style="text-align:center"><div style="font-size:0.75rem;color:var(--text2)">控球率</div><div style="font-weight:700">35% - <span style="color:var(--accent)">65%</span></div></div>
+        <div style="text-align:center"><div style="font-size:0.75rem;color:var(--text2)">射门</div><div style="font-weight:700">2 - <span style="color:var(--accent)">20</span></div></div>
+        <div style="text-align:center"><div style="font-size:0.75rem;color:var(--text2)">射正</div><div style="font-weight:700">0 - <span style="color:var(--accent)">12</span></div></div>
+        <div style="text-align:center"><div style="font-size:0.75rem;color:var(--text2)">犯规</div><div style="font-weight:700;color:var(--red)">25 - 6</div></div>
+      </div>
+    </div>
+
+    <!-- Podium -->
+    <div class="podium fade-up">
+      <div class="podium-item second">
+        <div class="podium-rank">🥈</div>
+        <div class="podium-team">🇦🇷 阿根廷</div>
+        <div class="podium-detail">亚军 · 卫冕冠军</div>
+      </div>
+      <div class="podium-item first">
+        <div class="podium-rank trophy-glow">🏆</div>
+        <div class="podium-team" style="color:var(--gold)">🇪🇸 西班牙</div>
+        <div class="podium-detail">冠军 · 第2次捧杯</div>
+      </div>
+      <div class="podium-item third">
+        <div class="podium-rank">🥉</div>
+        <div class="podium-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</div>
+        <div class="podium-detail">季军 · 6-4胜法国</div>
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <h3 style="font-size:1.2rem;margin:2rem 0 1rem">🏅 个人奖项</h3>
+    <div class="card-grid cols-2">
+      <div class="award-row fade-up">
+        <div class="award-medal">🥇</div>
+        <div class="award-info">
+          <div class="award-name">金球奖 (Golden Ball)</div>
+          <div class="award-winner">罗德里 🇪🇸</div>
+          <div class="award-detail">西班牙中场核心，决赛86次传球成功率92%，本届最佳防守型中场</div>
+        </div>
+      </div>
+      <div class="award-row fade-up">
+        <div class="award-medal">🥈</div>
+        <div class="award-info">
+          <div class="award-name">银球奖 (Silver Ball)</div>
+          <div class="award-winner">梅西 🇦🇷</div>
+          <div class="award-detail">8球4助攻，率阿根廷杀入决赛，世界杯历史出场/助攻纪录保持者</div>
+        </div>
+      </div>
+      <div class="award-row fade-up">
+        <div class="award-medal">🥉</div>
+        <div class="award-info">
+          <div class="award-name">铜球奖 (Bronze Ball)</div>
+          <div class="award-winner">姆巴佩 🇫🇷</div>
+          <div class="award-detail">10球4助攻，金靴+世界杯历史射手王（22球），法国第四名</div>
+        </div>
+      </div>
+      <div class="award-row fade-up">
+        <div class="award-medal">👟</div>
+        <div class="award-info">
+          <div class="award-name">金靴奖 (Golden Boot)</div>
+          <div class="award-winner">姆巴佩 🇫🇷 — 10球</div>
+          <div class="award-detail">连续两届金靴，历史首人。银靴：梅西(8球)，铜靴：哈兰德/贝林厄姆(7球)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Moments -->
+    <h3 style="font-size:1.2rem;margin:2rem 0 1rem">✨ 本届经典时刻</h3>
+    <div class="moment-card fade-up">
+      <div class="moment-icon">💥</div>
+      <div class="moment-text">
+        <div class="moment-title">梅西半决赛帽子戏法 — 阿根廷 2-1 英格兰</div>
+        <div class="moment-desc">7月15日亚特兰大，梅西在半决赛上演职业生涯首个世界杯帽子戏法，率阿根廷淘汰英格兰挺进决赛</div>
+      </div>
+    </div>
+    <div class="moment-card fade-up">
+      <div class="moment-icon">🔴</div>
+      <div class="moment-text">
+        <div class="moment-title">恩佐决赛第93分钟红牌 — 改变冠军走向</div>
+        <div class="moment-desc">恩佐对库巴西的飞铲被判两黄变一红，阿根廷少打一人进入加时，成为决赛转折点</div>
+      </div>
+    </div>
+    <div class="moment-card fade-up">
+      <div class="moment-icon">🤯</div>
+      <div class="moment-text">
+        <div class="moment-title">英格兰 6-4 法国 — 10球大战</div>
+        <div class="moment-desc">三四名决赛打出10球，萨卡帽子戏法，姆巴佩梅开二度。英格兰半场4-0领先，法国下半场追至4-4，贝林厄姆补时绝杀</div>
+      </div>
+    </div>
+    <div class="moment-card fade-up">
+      <div class="moment-icon">⭐</div>
+      <div class="moment-text">
+        <div class="moment-title">佛得角 0-0 逼平西班牙 — 历史性的时刻</div>
+        <div class="moment-desc">首次参加世界杯的佛得角用教科书级防守逼平夺冠热门西班牙，创造队史最佳战绩</div>
+      </div>
+    </div>
+    <div class="moment-card fade-up">
+      <div class="moment-icon">📊</div>
+      <div class="moment-text">
+        <div class="moment-title">姆巴佩 22 球超越梅西 — 世界杯历史射手王</div>
+        <div class="moment-desc">姆巴佩在三四名决赛梅开二度后，以22球超越梅西的21球，成为世界杯历史总射手王。年仅27岁的他还有可能继续扩大纪录</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Section: Argentina & Messi -->
+<section class="section" id="argentina">
+  <div class="container">
+    <div class="section-title"><span class="emoji">🇦🇷</span> 阿根廷征途</div>
+    <p class="section-desc">卫冕冠军阿根廷的2026世界杯之旅，从小组赛到决赛的完整记录。</p>
+
+    <div class="arg-section fade-up">
+      <div class="arg-stripe"></div>
+      <div class="arg-header">
+        <h3>🇦🇷 潘帕斯雄鹰 · 完整战绩</h3>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item win">
+          <div class="timeline-round">小组赛 J组 · 6月16日 · 堪萨斯城</div>
+          <div class="timeline-match">阿根廷 3-0 阿尔及利亚</div>
+          <div class="timeline-score win">✅ 开门红</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">小组赛 J组 · 6月22日 · 达拉斯</div>
+          <div class="timeline-match">阿根廷 1-0 奥地利</div>
+          <div class="timeline-score win">✅ 小胜晋级</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">小组赛 J组 · 6月28日 · 旧金山</div>
+          <div class="timeline-match">约旦 1-3 阿根廷</div>
+          <div class="timeline-score win">✅ 小组头名出线</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">32强赛 · 7月3日 · 迈阿密</div>
+          <div class="timeline-match">阿根廷 3-2 佛得角 (加时)</div>
+          <div class="timeline-score win">✅ 惊险过关，佛得角顽强抵抗</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">16强赛 · 7月7日 · 亚特兰大</div>
+          <div class="timeline-match">阿根廷 3-2 埃及</div>
+          <div class="timeline-score win">✅ 激战晋级八强</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">四分之一决赛 · 7月12日 · 堪萨斯城</div>
+          <div class="timeline-match">阿根廷 3-1 瑞士 (加时)</div>
+          <div class="timeline-score win">✅ 挺进四强</div>
+        </div>
+        <div class="timeline-item win">
+          <div class="timeline-round">半决赛 · 7月15日 · 亚特兰大</div>
+          <div class="timeline-match">阿根廷 2-1 英格兰</div>
+          <div class="timeline-score win">✅ 梅西帽子戏法！杀入决赛</div>
+        </div>
+        <div class="timeline-item loss">
+          <div class="timeline-round">决赛 · 7月19日 · 纽约</div>
+          <div class="timeline-match">阿根廷 0-1 西班牙 (加时)</div>
+          <div class="timeline-score loss">❌ 恩佐红牌+加时失球，卫冕失败</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:120px;text-align:center">
+          <div class="card-label">总战绩</div>
+          <div class="card-value" style="color:var(--green)">7胜 1负</div>
+        </div>
+        <div class="card" style="flex:1;min-width:120px;text-align:center">
+          <div class="card-label">进球 / 失球</div>
+          <div class="card-value">16 / 8</div>
+        </div>
+        <div class="card" style="flex:1;min-width:120px;text-align:center">
+          <div class="card-label">最终排名</div>
+          <div class="card-value" style="color:var(--silver)">🥈 亚军</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Messi Section -->
+<section class="section" id="messi">
+  <div class="container">
+    <div class="section-title"><span class="emoji">🐐</span> 梅西 · 最后一舞</div>
+    <p class="section-desc">39岁，第6届世界杯，28场出场，21球12助攻。传奇的终章。</p>
+
+    <div class="messi-card fade-up">
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
+          <span style="font-size:3rem">🇦🇷</span>
+          <div>
+            <div style="font-size:1.5rem;font-weight:800">利昂内尔·梅西</div>
+            <div style="color:var(--arg1);font-size:0.9rem">Lionel Messi · 39岁 · 6届世界杯 · 告别演出</div>
+          </div>
+          <div style="margin-left:auto;background:rgba(117,170,219,0.15);border:1px solid var(--arg1);border-radius:12px;padding:0.5rem 1rem">
+            <span style="font-size:0.75rem;color:var(--text2)">本届奖项</span>
+            <div style="font-weight:700;color:var(--silver)">🥈 银球奖</div>
+          </div>
+        </div>
+
+        <div class="messi-stats">
+          <div class="messi-stat"><div class="num">8</div><div class="label">进球</div></div>
+          <div class="messi-stat"><div class="num">4</div><div class="label">助攻</div></div>
+          <div class="messi-stat"><div class="num">7</div><div class="label">出场</div></div>
+          <div class="messi-stat"><div class="num">28</div><div class="label">历史总出场</div></div>
+          <div class="messi-stat"><div class="num">21</div><div class="label">历史总进球</div></div>
+          <div class="messi-stat"><div class="num">12</div><div class="label">历史总助攻</div></div>
+        </div>
+
+        <h4 style="margin:1.5rem 0 0.75rem;font-size:1rem">📊 六届世界杯征程</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th>年份</th><th>举办地</th><th>年龄</th><th>进球</th><th>助攻</th><th>成绩</th></tr>
+            <tr><td>2006</td><td>🇩🇪 德国</td><td>19</td><td>1</td><td>0</td><td>八强</td></tr>
+            <tr><td>2010</td><td>🇿🇦 南非</td><td>23</td><td>0</td><td>1</td><td>八强</td></tr>
+            <tr><td>2014</td><td>🇧🇷 巴西</td><td>27</td><td>4</td><td>2</td><td>🥈 亚军 · 金球奖</td></tr>
+            <tr><td>2018</td><td>🇷🇺 俄罗斯</td><td>31</td><td>1</td><td>2</td><td>16强</td></tr>
+            <tr><td>2022</td><td>🇶🇦 卡塔尔</td><td>35</td><td>7</td><td>3</td><td>🏆 冠军 · 金球奖</td></tr>
+            <tr class="highlight-row"><td>2026</td><td>🇺🇸🇨🇦🇲🇽</td><td>39</td><td>8</td><td>4</td><td>🥈 亚军 · 银球奖</td></tr>
+          </table>
+        </div>
+
+        <h4 style="margin:1.5rem 0 0.75rem;font-size:1rem">🏅 梅西保持的世界杯纪录</h4>
+        <div class="record-item"><div class="record-icon">📋</div><div class="record-text"><strong>出场次数</strong>：28场 — 世界杯历史第一</div></div>
+        <div class="record-item"><div class="record-icon">🎯</div><div class="record-text"><strong>助攻次数</strong>：12次 — 世界杯历史第一</div></div>
+        <div class="record-item"><div class="record-icon">⏱️</div><div class="record-text"><strong>出场时间</strong>：历史最多</div></div>
+        <div class="record-item"><div class="record-icon">🏆</div><div class="record-text"><strong>胜场数</strong>：23场 — 超越克洛泽，历史第一</div></div>
+        <div class="record-item"><div class="record-icon">🔄</div><div class="record-text"><strong>参赛届数</strong>：6届 — 并列历史最多</div></div>
+        <div class="record-item"><div class="record-icon">🎩</div><div class="record-text"><strong>金球奖</strong>：2次（2014、2022）— 历史唯一两次获得</div></div>
+
+        <p style="margin-top:1.5rem;color:var(--text2);font-size:0.9rem;font-style:italic">
+          "西班牙球员列队致敬梅西领取亚军奖牌" — 赛后，39岁的梅西在颁奖仪式上含泪走过西班牙球员组成的荣誉通道。
+          赛后采访中，梅西确认这将是他的最后一届世界杯。六届赛事，一座冠军，无数纪录。传奇落幕。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Section: History -->
+<section class="section" id="history">
+  <div class="container">
+    <div class="section-title"><span class="emoji">📜</span> 世界杯历史回顾</div>
+    <p class="section-desc">从1930年到2026年，23届世界杯的荣耀与传奇。</p>
+
+    <!-- Champions count -->
+    <h3 style="font-size:1.2rem;margin-bottom:1rem">🏆 夺冠次数排名</h3>
+    <div class="card-grid cols-4 fade-up">
+      <div class="card" style="text-align:center;border-color:rgba(255,213,79,0.2)">
+        <div style="font-size:2rem">🇧🇷</div>
+        <div class="card-value" style="color:var(--gold)">5</div>
+        <div class="card-sub">巴西<br><span style="font-size:0.75rem">1958/62/70/94/02</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🇩🇪</div>
+        <div class="card-value" style="color:var(--silver)">4</div>
+        <div class="card-sub">德国<br><span style="font-size:0.75rem">1954/74/90/14</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🇮🇹</div>
+        <div class="card-value" style="color:var(--bronze)">4</div>
+        <div class="card-sub">意大利<br><span style="font-size:0.75rem">1934/38/82/06</span></div>
+      </div>
+      <div class="card highlight" style="text-align:center">
+        <div style="font-size:2rem">🇦🇷</div>
+        <div class="card-value" style="color:var(--arg1)">3</div>
+        <div class="card-sub">阿根廷<br><span style="font-size:0.75rem">1978/86/22</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🇪🇸</div>
+        <div class="card-value" style="color:var(--accent)">2</div>
+        <div class="card-sub">西班牙<br><span style="font-size:0.75rem">2010/26</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🇫🇷</div>
+        <div class="card-value">2</div>
+        <div class="card-sub">法国<br><span style="font-size:0.75rem">1998/18</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🇺🇾</div>
+        <div class="card-value">2</div>
+        <div class="card-sub">乌拉圭<br><span style="font-size:0.75rem">1930/50</span></div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div class="card-value">1</div>
+        <div class="card-sub">英格兰<br><span style="font-size:0.75rem">1966</span></div>
+      </div>
+    </div>
+
+    <!-- All Finals Table -->
+    <h3 style="font-size:1.2rem;margin:2.5rem 0 1rem">📋 历届世界杯决赛一览</h3>
+    <div class="table-wrap fade-up">
+      <table>
+        <tr><th>届</th><th>年份</th><th>举办地</th><th>🏆 冠军</th><th>亚军</th><th>比分</th></tr>
+        <tr><td>1</td><td>1930</td><td>🇺🇾 乌拉圭</td><td>乌拉圭</td><td>阿根廷</td><td>4-2</td></tr>
+        <tr><td>2</td><td>1934</td><td>🇮🇹 意大利</td><td>意大利</td><td>捷克斯洛伐克</td><td>2-1 (加时)</td></tr>
+        <tr><td>3</td><td>1938</td><td>🇫🇷 法国</td><td>意大利</td><td>匈牙利</td><td>4-2</td></tr>
+        <tr><td>4</td><td>1950</td><td>🇧🇷 巴西</td><td>乌拉圭</td><td>巴西</td><td>2-1</td></tr>
+        <tr><td>5</td><td>1954</td><td>🇨🇭 瑞士</td><td>西德</td><td>匈牙利</td><td>3-2</td></tr>
+        <tr><td>6</td><td>1958</td><td>🇸🇪 瑞典</td><td>巴西</td><td>瑞典</td><td>5-2</td></tr>
+        <tr><td>7</td><td>1962</td><td>🇨🇱 智利</td><td>巴西</td><td>捷克斯洛伐克</td><td>3-1</td></tr>
+        <tr><td>8</td><td>1966</td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</td><td>英格兰</td><td>西德</td><td>4-2 (加时)</td></tr>
+        <tr><td>9</td><td>1970</td><td>🇲🇽 墨西哥</td><td>巴西</td><td>意大利</td><td>4-1</td></tr>
+        <tr><td>10</td><td>1974</td><td>🇩🇪 西德</td><td>西德</td><td>荷兰</td><td>2-1</td></tr>
+        <tr><td>11</td><td>1978</td><td>🇦🇷 阿根廷</td><td>阿根廷</td><td>荷兰</td><td>3-1 (加时)</td></tr>
+        <tr><td>12</td><td>1982</td><td>🇪🇸 西班牙</td><td>意大利</td><td>西德</td><td>3-1</td></tr>
+        <tr><td>13</td><td>1986</td><td>🇲🇽 墨西哥</td><td>阿根廷</td><td>西德</td><td>3-2</td></tr>
+        <tr><td>14</td><td>1990</td><td>🇮🇹 意大利</td><td>西德</td><td>阿根廷</td><td>1-0</td></tr>
+        <tr><td>15</td><td>1994</td><td>🇺🇸 美国</td><td>巴西</td><td>意大利</td><td>0-0 (点球3-2)</td></tr>
+        <tr><td>16</td><td>1998</td><td>🇫🇷 法国</td><td>法国</td><td>巴西</td><td>3-0</td></tr>
+        <tr><td>17</td><td>2002</td><td>🇯🇵🇰🇷 日韩</td><td>巴西</td><td>德国</td><td>2-0</td></tr>
+        <tr><td>18</td><td>2006</td><td>🇩🇪 德国</td><td>意大利</td><td>法国</td><td>1-1 (点球5-3)</td></tr>
+        <tr><td>19</td><td>2010</td><td>🇿🇦 南非</td><td>西班牙</td><td>荷兰</td><td>1-0 (加时)</td></tr>
+        <tr><td>20</td><td>2014</td><td>🇧🇷 巴西</td><td>德国</td><td>阿根廷</td><td>1-0 (加时)</td></tr>
+        <tr><td>21</td><td>2018</td><td>🇷🇺 俄罗斯</td><td>法国</td><td>克罗地亚</td><td>4-2</td></tr>
+        <tr><td>22</td><td>2022</td><td>🇶🇦 卡塔尔</td><td>阿根廷</td><td>法国</td><td>3-3 (点球4-2)</td></tr>
+        <tr class="highlight-row"><td>23</td><td>2026</td><td>🇺🇸🇨🇦🇲🇽 美加墨</td><td>西班牙 <span class="champion-badge">NEW</span></td><td>阿根廷</td><td>1-0 (加时)</td></tr>
+      </table>
+    </div>
+
+    <!-- Historical Top Scorers -->
+    <h3 style="font-size:1.2rem;margin:2.5rem 0 1rem">⚽ 世界杯历史射手榜 TOP 10</h3>
+    <div class="table-wrap fade-up">
+      <table>
+        <tr><th>排名</th><th>球员</th><th>国家</th><th>进球</th><th>参赛届数</th></tr>
+        <tr><td>🥇 1</td><td><strong>基利安·姆巴佩</strong></td><td>🇫🇷 法国</td><td style="color:var(--gold);font-weight:800">22</td><td>3 (2018/22/26)</td></tr>
+        <tr><td>🥈 2</td><td><strong>利昂内尔·梅西</strong></td><td>🇦🇷 阿根廷</td><td style="color:var(--silver);font-weight:800">21</td><td>6 (2006-26)</td></tr>
+        <tr><td>🥉 3</td><td>米洛斯拉夫·克洛泽</td><td>🇩🇪 德国</td><td>16</td><td>4 (2002-14)</td></tr>
+        <tr><td>4</td><td>罗纳尔多</td><td>🇧🇷 巴西</td><td>15</td><td>4 (1994-06)</td></tr>
+        <tr><td>5</td><td>盖德·穆勒</td><td>🇩🇪 德国</td><td>14</td><td>2 (1970/74)</td></tr>
+        <tr><td>6</td><td>朱斯特·方丹</td><td>🇫🇷 法国</td><td>13</td><td>1 (1958)</td></tr>
+        <tr><td>7</td><td>贝利</td><td>🇧🇷 巴西</td><td>12</td><td>4 (1958-70)</td></tr>
+        <tr><td>8</td><td>桑多尔·科奇什</td><td>🇭🇺 匈牙利</td><td>11</td><td>1 (1954)</td></tr>
+        <tr><td>9</td><td>尤尔根·克林斯曼</td><td>🇩🇪 德国</td><td>11</td><td>3 (1990-98)</td></tr>
+        <tr><td>10</td><td>格雷戈日·拉托</td><td>🇵🇱 波兰</td><td>10</td><td>2 (1974/78)</td></tr>
+      </table>
+    </div>
+
+    <!-- Golden Ball History -->
+    <h3 style="font-size:1.2rem;margin:2.5rem 0 1rem">🏅 历届世界杯金球奖</h3>
+    <div class="table-wrap fade-up">
+      <table>
+        <tr><th>年份</th><th>🥇 金球</th><th>🥈 银球</th><th>🥉 铜球</th></tr>
+        <tr><td>1978 🇦🇷</td><td>肯佩斯 🇦🇷</td><td>保罗·罗西 🇮🇹</td><td>迪尔塞乌 🇧🇷</td></tr>
+        <tr><td>1982 🇪🇸</td><td>保罗·罗西 🇮🇹</td><td>法尔考 🇧🇷</td><td>鲁梅尼格 🇩🇪</td></tr>
+        <tr><td>1986 🇲🇽</td><td>马拉多纳 🇦🇷</td><td>舒马赫 🇩🇪</td><td>埃尔克耶尔 🇩🇰</td></tr>
+        <tr><td>1990 🇮🇹</td><td>斯基拉奇 🇮🇹</td><td>马特乌斯 🇩🇪</td><td>马拉多纳 🇦🇷</td></tr>
+        <tr><td>1994 🇺🇸</td><td>罗马里奥 🇧🇷</td><td>巴乔 🇮🇹</td><td>斯托伊奇科夫 🇧🇬</td></tr>
+        <tr><td>1998 🇫🇷</td><td>罗纳尔多 🇧🇷</td><td>达沃·苏克 🇭🇷</td><td>图拉姆 🇫🇷</td></tr>
+        <tr><td>2002 🇯🇵🇰🇷</td><td>卡恩 🇩🇪</td><td>罗纳尔多 🇧🇷</td><td>洪明甫 🇰🇷</td></tr>
+        <tr style="background:rgba(255,255,255,0.02)"><td>2006 🇩🇪</td><td>齐达内 🇫🇷</td><td>卡纳瓦罗 🇮🇹</td><td>皮尔洛 🇮🇹</td></tr>
+        <tr><td>2010 🇿🇦</td><td>弗兰 🇺🇾</td><td>斯内德 🇳🇱</td><td>比利亚 🇪🇸</td></tr>
+        <tr style="background:rgba(117,170,219,0.04)"><td>2014 🇧🇷</td><td style="color:var(--arg1);font-weight:700">梅西 🇦🇷</td><td>托马斯·穆勒 🇩🇪</td><td>罗本 🇳🇱</td></tr>
+        <tr><td>2018 🇷🇺</td><td>莫德里奇 🇭🇷</td><td>阿扎尔 🇧🇪</td><td>格列兹曼 🇫🇷</td></tr>
+        <tr style="background:rgba(117,170,219,0.06)"><td>2022 🇶🇦</td><td style="color:var(--arg1);font-weight:700">梅西 🇦🇷</td><td>姆巴佩 🇫🇷</td><td>莫德里奇 🇭🇷</td></tr>
+        <tr class="highlight-row"><td>2026 🇺🇸🇨🇦🇲🇽</td><td>罗德里 🇪🇸</td><td style="color:var(--arg1)">梅西 🇦🇷</td><td>姆巴佩 🇫🇷</td></tr>
+      </table>
+    </div>
+
+    <!-- Fun Records -->
+    <h3 style="font-size:1.2rem;margin:2.5rem 0 1rem">🎯 世界杯趣味纪录</h3>
+    <div class="card-grid cols-2">
+      <div class="record-item fade-up"><div class="record-icon">🔥</div><div class="record-text"><strong>单届进球最多</strong>：方丹(法国) 1958年13球，至今无人打破</div></div>
+      <div class="record-item fade-up"><div class="record-icon">⚡</div><div class="record-text"><strong>最快进球</strong>：哈坎·舒克(土耳其) 2002年对阵韩国，开场11秒</div></div>
+      <div class="record-item fade-up"><div class="record-icon">👑</div><div class="record-text"><strong>唯一三夺冠军</strong>：贝利(巴西) 1958/1962/1970，唯一三次捧杯的球员</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🧤</div><div class="record-text"><strong>2026西班牙防线</strong>：8场仅失1球，创世界杯冠军最少失球纪录</div></div>
+      <div class="record-item fade-up"><div class="record-icon">📊</div><div class="record-text"><strong>最悬殊决赛</strong>：1958年巴西5-2瑞典、1970年巴西4-1意大利</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🎯</div><div class="record-text"><strong>2026最大冷门</strong>：佛得角0-0逼平西班牙，世界杯首秀即创造历史</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🏃</div><div class="record-text"><strong>C罗六届进球</strong>：2006-2026连续六届世界杯都有进球，历史唯一</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🇳🇱</div><div class="record-text"><strong>荷兰无冕之王</strong>：3次进入决赛(1974/78/2010)全部屈居亚军</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🎪</div><div class="record-text"><strong>2026进球盛宴</strong>：三四名决赛英格兰6-4法国，10球创世界杯单场进球纪录</div></div>
+      <div class="record-item fade-up"><div class="record-icon">🌍</div><div class="record-text"><strong>2026规模之最</strong>：48队104场，横跨美加墨三国16座城市，史上最大世界杯</div></div>
+    </div>
+
+    <!-- Historical Top Scorers Chart -->
+    <h3 style="font-size:1.2rem;margin:2.5rem 0 1rem">📊 历史射手榜对比</h3>
+    <div class="card fade-up" style="padding:2rem">
+      <div class="stat-bar">
+        <div class="bar-label">姆巴佩 🇫🇷</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),#ffb300)"></div></div>
+        <div class="bar-val" style="color:var(--gold)">22</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">梅西 🇦🇷</div>
+        <div class="bar-track"><div class="bar-fill" style="width:95.5%;background:linear-gradient(90deg,var(--arg1),#a8d8f0)"></div></div>
+        <div class="bar-val" style="color:var(--arg1)">21</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">克洛泽 🇩🇪</div>
+        <div class="bar-track"><div class="bar-fill" style="width:72.7%;background:var(--silver)"></div></div>
+        <div class="bar-val">16</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">罗纳尔多 🇧🇷</div>
+        <div class="bar-track"><div class="bar-fill" style="width:68.2%;background:var(--green)"></div></div>
+        <div class="bar-val">15</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">穆勒 🇩🇪</div>
+        <div class="bar-track"><div class="bar-fill" style="width:63.6%;background:#ff8a65"></div></div>
+        <div class="bar-val">14</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">方丹 🇫🇷</div>
+        <div class="bar-track"><div class="bar-fill" style="width:59.1%;background:#ce93d8"></div></div>
+        <div class="bar-val">13</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">贝利 🇧🇷</div>
+        <div class="bar-track"><div class="bar-fill" style="width:54.5%;background:#4dd0e1"></div></div>
+        <div class="bar-val">12</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">科奇什 🇭🇺</div>
+        <div class="bar-track"><div class="bar-fill" style="width:50%;background:#ffab91"></div></div>
+        <div class="bar-val">11</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">克林斯曼 🇩🇪</div>
+        <div class="bar-track"><div class="bar-fill" style="width:50%;background:#a5d6a7"></div></div>
+        <div class="bar-val">11</div>
+      </div>
+      <div class="stat-bar">
+        <div class="bar-label">拉托 🇵🇱</div>
+        <div class="bar-track"><div class="bar-fill" style="width:45.5%;background:#90a4ae"></div></div>
+        <div class="bar-val">10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>⚽ 2026 FIFA World Cup Summary & History</p>
+  <p style="margin-top:0.5rem">Made with <span class="love">💙🤍</span> for Sam — A passionate Argentina fan</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.3)">数据来源：FIFA官网、ESPN、各体育媒体报道 · 截至2026年7月19日</p>
+  <p style="margin-top:0.75rem"><a href="https://hosamzj.github.io/sites/gold-etf/" style="color:var(--arg1)">🏦 黄金ETF投资助手</a> · <a href="https://hosamzj.github.io/sites/" style="color:var(--text2)">更多站点</a></p>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Nav show on scroll
+let lastScroll=0;
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  const st=window.scrollY;
+  if(st>500){nav.classList.add('show')}else{nav.classList.remove('show')}
+  lastScroll=st;
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

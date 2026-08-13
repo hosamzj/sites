@@ -694,15 +694,23 @@ a { color:var(--gold); text-decoration:none; }
 
 <script>
 function switchTab(id) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
+  // Remove active from all tabs
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  // Remove active from all tab content
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) contents[i].classList.remove('active');
+  // Activate clicked tab
+  var target = document.querySelector('.tab[onclick*="switchTab(\'' + id + '\')"]');
+  if (target) target.classList.add('active');
+  // Show matching content
+  var panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
 }
 // Auto-update date
-const now = new Date();
-const d = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
-const days = ['日','一','二','三','四','五','六'];
+var now = new Date();
+var d = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
+var days = ['日','一','二','三','四','五','六'];
 document.getElementById('today-date').textContent = '📅 ' + d + ' · 周' + days[now.getDay()];
 </script>
 </body>

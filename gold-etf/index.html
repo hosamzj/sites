@@ -347,5 +347,18 @@ a { color:var(--gold); text-decoration:none; }
         短期金价受情绪和政策影响波动大，3年以上才能充分体现黄金的抗通胀价值。别因为一周跌了5%就慌。
       </p>
 </div>
-</div></div><div class="footer">📅 数据更新时间：2026-08-20 08:17 · 阿森每日自动推送 · 数据来源：财联社/汇通财经/同花顺/新浪财经<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div></body>
+</div></div><div class="footer">📅 数据更新时间：2026-08-20 08:17 · 阿森每日自动推送 · 数据来源：财联社/汇通财经/同花顺/新浪财经<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div>
+<script>
+function switchTab(id) {
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) contents[i].classList.remove('active');
+  var target = document.querySelector('.tab[onclick*="switchTab(\'' + id + '\')"]');
+  if (target) target.classList.add('active');
+  var panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
+}
+</script>
+</body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>黄金ETF投资助手 | 每日行情与建议</title>
 <style>
 :root {
@@ -125,598 +126,226 @@ a { color:var(--gold); text-decoration:none; }
 </head>
 <body>
 <div class="container">
-  <!-- Header -->
-  <div class="header">
-    <h1>🏦 黄金ETF投资助手</h1>
-    <div class="sub">每日行情追踪 × 小白也能看懂的投资建议</div>
-    <div class="date-badge" id="today-date">📅 2026年8月19日 · 周三</div>
-  </div>
-
-  <!-- Tabs -->
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('overview')">📊 今日速览</div>
-    <div class="tab" onclick="switchTab('etf')">🏆 ETF对比</div>
-    <div class="tab" onclick="switchTab('guide')">📖 小白指南</div>
-  </div>
-
-  <!-- Tab 1: Overview -->
-  <div class="tab-content active" id="tab-overview">
-
-    <!-- Price Board -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">💰</span> 实时金价</div>
-      <div class="price-grid">
-        <div class="price-item">
-          <div class="label">国际金价 (USD/盎司)</div>
-          <div class="value" style="color:var(--red);">$4,330</div>
-          <div class="change down">▼ -1.17% 8月19日（周三）延续隔夜跌势：<b>现货黄金失守$4,330/盎司（日内跌0.08%）</b>，<b>8/18一夜跳水$49，从$4,416跌至$4,367，跌幅1.10%</b>，<b>COMEX期货结算价$4,366.00（-1.17%，单日跌$51.80）</b>，<b>创7月23日以来最大单日跌幅，终结两连涨</b>；<b>较1月高点$5,318.40回落17.91%</b>，<b>较去年同期+31.77%</b>；<b>现货白银$63.78（-3.01%）/铂金$1,720.5（-2.83%）/钯金$1,290.9（-2.56%）</b>；<b>美元指数99.656（+0.09%）企稳反弹</b>
-        </div>
-        <div class="price-item">
-          <div class="label">国内金价 (CNY/克)</div>
-          <div class="value" style="color:var(--green);">953</div>
-          <div class="change up">▲ +0.06% 8月19日早盘微涨：<b>黄金9999最新953.00元/克（+0.56，+0.06%）</b>，<b>开盘953.00/昨收952.44/最高961.00/最低948.50</b>；<b>大盘实时金价941-941.76元/克（8:19）</b>；<b>黄金T+D 944-947.89元/克</b>；<b>8/18上海金定盘价953.88元/克</b>；<b>银行投资金条964-966元/克</b>；<b>黄金回收925-935元/克</b>；<b>国内金价跟随国际金价回落</b>
-        </div>
-        <div class="price-item">
-          <div class="label">品牌首饰金 (元/克)</div>
-          <div class="value" style="color:var(--gold-light);">~1,339</div>
-          <div class="change up" style="color:var(--gold);">▲ 高位 8月19日品牌金价：<b>周大福·周大生·潮宏基·六福·金至尊1339元/克/老凤祥1335元/克/老庙·周生生·谢瑞麟1338元/克/菜百1302元/克/金大福1332元/克</b>；<b>银行投资金条966元/克 vs 品牌金饰1339元/克 溢价仍达373元/克</b>；<b>水贝批发价~1252元/克 vs 品牌1339元/克 单30克手镯差价近2600元</b>；<b>回收价925-935元/克（一进一出每克亏~414元）</b>；<b>金店价格调整滞后，今日可能跟随下调</b>
-        </div>
-        <div class="price-item">
-          <div class="label">华安ETF净值 518880</div>
-          <div class="value" style="color:var(--green);">9.078</div>
-          <div class="change up" style="color:var(--green);">▲ +0.11% <b>8/18（周二）收盘价9.078元（+0.11%）/成交额跌破33亿元</b>，<b>8/18单位净值9.0901（+0.0257，+0.28%）</b>，<b>累计净值3.4325</b>；<b>最新规模~1030.94亿元（8/17）</b>；<b style="color:var(--red);">⚠ 8/18主力资金净流出8703.99万元（居可比基金前3）/近2天合计流出1.07亿元</b>，<b>已连续3日资金净赎回，区间净流出2.85亿元（参考国泰518800）</b>；<b>近5日净流出~15.35亿元</b>
-        </div>
-      </div>
-    </div>
-
-    <!-- Investment Advice --></div>
-    </div>
-
-    <!-- Investment Advice -->
-    <div class="advice-box">
-      <div class="tag">📌 今日建议</div>
-      <h3>8月19日金价一夜跳水$49！COMEX收$4,366（-1.17%，7月23日以来最大跌幅）！连续第二日收阴线/继续下探概率55%！今晚美联储7月会议纪要成关键催化剂！518880连续3日净赎回+主力连续2日流出！谨慎观望，等$4,300-4,350企稳再分批布局</h3>
-      <p>
-        8月19日（周三）早盘<b>现货黄金失守$4,330/盎司（日内跌0.08%）</b>，<b>8/18一夜跳水$49，从$4,416跌至$4,367，跌幅1.10%</b>，<b>COMEX黄金期货结算价$4,366.00/盎司（-1.17%，单日跌$51.80）</b>，<b>创7月23日以来最大单日跌幅，终结两连涨</b>，<b>连续第二天收阴线</b>。<b>较1月历史高点$5,318.40回落17.91%</b>，<b>较去年同期上涨31.77%（年至今+0.93%/月至今+7.83%）</b>。<b>现货白银$63.78/盎司（-3.01%）/铂金$1,720.5（-2.83%）/钯金$1,290.9（-2.56%）</b>，<b>贵金属全线下跌</b>。<b>美元指数99.656（+0.09%）企稳反弹</b>。国内<b>黄金9999最新953.00元/克（+0.06%）/最高961/最低948.5</b>，<b>大盘实时金价941-941.76元/克</b>，<b>黄金T+D 944-947.89元/克</b>，<b>上海金8/18定盘价953.88元/克</b>，<b>国内金价跟随国际金价回落</b>。<b>518880 8/18收盘价9.078元（+0.11%）/单位净值9.0901（+0.28%）</b>，<b>规模1030.94亿元（8/17）</b>，<b>8/18主力资金净流出8703.99万元（居可比基金前3）/近2天合计流出1.07亿元</b>，<b>已连续3日净赎回（参考国泰数据），区间净流出2.85亿元</b>。<br><br>
-        <b>📉 本轮回调三大原因：</b>①<b>获利回吐压力集中释放</b>：8月以来国际现货黄金自$4,000关口一路攀升至$4,435附近，累计上涨约$310，涨幅高达7.6%，短期涨幅过大积累大量获利盘，多头集中止盈离场引发回调；②<b>美元指数企稳反弹</b>：美元指数小幅上涨0.09%至99.656，美元走强对以美元计价的贵金属构成直接压力；③<b>油价高企引发通胀担忧</b>：美伊谈判陷入僵局，霍尔木兹海峡通航受阻，布伦特原油持稳于$89.8/桶附近，油价居高不下推升通胀预期，市场担忧美联储可能维持紧缩立场，限制金价上涨空间。<br><br>
-        <b>🎯 后市判断：</b>继续下探概率约<b>55%</b>，企稳反弹概率约<b>45%</b>。昨日下跌缺乏利好消息支撑，很难在短期内止跌，卖盘比买盘更坚决，已是连续第二天收阴线。<b>情景A（55%概率）</b>：金价惯性下探，试探$4,300关口，国内金价可能跌破940元/克。满仓持有者账面亏损扩大，不急着卖就不会真亏。<b>情景B（45%概率）</b>：金价在$4,350-$4,400区间震荡两天，等待新消息再选择方向，短线操作难度大，容易来回扫损。<b>关键变量：今晚（8/19）美联储7月会议纪要</b>——若纪要释放偏鹰信号，金价短期将继续承压；若明确释放鸽派信号，金价有望迎来反弹。<br><br>
-        <b>🎯 操作建议：</b><strong style="color:var(--red);">8/18金价一夜跳水$49+连续第二日收阴线+继续下探概率55%，短期谨慎观望！切勿抄底！等企稳信号再行动</strong>！<b>不要被假反弹骗了</b>，去年有一次大跌后第二天高开，很多人以为反转，结果又连续阴跌一周。<b>$4,300-$4,350是关键支撑带</b>（非农+CPI+PPI三连击后形成的强支撑），<b>$4,250-$4,290是非农拉升启动平台（第二道防线）</b>，<b>$4,200-$4,230是本轮上涨突破平台（核心多空分水岭）</b>。<b>今晚关注美联储7月会议纪要（关键催化剂）</b>，<b>本周还有：欧元区CPI终值+拉加德讲话/欧美PMI初值</b>，<b>下一重大事件：8/22杰克逊霍尔央行年会（鲍威尔讲话）+9/17-18 FOMC（点阵图）</b>。<b>已有仓位（长线保值者）</b>：只要不急用钱就拿着，黄金是长期保值资产，短期波动正常，<b>不要割肉在底部</b>；<b>已有仓位（短线投机者）</b>：建议减仓或设好止损（$4,300破位止损），控制风险；<b>空仓/定投者</b>：继续按节奏定投即可，下跌反而能用同样的钱买更多黄金，长期摊低成本；<b>刚需买金饰者</b>：等品牌金店调价后再买，今天买比昨天划算，分批买更稳妥。仓位控制10%以内。<b>特别警示：518880连续3日净赎回+主力资金连续2日流出+近5日净流出~15.35亿</b>，资金情绪持续转向，<b>下跌趋势中不要轻易抄底</b>，等企稳信号（如日K收阳线+成交量缩量+下影线）再分批进场。<br>
-        <b style="color:var(--green);">📊 利好因素：</b>①<b>中长期支撑仍在：中国央行连续21个月增持黄金（7月再+64万盎司）</b>，<b>Q2全球央行净购金289吨（+62%）创近4年同期新高</b>，<b>8/3韩国央行时隔13年重启购金</b>，央行买盘封死下行空间；②<b>7月非农就业爆冷-2.3万人+CPI同比3.4%+核心CPI 2.5%+零售销售-0.6%</b>，美国经济放缓信号强化，9月加息预期降温；③<b>9月维持利率不变概率约67%（芝商所FedWatch）</b>，市场开始定价年内降息周期；④<b>中东地缘扰动持续</b>：霍尔木兹海峡通航受阻，美伊谈判陷入僵局，油价高位震荡，避险溢价支撑金价；⑤<b>机构中长期仍看多</b>：高盛$5,400/渣打$5,000/瑞银$4,675-5,200/德银Q4 $4,600，主流机构中长期偏多；⑥<b>金价较1月高点已回落17.91%</b>，部分释放前期涨幅风险；⑦<b>8月以来累涨仍有7.83%（月至今）</b>，中期趋势未破。<br>
-        <b style="color:var(--red);">⚠️ 风险提示：</b>①<b style="color:var(--red);">⚠ 8/18金价一夜跳水$49+COMEX收跌1.17%（7月23日以来最大单日跌幅）+连续第二日收阴线</b>，<b>继续下探概率55%</b>，短期下跌动能仍在；②<b style="color:var(--red);">⚠ 518880连续3日净赎回+主力资金连续2日流出（8/18净流出8703.99万元/近2天合计1.07亿/近5日净流出~15.35亿）</b>，资金情绪持续转向，警惕资金面加速恶化；③<b>今晚美联储7月会议纪要</b>，若释放偏鹰信号金价将继续承压，警惕回踩$4,300；④<b>8月以来涨幅过大（伦敦金+约7.6%）</b>，获利回吐压力集中释放，技术修复需求持续；⑤<b>美元指数企稳反弹（99.656 +0.09%）</b>，若美元继续走强将压制金价；⑥<b>油价高企（布伦特$89.8/桶）</b>，通胀担忧重启，美联储可能维持紧缩立场；⑦<b>实物金溢价仍处高位</b>：品牌金饰1339元/克 vs 原料953元/克，溢价373元/克，回收价仅925-935元/克，一进一出每克亏400+元；⑧<b>8/22杰克逊霍尔央行年会临近</b>，鲍威尔讲话前市场可能保持谨慎，获利盘可能继续涌出；⑨<b>没有人能100%看准行情</b>，55%/45%只是基于市场情绪和技术面的大致判断，不要因为涨了就怕踏空、跌了就恐慌，管住手不要冲动追涨杀跌。
-      </p>
-    </div>
-
-    <!-- Market Sentiment Gauge -->
-    <!-- Market Sentiment Gauge -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">📈</span> 市场情绪仪表</div>
-      <div class="gauge-wrap">
-        <div class="gauge">
-          <svg viewBox="0 0 200 110" width="180">
-            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-bg"/>
-            <path d="M 20 100 A 80 80 0 0 1 180 100" class="gauge-fill" stroke="var(--red)" stroke-dasharray="251" stroke-dashoffset="138"/>
-          </svg>
-          <div class="gauge-label" style="color:var(--red);">45</div>
-        </div>
-        <div class="gauge-text">偏空观望 · <b>8/19早盘现货黄金失守$4,330/8/18一夜跳水$49+COMEX收$4,366（-1.17%，7月23日以来最大跌幅）/连续第二天收阴线/继续下探概率55%/518880 8/18收9.078（+0.11%）/主力资金净流出8703.99万元/连续3日净赎回+近5日净流出~15.35亿/8月以来获利回吐压力集中释放/美元指数企稳反弹99.656（+0.09%）/油价高企通胀担忧/今晚美联储7月会议纪要成关键催化剂</b>，<b>但中长期支撑仍在：央行连续21月增持+Q2全球央行净购金+62%+韩国央行重启购金+9月维持利率不变概率约67%+机构中长期看多</b>，<b>短期谨慎观望，等$4,300-$4,350企稳再分批布局，不要抄底在半山腰</b></div>
-      </div>
-    </div>
-
-    <!-- Key Signals -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🔍</span> 关键信号</div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">8/18金价一夜跳水$49/COMEX收$4,366（-1.17%）</div>
-        <div class="val down"><b>8月18日COMEX黄金期货结算价$4,366.00/盎司（-1.17%，单日跌$51.80）</b>，<b>创7月23日以来最大单日跌幅</b>，<b>终结两连涨/连续第二天收阴线</b>；<b>8/19早盘现货黄金失守$4,330/盎司（日内跌0.08%）</b>；<b>较1月历史高点$5,318.40回落17.91%</b>，<b>月至今仍涨+7.83%/年至今+0.93%</b>；<b>继续下探概率55%，企稳反弹概率45%</b></div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">📉 三大回调原因：获利回吐+美元反弹+油价高企</div>
-        <div class="val down">①<b>获利回吐压力集中释放</b>：8月以来从$4,000涨至$4,435（+7.6%），短期涨幅过大积累大量获利盘；②<b>美元指数企稳反弹</b>：DXY 99.656（+0.09%），美元走强压制贵金属；③<b>油价高企通胀担忧</b>：布伦特$89.8/桶高位震荡，市场担忧美联储维持紧缩立场</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">⚠ 518880主力连续2日流出/近5日净流出~15.35亿</div>
-        <div class="val down"><b>8/18主力资金净流出8703.99万元（居可比基金前3）/近2天合计流出1.07亿元</b>；<b>近5日净流出~15.35亿元</b>；<b>已连续3日净赎回（参考国泰518800数据），区间净流出2.85亿元</b>；<b>基金规模1030.94亿元（8/17）</b>；<b>8/18收盘价9.078元（+0.11%）/单位净值9.0901（+0.28%）</b>，资金情绪持续转向</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">央行买盘支撑：中国21月连增+韩国13年重启</div>
-        <div class="val up"><b>中国央行7月再增持64万盎司（连续21个月）</b>，7月末储备7608万盎司，<b>增持规模为2024年11月以来最大</b>；<b>Q2全球央行净购金289吨（+62%）</b>创近4年同期新高；<b>8/3韩国央行时隔13年重启购金</b>；<b>世界黄金协会调研89%央行预计未来12个月继续增持</b>，央行买盘封死中长期下行空间</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">9月维持利率不变概率约67%</div>
-        <div class="val up">芝商所FedWatch：<b>9月维持利率不变概率约67%/加息概率约33%</b>，<b>7月非农爆冷+CPI降温+零售走弱三重因素下加息预期持续降温</b>，市场开始定价年内降息周期，<b>今晚会议纪要或提供更多线索</b></div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">🔥 今晚美联储7月会议纪要（关键催化剂）</div>
-        <div class="val down"><b>北京时间今晚（8/19）美联储公布7月会议纪要</b>，将成为短期走势的关键催化剂：<b>若纪要释放偏鹰信号，金价短期将继续承压，可能测试$4,300支撑</b>；<b>若明确释放鸽派信号，金价有望迎来反弹</b>；关注美联储对通胀、就业和经济前景的评估</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">国内金价953元/克/首饰金1339元/克</div>
-        <div class="val up"><b>8/19黄金9999最新953.00元/克（+0.06%）/最高961/最低948.5</b>，<b>大盘实时金价941-941.76元/克</b>，<b>黄金T+D 944-947.89元/克</b>；<b>品牌首饰金1302-1339元/克（周大福1339）</b>，<b>银行投资金条964-966元/克</b>，<b>回收价925-935元/克</b></div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">中东地缘+油价高企/霍尔木兹僵局</div>
-        <div class="val down"><b>美伊谈判陷入僵局，霍尔木兹海峡通航受阻</b>，<b>布伦特原油持稳于$89.8/桶</b>，油价居高不下推升通胀预期；<b>中东局势仍存变数</b>，避险溢价对金价有一定支撑，但通胀担忧同时压制金价</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">8/22杰克逊霍尔+9/17-18 FOMC</div>
-        <div class="val down"><b>8月22日杰克逊霍尔央行年会（鲍威尔讲话）</b>是下一个重大变盘点，<b>9月17-18日FOMC+点阵图</b>将定下半年政策方向；历届杰克逊霍尔会议均引发黄金大幅波动，<b>会议前市场可能保持谨慎</b>，获利盘或继续涌出</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">机构中长期仍看多/高盛$5,400</div>
-        <div class="val up"><b>高盛2026年底$5,400（从$4,900大幅上修）</b>+<b>渣打$5,000</b>+<b>瑞银2026年底$4,675/2027H1 $5,000</b>+<b>德银Q4 $4,600</b>+<b>花旗Q4 $4,500</b>，<b>主流机构中长期仍偏多</b>，短期回调不改长期上行趋势</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">⚠ 不要被假反弹骗了/管住手</div>
-        <div class="val down"><b>继续下探概率55%/企稳反弹45%</b>，下跌缺乏利好支撑，卖盘更坚决；<b>去年有一次大跌后第二天高开，很多人以为反转，结果又连续阴跌一周</b>；<b>不要因为跌了就抄底、涨了就怕踏空</b>，概率判断是帮你管住手的，不是让你更焦虑</div>
-      </div>
-    </div>
-
-    <!-- Macro Factors -->    <!-- Macro Factors -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🌍</span> 宏观因素一览（8月17日最新）</div>
-      <div class="factor-grid">
-        <div class="factor-card">
-          <div class="f-label">美元指数</div>
-          <div class="f-value" style="color:var(--green);">🟢99.63（连续第二周收十字星）</div>
-          <div class="f-desc">DXY<b>99.63</b>连续第二周收十字星，<b>受老美通胀降温与零售销售意外下滑双重冲击</b>，<b>美元指数再次失守100整数关口</b>，<b>弱美元+低实际利率双轮驱动贵金属</b></div>
-        </div>
-        <div class="factor-card">
-          <div class="f-label">7月"三连击"</div>
-          <div class="f-value" style="color:var(--green);">🟢非农爆冷(已兑现)</div>
-          <div class="f-desc"><b>7月非农就业-2.3万人（爆冷）9月加息概率从57%骤降至34%</b>；<b>7月CPI同比3.4%核心CPI 2.5%通胀持续降温</b>；<b>7月零售销售环比-0.6%（弱于预期）</b>，<b>美国经济放缓信号强化</b></div>
-        </div>
-        <div class="factor-card">
-          <div class="f-label">9月利率概率</div>
-          <div class="f-value" style="color:var(--green);">🟢维持70%/加息34%</div>
-          <div class="f-desc">芝商所FedWatch：<b>9月维持利率不变概率升至70%</b>，<b>9月加息概率34%（连续3周降温）</b>，<b>12月前加息可能性仍维持六成以上但紧迫感减弱</b>，市场开始定价年内降息周期</div>
-        </div>
-        <div class="factor-card">
-          <div class="f-label">央行购金</div>
-          <div class="f-value" style="color:var(--green);">🟢7月+64万盎司</div>
-          <div class="f-desc">中国7月再增持64万盎司<b>连续21个月</b>，7月末储备7608万盎司，<b>增持规模为2023年10月以来最大</b>；Q2全球净购金289吨(+62%)创4年同期新高</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Institution Views -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">🏦</span> 机构目标价（8月14-16日最新）</div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">高盛（最新上调）</div>
-        <div class="val" style="color:var(--green);">2026年底$5,400（从$4,900大幅上修，最积极梯队）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">瑞银（最新上调）</div>
-        <div class="val" style="color:var(--green);">2027H1 $5,000 / 2027年6月$5,200（最积极梯队）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">渣打银行（最新）</div>
-        <div class="val" style="color:var(--green);">金价有望重新向$5,000/盎司迈进，央行购金+地缘+多元化需求支撑</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">富国银行</div>
-        <div class="val" style="color:var(--green);">2026年底$5,300-$5,500（最乐观梯队）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">德银（最新）</div>
-        <div class="val" style="color:var(--green);">Q4 $4,600/年底$4,700，爆发性上涨未结束，底部$3,900</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">花旗（最新）</div>
-        <div class="val" style="color:var(--green);">Q4 $4,500 / 2027H1 $5,000（最积极梯队）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">道明证券</div>
-        <div class="val" style="color:var(--green);">年底$5,200（最积极梯队）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">道富投资</div>
-        <div class="val" style="color:var(--green);">年底至2027年初升至$4,500-$5,000</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">中信证券（最新）</div>
-        <div class="val" style="color:var(--green);">$4,000附近大概率是本轮底部，年内重回上行通道</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--green);"></div>
-        <div class="name">华创证券</div>
-        <div class="val" style="color:var(--green);">当前黄金底部位置相对明晰，估值有望持续修复</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--gold);"></div>
-        <div class="name">摩根大通</div>
-        <div class="val" style="color:var(--gold);">Q4下调25%至$4,500（罕见看空）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--gold);"></div>
-        <div class="name">中金/中信期货</div>
-        <div class="val" style="color:var(--gold);">沪金主力8月震荡偏强，运行区间800-1000元/克</div>
-      </div>
-      <div class="signal-bar">
-        <div class="signal-dot" style="background:var(--red);"></div>
-        <div class="name">美银</div>
-        <div class="val" style="color:var(--red);">看$3,250-$3,450（最悲观），类比1980/2011</div>
-      </div>
-    </div>
-
-    <!-- Key Price Levels -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(239,68,68,0.2);">🎯</span> 关键价位（国际金价·8月15日更新）</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--green);font-size:12px;width:36px;">现价</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:77%;top:-2px;width:10px;height:10px;background:var(--green);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:700;font-size:15px;color:var(--green);">$4,374</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--gold);font-size:12px;width:36px;">阻力1</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:82%;top:-2px;width:10px;height:10px;background:var(--gold);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,450-4,500</span>
-          <span style="font-size:11px;color:var(--text2);">8/8盘中高点/中期强阻力</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--gold);font-size:12px;width:36px;">阻力2</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:86%;top:-2px;width:10px;height:10px;background:var(--gold);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,500-4,550</span>
-          <span style="font-size:11px;color:var(--text2);">StoneX心理位/突破打开空间</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--green);font-size:12px;width:36px;">支撑1</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:76%;top:-2px;width:10px;height:10px;background:var(--green);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,300-4,350</span>
-          <span style="font-size:11px;color:var(--text2);">CPI+PPI双驱动后支撑带</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--green);font-size:12px;width:36px;">支撑2</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:74%;top:-2px;width:10px;height:10px;background:var(--green);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,250-4,290</span>
-          <span style="font-size:11px;color:var(--text2);">非农启动平台/第二道防线</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--red);font-size:12px;width:36px;">止损</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:72%;top:-2px;width:10px;height:10px;background:var(--red);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,200-4,230</span>
-          <span style="font-size:11px;color:var(--text2);">核心多空分水岭/严格止损</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--red);font-size:12px;width:36px;">深跌</span>
-          <div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;position:relative;">
-            <div style="position:absolute;left:64%;top:-2px;width:10px;height:10px;background:var(--red);border-radius:50%;"></div>
-          </div>
-          <span style="font-weight:600;font-size:14px;">$4,000</span>
-          <span style="font-size:11px;color:var(--text2);">中信证券底部判断位</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">📊</span> 近期重点关注（8月19日更新）</div>
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-title">📉 8/18金价一夜跳水$49/COMEX收$4,366（-1.17%）</div>
-          <div class="step-desc"><b>8月18日COMEX黄金期货结算价$4,366.00/盎司（-1.17%，单日跌$51.80）</b>，<b>创7月23日以来最大单日跌幅</b>，<b>终结两连涨/连续第二天收阴线</b>；<b>8/19早盘现货黄金失守$4,330/盎司（日内跌0.08%）</b>；<b>继续下探概率55%，企稳反弹45%</b>；<b>较1月高点回落17.91%/月至今仍涨+7.83%</b>；国内<b>黄金9999最新953元/克/大盘941-942元/克</b>，<b>518880 8/18收9.078（+0.11%）/主力净流出8703.99万</b></div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">🔥 今晚美联储7月会议纪要（关键催化剂）</div>
-          <div class="step-desc"><b>北京时间8月19日晚美联储公布7月会议纪要</b>，将成为短期走势关键催化剂；<b>偏鹰→金价继续承压测试$4,300/鸽派→有望反弹</b>；关注美联储对通胀、就业、经济前景的评估，以及9月政策路径的暗示</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">📉 三大回调原因：获利回吐+美元反弹+油价高企</div>
-          <div class="step-desc">①<b>获利回吐</b>：8月以来从$4,000涨至$4,435（+7.6%），短期涨幅过大获利盘集中涌出；②<b>美元反弹</b>：DXY 99.656（+0.09%）企稳，压制贵金属；③<b>油价高企</b>：布伦特$89.8/桶，通胀担忧重启，美联储或维持紧缩立场</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">⚠ 518880连续3日净赎回+主力连续2日流出</div>
-          <div class="step-desc"><b>8/18主力资金净流出8703.99万元（居可比基金前3）/近2天合计流出1.07亿</b>；<b>近5日净流出~15.35亿元</b>；<b>已连续3日净赎回（参考国泰数据），区间净流出2.85亿元</b>；<b>基金规模1030.94亿元（8/17）</b>；<b>8/18收盘价9.078元/单位净值9.0901</b>，资金情绪持续转向</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">🏛️ 央行买盘支撑：中国21月连增+韩国13年重启</div>
-          <div class="step-desc"><b>中国央行7月再增持64万盎司（连续21个月）</b>，<b>增持规模2024年11月以来最大</b>；<b>Q2全球央行净购金289吨（+62%）</b>创近4年同期新高；<b>8/3韩国央行时隔13年重启购金</b>；<b>89%央行预计未来12个月继续增持</b>，央行买盘封死中长期下行空间</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">🎯 8/22杰克逊霍尔央行年会（关键变盘点）</div>
-          <div class="step-desc"><b>8月22日杰克逊霍尔央行年会，鲍威尔将发表讲话</b>，是下一个重大变盘点；历届会议均引发黄金大幅波动；<b>关注鲍威尔是否释放更鸽派信号</b>；会议前市场可能保持谨慎，获利盘或继续涌出</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">📊 9月17-18日FOMC+点阵图</div>
-          <div class="step-desc"><b>9月维持利率不变概率约67%（芝商所FedWatch）</b>，关注点阵图是否透露年内降息路径；<b>若释放明确降息信号金价有望冲击$4,500</b>；高盛$5,400/渣打$5,000/瑞银$4,675-5,200均认为中长期仍有上涨空间</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">🌍 中东地缘+霍尔木兹僵局+油价高企</div>
-          <div class="step-desc"><b>美伊谈判陷入僵局，霍尔木兹海峡通航受阻</b>，<b>布伦特原油持稳于$89.8/桶</b>；<b>油价高企推升通胀预期</b>，市场担忧美联储维持紧缩立场；同时避险溢价对金价有一定支撑，但通胀担忧占主导</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">💰 国内金价953/首饰金1339/溢价373元/克</div>
-          <div class="step-desc"><b>黄金9999最新953.00元/克</b>，<b>品牌首饰金1302-1339元/克（周大福1339）</b>，<b>银行投资金条964-966元/克</b>，<b>回收价925-935元/克</b>；<b>原料 vs 金饰溢价373元/克，一进一出每克亏400+元</b>；金店价格调整滞后，今日可能跟随国际金价下调</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">⚠ 不要被假反弹骗了/管住手不要冲动</div>
-          <div class="step-desc"><b>继续下探概率55%/企稳反弹45%</b>，下跌缺乏利好支撑，卖盘更坚决；<b>去年有一次大跌后第二天高开，很多人以为反转，结果又连续阴跌一周</b>；<b>不要抄底在半山腰</b>，等企稳信号（日K收阳+缩量+下影线）再分批进场；长线保值者不用慌，定投者继续按节奏买</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Tab 2: ETF Comparison -->    </div>
-
-  </div>
-
-  <!-- Tab 2: ETF Comparison -->
-  <div class="tab-content" id="tab-etf">
-
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🏆</span> 黄金ETF对比（8月18日数据）</div>
-      <div style="overflow-x:auto;">
-        <table class="etf-table">
-          <thead>
-            <tr>
-              <th>基金名称</th>
-              <th>代码</th>
-              <th>最新净值</th>
-              <th>规模</th>
-              <th>年费率</th>
-              <th>跟踪标的</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="etf-name">华安黄金ETF</span><br><span style="font-size:11px;color:var(--gold);">⭐ 规模最大</span></td>
-              <td class="etf-code">518880</td>
-              <td class="up">9.078（8-18 收盘价）</td>
-              <td>~1031亿</td>
-              <td><span class="fee-badge fee-mid">0.60%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">华夏黄金ETF</span><br><span style="font-size:11px;color:var(--green);">💡 费率最低</span></td>
-              <td class="etf-code">518850</td>
-              <td class="up">~9.20</td>
-              <td>170亿</td>
-              <td><span class="fee-badge fee-low">0.20%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">工银黄金ETF</span><br><span style="font-size:11px;color:var(--green);">💡 同为最低费率</span></td>
-              <td class="etf-code">518660</td>
-              <td class="up">~9.15</td>
-              <td>95亿</td>
-              <td><span class="fee-badge fee-low">0.20%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">国泰黄金ETF</span></td>
-              <td class="etf-code">518800</td>
-              <td class="up">~9.35</td>
-              <td>345亿</td>
-              <td><span class="fee-badge fee-mid">0.50%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">易方达黄金ETF</span></td>
-              <td class="etf-code">159934</td>
-              <td class="up">~9.45</td>
-              <td>370亿</td>
-              <td><span class="fee-badge fee-mid">0.50%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">博时黄金ETF</span></td>
-              <td class="etf-code">159937</td>
-              <td class="up">~9.10</td>
-              <td>430亿</td>
-              <td><span class="fee-badge fee-mid">0.50%</span></td>
-              <td>Au99.99</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">富国上海金ETF</span></td>
-              <td class="etf-code">518680</td>
-              <td class="up">~9.20</td>
-              <td>—</td>
-              <td><span class="fee-badge fee-mid">0.40%</span></td>
-              <td>上海金SHAU</td>
-            </tr>
-            <tr>
-              <td><span class="etf-name">广发上海金ETF</span></td>
-              <td class="etf-code">518600</td>
-              <td class="up">~9.15</td>
-              <td>—</td>
-              <td><span class="fee-badge fee-mid">0.40%</span></td>
-              <td>上海金SHAU</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="font-size:12px;color:var(--text2);margin-top:10px;">📌 注：518880单位净值~8.95(数据日8-15窄幅震荡)、<b>8月14日净值8.9533（-0.90%/-0.0815元）</b>、<b>累计净值3.38+</b>、<b>8月以来累涨~+9%</b>、<b>8/14资金净流出8.60亿元（ETF资金整体净流出榜首）</b>、<b>8/13已终结20日净流入+8/14再度净流出8.60亿=连续2日撤离</b>、<b>基金规模回落至1000亿+水平（8/13高点1039.71亿）</b>、<b>7月全球黄金ETF+30亿美元(+23吨)</b>扭转前两月流出；<b style="color:var(--red);">⚠ 当前ETF溢折率0.37%超历史95%时间处高风险区，高溢价时勿再追加</b></p>
-      </div>
-    </div>
-
-    <!-- How to Choose -->
-    <div class="advice-box">
-      <div class="tag">🎯 怎么选？</div>
-      <h3>三步搞定黄金ETF选择</h3>
-      <p>
-        <b>第一步：看费率</b> → 长期持有选0.20%（华夏518850 / 工银518660），省下的就是赚到的<br>
-        <b>第二步：看流动性</b> → 华安518880日均成交超40亿，买卖价差最小，进出最方便<br>
-        <b>第三步：看跟踪标的</b> → Au99.99跟国际金价更紧；上海金SHAU人民币计价，避汇率波动<br><br>
-        <b>💡 阿森推荐：</b><br>
-        · 长期定投 → <b>华夏518850</b>（费率0.2%最低，长期持有成本优势大）<br>
-        · 短线波段 → <b>华安518880</b>（流动性最好，T+0进出快）<br>
+<!-- Header -->
+<div class="header">
+<h1>🏦 黄金ETF投资助手</h1>
+<div class="sub">每日行情追踪 × 小白也能看懂的投资建议</div>
+<div class="date-badge" id="today-date">📅 2026年8月20日 · 周四</div>
+</div>
+<!-- Tabs -->
+<div class="tabs">
+<div class="tab active" onclick="switchTab('overview')">📊 今日速览</div>
+<div class="tab" onclick="switchTab('etf')">🏆 ETF对比</div>
+<div class="tab" onclick="switchTab('guide')">📖 小白指南</div>
+</div>
+<!-- Tab 1: Overview -->
+<div class="tab-content active" id="tab-overview">
+<!-- Price Board -->
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">💰</span> 实时金价</div>
+<div class="price-grid"><div class="price-item"><div class="label">国际金价 (USD/盎司)</div><div class="value" style="color:var(--red);">$4,393</div><div class="change down">▼ -0.59% 8月19日金价高位回调：<b>纽约COMEX黄金期货$4,394.70/盎司（-0.59%/-25.90，开盘4391.4/昨收4420.6/最高4395.5/最低4379.6）</b>；<b>亚市早盘现货金$4,392.86/盎司（-0.5%）</b>，<b>8/19凌晨金价从4416暴跌49美元至4367（-1.10%）</b>；<b>12月期金$4,449.50（-0.5%）</b>；<b>8/18现货金$4,397.59（+0.48%）突破4400关口后回落</b>；<b>白银65.08/铂金1745.58/钯金1318.29</b>；<b>美元指数99.5附近/美元人民币6.74</b>；<b>8月以来累涨+7%回调中</b>
+</div></div><div class="price-item"><div class="label">国内金价 (CNY/克)</div><div class="value" style="color:var(--red);">947</div><div class="change down">▼ -0.84% 8月19日国内金价跟跌：<b>Au99.99现货950.99元/克（开盘952/最高959.99/最低945.0）</b>，<b>黄金T+D 947.9元/克（开盘952.2/最高955.0/最低944.33）</b>，<b>沪金主连956.40元/克（+0.26%微涨）</b>；<b>银行投资金条工行973.44/建行971.90/中行~970元/克</b>；<b>回收价940-943元/克</b>；<b>8/19凌晨从953.88定盘价回落到947.9（-6元/-0.6%）</b>；<b>国际金价人民币/克~943.5（按USD/CNY换算）</b>；<b>美元人民币6.74</b>
+</div></div><div class="price-item"><div class="label">品牌首饰金 (元/克)</div><div class="value" style="color:var(--gold-light);">~1,335</div><div class="change down" style="color:var(--text2);">▼ 微跌 8月19日品牌金价跟跌：<b>周大福·周大生·潮宏基~1339元/克/老凤祥~1335元/克/周生生~1338元/克/六福~1337元/克/菜百~1300-1302元/克</b>；<b>较8/18小幅回落-5至-7元/克（工费另计）</b>；<b>银行投资金条~972元/克 vs 品牌金饰~1339元/克 溢价仍达367元/克</b>；<b>水贝批发价~1125-1126元/克 vs 品牌1339元/克 单30克手镯差价近6400元</b>；<b>回收价940-943元/克（一进一出每克亏~400元）</b>
+</div></div><div class="price-item"><div class="label">华安ETF净值 518880</div><div class="value" style="color:var(--green);">9.09</div><div class="change up" style="color:var(--green);">▲ +0.28% <b>8/18（周一）单位净值9.0901（+0.28%）/8/18最新价9.078（+0.11%收盘）</b>，<b>累计净值3.4325</b>；<b>8/17（周一）最新价9.068/净值9.04</b>；<b>8月以来累涨~+9%</b>；<b style="color:var(--red);">⚠ 8/14再度净流出8.60亿元（连续2日撤离！8/13终结20日净流入）</b>；<b>8/18资金反向净流入7554万+3日主力净流出1.19亿</b>；<b>8/17资金净流入7554.47万（终结净流出态势）</b>；<b style="color:var(--red);">⚠ SPDR 8/18突现减仓5.42吨（自8月初首次&gt;5吨单日净流出）</b>；<b>规模回落至935.97亿（首次跌破千亿）</b>
+</div></div></div></div></div><div class="tab-content" id="tab-etf">
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🏆</span> 黄金ETF对比（8月18日数据）</div>
+<div style="overflow-x:auto;">
+<table class="etf-table">
+<thead>
+<tr>
+<th>基金名称</th>
+<th>代码</th>
+<th>最新净值</th>
+<th>规模</th>
+<th>年费率</th>
+<th>跟踪标的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="etf-name">华安黄金ETF</span><br/><span style="font-size:11px;color:var(--gold);">⭐ 规模最大</span></td>
+<td class="etf-code">518880</td>
+<td class="up">~9.08（8-20开盘年度翻红 跟涨国际金价突破$4,490）</td>
+<td>~1019亿</td>
+<td><span class="fee-badge fee-mid">0.60%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">华夏黄金ETF</span><br/><span style="font-size:11px;color:var(--green);">💡 费率最低</span></td>
+<td class="etf-code">518850</td>
+<td class="up">~9.20</td>
+<td>170亿</td>
+<td><span class="fee-badge fee-low">0.20%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">工银黄金ETF</span><br/><span style="font-size:11px;color:var(--green);">💡 同为最低费率</span></td>
+<td class="etf-code">518660</td>
+<td class="up">~9.15</td>
+<td>95亿</td>
+<td><span class="fee-badge fee-low">0.20%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">国泰黄金ETF</span></td>
+<td class="etf-code">518800</td>
+<td class="up">~9.35</td>
+<td>345亿</td>
+<td><span class="fee-badge fee-mid">0.50%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">易方达黄金ETF</span></td>
+<td class="etf-code">159934</td>
+<td class="up">~9.45</td>
+<td>370亿</td>
+<td><span class="fee-badge fee-mid">0.50%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">博时黄金ETF</span></td>
+<td class="etf-code">159937</td>
+<td class="up">~9.10</td>
+<td>430亿</td>
+<td><span class="fee-badge fee-mid">0.50%</span></td>
+<td>Au99.99</td>
+</tr>
+<tr>
+<td><span class="etf-name">富国上海金ETF</span></td>
+<td class="etf-code">518680</td>
+<td class="up">~9.20</td>
+<td>—</td>
+<td><span class="fee-badge fee-mid">0.40%</span></td>
+<td>上海金SHAU</td>
+</tr>
+<tr>
+<td><span class="etf-name">广发上海金ETF</span></td>
+<td class="etf-code">518600</td>
+<td class="up">~9.15</td>
+<td>—</td>
+<td><span class="fee-badge fee-mid">0.40%</span></td>
+<td>上海金SHAU</td>
+</tr>
+</tbody>
+</table>
+<p style="font-size:12px;color:var(--text2);margin-top:10px;">📌 注：518880单位净值~8.99(数据日8-18跟涨国际金价突破4400)、<b>8月14日净值8.9533（-0.90%/-0.0815元）</b>、<b>累计净值3.40+</b>、<b>8月以来累涨~+9%</b>、<b>8/14资金净流出8.60亿元（ETF资金整体净流出榜首）</b>、<b>8/13已终结20日净流入+8/14再度净流出8.60亿=连续2日撤离</b>、<b>基金规模回落至1000亿+水平（8/13高点1039.71亿）</b>、<b>7月全球黄金ETF+30亿美元(+23吨)</b>扭转前两月流出；<b style="color:var(--red);">⚠ 当前ETF溢折率0.37%超历史95%时间处高风险区，高溢价时勿再追加</b></p>
+</div>
+</div>
+<!-- How to Choose -->
+<div class="advice-box">
+<div class="tag">🎯 怎么选？</div>
+<h3>三步搞定黄金ETF选择</h3>
+<p>
+<b>第一步：看费率</b> → 长期持有选0.20%（华夏518850 / 工银518660），省下的就是赚到的<br/>
+<b>第二步：看流动性</b> → 华安518880日均成交超40亿，买卖价差最小，进出最方便<br/>
+<b>第三步：看跟踪标的</b> → Au99.99跟国际金价更紧；上海金SHAU人民币计价，避汇率波动<br/><br/>
+<b>💡 阿森推荐：</b><br/>
+        · 长期定投 → <b>华夏518850</b>（费率0.2%最低，长期持有成本优势大）<br/>
+        · 短线波段 → <b>华安518880</b>（流动性最好，T+0进出快）<br/>
         · 不想操心汇率 → <b>富国518680</b>（上海金定价，纯人民币）
       </p>
-    </div>
-
-    <!-- 518880 Spotlight -->
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">⭐</span> 华安黄金ETF 518880 亮点</div>
-      <div class="signal-bar">
-        <div class="name">规模</div>
-        <div class="val" style="color:var(--gold);"><b>资产净值~1010亿 · 8/14回落至1000亿+水平</b>（亚洲最大黄金ETF，8/13达1039.71亿高点，<b style="color:var(--red);">8/14再度净流出8.60亿 连续2日撤离</b>）</div>
-      </div>
-      <div class="signal-bar">
-        <div class="name">最新净值</div>
-        <div class="val" style="color:var(--green);"><b>~8.95元（8-15窄幅震荡）</b>，8月以来累涨~+9%同步国际金价</div>
-      </div>
-      <div class="signal-bar">
-        <div class="name">资金流向</div>
-        <div class="val" style="color:var(--red);"><b>8/14资金净流出8.60亿元 连续2日撤离（8/13已终结20日净流入+8/14再度净流出8.60亿）！资金情绪持续转向</b>，<b>8/14为当日ETF资金整体净流出榜首（整体净流出20.5亿）</b></div>
-      </div>
-      <div class="signal-bar">
-        <div class="name">⚠ 溢折率</div>
-        <div class="val" style="color:var(--red);"><b>0.37%超历史95%时间，处高风险区</b>，<b style="color:var(--red);">叠加8/14再度净流出8.60亿+规模回落至1000亿+水平</b>，机构越涨越买≠散户追高入场，<b>高溢价时勿再追加</b></div>
-      </div>
-      <div class="signal-bar">
-        <div class="name">业绩表现</div>
-        <div class="val" style="color:var(--text2);">近1年+22.77% / 最大回撤30.52% / 成立来+243.49%</div>
-      </div>
-      <div class="signal-bar">
-        <div class="name">场外联接</div>
-        <div class="val" style="color:var(--text2);">A:000216 / C:000217 / I:022653</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Tab 3: Beginner Guide -->
-  <div class="tab-content" id="tab-guide">
-
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(34,197,94,0.2);">📘</span> 什么是黄金ETF？</div>
-      <p style="font-size:14px;color:var(--text2);line-height:1.9;">
-        一句话：<b style="color:var(--text);">黄金ETF = 像买股票一样买黄金</b><br><br>
-        你不需要买金条、不用保管、不用鉴定真假。打开证券账户，输入代码（比如518880），像买卖股票一样操作就行。每1份ETF背后都有真金白银（上海黄金交易所的实物黄金）做支撑。<br><br>
-        <b style="color:var(--gold);">核心优势：</b><br>
-        · 门槛低：1手≈800~900元，比买金条便宜多了<br>
-        · 交易快：T+0，当天买当天就能卖<br>
-        · 费用低：年管理费0.2%~0.6%，比金店溢价（2~5%）低很多<br>
+</div>
+<!-- 518880 Spotlight -->
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">⭐</span> 华安黄金ETF 518880 亮点</div>
+<div class="signal-bar">
+<div class="name">规模</div>
+<div class="val" style="color:var(--gold);"><b>资产净值~1019.95亿 · 持续千亿水平</b>（亚洲最大黄金ETF，<b>8/19保持千亿+水平</b>，<b>7月以来累计净流入超120亿元</b>）</div>
+</div>
+<div class="signal-bar">
+<div class="name">最新净值</div>
+<div class="val" style="color:var(--green);"><b>~9.08元（8-20开盘年度翻红 跟涨国际金价突破$4,490）</b>，8月以来累涨~+9%同步国际金价</div>
+</div>
+<div class="signal-bar">
+<div class="name">资金流向</div>
+<div class="val" style="color:var(--green);"><b>7月以来境内黄金ETF累计净流入超120亿元，8月前12个交易日再流入73.71亿元</b>，<b>8/14虽有8.60亿单日净流出，但整体仍处年内净流入高峰</b>，<b>8/20开盘年度翻红+国际金价暴涨165美元</b>资金情绪转向乐观</div>
+</div>
+<div class="signal-bar">
+<div class="name">⚠ 溢折率</div>
+<div class="val" style="color:var(--red);"><b>0.37%仍超历史95%时间，处高风险区</b>，<b>叠加8月以来累涨9%技术超买</b>，机构越涨越买≠散户追高入场，<b>高溢价时勿再追加</b></div>
+</div>
+<div class="signal-bar">
+<div class="name">业绩表现</div>
+<div class="val" style="color:var(--text2);">近1年+22.77% / 最大回撤30.52% / 成立来+243.49%</div>
+</div>
+<div class="signal-bar">
+<div class="name">场外联接</div>
+<div class="val" style="color:var(--text2);">A:000216 / C:000217 / I:022653</div>
+</div>
+</div>
+</div><div class="tab-content" id="tab-guide">
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(34,197,94,0.2);">📘</span> 什么是黄金ETF？</div>
+<p style="font-size:14px;color:var(--text2);line-height:1.9;">
+        一句话：<b style="color:var(--text);">黄金ETF = 像买股票一样买黄金</b><br/><br/>
+        你不需要买金条、不用保管、不用鉴定真假。打开证券账户，输入代码（比如518880），像买卖股票一样操作就行。每1份ETF背后都有真金白银（上海黄金交易所的实物黄金）做支撑。<br/><br/>
+<b style="color:var(--gold);">核心优势：</b><br/>
+        · 门槛低：1手≈800~900元，比买金条便宜多了<br/>
+        · 交易快：T+0，当天买当天就能卖<br/>
+        · 费用低：年管理费0.2%~0.6%，比金店溢价（2~5%）低很多<br/>
         · 流动性好：随时买卖，不用担心卖不出去
       </p>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🛒</span> 怎么买？5步搞定</div>
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-title">开证券账户</div>
-          <div class="step-desc">任选一家券商（华泰、中信、招商等），线上开户，5分钟搞定</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">转入资金</div>
-          <div class="step-desc">从银行卡转入你想投入的钱，建议先用闲钱试水</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">搜索代码</div>
-          <div class="step-desc">输入518880（华安）或518850（华夏），点进详情页</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">买入</div>
-          <div class="step-desc">1手=100份，约800~900元。可以一次性买，也可以分批买</div>
-        </div>
-        <div class="step-item">
-          <div class="step-title">持有或卖出</div>
-          <div class="step-desc">长期持有等涨，或短线买卖赚差价，T+0随时可以操作</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">🧠</span> 小白常见问题</div>
-      <div class="faq-item">
-        <div class="faq-q">Q：黄金ETF会不会亏钱？</div>
-        <div class="faq-a">A：会。金价涨你赚，金价跌你亏。但长期看（5~10年），黄金是对抗通胀的好工具，年化回报6%~8%。关键是别追涨杀跌，分批买入、长期持有。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：配置多少比例合适？</div>
-        <div class="faq-a">A：保守型5%，平衡型10%，激进型不超过15%。别把鸡蛋放一个篮子里，黄金是"保险"不是"赌注"。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：ETF和买金条哪个好？</div>
-        <div class="faq-a">A：投资选ETF（费用低、交易方便、无保管问题），结婚/送礼选金条/首饰（有实物和情感价值）。别把首饰当投资，金店溢价太高。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：现在能买吗？</div>
-        <div class="faq-a">A：8月17日（周一）<b>早盘伦敦现货黄金$4,375.30/盎司（窄幅震荡）/8/15（周五）收$4,375.88（+0.58%周线累涨+0.8%，刷新2个多月新高）/8月以来累涨~9%创年内最强反弹</b>，<b>沪金T+D 948.91元/克（+0.90%）/沪金主连951.54（+0.60%）/518880 8/15净值约8.95</b>，<b>8/14再度净流出8.60亿元 连续2日撤离</b>，<b>基金规模~1010亿（8/13高点1039.71亿）</b>。催化：①<b>7月非农就业-2.3万人（爆冷）9月加息概率从55%骤降至33.1%</b>；②<b>7月CPI同比3.4%/核心CPI 2.5%/PPI不及预期通胀持续降温</b>；③<b>7月零售销售环比-0.6%+8月密歇根信心51低于预期</b>，<b>9月维持利率不变概率升至66.9%</b>；④<b>特朗普宣称霍尔木兹海峡列为美国领土+伊朗副外长称"接受失败"是重开海峡前提</b>，<b>布伦特88.59/美原油82.40上周累涨+6.9%</b>避险溢价支撑；⑤<b>8/15金价从4310低点V型反弹至4375.88</b>显示下方承接力强；⑥<b>中国央行7月+64万盎司（连续21个月）</b>+<b>Q2全球央行净购金289吨(+62%)</b>+<b>8/3韩国央行时隔13年重启购金</b>；⑦<b>美元指数连续三周收99.6附近（-0.32%）+实际利率回落</b>；⑧<b>东吴证券：黄金进入右侧行情，8-9月FOMC前后金价可能迎来顺畅上涨</b>+<b>德国商业银行：美联储不会加息，金价仍有上涨空间</b>+<b>艾小军（国泰）：若金价站稳$4,365，后市中枢上移$4,365-$4,800</b>；⑨<b>高盛看$5,400</b>，渣打$5,000，瑞银<b>2026年底$4,675/2027H1 $5,000</b>；⑩<b>中粮期货：$4,000附近是阶段性底部已现</b>。但需警惕：①<b>518880 8/14再度净流出8.60亿 连续2日撤离！基金规模~1010亿再次回落</b>，<b>溢折率仍处历史高位区</b>，机构越涨越买≠散户追高入场，<b>高溢价时勿再追加</b>；②<b>$4,375上方是8/15收$4,375.88/8/17早盘$4,375.30但上方$4,450-4,500阻力密集</b>，<b>8月以来累涨9%+技术性超买RSI 70-80+Bespoke警告超买+25年来最贵美债</b>，<b>技术修复需求持续</b>；③<b>今晚（8/17）无重大数据</b>，<b>本周关注周四（8/20）凌晨美联储FOMC会议纪要+8/22杰克逊霍尔央行年会（鲍威尔讲话）</b>，<b>警惕FOMC纪要鹰派+鲍威尔讲话不及预期鸽派引发金价回踩$4,300</b>。操作建议：<b>8/15周线累涨+0.8%刷新2个多月新高+9月维持利率不变概率66.9%，趋势仍偏多！但切勿追高！8/14 518880再度净流出8.60亿连续2日撤离+8月以来累涨9%技术修复需求</b>，<b>已有仓位考虑分批止盈1/3锁定利润</b>（8月以来累涨9%+利好兑现获利了结风险）+剩下一半设好止损跟随趋势；空仓<b>等$4,300-$4,350区间回踩企稳再分批建仓</b>，<b>不追高</b>（避免FOMC纪要/杰克逊霍尔前获利了结）；仓位控制10%以内；<b>破$4,300严格止损</b>，破位看$4,200；<b>特别警示：518880 8/14再度净流出8.60亿+规模回落至1000亿+水平，溢价时勿再追加</b>。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：场内ETF和场外联接基金有啥区别？</div>
-        <div class="faq-a">A：场内ETF = 证券账户直接买卖，实时成交；场外联接 = 在基金App（天天基金/支付宝）申购赎回，按收盘价成交，适合没有证券账户的人。走势几乎一样，费率略高一点。</div>
-      </div>
-    </div>
-
-    <div class="advice-box">
-      <div class="tag">💡</div>
-      <h3>阿森的黄金投资三原则</h3>
-      <p>
-        <b>原则一：定投不梭哈</b><br>
-        每月固定金额买入，涨了少买，跌了多买。自动摊平成本，不用猜顶底。<br><br>
-        <b>原则二：仓位不超15%</b><br>
-        黄金是防守资产，不是进攻武器。总资产的5%~15%足够了，剩下的留给股票和债券。<br><br>
-        <b>原则三：持有至少3年</b><br>
+</div>
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🛒</span> 怎么买？5步搞定</div>
+<div class="step-list">
+<div class="step-item">
+<div class="step-title">开证券账户</div>
+<div class="step-desc">任选一家券商（华泰、中信、招商等），线上开户，5分钟搞定</div>
+</div>
+<div class="step-item">
+<div class="step-title">转入资金</div>
+<div class="step-desc">从银行卡转入你想投入的钱，建议先用闲钱试水</div>
+</div>
+<div class="step-item">
+<div class="step-title">搜索代码</div>
+<div class="step-desc">输入518880（华安）或518850（华夏），点进详情页</div>
+</div>
+<div class="step-item">
+<div class="step-title">买入</div>
+<div class="step-desc">1手=100份，约800~900元。可以一次性买，也可以分批买</div>
+</div>
+<div class="step-item">
+<div class="step-title">持有或卖出</div>
+<div class="step-desc">长期持有等涨，或短线买卖赚差价，T+0随时可以操作</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="icon" style="background:rgba(168,85,247,0.2);">🧠</span> 小白常见问题</div>
+<div class="faq-item">
+<div class="faq-q">Q：黄金ETF会不会亏钱？</div>
+<div class="faq-a">A：会。金价涨你赚，金价跌你亏。但长期看（5~10年），黄金是对抗通胀的好工具，年化回报6%~8%。关键是别追涨杀跌，分批买入、长期持有。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：配置多少比例合适？</div>
+<div class="faq-a">A：保守型5%，平衡型10%，激进型不超过15%。别把鸡蛋放一个篮子里，黄金是"保险"不是"赌注"。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：ETF和买金条哪个好？</div>
+<div class="faq-a">A：投资选ETF（费用低、交易方便、无保管问题），结婚/送礼选金条/首饰（有实物和情感价值）。别把首饰当投资，金店溢价太高。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：现在能买吗？</div>
+<div class="faq-a">A：8月20日（周四）<b>国际金价强势突破$4,490/盎司！8/19单日暴涨165美元（+3.23%）刷新6月以来最高</b>，<b>现货金$4,474.72/盎司/纽约COMEX$4,569.6</b>，<b>8月以来累涨近+9%创年内最强反弹</b>；<b>沪金主连突破970元/克/AU9999 971.99元/克（+2.7%）/黄金T+D 966.97元/克</b>，<b>518880 8/20开盘年度翻红至~9.08元</b>，<b>8/19净值8.9954/规模1019.95亿</b>。催化：①<b>8/19国际金价单日暴涨165美元（+3.23%）突破$4,490/盎司！刷新6月8日以来最高</b>；②<b>美财政部宣布扩大长期名义国债回购规模（10-20年期+20-30年期单次上限从20亿提至40亿，9/9实施）</b>，<b>30年期美债收益率回落至5.20%/10年期4.63%</b>，持有黄金机会成本降低；③<b>美元指数跳水-0.77%报98.86</b>利好金价；④<b>8月以来累涨+9%创年内最强反弹</b>；⑤<b>7月非农就业-2.3万人（爆冷）9月加息概率从55%骤降至33.1%</b>；⑥<b>7月CPI同比3.4%/核心CPI 2.5%/PPI不及预期通胀持续降温</b>；⑦<b>7月零售销售环比-0.6%+8月密歇根信心51低于预期</b>，<b>9月维持利率不变概率升至66.9%</b>；⑧<b>特朗普宣称霍尔木兹海峡列为美国领土+伊朗副外长称"接受失败"是重开海峡前提</b>，<b>布伦特91.27/美原油85.07</b>避险溢价支撑；⑨<b>中国央行连续21月增持+Q2全球央行净购金289吨(+62%)+8/3韩国央行时隔13年重启购金</b>；⑩<b>7月以来境内黄金ETF累计净流入超120亿元，8月前12个交易日再流入73.71亿元</b>；⑪<b>富国银行：黄金利空基本出尽拐点已至，年内看到$5,100</b>（下调2026年底目标从$5,300-5,500至$4,900-5,100，2027年底$5,400-5,600）；⑫<b>德意志银行：年末目标$5,100，第5轮上涨延续</b>；⑬<b>汇丰：若中东不进一步恶化，黄金保持向上趋势，机构正在重建仓位</b>；⑭<b>LBMA 7月调查：16位分析师预测2026年底$4,500，全年均价$4,604（最高$7,150/最低$3,450）</b>；⑮<b>新湖期货：核心驱动切换为"利率修正+主权信用重构"双重共振</b>；⑯<b>光大期货：短期震荡或偏强走势</b>。但需警惕：①<b>8月以来累涨+9%+技术超买RSI 70-80</b>，<b>$4,400-$4,500阻力密集</b>；②<b>518880溢价0.37%仍处历史高位</b>，机构越涨越买≠散户追高入场；③<b>今晚（8/20）凌晨美联储7月FOMC会议纪要</b>+<b>8/22杰克逊霍尔央行年会（鲍威尔讲话）</b>，<b>警惕FOMC纪要鹰派+鲍威尔讲话不及预期鸽派引发金价回踩$4,300</b>。操作建议：<b>8/19单日暴涨165美元突破$4,490+8月以来累涨9%+央行买盘+机构普遍看涨$5,000-5,100，趋势明显偏多！但短期累积涨幅大+技术超买+溢价高位，警惕回踩！</b>已有仓位<b>分批止盈1/3锁定利润</b>（8月以来累涨9%+突破$4,490后获利了结风险增加）+剩下一半设好止损跟随趋势；空仓<b>等$4,350-$4,400区间回踩企稳再分批建仓</b>（不追高，避免FOMC纪要/杰克逊霍尔前获利了结）；仓位控制10%以内；<b>破$4,300严格止损</b>，破位看$4,200；<b>特别警示：518880溢价0.37%处历史高位+累涨9%技术超买，溢价时勿再追加</b>。</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：场内ETF和场外联接基金有啥区别？</div>
+<div class="faq-a">A：场内ETF = 证券账户直接买卖，实时成交；场外联接 = 在基金App（天天基金/支付宝）申购赎回，按收盘价成交，适合没有证券账户的人。走势几乎一样，费率略高一点。</div>
+</div>
+</div>
+<div class="advice-box">
+<div class="tag">💡</div>
+<h3>阿森的黄金投资三原则</h3>
+<p>
+<b>原则一：定投不梭哈</b><br/>
+        每月固定金额买入，涨了少买，跌了多买。自动摊平成本，不用猜顶底。<br/><br/>
+<b>原则二：仓位不超15%</b><br/>
+        黄金是防守资产，不是进攻武器。总资产的5%~15%足够了，剩下的留给股票和债券。<br/><br/>
+<b>原则三：持有至少3年</b><br/>
         短期金价受情绪和政策影响波动大，3年以上才能充分体现黄金的抗通胀价值。别因为一周跌了5%就慌。
       </p>
-    </div>
-
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <div>数据来源：上海黄金交易所、Wind、新浪财经、证券时报、经济日报、经济观察网、上海证券报、CME FedWatch、世界黄金协会、金投网、央视财经、环球网、Trading Economics、Metals.dev、GoldPrice.com、融金论市、星星的画笔、东方财富、霍尔木兹海峡协议、每日经济新闻、财眼观澜、同花顺基金F10、汇率网、观察者网、36氪、东吴证券、中粮期货、混沌天成期货、华泰证券、中信证券、世界黄金协会CEO安凯专访、Bespoke Analysis、长量基金研究中心、汇通网、德国商业银行、国泰基金、华泰证券易峘、新浪财经（黄金早参）、汇通财经网fx678、金融界7*24h、汇金论道</div>
-    <div style="margin-top:4px;">更新时间：2026-08-19 08:28 · 由阿森自动生成</div>
-    <div class="warn">⚠️ 以上内容仅供参考，不构成投资建议。市场有风险，投资需谨慎。</div>
-  </div>
-
 </div>
-
-<script>
-function switchTab(id) {
-  // Remove active from all tabs
-  var tabs = document.querySelectorAll('.tab');
-  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
-  // Remove active from all tab content
-  var contents = document.querySelectorAll('.tab-content');
-  for (var i = 0; i < contents.length; i++) contents[i].classList.remove('active');
-  // Activate clicked tab
-  var target = document.querySelector('.tab[onclick*="switchTab(\'' + id + '\')"]');
-  if (target) target.classList.add('active');
-  // Show matching content
-  var panel = document.getElementById('tab-' + id);
-  if (panel) panel.classList.add('active');
-}
-// Auto-update date
-var now = new Date();
-var d = now.getFullYear() + '年' + (now.getMonth()+1) + '月' + now.getDate() + '日';
-var days = ['日','一','二','三','四','五','六'];
-document.getElementById('today-date').textContent = '📅 ' + d + ' · 周' + days[now.getDay()];
-</script>
-</body>
+</div></div><div class="footer">📅 数据更新时间：2026-08-20 08:17 · 阿森每日自动推送 · 数据来源：财联社/汇通财经/同花顺/新浪财经<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div></body>
 </html>

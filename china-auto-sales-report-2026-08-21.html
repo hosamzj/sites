@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国汽车销量周报 #2026-08-21（7月新能源占比首破60%，出口连月超百万）</title>
+    <title>中国汽车销量与产业链简报 #2026-08-21</title>
     <style>
         :root {
             --bg: #141413;
@@ -19,6 +19,7 @@
             --accent-danger: #ef4444;
             --accent-warning: #f59e0b;
             --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
             --border: #30302e;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,7 +56,7 @@
         .highlight { color: var(--accent-light); font-weight: 600; }
         .metric-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
             margin: 20px 0;
         }
@@ -67,19 +68,11 @@
         }
         .metric-value { font-size: 1.8rem; font-weight: 700; color: var(--text); }
         .metric-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
-        .chart-container {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        .chart-container img { max-width: 100%; height: auto; border-radius: 8px; }
-        .chart-title { color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px; }
         .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }
         .note { background: rgba(201, 100, 66, 0.1); border-left: 4px solid var(--accent-warning); padding: 16px; border-radius: 8px; margin: 16px 0; }
         .note p { margin: 0; color: var(--accent-warning); }
+        .disclaimer { background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-success); padding: 16px; border-radius: 8px; margin: 24px 0; }
+        .disclaimer p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
         table { width: 100%; border-collapse: collapse; margin: 16px 0; }
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
         th { color: var(--accent); font-weight: 600; }
@@ -88,7 +81,8 @@
         .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 6px; }
         .tag-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-success); }
         .tag-red { background: rgba(239, 68, 68, 0.15); color: var(--accent-danger); }
-        .tag-blue { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+        .tag-blue { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+        .tag-purple { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
         footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }
         a { color: var(--accent-light); text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -130,7 +124,10 @@
             font-weight: 700;
             color: white;
         }
-        .nav-links { display: flex; gap: 32px; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
         .nav-links a {
             color: var(--text-secondary);
             font-size: 0.95rem;
@@ -172,6 +169,17 @@
         }
         .breadcrumb-container a:hover { color: var(--accent); }
         .breadcrumb-container span:last-child { color: var(--text); }
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0;
+        }
+        .chart-bar-label { width: 120px; font-size: 0.85rem; color: var(--text-secondary); flex-shrink: 0; }
+        .chart-bar-track { flex: 1; height: 24px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; }
+        .chart-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 4px; }
+        .chart-bar-value { width: 80px; text-align: right; font-size: 0.85rem; color: var(--text); font-weight: 600; }
+        .data-source { color: var(--text-muted); font-size: 0.8rem; margin-top: 8px; font-style: italic; }
         @media (max-width: 768px) {
             .container { padding: 20px 16px; }
             h1 { font-size: 1.8rem; }
@@ -189,138 +197,226 @@
             </a>
             <div class="nav-links">
                 <a href="index.html">首页</a>
-                <a href="geopolitical-market-report-2026-08-10.html">市场与地缘</a>
+                <a href="geopolitical-market-report-2026-08-17.html">市场与地缘</a>
                 <a href="ai-weekly-report-2026-08-12.html">AI 与科技</a>
                 <a href="china-auto-sales-report-2026-08-21.html" class="active">中国汽车</a>
-                <a href="#">专题研究</a>
+                <a href="index.html#research">专题研究</a>
             </div>
         </div>
     </nav>
     <div class="breadcrumb">
         <div class="breadcrumb-container">
             <a href="index.html">研究报告中心</a>
-            <span>/</span>
+            <span>→</span>
             <a href="china-auto-sales-report-2026-08-21.html">中国汽车</a>
-            <span>/</span>
-            <span>中国汽车销量周报 #2026-08-21（7月新能源占比首破60%，出口连月超百万）</span>
+            <span>→</span>
+            <span>中国汽车销量与产业链简报 #2026-08-21</span>
         </div>
     </div>
-
     <div class="container">
         <header>
-            <h1>中国汽车销量周报</h1>
-            <p class="subtitle">7月新能源月度销量占比首超60%，8月初零售渗透率维持61.6%高位；出口连续两月突破100万辆</p>
-            <p class="meta">报告日期：2026-08-21 · 数据周期：2026年7月全月 & 8月1-9日 · 来源：中汽协 / 乘联会 / 车企公告</p>
+            <h1>中国汽车销量与产业链简报 #2026-08-21</h1>
+            <div class="subtitle">7月官方数据 + 8月半月周度数据 · 全国汽车市场 · 新能源转型 · 新势力竞争 · TEL/APH 估值对比</div>
+            <div class="meta">生成时间：2026-08-21 &nbsp;|&nbsp; 数据周期：2026年7月官方数据、8月1-16日周度数据 &nbsp;|&nbsp; 下次更新：2026年8月28日（周五）</div>
         </header>
 
         <div class="section">
-            <h2>核心指标</h2>
+            <h2>核心摘要</h2>
+            <ul>
+                <li><span class="highlight">7月乘用车零售146.1万辆</span>，同比-20.8%，环比-8.8%；1-7月累计零售1,017.3万辆，同比-20.3%，整体内需仍承压。</li>
+                <li><span class="highlight">7月新能源乘用车零售95.1万辆</span>，渗透率高达<span class="highlight">65.1%</span>（批发渗透率64.2%），再创月度历史新高；新能源已成绝对主流。</li>
+                <li><span class="highlight">出口持续高增</span>：7月乘用车出口91.8万辆，同比+89.7%；中汽协口径汽车出口46.9万辆（1-7月累计614万辆，同比+66.8%），成为稳住行业基本盘的核心支柱。</li>
+                <li><span class="highlight">8月前16日零售62.8万辆，同比-22%</span>；新能源零售39.9万辆，同比-15%，批发渗透率升至72.9%。</li>
+                <li><span class="highlight">TEL vs APH</span>：TEL股价约$202、市值约$585亿、P/E约19.7x、股息率约1.46%；APH股价约$168、市值约$2,070亿、P/E约40.2x、股息率约0.60%。APH凭借AI数据中心/高速连接叙事享受估值溢价，TEL估值更偏汽车/工业传统龙头，股息防御性更强。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>1. 中国乘用车/新能源/燃油车销量数据</h2>
+            <h3>1.1 7月官方销量（中汽协 + 乘联分会口径）</h3>
             <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-value">156.1万</div>
-                    <div class="metric-label">7月新能源汽车销量（同比 +23.7%）</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">60%+</div>
-                    <div class="metric-label">新能源月度新车销量占比首次超过60%</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">100万+</div>
-                    <div class="metric-label">7月汽车出口连续两月突破100万辆</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">55.3万</div>
-                    <div class="metric-label">7月新能源汽车出口（同比 +1.5倍）</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">61.6%</div>
-                    <div class="metric-label">8月1-9日新能源零售渗透率</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">70.9%</div>
-                    <div class="metric-label">8月1-9日新能源批发渗透率</div>
-                </div>
+                <div class="metric-card"><div class="metric-value">199.4万</div><div class="metric-label">7月中汽协乘用车销量</div></div>
+                <div class="metric-card"><div class="metric-value">-5.1%</div><div class="metric-label">乘用车销量同比</div></div>
+                <div class="metric-card"><div class="metric-value">99.1万</div><div class="metric-label">7月新能源车销量</div></div>
+                <div class="metric-card"><div class="metric-value">+27.0%</div><div class="metric-label">新能源车销量同比</div></div>
+                <div class="metric-card"><div class="metric-value">43.8%</div><div class="metric-label">新能源车销量占比</div></div>
+                <div class="metric-card"><div class="metric-value">46.9万</div><div class="metric-label">7月汽车出口</div></div>
             </div>
-        </div>
+            <p>中汽协口径：7月汽车产销分别为<span class="highlight">228.6万辆</span>和<span class="highlight">226.2万辆</span>，同比分别下降4.8%和5.2%。其中新能源汽车产销分别完成<span class="highlight">98.4万辆</span>和<span class="highlight">99.1万辆</span>，同比分别增长22.3%和27.0%。</p>
 
-        <div class="section">
-            <h2>市场概览</h2>
-            <p>据中国汽车工业协会分析，2026年7月汽车市场进入传统销售淡季，受半年度冲量提前释放部分需求、全国持续高温及部分区域台风洪涝灾害影响，环比呈现季节性回落，但<span class="highlight">新能源汽车产销保持高速增长</span>，成为支撑市场的核心动力。</p>
-            <p>7月新能源汽车产销分别完成<span class="highlight">157.6万辆和156.1万辆</span>，同比分别增长26.8%和23.7%。更具标志性意义的是，<span class="highlight">新能源汽车月度新车销量占比首次超过60%，累计占比首次超过50%</span>，电动化转型进入新阶段。</p>
-            <p>乘联会公布的8月第一周数据显示，8月1-9日全国乘用车市场零售31.7万辆，同比去年8月同期下降22%，较上月同期下降3%；其中新能源零售19.5万辆，同比下降17%，环比下降4%。尽管受淡季和去年同期高基数影响增速回落，但<span class="highlight">新能源零售渗透率仍维持在61.6%的高位</span>，新能源批发渗透率更达到70.9%，结构升级态势明显。</p>
-            <div class="note">
-                <p>说明：8月前两周为传统淡季，且去年同期存在以旧换新政策集中释放效应，短期同比读数回落属于正常波动，重点观察渗透率与结构性变化。</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>新能源渗透率与品牌格局</h2>
-            <p>7月新能源乘用车批发销量突破万辆的厂商达到<span class="highlight">20家</span>，占新能源乘用车总量93.6%，市场集中度继续维持高位。自主品牌在新能源赛道领先优势进一步巩固，主流合资品牌新能源渗透率虽有提升但仍处低位。</p>
-            <h3>7月主要车企新能源批发销量</h3>
+            <h3>1.2 7月乘联分会狭义乘用车口径</h3>
             <table>
-                <thead>
-                    <tr><th>排名</th><th>车企/品牌</th><th>7月销量</th><th>备注</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>比亚迪</td><td>41.1万辆</td><td>纯电动与插混双驱动，继续领跑</td></tr>
-                    <tr><td>2</td><td>吉利汽车</td><td>约10.9万辆</td><td>银河系列拉动，新能源份额稳固</td></tr>
-                    <tr><td>3</td><td>奇瑞汽车</td><td>约6.2万辆</td><td>插混路线持续走强</td></tr>
-                    <tr><td>4</td><td>零跑汽车</td><td>101,267辆</td><td>新势力中表现亮眼，环比增长约8.4%</td></tr>
-                    <tr><td>5</td><td>长安汽车</td><td>约6.2万辆</td><td>传统车企新能源转型提速</td></tr>
-                    <tr><td>6</td><td>上汽通用五菱</td><td>6.15万辆</td><td>微型电动车基本盘稳定</td></tr>
-                    <tr><td>7</td><td>上汽乘用车</td><td>5.61万辆</td><td>含荣威、名爵新能源</td></tr>
-                    <tr><td>8</td><td>鸿蒙智行</td><td>45,046辆</td><td>华为赋能车型持续放量</td></tr>
-                    <tr><td>9</td><td>小鹏汽车</td><td>38,027辆</td><td>新车型周期带动回升</td></tr>
-                    <tr><td>10</td><td>蔚来汽车</td><td>35,934辆</td><td>含蔚来、乐道、萤火虫品牌</td></tr>
-                </tbody>
+                <tr><th>指标</th><th>7月数据</th><th>同比</th><th>环比</th><th>备注</th></tr>
+                <tr><td>乘用车零售</td><td>146.1万辆</td><td>-20.8%</td><td>-8.8%</td><td>终端上险口径</td></tr>
+                <tr><td>乘用车批发</td><td>225.2万辆</td><td>+0.4%</td><td>-4.5%</td><td>厂商出货口径</td></tr>
+                <tr><td>乘用车出口</td><td>91.8万辆</td><td>+89.7%</td><td>+4.9%</td><td>含整车与CKD</td></tr>
+                <tr><td>新能源零售</td><td>95.1万辆</td><td>-3.6%</td><td>-5.6%</td><td>纯电+插混+增程</td></tr>
+                <tr><td>新能源出口</td><td>54.0万辆</td><td>+147.8%</td><td>+8.2%</td><td>占出口总量58.8%</td></tr>
+                <tr><td>新能源渗透率</td><td>65.1%</td><td>+11.6pct</td><td>+2.1pct</td><td>零售渗透率历史新高</td></tr>
             </table>
-            <h3>新势力表现</h3>
-            <ul>
-                <li><span class="highlight">零跑汽车</span>7月销量达101,267辆，环比增长约8.4%，1-7月累计457,754辆，已跻身新能源第一梯队。</li>
-                <li><span class="highlight">理想汽车</span>7月交付30,468辆，与6月基本持平，1-7月累计223,940辆。</li>
-                <li><span class="highlight">小米汽车</span>7月销量超过3万辆，1-7月累计超过21万辆，产能爬坡持续。</li>
-                <li><span class="highlight">鸿蒙智行</span>7月销量45,046辆，问界、智界等品牌带动增长。</li>
-            </ul>
-        </div>
+            <p class="data-source">数据来源：中国汽车工业协会、乘联分会《2026年7月份全国乘用车市场分析》</p>
 
-        <div class="section">
-            <h2>出口：连续两月突破百万辆</h2>
-            <p>7月中国汽车出口继续保持高速增长，月度出口量<span class="highlight">连续两个月超过100万辆</span>，新能源汽车出口占比连续两个月超过50%。</p>
+            <h3>1.3 8月前16日周度数据</h3>
             <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-value">55.3万</div>
-                    <div class="metric-label">7月新能源汽车出口</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">+150%</div>
-                    <div class="metric-label">新能源出口同比增速</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">50%+</div>
-                    <div class="metric-label">新能源占出口比重连续两月过半</div>
-                </div>
+                <div class="metric-card"><div class="metric-value">62.8万</div><div class="metric-label">8月1-16日乘用车零售</div></div>
+                <div class="metric-card"><div class="metric-value">-22%</div><div class="metric-label">零售同比</div></div>
+                <div class="metric-card"><div class="metric-value">39.9万</div><div class="metric-label">8月1-16日新能源零售</div></div>
+                <div class="metric-card"><div class="metric-value">63.6%</div><div class="metric-label">新能源零售渗透率</div></div>
+                <div class="metric-card"><div class="metric-value">58.3万</div><div class="metric-label">8月1-16日厂商批发</div></div>
+                <div class="metric-card"><div class="metric-value">72.9%</div><div class="metric-label">新能源批发渗透率</div></div>
             </div>
-            <p>出口高增反映中国汽车产业链全球竞争力持续提升，新能源车成为海外增量主力。欧洲、东南亚、拉美等市场对中国新能源车型接受度提高，但也需关注欧盟反补贴关税、地缘政治等潜在风险。</p>
+            <p>8月前两周日均零售分别为3.5万辆、4.4万辆，同比均下降22%。乘联分会认为8月车市处于<span class="highlight">底部蓄力修复阶段</span>，随着818购车节、成都车展、以旧换新补贴等政策落地，预计全月乘用车终端销量约160万辆。</p>
+
+            <h3>1.4 燃油 vs 新能源结构</h3>
+            <p>7月燃油乘用车零售约51.0万辆，同比大幅下滑；新能源已成市场主导。批发结构中：<span class="highlight">纯电动占66.2%</span>，狭义插混占26.8%，增程式占6.9%。B级电动车批发29.5万辆，同比增长37%，占纯电动车份额30%，为最大细分市场。</p>
         </div>
 
         <div class="section">
-            <h2>产业链联动：连接器与传感器龙头</h2>
-            <p>汽车电动化、智能化渗透率持续上行，对高压连接器、高速连接器、车载传感器、域控制器等核心零部件的需求保持旺盛。<span class="highlight">TEL（TE Connectivity）</span>与<span class="highlight">APH（Amphenol）</span>作为全球连接器与传感器龙头，深度受益于以下趋势：</p>
+            <h2>2. 传统车企与新势力销量排名与结构变化</h2>
+            <h3>2.1 7月车企销量/交付排行（主要品牌）</h3>
+            <table>
+                <tr><th>排名</th><th>车企/品牌</th><th>7月销量/交付</th><th>同比</th><th>核心看点</th></tr>
+                <tr><td>1</td><td>比亚迪</td><td>41.9万辆</td><td>+21.8%</td><td>王朝海洋35.0万，海外近18万创新高</td></tr>
+                <tr><td>2</td><td>上汽集团</td><td>33.9万辆</td><td>—</td><td>上汽乘用车超7.8万，五菱12.0万</td></tr>
+                <tr><td>3</td><td>奇瑞集团</td><td>27.7万辆</td><td>+23.3%</td><td>单月出口首破20万辆；新能源12.9万</td></tr>
+                <tr><td>4</td><td>吉利汽车</td><td>25.0万辆</td><td>+12.6%</td><td>新能源16.0万；出口10.7万创新高</td></tr>
+                <tr><td>5</td><td>长安汽车</td><td>—</td><td>+5.9%</td><td>自主新能源持续放量</td></tr>
+                <tr><td>6</td><td>长城汽车</td><td>—</td><td>+8.9%</td><td>批发同比正增长</td></tr>
+                <tr><td>—</td><td>零跑汽车</td><td>10.1万辆</td><td>+102%</td><td>新势力首个月销破10万</td></tr>
+                <tr><td>—</td><td>鸿蒙智行</td><td>4.5万辆</td><td>—</td><td>问界、智界、享界组合</td></tr>
+                <tr><td>—</td><td>小鹏汽车</td><td>3.8万辆</td><td>+3.6%</td><td>稳态3-4万区间</td></tr>
+                <tr><td>—</td><td>蔚来公司</td><td>3.6万辆</td><td>+71.0%</td><td>蔚来2.0万，乐道/萤火虫贡献增量</td></tr>
+                <tr><td>—</td><td>理想汽车</td><td>3.0万辆</td><td>-0.9%</td><td>连续三个月同比环比双下滑</td></tr>
+                <tr><td>—</td><td>小米汽车</td><td>超3万辆</td><td>—</td><td>产能爬坡中</td></tr>
+            </table>
+            <p class="data-source">数据来源：各车企官方公布、乘联分会、新浪财经</p>
+
+            <h3>2.2 自主品牌 vs 合资品牌格局</h3>
+            <p>7月自主品牌批发份额持续提升，<span class="highlight">自主品牌新能源车渗透率高达83.8%</span>，主流合资品牌仅13.7%。合资品牌普遍承压：一汽大众-17%、上汽大众-23.6%、上汽通用-25.9%、广汽丰田-16.7%。</p>
+            <div class="chart-bar"><span class="chart-bar-label">自主品牌</span><div class="chart-bar-track"><div class="chart-bar-fill" style="width: 71%"></div></div><span class="chart-bar-value">71.0%</span></div>
+            <div class="chart-bar"><span class="chart-bar-label">德系</span><div class="chart-bar-track"><div class="chart-bar-fill" style="width: 12.4%; background: var(--accent-blue)"></div></div><span class="chart-bar-value">12.4%</span></div>
+            <div class="chart-bar"><span class="chart-bar-label">日系</span><div class="chart-bar-track"><div class="chart-bar-fill" style="width: 10.9%; background: var(--accent-warning)"></div></div><span class="chart-bar-value">10.9%</span></div>
+            <div class="chart-bar"><span class="chart-bar-label">美系</span><div class="chart-bar-track"><div class="chart-bar-fill" style="width: 4.2%; background: var(--accent-purple)"></div></div><span class="chart-bar-value">4.2%</span></div>
+            <p class="data-source">注：以上为7月零售份额，自主品牌同比提升5.4个百分点</p>
+        </div>
+
+        <div class="section">
+            <h2>3. 价格带、车型排行、新能源渗透率趋势</h2>
+            <h3>3.1 价格带与折扣</h3>
+            <p>7月行业平均折扣率从2月峰值17.6%收窄至<span class="highlight">15.4%</span>，但德系豪华品牌折扣仍在扩大：奔驰约25%、奥迪30%、宝马26%。价格竞争进入精细化阶段，20-25万元大型SUV尺寸/配置快速下探，对40万元以上高端市场形成挤压。</p>
             <ul>
-                <li><span class="highlight">高压/大电流连接需求提升</span>：新能源车800V高压平台、超充普及带动高压连接器价值量上升；TE 在高压连接、充电接口领域具备领先优势。</li>
-                <li><span class="highlight">智能化传感器用量增加</span>：ADAS、智能座舱、车身域控对摄像头、雷达、高速数据传输连接器需求旺盛；Amphenol 在高速连接、天线、传感器互连领域布局广泛。</li>
-                <li><span class="highlight">中国供应链出海</span>：伴随新能源车出口高增，本土零部件供应商加速出海，TE、Amphenol 等 Tier 1 在全球产能布局与本地化配套方面具备先发优势。</li>
+                <li><span class="highlight">10万元级入门市场</span>：小型电动车需求旺盛，A00/A0级纯电动车占新能源出口53.8%。</li>
+                <li><span class="highlight">10-20万元主流市场</span>：比亚迪秦/宋/元、吉利银河、长安启源等插混/纯电车型主导，是新能源销量基本盘。</li>
+                <li><span class="highlight">20-30万元中高端市场</span>：B级电动车为核心主力，Model Y、极氪、小米SU7、智界等竞争激烈。</li>
+                <li><span class="highlight">30万元以上高端市场</span>：问界M9、理想L9、蔚来ES8、方程豹、腾势等，受尺寸/智驾/品牌三重竞争。</li>
             </ul>
-            <p>短期看，8月车市进入淡季，下游排产节奏可能阶段性放缓；中长期看，新能源渗透率突破60%与出口放量将持续拉动连接器、传感器等核心零部件需求。</p>
+
+            <h3>3.2 7月新能源车型排行（终端销量）</h3>
+            <table>
+                <tr><th>排名</th><th>车型</th><th>品牌</th><th>价格区间</th><th>7月终端销量</th></tr>
+                <tr><td>1</td><td>星愿</td><td>吉利</td><td>6.48-9.48万</td><td>—</td></tr>
+                <tr><td>2</td><td>宋Pro新能源</td><td>比亚迪</td><td>10.98-14.98万</td><td>—</td></tr>
+                <tr><td>3</td><td>元UP</td><td>比亚迪</td><td>9.68-11.98万</td><td>—</td></tr>
+                <tr><td>4</td><td>极狐 阿尔法T1</td><td>北汽极狐</td><td>—</td><td>—</td></tr>
+                <tr><td>5</td><td>零跑A10</td><td>零跑</td><td>—</td><td>28,593辆</td></tr>
+                <tr><td>6</td><td>宏光MINI</td><td>五菱</td><td>3.28-9.99万</td><td>—</td></tr>
+                <tr><td>7</td><td>元PLUS</td><td>比亚迪</td><td>11.98-14.78万</td><td>—</td></tr>
+                <tr><td>8</td><td>Model Y</td><td>特斯拉</td><td>26.35-31.35万</td><td>25,158辆</td></tr>
+            </table>
+            <p class="data-source">数据来源：腾讯汽车、太平洋汽车、汽车之家销量榜</p>
+
+            <h3>3.3 新能源渗透率趋势</h3>
+            <p>2026年以来新能源零售渗透率逐月攀升：1月38.5%、2月44.9%、3月51.7%、4月61.3%、5月62.9%、6月62.8%、7月65.1%。8月前16日渗透率达63.6%。按照此速度，全年新能源乘用车销量有望接近或超过中汽协年初预期的1,900万辆。</p>
         </div>
 
         <div class="section">
-            <h2>数据说明</h2>
-            <p>本报告数据综合自中国汽车工业协会（中汽协）、乘用车市场信息联席会（乘联会）及主要车企公开披露销量，部分数据为估算或初步统计值，仅供参考。由于8月第二、三周官方完整数据尚未发布，本周期重点解读7月全月官方数据及8月第一周乘联会周度数据。</p>
+            <h2>4. 汽车产业链关键数据</h2>
+            <h3>4.1 动力电池与碳酸锂</h3>
+            <div class="metric-grid">
+                <div class="metric-card"><div class="metric-value">14.88万</div><div class="metric-label">电池级碳酸锂均价（元/吨）</div></div>
+                <div class="metric-card"><div class="metric-value">14.50万</div><div class="metric-label">工业级碳酸锂均价（元/吨）</div></div>
+                <div class="metric-card"><div class="metric-value">0.47</div><div class="metric-label">三元动力电芯（元/Wh）</div></div>
+                <div class="metric-card"><div class="metric-value">0.38</div><div class="metric-label">方形铁锂储能电芯（元/Wh）</div></div>
+            </div>
+            <p>碳酸锂价格自2025年低点约7万元/吨反弹至当前14-15万元/吨区间，上海钢联预计下半年或在<span class="highlight">15-18万元/吨</span>宽幅震荡。三季度受锂盐厂检修、储能需求旺盛等因素支撑，价格维持高位；四季度若旺季叠加储能抢装兑现，价格存在继续上行空间。</p>
+            <p>动力电池价格已触底企稳：三元动力电芯约0.47元/Wh，磷酸铁锂储能电芯约0.38元/Wh，较2025年三季度低点涨幅明显，行业逐步从低价内卷转向品质+成本+交付的理性竞争。</p>
+
+            <h3>4.2 汽车连接器/线束</h3>
+            <p>汽车电子电气架构向域集中、中央计算演进，单车连接器/线束价值量持续提升。电动化带来高压连接器增量，智能化带来高速数据连接器需求。全球汽车连接器市场2025年约81.9亿美元，预计2034年达142.8亿美元，CAGR约6.4%。</p>
+            <ul>
+                <li><span class="highlight">高压连接器</span>：800V平台、超充渗透率提升，高压大电流连接器成为刚需。</li>
+                <li><span class="highlight">高速连接器</span>：ADAS摄像头、雷达、激光雷达、域控制器推动FAKRA、Mini-FAKRA、以太网连接器放量。</li>
+                <li><span class="highlight">线束</span>：域架构减少线束长度但提升单位价值，高压线束/特种线束占比提升。</li>
+            </ul>
+
+            <h3>4.3 智能驾驶芯片</h3>
+            <p>2026年城区NOA成为主战场，高阶智驾芯片竞争格局呈现“一超两强”：</p>
+            <table>
+                <tr><th>芯片/平台</th><th>算力</th><th>功耗</th><th>代表应用</th></tr>
+                <tr><td>英伟达 DRIVE Thor</td><td>2000 TOPS</td><td>~60W</td><td>旗舰智驾+座舱融合</td></tr>
+                <tr><td>地平线 J6P</td><td>560 TOPS</td><td>~25W</td><td>城市NOA、中高端量产</td></tr>
+                <tr><td>地平线 J6E</td><td>128 TOPS</td><td>~10W</td><td>成本敏感高阶场景</td></tr>
+                <tr><td>华为昇腾 MDC 610</td><td>400 TOPS</td><td>~40W</td><td>华为系车型（问界/阿维塔）</td></tr>
+                <tr><td>蔚来神玑</td><td>~1000 TOPS</td><td>—</td><td>蔚来自研</td></tr>
+                <tr><td>小鹏图灵AI</td><td>~750 TOPS</td><td>—</td><td>小鹏自研</td></tr>
+            </table>
+            <p class="data-source">数据来源：地平线、华为、英伟达公开资料、OFweek智能汽车网</p>
+        </div>
+
+        <div class="section">
+            <h2>5. TEL（泰科电子）与 APH（安费诺）股价与估值对比</h2>
+            <h3>5.1 当前估值一览</h3>
+            <table>
+                <tr><th>指标</th><th>TE Connectivity (TEL)</th><th>Amphenol (APH)</th></tr>
+                <tr><td>股价（8月20日）</td><td>约 $201.93</td><td>约 $167.70</td></tr>
+                <tr><td>市值</td><td>约 $585亿</td><td>约 $2,070亿</td></tr>
+                <tr><td>P/E (TTM)</td><td>约 19.7x</td><td>约 40.2x</td></tr>
+                <tr><td>Forward P/E</td><td>约 19.1x</td><td>约 28.3x</td></tr>
+                <tr><td>股息率</td><td>约 1.46%</td><td>约 0.60%</td></tr>
+                <tr><td>Beta</td><td>1.16</td><td>1.25</td></tr>
+                <tr><td>主要下游</td><td>汽车、工业、交通、医疗</td><td>IT数据中心、通信、国防、汽车</td></tr>
+            </table>
+            <p class="data-source">数据来源：Yahoo Finance、Google Finance、CNBC（截至2026-08-20）</p>
+
+            <h3>5.2 业务与叙事对比</h3>
+            <p><span class="highlight">TEL</span>：全球连接器与传感器龙头，汽车为最大单一终端市场。产品覆盖高压连接器、线束、传感器等，深度绑定全球主流车企电动化转型。2025年收入增速约8.9%，分析师预期2026年增长约13.5%，数据中心/AI连接业务成为新增长点。</p>
+            <p><span class="highlight">APH</span>：2026年Q2营收创纪录达88亿美元，同比+55%；调整后EPS同比+67%。AI数据中心高速连接需求强劲，订单同比增长36%。APH在AI铜缆/高速互连领域叙事更强，市场给予显著估值溢价。</p>
+
+            <h3>5.3 对汽车产业链与AI数据中心连接器的双重含义</h3>
+            <ul>
+                <li><span class="highlight">汽车端</span>：TEL在汽车高压连接器、传感器领域根基更深，直接受益于中国新能源车渗透率提升与800V平台放量；APH通过并购强化汽车/工业连接，但汽车占比相对小于TEL。</li>
+                <li><span class="highlight">AI数据中心端</span>：APH在AI高速铜缆、背板连接器、光模块配套方面布局领先，是当前AI算力基础设施连接叙事的最大受益者；TEL也在加大数据中心/高速数据互连投入，但市场认知度和估值溢价弱于APH。</li>
+                <li><span class="highlight">估值性价比</span>：TEL P/E约20x、股息率1.5%，更偏价值/防御；APH P/E约40x，反映AI高成长预期，但波动风险更大。两者共同指向连接器从“汽车电动化”到“AI算力互连”的双重产业趋势。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. 总结与下周关注重点</h2>
+            <h3>6.1 本周核心结论</h3>
+            <ul>
+                <li>中国车市整体内需仍弱，但<span class="highlight">结构性转型加速</span>：新能源渗透率突破65%，燃油车市场持续收缩，出口成为关键增长引擎。</li>
+                <li>头部自主品牌强者愈强，比亚迪、奇瑞、吉利、零跑等实现高增长；合资品牌份额持续被压缩。</li>
+                <li>产业链上游碳酸锂/电池价格已从底部反弹并企稳，成本压力部分向下传导。</li>
+                <li>连接器龙头呈现分化估值：APH押注AI数据中心享受高估值，TEL依托汽车/工业基本盘+股息防御，两者均代表连接技术升级的长期方向。</li>
+            </ul>
+
+            <h3>6.2 下周关注重点</h3>
+            <ul>
+                <li><span class="highlight">8月25-31日周度销量</span>：观察月末冲量与成都车展对订单的拉动效果。</li>
+                <li><span class="highlight">成都车展新车发布</span>：重点关注比亚迪、吉利、华为系、理想、小米等新车型/改款节奏。</li>
+                <li><span class="highlight">碳酸锂价格</span>：三季度去库能否持续，价格能否站稳15万元/吨。</li>
+                <li><span class="highlight">TEL/APH财报指引</span>：关注Q3业绩前瞻中汽车与数据中心业务的增速差异。</li>
+                <li><span class="highlight">政策面</span>：以旧换新补贴落地、地方购车激励、新能源车购置税政策延续等。</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>免责声明：本报告数据来源于公开渠道（中汽协、乘联分会、车企公告、Yahoo Finance、上海钢联等），仅供内部研究参考，不构成投资建议。报告观点仅代表作者基于公开信息的整理分析，不对任何投资决策负责。</p>
         </div>
 
         <footer>
-            <p>© 2026 DuoDuo Research · 数据由中汽协、乘联会及车企公告整理 · 仅供参考</p>
+            <p>© 2026 多多研究报告中心 · 数据来源于公开渠道，仅供参考</p>
+            <p>生成日期：2026-08-21 · GitHub: <a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
         </footer>
     </div>
 </body>

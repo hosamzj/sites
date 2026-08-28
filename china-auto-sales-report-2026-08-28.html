@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国汽车销量与产业链简报 #2026-08-28</title>
+    <style>
+        :root {{
+            --bg: #141413;
+            --bg-card: #232320;
+            --bg-secondary: #1a1a18;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-muted: #7a7872;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-hover: #b55a3c;
+            --accent-success: #10b981;
+            --accent-danger: #ef4444;
+            --accent-warning: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --border: #30302e;
+        }}
+        * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+        body {{
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+        }}
+        .container {{ max-width: 1400px; margin: 0 auto; padding: 40px 24px; }}
+        header {{
+            background: var(--bg-card);
+            padding: 48px 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+        }}
+        h1 {{ font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }}
+        .subtitle {{ color: var(--text-secondary); font-size: 1.1rem; }}
+        .meta {{ color: var(--text-muted); font-size: 0.9rem; margin-top: 16px; }}
+        .section {{
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }}
+        h2 {{ color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block; }}
+        h3 {{ color: var(--text); font-size: 1.2rem; margin: 24px 0 12px; }}
+        p {{ color: var(--text-secondary); margin-bottom: 12px; }}
+        ul, ol {{ margin-left: 20px; color: var(--text-secondary); }}
+        li {{ margin-bottom: 8px; }}
+        .highlight {{ color: var(--accent-light); font-weight: 600; }}
+        .metric-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }}
+        .metric-card {{
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+        }}
+        .metric-value {{ font-size: 1.8rem; font-weight: 700; color: var(--text); }}
+        .metric-label {{ font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }}
+        .two-col {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }}
+        .note {{ background: rgba(201, 100, 66, 0.1); border-left: 4px solid var(--accent-warning); padding: 16px; border-radius: 8px; margin: 16px 0; }}
+        .note p {{ margin: 0; color: var(--accent-warning); }}
+        .disclaimer {{ background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-success); padding: 16px; border-radius: 8px; margin: 24px 0; }}
+        .disclaimer p {{ margin: 0; color: var(--text-secondary); font-size: 0.9rem; }}
+        table {{ width: 100%; border-collapse: collapse; margin: 16px 0; }}
+        th, td {{ padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }}
+        th {{ color: var(--accent); font-weight: 600; }}
+        td {{ color: var(--text-secondary); }}
+        tr:hover td {{ background: rgba(255,255,255,0.03); }}
+        .tag {{ display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 6px; }}
+        .tag-green {{ background: rgba(16, 185, 129, 0.15); color: var(--accent-success); }}
+        .tag-red {{ background: rgba(239, 68, 68, 0.15); color: var(--accent-danger); }}
+        .tag-blue {{ background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }}
+        .tag-purple {{ background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }}
+        footer {{ text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px; }}
+        a {{ color: var(--accent-light); text-decoration: none; }}
+        a:hover {{ text-decoration: underline; }}
+        .navbar {{
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(20, 20, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }}
+        .nav-container {{
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }}
+        .nav-brand {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }}
+        .nav-brand-icon {{
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }}
+        .nav-links {{
+            display: flex;
+            gap: 32px;
+        }}
+        .nav-links a {{
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }}
+        .nav-links a:hover {{ color: var(--text); }}
+        .nav-links a.active {{ color: var(--accent); }}
+        .nav-links a.active::after {{
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }}
+        .breadcrumb {{
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }}
+        .breadcrumb-container {{
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }}
+        .breadcrumb-container a {{
+            color: var(--text-secondary);
+            text-decoration: none;
+        }}
+        .breadcrumb-container a:hover {{ color: var(--accent); }}
+        .breadcrumb-container span:last-child {{ color: var(--text); }}
+        .chart-bar {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0;
+        }}
+        .chart-bar-label {{ width: 120px; font-size: 0.85rem; color: var(--text-secondary); flex-shrink: 0; }}
+        .chart-bar-track {{ flex: 1; height: 24px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; }}
+        .chart-bar-fill {{ height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 4px; }}
+        .chart-bar-value {{ width: 80px; text-align: right; font-size: 0.85rem; color: var(--text); font-weight: 600; }}
+        .data-source {{ color: var(--text-muted); font-size: 0.8rem; margin-top: 8px; font-style: italic; }}
+        @media (max-width: 768px) {{
+            .container {{ padding: 20px 16px; }}
+            h1 {{ font-size: 1.8rem; }}
+            .two-col {{ grid-template-columns: 1fr; }}
+            .nav-links {{ display: none; }}
+        }}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">多</span>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="geopolitical-market-report-2026-08-24.html">市场与地缘</a>
+                <a href="ai-weekly-report-2026-08-26.html">AI 与科技</a>
+                <a href="china-auto-sales-report-2026-08-28.html" class="active">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">研究报告中心</a>
+            <span>→</span>
+            <a href="china-auto-sales-report-2026-08-28.html">中国汽车</a>
+            <span>→</span>
+            <span>中国汽车销量与产业链简报 #2026-08-28</span>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>中国汽车销量与产业链简报 #2026-08-28</h1>
+            <div class="subtitle">8月全月预估 + 8月1-23日周度数据 · 全国汽车市场 · 新能源转型 · 新势力竞争 · TEL/APH 产业链影响</div>
+            <div class="meta">生成时间：2026-08-28 &nbsp;|&nbsp; 数据周期：2026年8月1-23日周度数据、8月全月预估 &nbsp;|&nbsp; 下次更新：2026年9月4日（周五）</div>
+        </header>
+
+        <div class="section">
+            <h2>核心摘要</h2>
+            <ul>
+                <li><span class="highlight">8月狭义乘用车零售预计158.0万辆</span>，环比+8.1%，同比-21.7%；新能源零售预计104.0万辆，<span class="highlight">渗透率升至65.8%</span>，再创月度历史新高。</li>
+                <li><span class="highlight">8月1-23日乘用车零售95.6万辆</span>，同比-22%；新能源零售61.4万辆，渗透率64.3%；厂商新能源批发渗透率已达<span class="highlight">70.5%</span>，新能源对整体车市支撑作用进一步凸显。</li>
+                <li><span class="highlight">出口延续百万辆高位</span>：7月汽车出口104.3万辆，同比+81.3%；1-7月累计614万辆，同比+66.8%；新能源汽车出口占比连续两个月超过50%，插混车型成为出海新增长点。</li>
+                <li><span class="highlight">头部自主与新势力分化加剧</span>：7月比亚迪以41.1万辆断层领先；奇瑞、吉利均超26万辆；零跑首破10万辆跻身集团前十；合资阵营持续承压。</li>
+                <li><span class="highlight">连接器龙头映射汽车产业链转型</span>：TEL在华南通制造基地投产加码新能源高压/高速连接器，Q3财季销售额51.6亿美元、订单57亿美元创新高；APH Q2营收88亿美元、订单107亿美元，AI数据中心叙事带动估值溢价。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>1. 市场概览：8月零售预估与周度实际走势</h2>
+            <h3>1.1 8月全月预估（乘联分会）</h3>
+            <div class="metric-grid">
+                <div class="metric-card"><div class="metric-value">158.0万</div><div class="metric-label">8月狭义乘用车零售预估</div></div>
+                <div class="metric-card"><div class="metric-value">+8.1%</div><div class="metric-label">环比7月</div></div>
+                <div class="metric-card"><div class="metric-value">-21.7%</div><div class="metric-label">同比去年8月</div></div>
+                <div class="metric-card"><div class="metric-value">104.0万</div><div class="metric-label">新能源零售预估</div></div>
+                <div class="metric-card"><div class="metric-value">65.8%</div><div class="metric-label">新能源零售渗透率预估</div></div>
+                <div class="metric-card"><div class="metric-value">成都车展</div><div class="metric-label">月末冲量催化剂</div></div>
+            </div>
+            <p>乘联分会8月21日预估显示，8月狭义乘用车零售约158.0万辆，环比7月增长8.1%，但同比仍下降21.7%。月初受高温天气与东南沿海台风影响，首周日均零售仅3.5万辆；进入中旬后需求逐步释放；下旬成都车展开幕叠加车企月末冲量，最后一周日均零售预计达7.7万辆，为全月高点。8月并非传统旺季，市场仍处于低位修复阶段。</p>
+
+            <h3>1.2 8月1-23日实际周度数据</h3>
+            <table>
+                <tr><th>指标</th><th>8月1-23日</th><th>同比</th><th>环比</th><th>备注</th></tr>
+                <tr><td>乘用车零售</td><td>95.6万辆</td><td>-22%</td><td>-2%</td><td>今年以来累计1,112.9万辆，同比-20%</td></tr>
+                <tr><td>乘用车批发</td><td>101.2万辆</td><td>-20%</td><td>+2%</td><td>今年以来累计1,582.2万辆，同比-6%</td></tr>
+                <tr><td>新能源零售</td><td>61.4万辆</td><td>-12%</td><td>-2%</td><td>今年以来累计628.3万辆，同比-12%</td></tr>
+                <tr><td>新能源批发</td><td>71.4万辆</td><td>+5%</td><td>+4%</td><td>今年以来累计896.2万辆，同比+7%</td></tr>
+                <tr><td>新能源零售渗透率</td><td>64.3%</td><td>—</td><td>—</td><td>批发渗透率70.5%</td></tr>
+                <tr><td>纯燃料轻型车生产</td><td>27.0万辆</td><td>-59%</td><td>-15%</td><td>燃油车产能持续收缩</td></tr>
+                <tr><td>混动/插混生产</td><td>25.9万辆</td><td>-20%</td><td>-5%</td><td>降幅明显小于纯燃油车</td></tr>
+            </table>
+            <p class="data-source">数据来源：乘联分会《8月1-23日全国乘用车市场周度数据》、腾讯新闻/易车</p>
+
+            <h3>1.3 周度日均走势</h3>
+            <table>
+                <tr><th>时间段</th><th>日均零售（万辆）</th><th>日均批发（万辆）</th><th>主要特征</th></tr>
+                <tr><td>8月第一周</td><td>3.5</td><td>3.1</td><td>高温假与台风影响，成交受阻</td></tr>
+                <tr><td>8月第二周</td><td>4.4</td><td>4.4</td><td>灾后恢复，压抑需求释放</td></tr>
+                <tr><td>8月第三周</td><td>4.7</td><td>6.1</td><td>车展预热，批发冲量提速</td></tr>
+                <tr><td>8月第四周（预估）</td><td>~7.7</td><td>—</td><td>成都车展+月末冲量，全月高点</td></tr>
+            </table>
+            <p>批发端恢复速度快于零售端，厂商在第三周日均批发已升至6.1万辆，环比第二周+7%，同比降幅收窄至-13%，显示经销商补库与车展备货同步推进。</p>
+        </div>
+
+        <div class="section">
+            <h2>2. 新能源渗透率：结构性优势持续扩大</h2>
+            <h3>2.1 渗透率走势</h3>
+            <p>2026年以来新能源零售渗透率逐月攀升：1月38.5%、2月44.9%、3月51.7%、4月61.3%、5月62.9%、6月62.8%、7月65.1%。8月预估渗透率将进一步提升至<span class="highlight">65.8%</span>，意味着每售出三辆新车约有两辆为新能源产品。</p>
+            <p>8月1-23日实际新能源零售渗透率为64.3%，厂商批发渗透率高达70.5%，批发口径已提前接近“三分天下有其二”。插混/增程车型成为增长主力，有效对冲了纯电动增速放缓的压力。</p>
+
+            <h3>2.2 燃油 vs 新能源分化</h3>
+            <p>燃油车受油价波动与产品更新节奏放缓影响，同比降幅显著；新能源则借助车展新品发布、以旧换新政策落地、车型降价去库存等多重因素，持续获取增量。乘联分会指出，8月燃油车仍将维持较大同比降幅，新能源市场迎来新的结构性增长点。</p>
+        </div>
+
+        <div class="section">
+            <h2>3. Top 车企与新势力：自主断层领先，零跑跻身前十</h2>
+            <h3>3.1 7月乘用车集团销量排行</h3>
+            <p>由于8月车企官方销量数据通常在次月初公布，本月周报采用7月实际集团销量作为最新完整排名参考。</p>
+            <table>
+                <tr><th>排名</th><th>集团/品牌</th><th>7月销量</th><th>核心看点</th></tr>
+                <tr><td>1</td><td>比亚迪汽车</td><td>411,072辆</td><td>断层领先，王朝海洋为主力，海外近18万创新高</td></tr>
+                <tr><td>2</td><td>奇瑞控股</td><td>266,630辆</td><td>出口单月首破20万辆；新能源12.9万辆</td></tr>
+                <tr><td>3</td><td>吉利控股集团</td><td>265,927辆</td><td>新能源16.0万辆；出口10.7万辆创新高</td></tr>
+                <tr><td>4</td><td>上汽集团</td><td>205,967辆</td><td>自主与合资协同，规模基础扎实</td></tr>
+                <tr><td>5</td><td>大众集团</td><td>113,981辆</td><td>德系合资，燃油车体系承压</td></tr>
+                <tr><td>6</td><td>零跑汽车</td><td>101,267辆</td><td>新势力首个月销破10万，首次跻身前十</td></tr>
+                <tr><td>7</td><td>丰田汽车</td><td>93,691辆</td><td>日系合资，混动为主</td></tr>
+                <tr><td>8</td><td>特斯拉汽车</td><td>93,579辆</td><td>以Model Y/3为主，环比波动</td></tr>
+                <tr><td>9</td><td>长城汽车</td><td>92,045辆</td><td>加快混动与纯电投放</td></tr>
+                <tr><td>10</td><td>长安汽车</td><td>89,208辆</td><td>启源/深蓝/阿维塔加速转型</td></tr>
+            </table>
+            <p class="data-source">数据来源：盖世汽车研究院《2026年7月乘用车集团销量榜》</p>
+
+            <h3>3.2 自主 vs 合资格局</h3>
+            <p>7月自主品牌批发份额持续提升，新能源转型更快。合资品牌普遍承压：一汽大众、上汽大众、上汽通用、广汽丰田等均出现双位数下滑。自主品牌与新势力正在重构行业集团化竞争版图，市场头部集中效应愈发明显。</p>
+        </div>
+
+        <div class="section">
+            <h2>4. 出口：连续两月超百万辆，插混成为新增长极</h2>
+            <h3>4.1 总量与增速</h3>
+            <div class="metric-grid">
+                <div class="metric-card"><div class="metric-value">104.3万</div><div class="metric-label">7月汽车出口（中汽协）</div></div>
+                <div class="metric-card"><div class="metric-value">+81.3%</div><div class="metric-label">7月出口同比</div></div>
+                <div class="metric-card"><div class="metric-value">614万</div><div class="metric-label">1-7月累计出口</div></div>
+                <div class="metric-card"><div class="metric-value">+66.8%</div><div class="metric-label">1-7月出口同比</div></div>
+                <div class="metric-card"><div class="metric-value">55.3万</div><div class="metric-label">7月新能源汽车出口</div></div>
+                <div class="metric-card"><div class="metric-value">53%</div><div class="metric-label">新能源汽车出口占比</div></div>
+            </div>
+            <p>中国汽车出口自今年4月、5月连续两个月超90万辆后，6月、7月连续突破100万辆。中汽协副秘书长陈士华表示，出口的强劲表现有效对冲了行业下行压力，为整体汽车市场提供重要支撑。</p>
+
+            <h3>4.2 动力类型与目的地</h3>
+            <table>
+                <tr><th>指标</th><th>7月数据</th><th>同比</th><th>备注</th></tr>
+                <tr><td>纯电动汽车出口</td><td>33.1万辆</td><td>+1.4倍</td><td>规模仍大于插混</td></tr>
+                <tr><td>插混汽车出口</td><td>22.2万辆</td><td>+1.6倍</td><td>增速高于纯电</td></tr>
+                <tr><td>1-7月新能源汽车出口</td><td>290.9万辆</td><td>+1.2倍</td><td>—</td></tr>
+                <tr><td>1-7月传统燃料汽车出口</td><td>323.1万辆</td><td>+36.2%</td><td>总量仍略高于新能源</td></tr>
+            </table>
+            <p>从出口目的地看，1-7月累计整车出口前10国家为俄罗斯、巴西、英国、澳大利亚、比利时、墨西哥、菲律宾、意大利、阿联酋、阿尔及利亚；7月英国超越比利时成为中国新能源车出口第一大市场。奇瑞、比亚迪、吉利上半年已跻身全球车企销量榜前十，出口分别占其销量的69.5%、43%、33%。</p>
+            <p class="data-source">数据来源：中国汽车工业协会、乘联分会、人民日报海外版/中新网</p>
+        </div>
+
+        <div class="section">
+            <h2>5. 产业链联动：TEL vs APH 对汽车产业链的影响</h2>
+            <h3>5.1 股价与估值对比</h3>
+            <table>
+                <tr><th>指标</th><th>TE Connectivity (TEL)</th><th>Amphenol (APH)</th></tr>
+                <tr><td>股价（8月27日）</td><td>$203.00</td><td>$161.38</td></tr>
+                <tr><td>52周高点</td><td>$252.56</td><td>$178.52</td></tr>
+                <tr><td>52周低点</td><td>$190.27</td><td>$105.45</td></tr>
+                <tr><td>最近5日走势</td><td>203.52→203.00，基本持平</td><td>157.01→161.38，+2.8%</td></tr>
+                <tr><td>主要下游</td><td>汽车、工业、交通、通信</td><td>IT数据中心、通信、国防、汽车、工业</td></tr>
+                <tr><td>估值叙事</td><td>汽车/工业连接器龙头，股息防御</td><td>AI高速连接+并购增长，估值溢价</td></tr>
+            </table>
+            <p class="data-source">数据来源：Yahoo Finance（截至2026-08-27）</p>
+
+            <h3>5.2 最新业绩与业务动态</h3>
+            <p><span class="highlight">TE Connectivity（TEL）</span>：2026财年第三季度（截至2026年6月26日）净销售额创历史新高达<span class="highlight">51.6亿美元</span>，同比增长14%，自然增长12%；两大解决方案订单合计57亿美元，同比增长27%；调整后每股收益2.94美元，同比增长22%。交通解决方案实现5%的有机增长，工业解决方案增长超过20%。首席执行官Terrence Curtin指出，公司业绩显著超出投资者日阐述的业务模型预期，为2026财年销售额与每股收益两位数增长奠定基础。</p>
+            <p>在中国市场，TEL汽车事业部位于南通崇川区的制造基地于2026年6月正式投入运营，总投资<span class="highlight">1.5亿美元</span>，建筑面积约3.99万平方米。该基地主要生产新能源汽车高压连接器、汽车高速高频数据连接器，并集成辅助驾驶浮动摄像头、车载Type-C数据线等产线，是TEL在中国唯一集成上述产品的生产基地，体现了其深耕中国新能源汽车与智能网联汽车产业链的决心。</p>
+            <p><span class="highlight">Amphenol（APH）</span>：2026年第二季度营收创纪录达<span class="highlight">88亿美元</span>，同比增长55%，有机增长30%；订单107亿美元， book-to-bill 1.23:1；调整后每股收益1.35美元，同比增长67%；调整后营业利润率29.8%。公司董事长兼CEO R. Adam Norwitt表示，增长由多数终端市场强劲有机增长及收购贡献共同驱动，其中IT数据中心市场增长尤为突出。公司上调CommScope收购全年销售预期至46亿美元、每股收益增厚至0.30美元。</p>
+            <p>第三季度展望：销售额93-94亿美元，同比增长50-52%；调整后每股收益1.40-1.42美元，同比增长51-53%。该指引未包含额外关税返还。</p>
+
+            <h3>5.3 对中国汽车产业链的映射</h3>
+            <ul>
+                <li><span class="highlight">汽车电动化</span>：中国新能源渗透率突破65%，800V高压平台、超充网络、智能驾驶传感器放量，直接拉动高压连接器、高速数据连接器、线束需求。TEL南通基地投产正是响应这一趋势；APH通过汽车/工业连接产品亦持续受益。</li>
+                <li><span class="highlight">智能化升级</span>：ADAS摄像头、激光雷达、域控制器、座舱高速数据传输推动FAKRA/Mini-FAKRA/以太网连接器需求。TEL在辅助驾驶浮动摄像头、高频数据连接器上的布局，与APH在高速互连领域的积累，均在汽车智能化赛道占据关键卡位。</li>
+                <li><span class="highlight">出口与供应链韧性</span>：中国汽车出口连续两月超百万辆，海外建厂与本地化供应成为必然。连接器龙头通过在华与全球产能布局（如TEL南通、APH常州及全球收购）增强供应链韧性，匹配中国车企出海节奏。</li>
+                <li><span class="highlight">估值分化</span>：当前市场给予APH显著AI数据中心估值溢价，而TEL估值更贴近汽车/工业基本盘，股息防御性更强。两者业绩均处于上升通道，但驱动因素不同：TEL更依赖汽车与工业复苏+电动化增量，APH更依赖AI算力基础设施+并购整合。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. 总结与下周关注重点</h2>
+            <h3>6.1 本周核心结论</h3>
+            <ul>
+                <li>8月车市呈“先抑后扬”修复态势：全月零售预估158万辆，环比改善但同比仍大幅下滑；高温、台风等短期扰动后，成都车展与月末冲量构成主要催化剂。</li>
+                <li>新能源渗透率继续刷新历史新高，批发端已接近七成，插混/增程成为结构性增长主力，燃油车产能持续大幅收缩。</li>
+                <li>出口是稳住行业基本盘的核心支柱：7月出口104万辆、新能源出口占比过半，插混出海增速领先。</li>
+                <li>头部自主品牌强者愈强，零跑首次跻身集团前十；合资品牌份额持续被压缩，转型窗口期收窄。</li>
+                <li>连接器龙头TEL/APH映射中国汽车产业链电动化/智能化趋势：TEL深耕中国新能源高压/高速连接，APH借AI数据中心获得估值溢价，两者均在汽车与算力连接的双重浪潮中受益。</li>
+            </ul>
+
+            <h3>6.2 下周关注重点</h3>
+            <ul>
+                <li><span class="highlight">8月25-31日周度销量</span>：观察成都车展与月末冲量能否将全月零售推升至158万辆附近。</li>
+                <li><span class="highlight">成都车展新车发布</span>：重点关注比亚迪、吉利、华为系、理想、小米、零跑等新车型/改款节奏。</li>
+                <li><span class="highlight">8月车企官方销量</span>：次月初各大车企将公布8月交付数据，验证新势力与自主品牌的增长持续性。</li>
+                <li><span class="highlight">TEL/APH股价与订单</span>：关注连接器龙头在AI算力与汽车电动化双轮驱动下的估值演绎。</li>
+                <li><span class="highlight">政策面</span>：以旧换新补贴落地、地方购车激励、新能源车购置税政策延续等。</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>免责声明：本报告数据来源于公开渠道（中汽协、乘联分会、车企公告、Yahoo Finance、盖世汽车研究院、人民日报海外版等），仅供内部研究参考，不构成投资建议。报告观点仅代表作者基于公开信息的整理分析，不对任何投资决策负责。</p>
+        </div>
+
+        <footer>
+            <p>© 2026 多多研究报告中心 · 数据来源于公开渠道，仅供参考</p>
+            <p>生成日期：2026-08-28 · GitHub: <a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </footer>
+    </div>
+</body>
+</html>

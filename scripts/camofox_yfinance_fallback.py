@@ -102,10 +102,10 @@ def _camofox_create_tab(url: str) -> str:
     return r.json()["tabId"]
 
 
-def _camofox_get_snapshot(tab_id: str) -> str:
+def _camofox_get_snapshot(tab_id: str, full: bool = True) -> str:
     r = requests.get(
         f"{CAMOFOX_BASE}/tabs/{tab_id}/snapshot",
-        params={"userId": CAMOFOX_USER},
+        params={"userId": CAMOFOX_USER, "full": str(full).lower()},
         timeout=30
     )
     r.raise_for_status()
@@ -132,13 +132,16 @@ def _parse_quote_price(snapshot: str, symbol: str) -> tuple[Optional[float], Opt
     if heading_idx is None:
         return None, None
 
-    # 在 heading 后面的有限行内找 text: "价格 ... At close: Month DD ..."
+    # 在 heading 后面的有限行内找 text: "价格 ... (变化) 时间说明 ..."
+    # Yahoo 两种常见格式：
+    #   - 收盘后："7,711.76 -19.23 (-0.25%) At close: August 28 at 4:37:00 PM EDT"
+    #   - 盘中：  "7,665.35 -46.41 (-0.60%) As of 10:27:02 AM EDT. Market Open."
     price = None
     date_str = None
     for line in lines[heading_idx:heading_idx + 10]:
         # 先尝试匹配完整文本里的价格和日期
         m = re.search(
-            r'text:\s*"([\d,]+\.?\d*)\s+[^"]*At close:\s*([A-Za-z]+\s+\d{1,2})',
+            r'text:\s*"?([\d,]+\.?\d*)\s+[^"]*At close:\s*([A-Za-z]+\s+\d{1,2})',
             line
         )
         if m:
@@ -148,10 +151,19 @@ def _parse_quote_price(snapshot: str, symbol: str) -> tuple[Optional[float], Opt
             year = datetime.now().year
             date_str = f"{month_day}, {year}"
             break
-        # 备选：只匹配价格
-        m2 = re.search(r'text:\s*"([\d,]+\.?\d*)', line)
-        if m2 and price is None:
+        # 盘中格式：只有时间，没有日期，用今天
+        m2 = re.search(
+            r'text:\s*"?([\d,]+\.?\d*)\s+[^"]*As of\s+[\d:\s]+(?:AM|PM) EDT',
+            line
+        )
+        if m2:
             price = float(m2.group(1).replace(',', ''))
+            date_str = datetime.now().strftime('%b %d, %Y')
+            break
+        # 最后备选：只匹配价格
+        m3 = re.search(r'text:\s*"?([\d,]+\.?\d*)', line)
+        if m3 and price is None:
+            price = float(m3.group(1).replace(',', ''))
     return price, date_str
 
 

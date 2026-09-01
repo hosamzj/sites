@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱震海频道每周精选 | 2026-08-26 ~ 2026-09-01</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .date-range {
+            display: inline-block;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .summary li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .summary li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 8px;
+            font-weight: bold;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            background: #000;
+            min-height: 180px;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: rgba(201, 100, 66, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+        .thumbnail-link:hover .play-icon {
+            opacity: 1;
+        }
+        .video-info {
+            padding: 28px;
+        }
+        .video-info h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            color: var(--accent-light);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span>专题研究<span>→</span>邱震海频道每周精选
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_lIwW6yoXAobONFnDSxq6DJotbsEV4nX3MT0cd6som55Q=s72-c-k-c0x00ffffff-no-rj" alt="邱震海">
+                <span>邱震海 · YouTube 频道</span>
+            </div>
+            <h1 class="title">频道每周精选</h1>
+            <p class="subtitle">香港全球化中心（CGHK）和震海会创始人、德国图宾根大学博士。用"说真话、说实话、说人话"带您了解国际风云及其背后的发展趋势。</p>
+            <div class="date-range">2026-08-26 ~ 2026-09-01</div>
+        </header>
+
+        <section class="summary">
+            <h2>📌 本周核心议题</h2>
+            <ul>
+                <li>本周频道更新 6 条视频，覆盖 2026-08-26 ~ 2026-09-01 时间段。</li>
+                <li>美伊战争与中东局势</li><li>中美博弈与中国战略机遇</li><li>美国霸权衰落与战略困境</li><li>盟友关系与地缘经济重构</li>
+            </ul>
+        </section>
+
+        <section class="video-list">
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=aJK04BLpPYM" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/aJK04BLpPYM/hqdefault.jpg" alt="美伊战火突然重燃！霍尔木兹海峡生变，中俄峰会释放重大信号" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=aJK04BLpPYM" target="_blank">美伊战火突然重燃！霍尔木兹海峡生变，中俄峰会释放重大信号</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.31</span>
+                    <span class="views">👁 6，987 次观看</span>
+                </div>
+                <p class="description">美伊在霍尔木兹海峡重燃战火，美军空袭伊朗布雷设施，伊朗导弹反击。中国领导人出访中亚，出席上合峰会并会晤普京，为中美博弈增加底气。霍尔木兹局势牵动全球能源与经济，中俄战略协作更显关键，大国平衡棋局正悄然展开。</p>
+                <a href="https://www.youtube.com/watch?v=aJK04BLpPYM" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=l84GEVFjvqs" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/l84GEVFjvqs/hqdefault.jpg" alt="美伊战争半年节点：美国没等来胜利，世界却迎来一个关键转向" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=l84GEVFjvqs" target="_blank">美伊战争半年节点：美国没等来胜利，世界却迎来一个关键转向</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.29</span>
+                    <span class="views">👁 1.1万 次观看</span>
+                </div>
+                <p class="description">美伊战争打满半年，美国没等来胜利，反陷中东泥潭。硝烟未散，世界却迎来关键转向——未来5-10年，博弈主战场正从军事转向地缘经济。美国败局之后，中国将面对怎样的新棋局？本期深度复盘，揭开变局之下的暗流与机遇。</p>
+                <a href="https://www.youtube.com/watch?v=l84GEVFjvqs" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=dtfN_OpLcfQ" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/dtfN_OpLcfQ/hqdefault.jpg" alt="伊朗一战打穿美底牌，两大死穴藏不住了，中美真正的较量才刚开始" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=dtfN_OpLcfQ" target="_blank">伊朗一战打穿美底牌，两大死穴藏不住了，中美真正的较量才刚开始</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.28</span>
+                    <span class="views">👁 1.4万 次观看</span>
+                </div>
+                <p class="description">美伊开战整整半年，美国军力、金融实力双重下滑。中美双方摘下滤镜、褪去盔甲，从此进入短兵相接阶段，双方手握关键筹码角力，9 月底前后或将迎来一轮战略筹码互换。</p>
+                <a href="https://www.youtube.com/watch?v=dtfN_OpLcfQ" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=8lj8ZV6q9vU" target="_blank" class="thumbnail-link">
+                <img src="https://i1.ytimg.com/vi/8lj8ZV6q9vU/hqdefault.jpg" alt="从势如破竹到进退维谷，美伊开战半年，美国证明自己彻底不行了" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=8lj8ZV6q9vU" target="_blank">从势如破竹到进退维谷，美伊开战半年，美国证明自己彻底不行了</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.27</span>
+                    <span class="views">👁 1.2万 次观看</span>
+                </div>
+                <p class="description">美伊战争半年，美国从“势如破竹”到“打谈占”全败，霸权神话彻底破灭。本期全面复盘战争三阶段，深度剖析霸权衰落规律，前瞻全球格局走向，揭示美国霸权崩塌真相。</p>
+                <a href="https://www.youtube.com/watch?v=8lj8ZV6q9vU" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=mDBzeiUvKp4" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/mDBzeiUvKp4/hqdefault.jpg" alt="双线开火自讨苦吃，美国同时开打两场经济战，反把盟友推向中国" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=mDBzeiUvKp4" target="_blank">双线开火自讨苦吃，美国同时开打两场经济战，反把盟友推向中国</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.26</span>
+                    <span class="views">👁 9，527 次观看</span>
+                </div>
+                <p class="description">美国对伊朗“史上最严制裁”刚出手，已波及部分中国企业，中方已预留反制后手；另一边美加互砸 50% 关税大打出手，两场冲突或将触发多米诺骨牌效应，推动多国重新选边，特朗普的“极限施压”正在反噬自己。</p>
+                <a href="https://www.youtube.com/watch?v=mDBzeiUvKp4" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+<div class="video-card">
+            <a href="https://www.youtube.com/watch?v=qjZ_oIHCgfk" target="_blank" class="thumbnail-link">
+                <img src="https://i2.ytimg.com/vi/qjZ_oIHCgfk/hqdefault.jpg" alt="想靠“经济放逐”翻盘？拿美元大棒敲打盟友，反倒把筹码推向中国" loading="lazy">
+                <div class="play-icon">▶</div>
+            </a>
+            <div class="video-info">
+                <h3><a href="https://www.youtube.com/watch?v=qjZ_oIHCgfk" target="_blank">想靠“经济放逐”翻盘？拿美元大棒敲打盟友，反倒把筹码推向中国</a></h3>
+                <div class="video-meta">
+                    <span class="date">📅 2026.08.25</span>
+                    <span class="views">👁 1万 次观看</span>
+                </div>
+                <p class="description">美国抛出 “经济放逐行动”，出台史上最严对伊制裁，财长记者会说辞前后矛盾。军事难以取胜转而挥舞美元大棒逼迫各国选边。如今霸权威信下滑，中国拥有更多战略回旋空间，危机之下暗藏新机遇。</p>
+                <a href="https://www.youtube.com/watch?v=qjZ_oIHCgfk" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+            </div>
+        </div>
+
+        </section>
+
+        <footer class="footer">
+            <p>数据来源：<a href="https://www.youtube.com/@%E9%82%B1%E9%9C%87%E6%B5%B7-e9d" target="_blank">@邱震海-e9d</a> · 自动生成于 2026-09-01</p>
+        </footer>
+    </div>
+</body>
+</html>

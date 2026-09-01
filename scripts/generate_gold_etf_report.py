@@ -333,7 +333,7 @@ a {{ color:var(--gold); text-decoration:none; }}
 <div class="price-item">
 <div class="label">华安ETF市价 518880</div>
 <div class="value" style="color:var(--{huaan_color});">{huaan_close:.3f}</div>
-<div class="change {'up' if huaan_change >= 0 else 'down'}">{huaan_arrow} {huaan_change:+.2f}% 本周{huaan_arrow}{abs(huaan_change):.2f}%；高位回调中，切勿追高，可等企稳后分批建仓。</div>
+<div class="change {'up' if huaan_change >= 0 else 'down'}">{huaan_arrow} {huaan_change:+.2f}% 高位回调中，切勿追高，可等企稳后分批建仓。</div>
 </div>
 </div>
 </div>

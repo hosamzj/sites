@@ -24,18 +24,15 @@ body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkM
 a { color:var(--gold); text-decoration:none; }
 .container { max-width:960px; margin:0 auto; padding:16px; }
 
-/* Header */
 .header { text-align:center; padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:24px; }
 .header h1 { font-size:28px; font-weight:700; background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .header .sub { color:var(--text2); font-size:14px; margin-top:6px; }
 .header .date-badge { display:inline-block; margin-top:10px; background:rgba(212,168,67,0.12); color:var(--gold); padding:4px 14px; border-radius:20px; font-size:13px; font-weight:500; }
 
-/* Cards */
 .card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px; }
 .card-title { font-size:16px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 .card-title .icon { width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; }
 
-/* Price Board */
 .price-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .price-item { background:var(--bg3); border-radius:10px; padding:16px; text-align:center; }
 .price-item .label { font-size:12px; color:var(--text2); margin-bottom:6px; }
@@ -44,20 +41,16 @@ a { color:var(--gold); text-decoration:none; }
 .up { color:var(--green); }
 .down { color:var(--red); }
 
-/* Advice */
 .advice-box { background:linear-gradient(135deg,rgba(212,168,67,0.08),rgba(212,168,67,0.02)); border:1px solid rgba(212,168,67,0.25); border-radius:12px; padding:20px; margin-bottom:16px; }
 .advice-box .tag { display:inline-block; background:var(--gold); color:#000; padding:3px 12px; border-radius:4px; font-size:12px; font-weight:600; margin-bottom:10px; }
 .advice-box h3 { font-size:18px; margin-bottom:8px; }
 .advice-box p { font-size:14px; color:var(--text2); line-height:1.8; }
 
-/* Signal */
 .signal-bar { display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
 .signal-bar:last-child { border-bottom:none; }
-.signal-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 .signal-bar .name { flex:1; font-size:14px; }
 .signal-bar .val { font-size:14px; font-weight:600; }
 
-/* ETF Table */
 .etf-table { width:100%; border-collapse:collapse; font-size:13px; }
 .etf-table th { text-align:left; padding:10px 8px; color:var(--text2); font-weight:500; border-bottom:1px solid var(--border); font-size:12px; }
 .etf-table td { padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.03); }
@@ -69,7 +62,6 @@ a { color:var(--gold); text-decoration:none; }
 .fee-mid { background:rgba(59,130,246,0.15); color:var(--blue); }
 .fee-high { background:rgba(239,68,68,0.15); color:var(--red); }
 
-/* Steps */
 .step-list { counter-reset:step; }
 .step-item { counter-increment:step; padding:12px 0 12px 44px; position:relative; border-bottom:1px solid rgba(255,255,255,0.04); }
 .step-item:last-child { border-bottom:none; }
@@ -77,17 +69,14 @@ a { color:var(--gold); text-decoration:none; }
 .step-item .step-title { font-weight:600; font-size:14px; margin-bottom:4px; }
 .step-item .step-desc { font-size:13px; color:var(--text2); }
 
-/* FAQ */
 .faq-item { padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
 .faq-item:last-child { border-bottom:none; }
 .faq-q { font-weight:600; font-size:14px; color:var(--gold-light); margin-bottom:4px; }
 .faq-a { font-size:13px; color:var(--text2); line-height:1.7; }
 
-/* Footer */
 .footer { text-align:center; padding:24px 0; color:var(--text2); font-size:12px; border-top:1px solid var(--border); margin-top:24px; }
 .footer .warn { color:var(--red); font-weight:500; margin-top:6px; }
 
-/* Tabs */
 .tabs { display:flex; gap:4px; margin-bottom:20px; background:var(--bg3); border-radius:10px; padding:4px; }
 .tab { flex:1; text-align:center; padding:10px 0; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; transition:all .2s; color:var(--text2); }
 .tab.active { background:var(--gold); color:#000; font-weight:600; }
@@ -102,66 +91,60 @@ a { color:var(--gold); text-decoration:none; }
 </head>
 <body>
 <div class="container">
-<!-- Header -->
 <div class="header">
 <h1>🏦 黄金ETF投资助手</h1>
 <div class="sub">每周行情追踪 × 小白也能看懂的投资建议</div>
-<div class="date-badge" id="today-date">📅 2026年09月01日 · 周二</div>
+<div class="date-badge">📅 2026年09月01日 · 周二</div>
 </div>
-<!-- Tabs -->
 <div class="tabs">
-<div class="tab active" onclick="switchTab('overview')">📊 本周速览</div>
-<div class="tab" onclick="switchTab('etf')">🏆 ETF对比</div>
-<div class="tab" onclick="switchTab('guide')">📖 小白指南</div>
+<div class="tab active" data-tab="overview" onclick="switchTab('overview')">📊 本周速览</div>
+<div class="tab" data-tab="etf" onclick="switchTab('etf')">🏆 ETF对比</div>
+<div class="tab" data-tab="guide" onclick="switchTab('guide')">📖 小白指南</div>
 </div>
-<!-- Tab 1: Overview -->
 <div class="tab-content active" id="tab-overview">
-<!-- Price Board -->
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">💰</span> 本周金价</div>
 <div class="price-grid">
 <div class="price-item">
 <div class="label">国际金价 (USD/盎司)</div>
-<div class="value" style="color:var(--red);">$4,426</div>
-<div class="change down">▼ -1.16% 较上周五$4,478变化至$4,426；杰克逊霍尔年会后美元反弹，金价承压；支撑位$4,400，阻力位$4,600。</div>
+<div class="value" style="color:var(--red);">$4,422.96</div>
+<div class="change down">▼ -1.31% 新浪财经纽约黄金CFD；杰克逊霍尔年会后美元反弹，金价承压；支撑位$4,400，阻力位$4,600。</div>
 </div>
 <div class="price-item">
 <div class="label">国内金价 (CNY/克)</div>
-<div class="value" style="color:var(--red);">964</div>
-<div class="change down">▼ -3.77% 据华安ETF估算的AU9999参考价约964元/克；汇率因素放大跌幅，国内ETF跌幅大于国际金价。</div>
+<div class="value" style="color:var(--red);">959.94</div>
+<div class="change down">▼ -1.87% 新浪财经黄金连续（沪金）；汇率因素放大跌幅，国内金价跌幅大于国际金价。</div>
 </div>
 <div class="price-item">
 <div class="label">品牌首饰金 (元/克)</div>
-<div class="value" style="color:var(--gold-light);">~1,344</div>
+<div class="value" style="color:var(--gold-light);">~1,340</div>
 <div class="change up">▲ 首饰金含品牌溢价+工艺费约380元/克；投资选ETF，结婚/送礼才买金饰。</div>
 </div>
 <div class="price-item">
-<div class="label">华安ETF市价 518880</div>
-<div class="value" style="color:var(--red);">9.118</div>
-<div class="change down">▼ -3.77% 高位回调中，切勿追高，可等企稳后分批建仓。</div>
+<div class="label">华安ETF净值 518880</div>
+<div class="value" style="color:var(--red);">9.1531</div>
+<div class="change down">▼ -3.32% 当日▼3.32%，本周-3.32%；高位回调中，切勿追高。</div>
 </div>
 </div>
 </div>
-<!-- Advice -->
 <div class="advice-box">
 <div class="tag">🎯 本周观点</div>
 <h3>金价冲高回落，短期观望为主</h3>
 <p>
-<b>市场回顾：</b>上周金价在$4,700附近遇阻后回落，本周COMEX黄金跌至$4,446，回调幅度约0.7%；国内黄金ETF普遍回调3.7%左右，汇率贬值放大了国内跌幅。<br/><br/>
-<b>核心逻辑：</b>①美联储降息预期反复，美元反弹压制金价；②全球央行购金和中国增持趋势未变，中长期支撑仍在；③$4,400是关键支撑，若跌破可能进一步回调至$4,300。<br/><br/>
-<b>操作建议：</b>已有仓位可持有观望；空仓者不要追高，等待$4,400附近企稳或回踩$4,300时分批建仓；仓位控制在10%以内。
+<b>市场回顾：</b>上周金价在$4,700附近遇阻后回落，本周国际金价跌至$4,423，国内金价回落至960元/克；国内黄金ETF普遍回调，汇率贬值放大了跌幅。<br/><br/>
+<b>核心逻辑：</b>①美联储降息预期反复，美元反弹压制金价；②全球央行购金和中国增持趋势未变，中长期支撑仍在；③$4,400是关键支撑，若跌破可能进一步回调。<br/><br/>
+<b>操作建议：</b>已有仓位可持有观望；空仓者不要追高，等待$4,400附近企稳后再分批建仓；仓位控制在10%以内。
 </p>
 </div>
-<!-- Highlight -->
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">⭐</span> 华安黄金ETF 518880 本周要点</div>
 <div class="signal-bar">
-<div class="name">本周市价</div>
-<div class="val" style="color:var(--red);"><b>9.118元（-3.77%）</b>，8月高点9.62元，回调约5.2%</div>
+<div class="name">最新净值</div>
+<div class="val" style="color:var(--red);"><b>9.1531元</b>（日-3.32%，周-3.32%）</div>
 </div>
 <div class="signal-bar">
-<div class="name">10日区间</div>
-<div class="val" style="color:var(--text2);">高点 9.620 / 低点 8.442</div>
+<div class="name">基金规模</div>
+<div class="val" style="color:var(--text2);">约 0.00 亿元（新浪财经）</div>
 </div>
 <div class="signal-bar">
 <div class="name">⚠ 风险提示</div>
@@ -169,7 +152,6 @@ a { color:var(--gold); text-decoration:none; }
 </div>
 </div>
 </div>
-<!-- Tab 2: ETF -->
 <div class="tab-content" id="tab-etf">
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🏆</span> 黄金ETF对比（2026年09月01日数据）</div>
@@ -179,7 +161,8 @@ a { color:var(--gold); text-decoration:none; }
 <tr>
 <th>基金名称</th>
 <th>代码</th>
-<th>最新价</th>
+<th>最新净值</th>
+<th>当日涨跌</th>
 <th>本周涨跌</th>
 <th>年费率</th>
 <th>跟踪标的</th>
@@ -189,70 +172,78 @@ a { color:var(--gold); text-decoration:none; }
 <tr>
 <td><span class="etf-name">华安黄金ETF</span><br/><span style="font-size:11px;color:var(--gold);">⭐ 规模最大</span></td>
 <td class="etf-code">518880</td>
-<td class="red">9.118</td>
-<td class="red">-3.77%</td>
+<td class="red">9.1531</td>
+<td class="red">-3.32%</td>
+<td class="red">-3.32%</td>
 <td><span class="fee-badge fee-mid">0.60%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">华夏黄金ETF</span><br/><span style="font-size:11px;color:var(--green);">💡 费率最低</span></td>
 <td class="etf-code">518850</td>
-<td class="red">9.210</td>
-<td class="red">-3.79%</td>
+<td class="red">9.2466</td>
+<td class="red">-3.32%</td>
+<td class="red">-3.32%</td>
 <td><span class="fee-badge fee-low">0.20%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">工银黄金ETF</span><br/><span style="font-size:11px;color:var(--green);">💡 同为最低费率</span></td>
 <td class="etf-code">518660</td>
-<td class="red">9.148</td>
-<td class="red">-3.79%</td>
+<td class="red">9.1836</td>
+<td class="red">-3.32%</td>
+<td class="red">-3.32%</td>
 <td><span class="fee-badge fee-low">0.20%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">国泰黄金ETF</span></td>
 <td class="etf-code">518800</td>
-<td class="red">9.557</td>
-<td class="red">-3.80%</td>
+<td class="red">9.5956</td>
+<td class="red">-3.33%</td>
+<td class="red">-3.33%</td>
 <td><span class="fee-badge fee-mid">0.50%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">易方达黄金ETF</span></td>
 <td class="etf-code">159934</td>
-<td class="red">9.523</td>
-<td class="red">-3.78%</td>
+<td class="red">9.5620</td>
+<td class="red">-3.33%</td>
+<td class="red">-3.33%</td>
 <td><span class="fee-badge fee-mid">0.50%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">博时黄金ETF</span></td>
 <td class="etf-code">159937</td>
-<td class="red">9.098</td>
-<td class="red">-3.74%</td>
+<td class="red">9.1312</td>
+<td class="red">-3.32%</td>
+<td class="red">-3.32%</td>
 <td><span class="fee-badge fee-mid">0.50%</span></td>
 <td>Au99.99</td>
 </tr>
 <tr>
 <td><span class="etf-name">富国上海金ETF</span></td>
 <td class="etf-code">518680</td>
-<td class="red">9.551</td>
-<td class="red">-3.71%</td>
+<td class="red">9.5669</td>
+<td class="red">-3.55%</td>
+<td class="red">-3.55%</td>
 <td><span class="fee-badge fee-mid">0.40%</span></td>
 <td>上海金SHAU</td>
 </tr>
 <tr>
 <td><span class="etf-name">广发上海金ETF</span></td>
 <td class="etf-code">518600</td>
-<td class="red">9.498</td>
-<td class="red">-3.77%</td>
+<td class="red">9.5172</td>
+<td class="red">-3.56%</td>
+<td class="red">-3.56%</td>
 <td><span class="fee-badge fee-mid">0.40%</span></td>
 <td>上海金SHAU</td>
 </tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:var(--text2);margin-top:10px;">📌 注：价格为二级市场交易收盘价，非基金净值；数据来自Yahoo Finance，仅供参考。</p>
+<p style="font-size:12px;color:var(--text2);margin-top:10px;">📌 注：净值为基金单位净值，当日涨跌为相对上一交易日，本周涨跌为相对上周五；数据来自新浪财经，仅供参考。</p>
 </div>
 </div>
 <div class="advice-box">
@@ -260,7 +251,7 @@ a { color:var(--gold); text-decoration:none; }
 <h3>三步搞定黄金ETF选择</h3>
 <p>
 <b>第一步：看费率</b> → 长期持有选0.20%（华夏518850 / 工银518660），省下的就是赚到的<br/>
-<b>第二步：看流动性</b> → 华安518880日均成交超4亿份，买卖价差最小，进出最方便<br/>
+<b>第二步：看流动性</b> → 华安518880规模最大、成交活跃，买卖价差最小<br/>
 <b>第三步：看跟踪标的</b> → Au99.99跟国际金价更紧；上海金SHAU人民币计价，避汇率波动<br/><br/>
 <b>💡 多多推荐：</b><br/>
         · 长期定投 → <b>华夏518850</b>（费率0.2%最低，长期持有成本优势大）<br/>
@@ -269,7 +260,6 @@ a { color:var(--gold); text-decoration:none; }
       </p>
 </div>
 </div>
-<!-- Tab 3: Guide -->
 <div class="tab-content" id="tab-guide">
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(34,197,94,0.2);">📘</span> 什么是黄金ETF？</div>
@@ -324,7 +314,7 @@ a { color:var(--gold); text-decoration:none; }
 </div>
 <div class="faq-item">
 <div class="faq-q">Q：现在能买吗？</div>
-<div class="faq-a">A：2026年09月01日国际金价约$4,426/盎司，国内ETF普遍回调3.8%。短期处于回调通道，<b style="color:var(--red);">不建议追高</b>。可等$4,400附近企稳后再分批建仓，仓位控制在10%以内。</div>
+<div class="faq-a">A：2026年09月01日国际金价约$4,423/盎司，国内金价960元/克，国内ETF本周-3.3%。短期处于回调通道，<b style="color:var(--red);">不建议追高</b>。可等$4,400附近企稳后再分批建仓，仓位控制在10%以内。</div>
 </div>
 <div class="faq-item">
 <div class="faq-q">Q：场内ETF和场外联接基金有啥区别？</div>
@@ -345,15 +335,13 @@ a { color:var(--gold); text-decoration:none; }
 </div>
 </div>
 </div>
-<div class="footer">📅 数据更新时间：2026-09-01 16:40 · 多多每周自动更新 · 数据来源：Yahoo Finance<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div>
+<div class="footer">📅 数据更新时间：2026-09-01 17:17 · 多多每周自动更新 · 数据来源：新浪财经<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div>
 <script>
 function switchTab(id) {
-  var tabs = document.querySelectorAll('.tab');
-  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
-  var contents = document.querySelectorAll('.tab-content');
-  for (var i = 0; i < contents.length; i++) contents[i].classList.remove('active');
-  var target = document.querySelector('.tab[onclick*="switchTab('' + id + '')"]');
-  if (target) target.classList.add('active');
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+  var targetTab = document.querySelector('.tab[data-tab="' + id + '"]');
+  if (targetTab) targetTab.classList.add('active');
   var panel = document.getElementById('tab-' + id);
   if (panel) panel.classList.add('active');
 }

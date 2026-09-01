@@ -67,12 +67,12 @@ def fetch_gold_futures():
     """从新浪财经沪金期货页面获取国际金价和国内金价"""
     url = "https://finance.sina.com.cn/futures/quotes/AU0.shtml"
     html, text = fetch_with_playwright(url)
-    
+
     result = {
         "intl": {"price": 0, "change_pct": 0, "name": "纽约黄金"},
         "domestic": {"price": 0, "change_pct": 0, "name": "黄金连续"},
     }
-    
+
     # 外盘期货报价区：纽约黄金\t4419.54\t-1.38%（表格行用 \t 分隔）
     in_global = False
     lines = [l.strip() for l in text.split('\n') if l.strip()]
@@ -89,7 +89,7 @@ def fetch_gold_futures():
                     result["intl"]["change_pct"] = float(pct)
                 except Exception:
                     pass
-    
+
     # 国内黄金连续：通常在 "黄金连续\t价格\t涨跌幅" 处
     for line in lines:
         parts = line.split('\t')
@@ -100,13 +100,13 @@ def fetch_gold_futures():
                 result["domestic"]["change_pct"] = float(pct)
             except Exception:
                 pass
-    
+
     # 备用：从最新价行提取国内金价
     if result["domestic"]["price"] == 0:
         m = re.search(r'最新价[:：]\s*([\d\.]+)', text)
         if m:
             result["domestic"]["price"] = float(m.group(1))
-    
+
     return result
 
 
@@ -114,7 +114,7 @@ def fetch_etf_data(code):
     """从新浪财经基金页面获取 ETF 净值、当日涨跌和历史净值"""
     url = f"https://finance.sina.com.cn/fund/quotes/{code}/bc.shtml"
     html, text = fetch_with_playwright(url)
-    
+
     result = {
         "code": code,
         "nav": 0,
@@ -124,25 +124,25 @@ def fetch_etf_data(code):
         "scale": 0,
         "history": [],
     }
-    
+
     # 提取单位净值和当日涨跌幅
     m = re.search(r'单位净值：([\d\.]+)', html)
     if m:
         result["nav"] = float(m.group(1))
-    
+
     m = re.search(r'class="font_data_[^"]*">([\-]?[\d\.]+%)', html)
     if m:
         pct = m.group(1).replace('%', '')
         result["daily_change_pct"] = float(pct)
-    
+
     m = re.search(r'累计单位净值：([\d\.]+)元', html)
     if m:
         result["accum_nav"] = float(m.group(1))
-    
+
     m = re.search(r'最新规模：([\d\.]+)亿', html)
     if m:
         result["scale"] = float(m.group(1))
-    
+
     # 点击"历史净值"获取历史净值表格
     text2 = text
     try:
@@ -161,7 +161,7 @@ def fetch_etf_data(code):
             browser.close()
     except Exception:
         pass
-    
+
     # 提取历史净值表格
     # 格式：2026-08-31\t9.1531\t3.4563\t-3.324%
     history_started = False
@@ -187,16 +187,16 @@ def fetch_etf_data(code):
             elif not re.match(r'\d{4}-\d{2}-\d{2}', line):
                 # 表格结束
                 pass
-    
+
     # 计算周涨跌幅：最新净值 vs 上周五净值
     today = datetime.now().date()
     last_friday = get_last_friday(datetime.now()).date()
-    
+
     # 最新净值：优先用页面顶部抓到的；若未抓到，取历史中最新的
     latest_nav = result["nav"] if result["nav"] > 0 else None
     if latest_nav is None and result["history"]:
         latest_nav = result["history"][0]["nav"]
-    
+
     # 上周五净值：在历史中找日期 <= last_friday 且最接近 last_friday 的
     prev_nav = None
     prev_date = None
@@ -206,25 +206,25 @@ def fetch_etf_data(code):
             if prev_date is None or h_date > prev_date:
                 prev_date = h_date
                 prev_nav = h["nav"]
-    
+
     if prev_nav and latest_nav:
         result["week_change_pct"] = round((latest_nav - prev_nav) / prev_nav * 100, 2)
-    
+
     # 如果没有抓到最新净值但历史里有今天的
     if result["nav"] == 0 and result["history"]:
         result["nav"] = result["history"][0]["nav"]
-    
+
     return result
 
 
 def fetch_data():
     """抓取所有行情数据"""
     print("🟡 开始从新浪财经抓取数据...")
-    
+
     gold_data = fetch_gold_futures()
     print(f"国际金价：{gold_data['intl']['price']} ({gold_data['intl']['change_pct']:+.2f}%)")
     print(f"国内金价：{gold_data['domestic']['price']} ({gold_data['domestic']['change_pct']:+.2f}%)")
-    
+
     etf_results = {}
     for code, name, *_ in ETF_CODES:
         try:
@@ -233,7 +233,7 @@ def fetch_data():
             print(f"{code} {name}: 净值 {data['nav']} (日{data['daily_change_pct']:+.2f}%, 周{data['week_change_pct']:+.2f}%)")
         except Exception as e:
             print(f"⚠️ {code} {name} 抓取失败: {e}")
-    
+
     return {
         "gold": gold_data,
         "etf": etf_results,
@@ -246,31 +246,30 @@ def generate_html(data):
     today_str = today.strftime("%Y年%m月%d日")
     weekday = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"][today.weekday()]
     update_time = today.strftime("%Y-%m-%d %H:%M")
-    
+
     gold = data.get("gold", {})
     intl = gold.get("intl", {"price": 0, "change_pct": 0})
     domestic = gold.get("domestic", {"price": 0, "change_pct": 0})
-    
+
     intl_price = intl.get("price", 0)
     intl_change = intl.get("change_pct", 0)
     intl_color = "green" if intl_change >= 0 else "red"
     intl_arrow = "▲" if intl_change >= 0 else "▼"
-    
+
     dom_price = domestic.get("price", 0)
     dom_change = domestic.get("change_pct", 0)
     dom_color = "green" if dom_change >= 0 else "red"
     dom_arrow = "▲" if dom_change >= 0 else "▼"
-    
-    # 首饰金估算 = 国内金价 + 380
+
     jewelry_gold = dom_price + 380 if dom_price > 0 else 0
-    
+
     huaan = data.get("etf", {}).get("518880", {})
     huaan_nav = huaan.get("nav", 0)
     huaan_daily = huaan.get("daily_change_pct", 0)
     huaan_week = huaan.get("week_change_pct", 0)
     huaan_color = "green" if huaan_daily >= 0 else "red"
     huaan_arrow = "▲" if huaan_daily >= 0 else "▼"
-    
+
     # ETF 表格行
     etf_rows = []
     for code, name, note, note_color, fee, target in ETF_CODES:
@@ -294,9 +293,9 @@ def generate_html(data):
 <td>{target}</td>
 </tr>"""
         etf_rows.append(row_html)
-    
+
     etf_table_body = "\n".join(etf_rows)
-    
+
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -305,102 +304,313 @@ def generate_html(data):
 <title>黄金ETF投资助手 | 每周行情与建议</title>
 <style>
 :root {{
+  --bg: #141413;
+  --bg-elevated: #1c1c1a;
+  --bg-card: #232320;
+  --bg-hover: #2a2a26;
+  --text-primary: #faf9f5;
+  --text-secondary: #b0aea5;
+  --text-tertiary: #87867f;
+  --accent: #c96442;
+  --accent-light: #d97757;
+  --accent-dark: #a65032;
+  --border: #30302e;
+  --border-light: #3d3d3a;
   --gold: #D4A843;
   --gold-light: #F0D78C;
   --gold-dark: #A07820;
-  --bg: #0D0F14;
-  --bg2: #151820;
-  --bg3: #1C2030;
-  --text: #E8E6E1;
-  --text2: #9CA3AF;
-  --green: #22C55E;
-  --red: #EF4444;
-  --blue: #3B82F6;
-  --border: rgba(212,168,67,0.15);
+  --green: #4ade80;
+  --red: #f87171;
+  --blue: #60a5fa;
 }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
-body {{ background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height:1.6; }}
-a {{ color:var(--gold); text-decoration:none; }}
-.container {{ max-width:960px; margin:0 auto; padding:16px; }}
+html {{ scroll-behavior: smooth; }}
+body {{ background:var(--bg); color:var(--text-primary); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; line-height:1.7; }}
+a {{ color:var(--accent-light); text-decoration:none; }}
 
-.header {{ text-align:center; padding:32px 0 24px; border-bottom:1px solid var(--border); margin-bottom:24px; }}
-.header h1 {{ font-size:28px; font-weight:700; background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }}
-.header .sub {{ color:var(--text2); font-size:14px; margin-top:6px; }}
-.header .date-badge {{ display:inline-block; margin-top:10px; background:rgba(212,168,67,0.12); color:var(--gold); padding:4px 14px; border-radius:20px; font-size:13px; font-weight:500; }}
+/* DuoDuo Research navbar */
+.navbar {{
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}}
+.navbar .nav-container {{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}}
+.nav-brand {{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+}}
+.nav-brand-icon {{
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-primary);
+}}
+.navbar .nav-links {{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}}
+.navbar .nav-links a {{
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}}
+.navbar .nav-links a:hover {{
+  color: var(--text-primary);
+  background: rgba(201, 100, 66, 0.1);
+}}
+.navbar .nav-links a.active {{
+  color: var(--accent-light);
+  background: rgba(201, 100, 66, 0.15);
+}}
+.breadcrumb {{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}}
+.breadcrumb a {{ color: var(--text-secondary); text-decoration: none; }}
+.breadcrumb a:hover {{ color: var(--accent-light); }}
+.breadcrumb span {{ margin: 0 8px; }}
 
-.card {{ background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px; }}
-.card-title {{ font-size:16px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }}
-.card-title .icon {{ width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; }}
+/* Report internal nav */
+.report-nav {{
+  background: rgba(20, 20, 19, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 16px 0;
+  position: sticky;
+  top: 65px;
+}}
+.report-nav .nav-container {{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}}
+.report-nav .nav-logo {{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}}
+.report-nav .nav-logo-icon {{
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 14px;
+}}
+.report-nav .nav-links {{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}}
+.report-nav .nav-links a {{
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}}
+.report-nav .nav-links a:hover {{
+  color: var(--text-primary);
+  background: rgba(212, 168, 67, 0.1);
+}}
+.report-nav .nav-links a.active {{
+  color: var(--gold-light);
+  background: rgba(212, 168, 67, 0.15);
+}}
 
-.price-grid {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }}
-.price-item {{ background:var(--bg3); border-radius:10px; padding:16px; text-align:center; }}
-.price-item .label {{ font-size:12px; color:var(--text2); margin-bottom:6px; }}
-.price-item .value {{ font-size:24px; font-weight:700; }}
-.price-item .change {{ font-size:13px; margin-top:4px; font-weight:500; }}
+.container {{ max-width:1000px; margin:0 auto; padding:0 24px; }}
+
+.hero {{
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+  padding: 60px 0 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}}
+.hero::before {{
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}}
+.hero-content {{ position: relative; z-index: 1; text-align: center; }}
+.hero h1 {{
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}}
+.hero .sub {{ color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; }}
+.hero .meta {{
+  display: inline-flex;
+  gap: 24px;
+  color: var(--gold);
+  font-size: 0.9rem;
+  background: rgba(212, 168, 67, 0.1);
+  padding: 8px 18px;
+  border-radius: 20px;
+}}
+
+.section {{ padding: 48px 0; border-bottom: 1px solid var(--border); }}
+.section:last-child {{ border-bottom: none; }}
+
+.card {{ background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:20px; }}
+.card-title {{ font-size:16px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; color: var(--text-primary); }}
+.card-title .icon {{ width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; color:#000; }}
+
+.price-grid {{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }}
+.price-item {{ background:var(--bg-elevated); border-radius:10px; padding:20px; text-align:center; border: 1px solid var(--border); }}
+.price-item .label {{ font-size:12px; color:var(--text-tertiary); margin-bottom:6px; }}
+.price-item .value {{ font-size:28px; font-weight:700; }}
+.price-item .change {{ font-size:13px; margin-top:6px; font-weight:500; }}
 .up {{ color:var(--green); }}
 .down {{ color:var(--red); }}
 
-.advice-box {{ background:linear-gradient(135deg,rgba(212,168,67,0.08),rgba(212,168,67,0.02)); border:1px solid rgba(212,168,67,0.25); border-radius:12px; padding:20px; margin-bottom:16px; }}
+.advice-box {{ background:linear-gradient(135deg,rgba(212,168,67,0.08),rgba(212,168,67,0.02)); border:1px solid rgba(212,168,67,0.25); border-radius:12px; padding:24px; margin-bottom:20px; }}
 .advice-box .tag {{ display:inline-block; background:var(--gold); color:#000; padding:3px 12px; border-radius:4px; font-size:12px; font-weight:600; margin-bottom:10px; }}
-.advice-box h3 {{ font-size:18px; margin-bottom:8px; }}
-.advice-box p {{ font-size:14px; color:var(--text2); line-height:1.8; }}
+.advice-box h3 {{ font-size:18px; margin-bottom:12px; color: var(--text-primary); }}
+.advice-box p {{ font-size:14px; color:var(--text-secondary); line-height:1.8; }}
 
-.signal-bar {{ display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.05); }}
+.signal-bar {{ display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid var(--border); }}
 .signal-bar:last-child {{ border-bottom:none; }}
-.signal-bar .name {{ flex:1; font-size:14px; }}
+.signal-bar .name {{ flex:1; font-size:14px; color: var(--text-secondary); }}
 .signal-bar .val {{ font-size:14px; font-weight:600; }}
 
 .etf-table {{ width:100%; border-collapse:collapse; font-size:13px; }}
-.etf-table th {{ text-align:left; padding:10px 8px; color:var(--text2); font-weight:500; border-bottom:1px solid var(--border); font-size:12px; }}
-.etf-table td {{ padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.03); }}
+.etf-table th {{ text-align:left; padding:10px 8px; color:var(--text-tertiary); font-weight:500; border-bottom:1px solid var(--border); font-size:12px; }}
+.etf-table td {{ padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.03); color: var(--text-secondary); }}
 .etf-table tr:hover {{ background:rgba(212,168,67,0.04); }}
 .etf-table .etf-name {{ font-weight:600; color:var(--gold-light); }}
-.etf-table .etf-code {{ color:var(--text2); font-size:12px; }}
+.etf-table .etf-code {{ color:var(--text-tertiary); font-size:12px; }}
 .fee-badge {{ display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }}
-.fee-low {{ background:rgba(34,197,94,0.15); color:var(--green); }}
-.fee-mid {{ background:rgba(59,130,246,0.15); color:var(--blue); }}
-.fee-high {{ background:rgba(239,68,68,0.15); color:var(--red); }}
+.fee-low {{ background:rgba(74,222,128,0.15); color:var(--green); }}
+.fee-mid {{ background:rgba(96,165,250,0.15); color:var(--blue); }}
+.fee-high {{ background:rgba(248,113,113,0.15); color:var(--red); }}
 
 .step-list {{ counter-reset:step; }}
-.step-item {{ counter-increment:step; padding:12px 0 12px 44px; position:relative; border-bottom:1px solid rgba(255,255,255,0.04); }}
+.step-item {{ counter-increment:step; padding:12px 0 12px 44px; position:relative; border-bottom:1px solid var(--border); }}
 .step-item:last-child {{ border-bottom:none; }}
 .step-item::before {{ content:counter(step); position:absolute; left:0; top:12px; width:28px; height:28px; background:var(--gold); color:#000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; }}
-.step-item .step-title {{ font-weight:600; font-size:14px; margin-bottom:4px; }}
-.step-item .step-desc {{ font-size:13px; color:var(--text2); }}
+.step-item .step-title {{ font-weight:600; font-size:14px; margin-bottom:4px; color: var(--text-primary); }}
+.step-item .step-desc {{ font-size:13px; color:var(--text-secondary); }}
 
-.faq-item {{ padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); }}
+.faq-item {{ padding:14px 0; border-bottom:1px solid var(--border); }}
 .faq-item:last-child {{ border-bottom:none; }}
 .faq-q {{ font-weight:600; font-size:14px; color:var(--gold-light); margin-bottom:4px; }}
-.faq-a {{ font-size:13px; color:var(--text2); line-height:1.7; }}
+.faq-a {{ font-size:13px; color:var(--text-secondary); line-height:1.7; }}
 
-.footer {{ text-align:center; padding:24px 0; color:var(--text2); font-size:12px; border-top:1px solid var(--border); margin-top:24px; }}
+.footer {{ text-align:center; padding:28px 0; color:var(--text-tertiary); font-size:12px; border-top:1px solid var(--border); margin-top:24px; }}
 .footer .warn {{ color:var(--red); font-weight:500; margin-top:6px; }}
 
-.tabs {{ display:flex; gap:4px; margin-bottom:20px; background:var(--bg3); border-radius:10px; padding:4px; }}
-.tab {{ flex:1; text-align:center; padding:10px 0; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; transition:all .2s; color:var(--text2); }}
-.tab.active {{ background:var(--gold); color:#000; font-weight:600; }}
-.tab-content {{ display:none; }}
-.tab-content.active {{ display:block; }}
-
-@media(max-width:600px) {{
+@media(max-width:768px) {{
+  .navbar .nav-container {{ flex-direction: column; gap: 12px; padding: 16px; }}
+  .navbar .nav-links a {{ padding: 6px 10px; font-size: 13px; }}
+  .breadcrumb {{ padding: 16px 16px 0; }}
+  .report-nav {{ top: auto; position: relative; }}
+  .report-nav .nav-container {{ flex-direction: column; gap: 12px; }}
+  .hero h1 {{ font-size: 2rem; }}
   .price-grid {{ grid-template-columns:1fr; }}
-  .header h1 {{ font-size:22px; }}
 }}
 </style>
 </head>
 <body>
+<!-- DuoDuo Research navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="nav-brand">
+      <div class="nav-brand-icon">多</div>
+      <span>DuoDuo Research</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="index.html#geopolitical">市场与地缘</a>
+      <a href="index.html#ai-tech">AI 与科技</a>
+      <a href="index.html#auto">中国汽车</a>
+      <a href="index.html#research" class="active">专题研究</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <a href="../index.html">研究报告中心</a><span>→</span><a href="../index.html#research">专题研究</a><span>→</span>黄金ETF投资助手 | 每周行情与建议
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="container hero-content">
+    <h1>🏦 黄金ETF投资助手</h1>
+    <div class="sub">每周行情追踪 × 小白也能看懂的投资建议</div>
+    <div class="meta">
+      <span>📅 {today_str} · {weekday}</span>
+      <span>💰 黄金 ETF</span>
+      <span>📊 {DATA_SOURCE}</span>
+    </div>
+  </div>
+</header>
+
+<!-- Report internal nav -->
+<nav class="report-nav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">Au</div>
+      <span>黄金ETF投资助手</span>
+    </div>
+    <div class="nav-links">
+      <a href="#overview" class="active">📊 本周速览</a>
+      <a href="#etf">🏆 ETF对比</a>
+      <a href="#guide">📖 小白指南</a>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
-<div class="header">
-<h1>🏦 黄金ETF投资助手</h1>
-<div class="sub">每周行情追踪 × 小白也能看懂的投资建议</div>
-<div class="date-badge">📅 {today_str} · {weekday}</div>
-</div>
-<div class="tabs">
-<div class="tab active" data-tab="overview" onclick="switchTab('overview')">📊 本周速览</div>
-<div class="tab" data-tab="etf" onclick="switchTab('etf')">🏆 ETF对比</div>
-<div class="tab" data-tab="guide" onclick="switchTab('guide')">📖 小白指南</div>
-</div>
-<div class="tab-content active" id="tab-overview">
+<!-- Section 1: Overview -->
+<div class="section" id="overview">
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">💰</span> 本周金价</div>
 <div class="price-grid">
@@ -451,7 +661,9 @@ a {{ color:var(--gold); text-decoration:none; }}
 </div>
 </div>
 </div>
-<div class="tab-content" id="tab-etf">
+
+<!-- Section 2: ETF -->
+<div class="section" id="etf">
 <div class="card">
 <div class="card-title"><span class="icon" style="background:rgba(212,168,67,0.2);">🏆</span> 黄金ETF对比（{today_str}数据）</div>
 <div style="overflow-x:auto;">
@@ -488,11 +700,13 @@ a {{ color:var(--gold); text-decoration:none; }}
       </p>
 </div>
 </div>
-<div class="tab-content" id="tab-guide">
+
+<!-- Section 3: Guide -->
+<div class="section" id="guide">
 <div class="card">
-<div class="card-title"><span class="icon" style="background:rgba(34,197,94,0.2);">📘</span> 什么是黄金ETF？</div>
+<div class="card-title"><span class="icon" style="background:rgba(74,222,128,0.2);">📘</span> 什么是黄金ETF？</div>
 <p style="font-size:14px;color:var(--text2);line-height:1.9;">
-        一句话：<b style="color:var(--text);">黄金ETF = 像买股票一样买黄金</b><br/><br/>
+        一句话：<b style="color:var(--text-primary);">黄金ETF = 像买股票一样买黄金</b><br/><br/>
         你不需要买金条、不用保管、不用鉴定真假。打开证券账户，输入代码（比如518880），像买卖股票一样操作就行。每1份ETF背后都有真金白银（上海黄金交易所的实物黄金）做支撑。<br/><br/>
 <b style="color:var(--gold);">核心优势：</b><br/>
         · 门槛低：1手≈900~1000元，比买金条便宜多了<br/>
@@ -502,7 +716,7 @@ a {{ color:var(--gold); text-decoration:none; }}
       </p>
 </div>
 <div class="card">
-<div class="card-title"><span class="icon" style="background:rgba(59,130,246,0.2);">🛒</span> 怎么买？5步搞定</div>
+<div class="card-title"><span class="icon" style="background:rgba(96,165,250,0.2);">🛒</span> 怎么买？5步搞定</div>
 <div class="step-list">
 <div class="step-item">
 <div class="step-title">开证券账户</div>
@@ -564,16 +778,6 @@ a {{ color:var(--gold); text-decoration:none; }}
 </div>
 </div>
 <div class="footer">📅 数据更新时间：{update_time} · 多多每周自动更新 · 数据来源：{DATA_SOURCE}<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div>
-<script>
-function switchTab(id) {{
-  document.querySelectorAll('.tab').forEach(function(t) {{ t.classList.remove('active'); }});
-  document.querySelectorAll('.tab-content').forEach(function(c) {{ c.classList.remove('active'); }});
-  var targetTab = document.querySelector('.tab[data-tab="' + id + '"]');
-  if (targetTab) targetTab.classList.add('active');
-  var panel = document.getElementById('tab-' + id);
-  if (panel) panel.classList.add('active');
-}}
-</script>
 </body>
 </html>
 """
@@ -584,7 +788,7 @@ def main():
     print("🟡 开始生成黄金ETF投资助手周报...")
     data = fetch_data()
     html = generate_html(data)
-    
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(html, encoding="utf-8")
     print(f"✅ 已生成: {OUTPUT_FILE}")

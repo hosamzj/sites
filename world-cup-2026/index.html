@@ -220,9 +220,41 @@ footer .love{color:var(--arg1)}
 /* Trophy animation */
 @keyframes glow{0%,100%{filter:drop-shadow(0 0 5px rgba(255,213,79,0.3))}50%{filter:drop-shadow(0 0 20px rgba(255,213,79,0.6))}}
 .trophy-glow{animation:glow 3s ease-in-out infinite}
-</style>
+
+        /* Standard DuoDuo Research navbar */
+        .navbar { background: #232320; border-bottom: 1px solid #30302e; position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .nav-brand { display: flex; align-items: center; gap: 10px; color: #faf9f5; text-decoration: none; font-weight: 700; font-size: 16px; }
+        .nav-brand-icon { width: 32px; height: 32px; background: #c96442; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #faf9f5; }
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+        .nav-links a { color: #b0aea5; text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+        .nav-links a:hover { color: #faf9f5; background: rgba(201, 100, 66, 0.1); }
+        .nav-links a.active { color: #d97757; background: rgba(201, 100, 66, 0.15); }
+        .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: #b0aea5; }
+        .breadcrumb a { color: #b0aea5; text-decoration: none; }
+        .breadcrumb a:hover { color: #d97757; }
+        .breadcrumb span { margin: 0 8px; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="../index.html" class="nav-brand">
+            <div class="nav-brand-icon">多</div>
+            <span>DuoDuo Research</span>
+        </a>
+        <div class="nav-links">
+            <a href="../index.html">首页</a>
+            <a href="../index.html#geopolitical">市场与地缘</a>
+            <a href="../index.html#ai-tech">AI 与科技</a>
+            <a href="../index.html#auto">中国汽车</a>
+            <a href="../index.html#research" class="active">专题研究</a>
+        </div>
+    </div>
+</nav>
+<div class="breadcrumb"><a href="../index.html">研究报告中心</a><span>→</span><a href="../index.html#research">专题研究</a><span>→</span>2026 美加墨世界杯</div>
+
 
 <!-- Nav -->
 <nav class="nav" id="nav">

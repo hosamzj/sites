@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国自动驾驶法规与标准全景报告（2026-09-10）</title>
+    <meta name="date" content="2026-09-10">
+    <meta name="update" content="2026-09-10">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-card: #232320;
+            --bg-secondary: #1a1a18;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-muted: #7a7872;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-hover: #b55a3c;
+            --border: #30302e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
+        header {
+            background: var(--bg-card);
+            padding: 48px 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+        }
+        h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        .meta { color: var(--text-muted); font-size: 0.9rem; margin-top: 16px; }
+        .section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        h2 { color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block; }
+        h3 { color: var(--text); font-size: 1.2rem; margin: 24px 0 12px; }
+        p { color: var(--text-secondary); margin-bottom: 12px; }
+        ul { margin-left: 20px; color: var(--text-secondary); }
+        li { margin-bottom: 8px; }
+        a { color: var(--accent-light); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            border: 1px solid rgba(201, 100, 66, 0.3);
+        }
+        .tag.green { background: rgba(74, 174, 120, 0.15); color: #4aae78; border-color: rgba(74, 174, 120, 0.3); }
+        .tag.blue { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border-color: rgba(88, 166, 255, 0.3); }
+        .tag.yellow { background: rgba(217, 171, 69, 0.15); color: #d9ab45; border-color: rgba(217, 171, 69, 0.3); }
+        .tag.red { background: rgba(226, 95, 95, 0.15); color: #e25f5f; border-color: rgba(226, 95, 95, 0.3); }
+        .tag.purple { background: rgba(177, 102, 255, 0.15); color: #b166ff; border-color: rgba(177, 102, 255, 0.3); }
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 16px 0;
+        }
+        .highlight-box p { margin-bottom: 6px; }
+        .source {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        th {
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-weight: 600;
+        }
+        td { color: var(--text-secondary); }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(20, 20, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .breadcrumb {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        .breadcrumb-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .breadcrumb-container a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb-container a:hover { color: var(--accent); }
+        .breadcrumb-container span:last-child { color: var(--text); }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">多</span>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto" class="active">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">研究报告中心</a>
+            <span>/</span>
+            <a href="index.html#auto">中国汽车</a>
+            <span>/</span>
+            <span>中国自动驾驶法规与标准全景报告（2026-09-10）</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>中国自动驾驶法规与标准全景报告</h1>
+            <p class="subtitle">从 L0-L5 分级科普出发，系统梳理中国自动驾驶政策法规、强制性国家标准、事故责任划分与地方试点竞速——L3"持证上岗"与强制国标元年的全景解读</p>
+            <p class="meta">报告日期：2026-09-10 · 触发来源：微信公众号科普文《买车必看｜自动驾驶 L0-L5 完整科普》 · 调研方式：全网公开资料检索（政府官网、工信部、央媒、行业媒体）</p>
+        </header>
+
+        <div class="section">
+            <h2>核心摘要</h2>
+            <ul>
+                <li><strong>立法逻辑已清晰："场景限定式立法"。</strong>中国没有等待全国性自动驾驶专门法律，而是通过"部委试点通知 → 地方立法 → 强制国标"三步走，让 L3 在限定路段、限定速度下率先合法上路。道交法层面的全国性修订（交通运输法等制修订）仍在推进中。</li>
+                <li><strong>L3 正式"持证上岗"。</strong>2025 年 9 月八部门《汽车行业稳增长工作方案（2025—2026年）》首次为 L3 量产开绿灯；2025 年 12 月工信部第 401 批公告附条件许可长安深蓝 SL03（重庆，拥堵高速≤50km/h）与北汽极狐阿尔法 S L3 版（北京指定路段≤80km/h）——我国首次对量产乘用车开放 L3 准入，但不得面向个人销售。</li>
+                <li><strong>两套强制性国标构建完整监管梯度：</strong>L2 组合驾驶辅助强标 GB 47955—2026 已于 2026-06-27 发布、2027-01-01 实施；首部 L3/L4 自动驾驶系统强标（报批稿 2026-06-17 公示）引入 Safety Case 机制与量化安全基线（致命事故率 <10⁻⁷/小时），拟 2027-07-01 实施。</li>
+                <li><strong>责任划分首次系统化：</strong>2026-07-01 施行的新版《深圳经济特区智能网联汽车管理条例》首次以地方立法明确"谁在掌控车辆，谁担首要责任"——L3 有条件自动驾驶状态下事故由驾驶人担责，L4/L5 系统激活状态下由车辆所有人/管理人赔偿（可追偿生产者）。</li>
+                <li><strong>市场基线：</strong>2026 年组合驾驶辅助（L2）乘用车新车渗透率约 70%，NOA 车型渗透率超 30%——监管对象已从"前沿技术"变为"大众消费品"，安全强约束成为新常态。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>一、L0–L5 分级：法规话语体系的基础</h2>
+            <p>中国官方分级标准为国标 <strong>GB/T 40429—2021《汽车驾驶自动化分级》</strong>（参照 SAE J3016）。2023 年四部委准入试点通知明确：政策语境下的"自动驾驶功能"特指 <strong>3 级（有条件自动驾驶）和 4 级（高度自动驾驶）</strong>，而市面 99% 车型宣传的"智驾"实质是 2 级组合驾驶辅助——这正是 2024 年以来工信部反复规范"智驾宣传"的原因：不得夸大、不得暗示"脱手脱眼"。</p>
+            <table>
+                <tr><th>等级</th><th>名称</th><th>核心特征</th><th>责任主体</th><th>中国现状</th></tr>
+                <tr><td>L0</td><td>应急辅助</td><td>仅预警（AEB/FCW 等），全程人控</td><td>驾驶人全责</td><td>法规标配阶段</td></tr>
+                <tr><td>L1</td><td>部分辅助</td><td>单功能辅助（ACC 或 LKA），必须盯路</td><td>驾驶人全责</td><td>逐步被 L2 整合</td></tr>
+                <tr><td>L2</td><td>组合驾驶辅助</td><td>控速+转向同时执行，"脱手不脱眼"</td><td><strong>驾驶人全责</strong></td><td>渗透率约 70%，GB 47955—2026 强标监管</td></tr>
+                <tr><td>L3</td><td>有条件自动驾驶</td><td>系统在其设计运行条件下执行全部驾驶，可发接管请求</td><td><strong>法定分水岭：系统激活期间车企担主责</strong>（地方立法已明确）</td><td>京渝试点，限定路段/车速，附条件准入</td></tr>
+                <tr><td>L4</td><td>高度自动驾驶</td><td>限定区域无需接管（Robotaxi/园区）</td><td>车辆所有人/管理人赔偿，可追偿生产者</td><td>萝卜快跑等商业化运营中</td></tr>
+                <tr><td>L5</td><td>完全自动驾驶</td><td>全场景无条件</td><td>—</td><td>仅理论阶段</td></tr>
+            </table>
+            <div class="highlight-box">
+                <p><strong>与消费者的关系：</strong>现行法规下，任何面向个人销售、允许"脱手"使用的量产车都是 L2——事故责任在驾驶人。车企宣传的"L2.9""准 L3"均不在法定分级内。想体验真正的 L3，目前只有官方试点路段内的运营车辆（如北京指定路段的极狐阿尔法 S L3 版、重庆拥堵高速的长安深蓝 SL03）。</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>二、国家顶层设计时间线</h2>
+            <table>
+                <tr><th>时间</th><th>文件/事件</th><th>要点</th></tr>
+                <tr><td>2021-08</td><td>《汽车数据安全管理若干规定（试行）》</td><td>确立车内数据、重要数据出境安全管理框架，后续所有智驾法规的上位依据之一</td></tr>
+                <tr><td>2021</td><td>《智能网联汽车道路测试与示范应用管理规范（试行）》</td><td>统一全国路测/示范应用申请与管理</td></tr>
+                <tr><td>2021</td><td>GB/T 40429—2021《汽车驾驶自动化分级》</td><td>确立 L0-L5 官方分级</td></tr>
+                <tr><td>2022-08</td><td>《深圳经济特区智能网联汽车管理条例》</td><td>国内首部智能网联汽车地方性法规</td></tr>
+                <tr><td>2023-11</td><td>四部委《关于开展智能网联汽车准入和上路通行试点工作的通知》（工信部联通装〔2023〕217号）</td><td>建立"L3/L4 准入+上路通行"试点制度：车企+使用主体组成联合体申报，限定区域运营</td></tr>
+                <tr><td>2024</td><td>首批 9 家试点联合体入围；工信部规范智驾宣传</td><td>长安、比亚迪、广汽、上汽、北汽蓝谷、一汽、宇通等入围；要求不得夸大辅助驾驶能力</td></tr>
+                <tr><td>2025-09</td><td>八部门《汽车行业稳增长工作方案（2025—2026年）》</td><td>中央层面首次明确"有条件批准 L3 级车型生产准入"，要求推动道路交通安全、保险等法律法规完善</td></tr>
+                <tr><td>2025-12</td><td>工信部第 401 批公告</td><td>首批两款 L3 车型附条件准入：长安深蓝 SL03（重庆）、极狐阿尔法 S L3 版（北京）；限路段限车速，不面向个人销售</td></tr>
+                <tr><td>2026-01</td><td>《"人工智能+制造"专项行动实施意见》</td><td>提出 2026 年推动 L3 向复杂场景延伸</td></tr>
+                <tr><td>2026 上半年</td><td>八部门《汽车数据出境安全指引（2026版）》等</td><td>细化智驾研发、驾驶自动化、OTA 场景重要数据判定，划定跨境"红线与绿灯"</td></tr>
+                <tr><td>进行中</td><td>交通运输法、道路交通安全法相关制修订</td><td>发改委已明确"健全自动驾驶有关法规"，全国性统一规则仍待落地</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>三、强制性国家标准：监管"硬约束"</h2>
+            <h3>1. GB 47955—2026《智能网联汽车 组合驾驶辅助系统安全要求》<span class="tag yellow">L2</span></h3>
+            <p>2026-06-27 发布，<strong>2027-01-01 实施</strong>。针对基础单车道、基础多车道、领航辅助（NOA）三类产品分别提出安全要求，覆盖功能要求、数据记录、制造商安全保障、人机交互、用户告知与培训等维度，并构建场地试验+道路试验+文件检验的多层级评价方法。与联合国 UN R171（DCAS）保持协调但要求更细，更贴合中国复杂道路环境。</p>
+            <h3>2. 《智能网联汽车 自动驾驶系统安全要求》强标（报批稿）<span class="tag red">L3/L4</span></h3>
+            <p>2026-06-17 公示，<strong>我国首部针对 L3/L4 的强制性国标</strong>，拟 2027-07-01 实施。两大亮点：</p>
+            <ul>
+                <li>首次引入 <strong>Safety Case 安全档案机制</strong>——车企须系统性论证"系统为什么足够安全"，而非仅通过指定测试项；</li>
+                <li>明确量化安全基线：<strong>致命事故率低于 10⁻⁷/小时、重伤事故率低于 10⁻⁶/小时</strong>。</li>
+            </ul>
+            <h3>3. 配套标准群</h3>
+            <ul>
+                <li><strong>GB《智能网联汽车 自动驾驶数据记录系统》</strong>：2026-01-01 起实施，为 L3/L4 事故溯源提供统一技术依据（相当于 L3 时代的"黑匣子"）；</li>
+                <li><strong>GA/T 2388—2026《智能网联汽车道路测试与示范应用安全通行规范》</strong>：公安部主导，2026-07-01 实施（武汉"萝卜快跑 3·31 事件"后加速推出）；</li>
+                <li><strong>《2026 年汽车标准化工作要点》</strong>：首次系统部署推荐性标准"推转强"，自动驾驶领域已立项 16 项国标（含 2 项强制性），安全准入门槛将持续抬高。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>四、事故责任：从"暧昧"到"法定"</h2>
+            <p>责任认定是自动驾驶立法的核心。当前格局：</p>
+            <ul>
+                <li><strong>L2（含 NOA）：驾驶人全责。</strong>系统只是"辅助"，法律上驾驶任务从未转移。2024 年起多起智驾事故判例均认定驾驶人承担主要/全部责任。</li>
+                <li><strong>L3：系统激活期间车企担主责。</strong>京渝试点及深圳新条例均明确：有条件自动驾驶激活状态下发生事故由车企/车辆方承担主要责任；但<strong>系统发出接管请求后驾驶人未及时接管的，驾驶人担责</strong>——"接管瞬间"的认定成为未来纠纷焦点。</li>
+                <li><strong>L4/L5（系统激活）：车辆所有人/管理人赔偿。</strong>因车辆缺陷致害的，先行赔偿后可向生产者、销售者追偿——"谁在掌控车辆，谁担首要责任"。</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>尚未解决的三个空白：</strong></p>
+                <p>① 全国性事故认定标准未统一，跨城市数据存证、责任划分要求差异大；</p>
+                <p>② L3 专属保险产品仍在探索（北京试点要求每车不低于 500 万元交通事故责任险，非普遍规则）；</p>
+                <p>③ 消费者先行赔付后再向车企追偿的维权成本高，亟需配套快速理赔通道。</p>
+            </div>
+            <div class="source">来源：<a href="https://www.sz.gov.cn/zfgb/2026/gb1418/content/post_12873301.html" target="_blank">深圳市人大常委会公告（第二二五号）</a>、<a href="https://view.inews.qq.com/a/20260603A09ZCG00" target="_blank">南方都市报：深圳立法为自动驾驶"铺路"</a></div>
+        </div>
+
+        <div class="section">
+            <h2>五、地方竞速：六大城市政策对比</h2>
+            <table>
+                <tr><th>城市</th><th>标志性进展</th><th>L3 相关安排</th></tr>
+                <tr><td>北京</td><td>高级别自动驾驶示范区 3.0：60→600 平方公里，35 家企业、超 1000 辆车获测试牌照</td><td>极狐阿尔法 S L3 版指定路段最高 80km/h；要求试点车每车≥500 万元责任险</td></tr>
+                <tr><td>重庆</td><td>率先发放 L3 专用正式号牌，开放 251 公里测试路段（山地复杂路况）</td><td>长安深蓝 SL03 拥堵高速场景最高 50km/h</td></tr>
+                <tr><td>上海</td><td>"模速智行"行动计划：2027 年 L4 载客超 600 万人次、开放道路 5000 公里</td><td>嘉定区对 L3 车型最高奖 500 万元、L4 车队最高 1000 万元</td></tr>
+                <tr><td>深圳</td><td>2026-07-01 施行修订版条例，全国首部智驾地方性法规二次修法</td><td>立法明确分级责任；授权全市"有序探索全域开放"道路测试</td></tr>
+                <tr><td>广州</td><td>率先在立法中明确商业化运营目标</td><td>全域开放无人驾驶场景</td></tr>
+                <tr><td>武汉</td><td>萝卜快跑全球最大运营基地，超 1000 台全无人车覆盖 13 个行政区</td><td>2026-03-31 百车集体故障事件后，监管转向全国统一安全规范</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>六、产业影响与风险</h2>
+            <h3>供给侧：标准抬高，红利收窄</h3>
+            <ul>
+                <li>"宽松监管"红利期结束，"高标准、严准入"成为新常态；Safety Case 体系将成为 2027 年强标实施的入场券；</li>
+                <li>2026-05-21 特斯拉 FSD 监督版入华，但受数据出境监管约束，中美模型参数结构性分叉，倒逼中国数据闭环本土化。</li>
+            </ul>
+            <h3>需求侧：渗透率决定监管烈度</h3>
+            <ul>
+                <li>L2 渗透率约 70%、NOA 超 30%——智驾已从卖点变为标配，任何一起热点事故都可能触发监管加码（2026 年武汉"3·31 事件"即为样本：云端依赖架构将单车故障放大为城市级风险）；</li>
+                <li>用户认知偏差是隐性风险：部分消费者对 L3"系统主导、按需接管"规则存在误读，过度"脱手脱眼"。</li>
+            </ul>
+            <h3>对企业的三点提示</h3>
+            <ul>
+                <li><strong>合规前置：</strong>按 Safety Case 要求建设安全档案体系，对齐 2027 年两项强标；</li>
+                <li><strong>架构冗余：</strong>重新评估"云端依赖"，确保单车具备独立决策与冗余备份（"停得稳、救得了"与"跑得快"同等重要）；</li>
+                <li><strong>数据合规：</strong>对照《汽车数据出境安全指引（2026版）》梳理重要数据与跨境流动边界。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>主要资料来源</h2>
+            <ul>
+                <li>工信部等四部委：《关于开展智能网联汽车准入和上路通行试点工作的通知》（工信部联通装〔2023〕217号） · <a href="https://www.gov.cn/zhengce/zhengceku/202311/content_6915788.htm" target="_blank">gov.cn 原文</a></li>
+                <li>工信部装备工业一司：《智能网联汽车 组合驾驶辅助系统安全要求》（GB 47955—2026）发布说明 · <a href="https://www.miit.gov.cn/jgsj/zbys/qcgy/art/2026/art_7bcb480b0db5432f8542157a9fc12841.html" target="_blank">miit.gov.cn</a></li>
+                <li>深圳市人大常委会关于修改《深圳经济特区智能网联汽车管理条例》的决定（2026-07-01 施行） · <a href="https://www.sz.gov.cn/zfgb/2026/gb1418/content/post_12873301.html" target="_blank">sz.gov.cn</a></li>
+                <li>央广网：《L3试点破冰之后：2026年自动驾驶的机遇与闯关》（2026-01-05） · <a href="https://news.qq.com/rain/a/20260105A01Z3V00" target="_blank">news.qq.com</a></li>
+                <li>南方都市报：《细化责任扩大开放，深圳立法为自动驾驶"铺路"》（2026-06-03） · <a href="https://view.inews.qq.com/a/20260603A09ZCG00" target="_blank">view.inews.qq.com</a></li>
+                <li>OFweek 思维AI社：《从L3"持证上岗"到强制国标落地：2026上半年中国自动驾驶政策及标准全景解读》（2026-06-23） · <a href="https://mp.ofweek.com/auto/a156714794627" target="_blank">mp.ofweek.com</a></li>
+                <li>微信公众号：《买车必看｜自动驾驶 L0-L5 完整科普》（触发来源） · <a href="https://mp.weixin.qq.com/s/HR7snAiAqv69srZYg8nu5A" target="_blank">mp.weixin.qq.com</a></li>
+                <li>工信部等八部门：《汽车行业稳增长工作方案（2025—2026年）》（2025-09） · 相关报道 <a href="https://www.bitauto.com/article/1003104556649/" target="_blank">bitauto.com</a></li>
+            </ul>
+            <p class="source">免责声明：本报告基于公开资料整理，政策以各官方发布最新版本为准。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>DuoDuo Research · 中国自动驾驶法规与标准全景报告 · 2026-09-10</p>
+        <p>本报告仅供研究参考</p>
+    </footer>
+</body>
+</html>

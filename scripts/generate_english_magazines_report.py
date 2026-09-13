@@ -17,11 +17,17 @@ import html
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import urllib.parse
 import urllib.request
+import zipfile
 from pathlib import Path
+from xml.etree import ElementTree as ET
+
+from PIL import Image
 
 REPO_DIR = Path.home() / "Sites"
 UPSTREAM = "hehonghui/awesome-english-ebooks"
@@ -138,11 +144,99 @@ def make_cover_svg(key, name, date, color):
     return "data:image/svg+xml;base64," + base64.b64encode(svg.encode()).decode()
 
 
-def cover_src(key, mag, date):
-    local = REPO_DIR / "assets" / "english-magazines-covers" / f"{key}_{date}.webp"
-    if local.exists():
-        return f"assets/english-magazines-covers/{key}_{date}.webp"
-    return make_cover_svg(key, mag["name"], date, mag["color"])
+PDFTOPPM = shutil.which("pdftoppm") or "/opt/homebrew/bin/pdftoppm"
+
+
+def download(url, dest):
+    """Download a raw.githubusercontent file. Prefer the authenticated GitHub
+    Contents API (fast and reliable); fall back to the raw URL."""
+    m = re.match(rf"{re.escape(RAW_BASE)}/(.+)", urllib.parse.unquote(url))
+    if m and os.environ.get("GITHUB_TOKEN"):
+        api = f"https://api.github.com/repos/{UPSTREAM}/contents/{urllib.parse.quote(m.group(1))}"
+        req = urllib.request.Request(api, headers={
+            "Accept": "application/vnd.github.raw+json",
+            "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+            "User-Agent": "duoduo-english-magazines-report",
+        })
+        with urllib.request.urlopen(req, timeout=180) as resp, open(dest, "wb") as f:
+            shutil.copyfileobj(resp, f)
+        return
+    req = urllib.request.Request(url, headers={"User-Agent": "duoduo-english-magazines-report"})
+    with urllib.request.urlopen(req, timeout=180) as resp, open(dest, "wb") as f:
+        shutil.copyfileobj(resp, f)
+
+
+def _to_webp(img_path, out_path, width=600):
+    img = Image.open(img_path)
+    if img.mode in ("P", "L"):
+        img = img.convert("RGB")
+    img.thumbnail((width, 800), Image.Resampling.LANCZOS)
+    img.save(out_path, "WEBP", quality=85, method=6)
+    return out_path.exists()
+
+
+def pdf_cover_to_webp(pdf_path, out_path):
+    with tempfile.TemporaryDirectory() as tmp:
+        prefix = Path(tmp) / "cover"
+        subprocess.run(
+            [PDFTOPPM, "-f", "1", "-l", "1", "-png", "-r", "150", str(pdf_path), str(prefix)],
+            check=True, capture_output=True, timeout=120,
+        )
+        return _to_webp(sorted(Path(tmp).glob("cover-*.png"))[0], out_path)
+
+
+def epub_cover_to_webp(epub_path, out_path):
+    with zipfile.ZipFile(epub_path) as z:
+        files = z.namelist()
+        cover = next((f for f in files if f.lower() in
+                      {"cover.jpg", "cover.jpeg", "cover.png", "cover.webp"}), None)
+        if not cover:
+            for opf in [f for f in files if f.endswith(".opf")]:
+                root = ET.fromstring(z.read(opf).decode("utf-8", "ignore"))
+                cover_id = next((m.get("content") for m in root.iter(
+                    "{http://www.idpf.org/2007/opf}meta") if m.get("name") == "cover"), None)
+                if cover_id:
+                    href = next((i.get("href") for i in root.iter(
+                        "{http://www.idpf.org/2007/opf}item") if i.get("id") == cover_id), None)
+                    cover = next((f for f in files if f.endswith(href)), None) if href else None
+                if cover:
+                    break
+        if not cover:
+            return False
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_img = Path(tmp) / ("cover" + Path(cover).suffix)
+            tmp_img.write_bytes(z.read(cover))
+            return _to_webp(tmp_img, out_path)
+
+
+NEW_COVERS = []  # webp files extracted this run, to be git-added
+
+
+def ensure_cover(key, mag, issue):
+    """Return cover src for the latest issue: local webp, else extract from
+    the issue's PDF/EPUB (self-hosted webp), else branded SVG fallback."""
+    covers_dir = REPO_DIR / "assets" / "english-magazines-covers"
+    out_path = covers_dir / f"{key}_{issue['date']}.webp"
+    if out_path.exists():
+        return f"assets/english-magazines-covers/{key}_{issue['date']}.webp"
+    covers_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        for ext in ("pdf", "epub"):  # prefer PDF (first page is the cover)
+            url = file_url(issue, ext)
+            if not url:
+                continue
+            src = Path(tmp) / f"issue.{ext}"
+            try:
+                download(url, src)
+                ok = (pdf_cover_to_webp if ext == "pdf" else epub_cover_to_webp)(src, out_path)
+            except Exception as e:
+                print(f"[{key}] cover extract from {ext} failed: {e}", file=sys.stderr)
+                ok = False
+            if ok:
+                NEW_COVERS.append(str(out_path.relative_to(REPO_DIR)))
+                print(f"[{key}] extracted cover -> {out_path.name}")
+                return f"assets/english-magazines-covers/{key}_{issue['date']}.webp"
+    return make_cover_svg(key, mag["name"], issue["date"], mag["color"])
 
 
 def load_css():
@@ -167,6 +261,7 @@ def build_report(css, issues_by_mag, report_date):
         if not issues:
             continue
         latest, archives = issues[0], issues[1:13]
+        cover = ensure_cover(key, mag, latest)
 
         buttons = "\n".join(
             f'<a href="{file_url(latest, ext)}" class="download-btn {ext}" target="_blank" rel="noopener">{ext.upper()}</a>'
@@ -189,7 +284,7 @@ def build_report(css, issues_by_mag, report_date):
         <section class="magazine-section" id="{key}">
             <div class="magazine-header">
                 <div class="cover" style="background-color: {mag["color"]}">
-                    <img src="{cover_src(key, mag, latest["date"])}" alt="{html.escape(mag["name"])} {latest["date"]}" loading="lazy">
+                    <img src="{cover}" alt="{html.escape(mag["name"])} {latest["date"]}" loading="lazy">
                 </div>
                 <div class="magazine-info">
                     <div class="magazine-meta">
@@ -300,7 +395,7 @@ def main():
     (REPO_DIR / dated_name).write_text(html_out, encoding="utf-8")
     (REPO_DIR / "english-magazines-latest.html").write_text(html_out, encoding="utf-8")
 
-    git("add", dated_name, "english-magazines-latest.html")
+    git("add", dated_name, "english-magazines-latest.html", *NEW_COVERS)
     git("commit", "-m", f"Add English magazines weekly report {report_date.isoformat()}")
     git("pull", "--rebase", "origin", "main")
     git("push", "origin", "main")

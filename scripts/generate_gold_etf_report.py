@@ -778,6 +778,20 @@ a {{ color:var(--accent-light); text-decoration:none; }}
 </div>
 </div>
 <div class="footer">📅 数据更新时间：{update_time} · 多多每周自动更新 · 数据来源：{DATA_SOURCE}<div class="warn">⚠ 投资有风险，决策需谨慎。本网站所有内容仅供学习参考，不构成投资建议。</div></div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="../assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="../assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
 </body>
 </html>
 """

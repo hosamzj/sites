@@ -231,5 +231,19 @@
       <p>数据来源：yfinance、FRED、公开 RSS 新闻源、TE Connectivity / Amphenol IR 等。</p>
     </div>
   </div>
+<!-- Waline comments -->
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: "#waline-comments",
+    serverURL: "https://comment.hosamzj.cn",
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true,
+  });
+</script>
 </body>
 </html>

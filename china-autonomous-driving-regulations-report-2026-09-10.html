@@ -362,5 +362,19 @@
         <p>DuoDuo Research · 中国自动驾驶法规与标准全景报告 · 2026-09-10</p>
         <p>本报告仅供研究参考</p>
     </footer>
+<!-- Waline comments -->
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: "#waline-comments",
+    serverURL: "https://comment.hosamzj.cn",
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true,
+  });
+</script>
 </body>
 </html>

@@ -294,8 +294,23 @@
                 padding: 16px 16px 0;
             }
         }
+
+        /* ===== Blog Hero (v2 preview) ===== */
+        .hero { display: flex; gap: 36px; align-items: center; text-align: left; flex-wrap: wrap; }
+        .hero-avatar { width: 108px; height: 108px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; flex-shrink: 0; box-shadow: 0 8px 24px rgba(201,100,66,.25); }
+        .hero-name { font-family: Georgia, 'Songti SC', serif; font-size: 34px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+        .hero-tagline { font-size: 16px; color: var(--accent-light); margin-bottom: 10px; font-weight: 600; }
+        .hero-bio { font-size: 14px; color: var(--text-secondary); line-height: 1.7; max-width: 640px; margin-bottom: 14px; }
+        .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+        .hero-badge { background: var(--card); border: 1px solid var(--border); color: var(--text-secondary); font-size: 13px; padding: 6px 14px; border-radius: 20px; }
+        .hero-badge b { color: var(--accent-light); font-weight: 600; }
+        .hero-social { display: flex; gap: 10px; }
+        .hero-social a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 7px 16px; border-radius: 20px; transition: all .2s ease; }
+        .hero-social a:hover { color: var(--text); border-color: var(--accent); background: rgba(201,100,66,.1); }
+        .preview-banner { position: fixed; bottom: 20px; right: 20px; z-index: 200; background: var(--accent); color: #fff; font-size: 12px; padding: 8px 16px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+        @media (max-width: 640px) { .hero { gap: 20px; } .hero-avatar { width: 84px; height: 84px; } .hero-name { font-size: 26px; } }
     </style>
-<!-- deploy: 2026-09-14T19:10 -->
+<!-- deploy: 2026-09-19T00:00 -->
 </head>
 <body>
 
@@ -316,12 +331,25 @@
     </nav>
     <div class="container">
         <header class="header">
-            <div class="logo">
-                <img src="assets/duoduo-mascot.png" alt="多多" class="logo-icon">
-                <div class="logo-text">DuoDuo Research</div>
+            <div class="hero">
+                <img src="assets/duoduo-mascot.png" alt="Hosam" class="hero-avatar">
+                <div>
+                    <h1 class="hero-name">多多</h1>
+                    <p class="hero-tagline">汽车制造业 - AI 应用和数智化转型实践者</p>
+                    <p class="hero-bio">这里是多多的研究报告中心。我以项目经理的方式追踪 AI 行业动态、地缘市场变化与中国汽车产业链，把散落的信息整理成系统化的定期报告——每周更新，欢迎交流指正。</p>
+                    <div class="hero-badges">
+                        <span class="hero-badge">📊 <b>35+</b> 研究报告</span>
+                        <span class="hero-badge">🗂️ <b>4</b> 大领域追踪</span>
+                        <span class="hero-badge">🔔 每周定期更新</span>
+                        <span class="hero-badge">💬 评论区即将开放</span>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/hosamzj" target="_blank">GitHub</a>
+                        <a href="#" onclick="return false">微信公众号 · 多多研究</a>
+                        <a href="mailto:" onclick="return false">邮件订阅</a>
+                    </div>
+                </div>
             </div>
-            <h1 class="title">研究报告中心</h1>
-            <p class="subtitle">AI 行业、地缘市场、中国汽车产业等领域的定期研究与深度分析</p>
         </header>
 
         <nav class="category-nav">

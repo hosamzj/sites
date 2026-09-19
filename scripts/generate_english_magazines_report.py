@@ -433,13 +433,27 @@ def update_homepage_card_date(report_date):
         print("WARNING: 未在 index.html 找到外刊卡片，跳过日期更新", file=sys.stderr)
 
 
-def git(*args):
+def git(*args, allow_noop=False):
+    """运行 git 命令。allow_noop=True 时，若本次没有实际改动（如内容未变的重跑）
+    视为成功，避免 cron 把"无变化"误报为失败。"""
+    if allow_noop and args[:1] == ("commit",):
+        staged = subprocess.run(["git", "-C", str(REPO_DIR), "diff", "--cached", "--quiet"],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if staged.returncode == 0:
+            print("git: 无新增改动，跳过 commit")
+            return
     subprocess.run(["git", "-C", str(REPO_DIR), *args], check=True,
                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
 
 def main():
     os.chdir(REPO_DIR)
+    # 先同步远端：cron 环境常残留未提交文件，若放到最后再 pull，--rebase 会因工作区脏而直接拒绝。
+    # --autostash 允许在脏工作区上安全同步。
+    try:
+        git("pull", "--rebase", "--autostash", "origin", "main")
+    except Exception as exc:
+        print(f"WARNING: 预同步远端失败（继续执行）：{exc}", file=sys.stderr)
     report_date = datetime.date.today()
     css = load_css()
 
@@ -467,8 +481,8 @@ def main():
     update_homepage_card_date(report_date)
 
     git("add", dated_name, "english-magazines-latest.html", "index.html", *NEW_COVERS)
-    git("commit", "-m", f"Add English magazines weekly report {report_date.isoformat()}")
-    git("pull", "--rebase", "origin", "main")
+    git("commit", "-m", f"Add English magazines weekly report {report_date.isoformat()}", allow_noop=True)
+    git("pull", "--rebase", "--autostash", "origin", "main")
     git("push", "origin", "main")
     print(f"PUBLISHED {dated_name}")
 

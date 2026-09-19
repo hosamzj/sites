@@ -783,14 +783,14 @@ a {{ color:var(--accent-light); text-decoration:none; }}
 <div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
 <script src="../assets/waline/waline.umd.js"></script>
 <script>
-  Waline.init({
+  Waline.init({{
     el: '#waline-comments',
     serverURL: 'https://comment.hosamzj.cn',
     path: location.pathname.replace(/\.html$/, ''),
     dark: 'body',
     lang: 'zh-CN',
     pageview: true
-  });
+  }});
 </script>
 </body>
 </html>

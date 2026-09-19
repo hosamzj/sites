@@ -1,6 +1,6 @@
 import re, os
 
-base = os.path.expanduser('~/github/sites')
+base = os.path.expanduser('~/Sites')
 tmpl_path = os.path.join(base, 'ai-weekly-report-2026-08-05.html')
 out_path = os.path.join(base, 'ai-weekly-report-2026-08-12.html')
 

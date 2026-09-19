@@ -17,6 +17,7 @@ import html
 import json
 import os
 import re
+import time
 import shutil
 import subprocess
 import sys
@@ -78,6 +79,27 @@ MAGAZINES = {
 DATE_RE = re.compile(r"(\d{4})\.(\d{2})\.(\d{2})")
 
 
+def ensure_github_token():
+    """确保有 GitHub token。未认证 API 只有 60 次/小时额度，目录递归一旦超限就 403。
+    cron 环境下 keychain 可能不可用，故做多级兜底。"""
+    if os.environ.get("GITHUB_TOKEN"):
+        return os.environ["GITHUB_TOKEN"]
+    for cmd in (["gh", "auth", "token"], ["bash", "-lc", "gh auth token"]):
+        try:
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
+            tok = (out.stdout or "").strip()
+            if out.returncode == 0 and tok:
+                os.environ["GITHUB_TOKEN"] = tok
+                return tok
+        except Exception:
+            pass
+    print("WARNING: 无 GITHUB_TOKEN，将使用未认证 API（60 次/小时，可能 403）", file=sys.stderr)
+    return None
+
+
+ensure_github_token()
+
+
 def gh_list(path):
     """List a directory via the GitHub contents API. Returns list of entries."""
     url = f"{API_BASE}/{path}" if path else API_BASE
@@ -88,8 +110,19 @@ def gh_list(path):
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.load(resp)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.load(resp)
+    except urllib.error.HTTPError as e:
+        if e.code == 403:
+            time.sleep(5)
+            ensure_github_token()
+            if os.environ.get("GITHUB_TOKEN"):
+                req.add_header("Authorization", f"Bearer {os.environ['GITHUB_TOKEN']}")
+            with urllib.request.urlopen(req, timeout=30) as resp:  # 重试一次
+                data = json.load(resp)
+        else:
+            raise
     if not isinstance(data, list):
         raise RuntimeError(f"Unexpected API response for {path}: {data}")
     return data
@@ -369,17 +402,35 @@ def build_report(css, issues_by_mag, report_date):
 <div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
 <script src="assets/waline/waline.umd.js"></script>
 <script>
-  Waline.init({
+  Waline.init({{
     el: '#waline-comments',
     serverURL: 'https://comment.hosamzj.cn',
     path: location.pathname.replace(/\.html$/, ''),
     dark: 'body',
     lang: 'zh-CN',
     pageview: true
-  });
+  }});
 </script>
 </body>
 </html>'''
+
+
+def update_homepage_card_date(report_date):
+    """english-magazines-latest.html 是固定 URL 的连载页，内容更新后首页卡片日期必须同步更新。"""
+    index_path = REPO_DIR / "index.html"
+    if not index_path.exists():
+        return
+    text = index_path.read_text(encoding="utf-8")
+    pattern = re.compile(
+        r'(<a href="english-magazines-latest\.html" class="report-card">.*?<div class="meta">\s*<span>)([^<]*)(</span>)',
+        re.S,
+    )
+    new_text, n = pattern.subn(lambda m: m.group(1) + report_date.isoformat() + m.group(3), text)
+    if n:
+        index_path.write_text(new_text, encoding="utf-8")
+        print(f"index.html: 已更新外刊卡片日期 -> {report_date.isoformat()}")
+    else:
+        print("WARNING: 未在 index.html 找到外刊卡片，跳过日期更新", file=sys.stderr)
 
 
 def git(*args):
@@ -394,7 +445,11 @@ def main():
 
     issues_by_mag = {}
     for key, mag in MAGAZINES.items():
-        issues = collect_issues(mag["dir"])
+        try:
+            issues = collect_issues(mag["dir"])
+        except Exception as exc:  # 单个杂志抓取失败（限流/网络）不应拖垮整份报告
+            print(f"[{key}] ERROR: {exc}", file=sys.stderr)
+            issues = None
         if issues:
             issues_by_mag[key] = issues
             print(f"[{key}] {len(issues)} issues, latest {issues[0]['date']}")
@@ -409,7 +464,9 @@ def main():
     (REPO_DIR / dated_name).write_text(html_out, encoding="utf-8")
     (REPO_DIR / "english-magazines-latest.html").write_text(html_out, encoding="utf-8")
 
-    git("add", dated_name, "english-magazines-latest.html", *NEW_COVERS)
+    update_homepage_card_date(report_date)
+
+    git("add", dated_name, "english-magazines-latest.html", "index.html", *NEW_COVERS)
     git("commit", "-m", f"Add English magazines weekly report {report_date.isoformat()}")
     git("pull", "--rebase", "origin", "main")
     git("push", "origin", "main")

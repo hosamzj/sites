@@ -11,7 +11,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-REPO_DIR = Path("/private/tmp/sites")
+REPO_DIR = Path("/Users/huosam/Sites")
 OUTPUT_FILE = REPO_DIR / "wang-yuquan-ai-2024-2026.html"
 INDEX_FILE = REPO_DIR / "index.html"
 

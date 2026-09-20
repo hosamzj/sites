@@ -405,7 +405,7 @@ def build_report(css, issues_by_mag, report_date):
   Waline.init({{
     el: '#waline-comments',
     serverURL: 'https://comment.hosamzj.cn',
-    path: location.pathname.replace(/\.html$/, ''),
+    path: location.pathname.replace(/\\.html$/, ''),
     dark: 'body',
     lang: 'zh-CN',
     pageview: true

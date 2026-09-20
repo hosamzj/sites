@@ -167,7 +167,7 @@ __VIDEO_CARDS__
   Waline.init({
     el: '#waline-comments',
     serverURL: 'https://comment.hosamzj.cn',
-    path: location.pathname.replace(/\.html$/, ''),
+    path: location.pathname.replace(/\\.html$/, ''),
     dark: 'body',
     lang: 'zh-CN',
     pageview: true

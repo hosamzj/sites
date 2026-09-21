@@ -1,0 +1,466 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多多研究报告中心 | 知识库</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --card: #232320;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+        .category-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.2s ease;
+        }
+        .category-nav a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .section {
+            margin-bottom: 64px;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .section-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .section-all {
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .section-all:hover {
+            color: var(--accent-light);
+        }
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .report-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .report-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .report-card .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .report-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .report-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .report-card .meta {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+        .history-list {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .history-list a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .history-list a:hover {
+            color: var(--text);
+            border-color: var(--accent);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 32px; }
+            .report-grid { grid-template-columns: 1fr; }
+            .section-header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+        }
+    
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+
+        /* ===== Blog Hero (v2 preview) ===== */
+        .hero { display: flex; gap: 36px; align-items: center; text-align: left; flex-wrap: wrap; }
+        .hero-avatar { width: 108px; height: 108px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; flex-shrink: 0; box-shadow: 0 8px 24px rgba(201,100,66,.25); }
+        .hero-name { font-family: Georgia, 'Songti SC', serif; font-size: 34px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+        .hero-tagline { font-size: 16px; color: var(--accent-light); margin-bottom: 10px; font-weight: 600; }
+        .hero-bio { font-size: 14px; color: var(--text-secondary); line-height: 1.7; max-width: 640px; margin-bottom: 14px; }
+        .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+        .hero-badge { background: var(--card); border: 1px solid var(--border); color: var(--text-secondary); font-size: 13px; padding: 6px 14px; border-radius: 20px; }
+        .hero-badge b { color: var(--accent-light); font-weight: 600; }
+        .hero-social { display: flex; gap: 10px; }
+        .hero-social a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 7px 16px; border-radius: 20px; transition: all .2s ease; }
+        .hero-social a:hover { color: var(--text); border-color: var(--accent); background: rgba(201,100,66,.1); }
+        .preview-banner { position: fixed; bottom: 20px; right: 20px; z-index: 200; background: var(--accent); color: #fff; font-size: 12px; padding: 8px 16px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+        @media (max-width: 640px) { .hero { gap: 20px; } .hero-avatar { width: 84px; height: 84px; } .hero-name { font-size: 26px; } }
+    </style>
+<!-- deploy: 2026-09-21T08:02 -->
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/duoduo-mascot-nav.png" alt="多多" class="nav-brand-icon">
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index.html">研究报告中心</a><span>→</span><a href="index.html#ai-tech">AI 与科技</a><span>→</span>全部报告</div>
+
+    <div class="container">
+        <header class="header">
+            <div class="hero">
+                <img src="assets/duoduo-mascot.png" alt="Hosam" class="hero-avatar">
+                <div>
+                    <h1 class="hero-name">多多</h1>
+                    <p class="hero-tagline">汽车制造业 - AI 应用和数智化转型实践者</p>
+                    <p class="hero-bio">这里是多多的研究报告中心。我以项目经理的方式追踪 AI 行业动态、地缘市场变化与中国汽车产业链，把散落的信息整理成系统化的定期报告——每周更新，欢迎交流指正。</p>
+                    <div class="hero-badges">
+                        <span class="hero-badge">📊 <b>35+</b> 研究报告</span>
+                        <span class="hero-badge">🗂️ <b>4</b> 大领域追踪</span>
+                        <span class="hero-badge">🔔 每周定期更新</span>
+                        <span class="hero-badge">💬 评论区已开放</span>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/hosamzj" target="_blank">GitHub</a>
+                        <a href="#" onclick="return false">微信公众号 · 多多研究</a>
+                        <a href="mailto:" onclick="return false">邮件订阅</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="category-nav">
+            <a href="#geopolitical">市场与地缘</a>
+            <a href="#ai-tech">AI 与科技</a>
+            <a href="#auto">中国汽车</a>
+            <a href="#research">专题研究</a>
+        </nav>
+
+        <header class="section-header" style="max-width:1200px;margin:28px auto 8px;padding:0 24px;"><div><div class="section-title"><span class="icon">🤖</span> AI 与科技</div><div class="section-desc">AI 行业动态、M365 Copilot 落地与科技创作者观点精选</div></div></header>
+
+            <div class="report-grid" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+
+<a href="ai-weekly-report-2026-09-16.html" class="report-card">
+                    <div class="eyebrow">AI Weekly Report</div>
+                    <h2>AI 智能体与 M365 Copilot 企业资讯简报</h2>
+                    <p>Agent 治理成为行业主议程：Anthropic 研究员辞职警告与 Amodei"减速"长文，三大实验室数周秘密安全会谈，微软发布 AI 行为准则、AIUC 推出"Agent 版 SOC 2"、Meta 开放 WhatsApp MCP；地平线征程芯片量产破 1500 万颗上车一汽-大众，Waymo 进拉斯维加斯、Lyft 首次真无人商业运营；DeepSeek 聘 CFO 谋科创板 IPO，智谱 335 亿港元押注"完全自训练"。</p>
+                    <div class="meta">
+                        <span>2026-09-16</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="gpt6-astra/gpt6-astra-report-2026-09-06.html" class="report-card">
+                    <div class="eyebrow">Model Field Report</div>
+                    <h2>GPT-6 Astra 上线首周实测全景：17 个一手 Demo 深度审计</h2>
+                    <p>GPT-6 Astra 上线 72 小时内 X 平台 17 个传播最广的实测 Demo 逐条溯源：全部附原始视频、作者背景审计、互动数据与可信度标注。含 3D 数字复原、游戏生成、生产力场景三大方向的深度分析与制造业 IT 落地启示。</p>
+                    <div class="meta">
+                        <span>2026-09-06</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="ai-weekly-report-2026-09-03.html" class="report-card">
+                    <div class="eyebrow">AI Weekly Report</div>
+                    <h2>AI 智能体与 M365 Copilot 企业资讯简报</h2>
+                    <p>追踪 OpenAI Astra / Anthropic Fable 5.1 等 Agent 安全与能力前沿；M365 Copilot Claude Opus 5、Agentic Word/Excel/PowerPoint GA、Dynamics 365 制造业 Agentic 能力；Waymo 14 城扩张与特斯拉 Cybercab 发布前瞻。</p>
+                    <div class="meta">
+                        <span>2026-09-03</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="fortinet-sdwan-architecture-report.html" class="report-card">
+                    <div class="eyebrow">Network Architecture</div>
+                    <h2>基于 Fortinet 硬件的 SD-WAN 网络架构实战指南</h2>
+                    <p>从传统 WAN 到 Secure SD-WAN：FortiGate 硬件平台、FortiOS 7.6 / Unified SASE / AI 运维、SD-WAN 设计模式、零接触部署与制造业 OT 场景一站式梳理。</p>
+                    <div class="meta">
+                        <span>2026-08-05</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="ai-weekly-report-2026-08-26.html" class="report-card">
+                    <div class="eyebrow">AI Weekly Report</div>
+                    <h2>AI 智能体与 M365 Copilot 企业资讯简报</h2>
+                    <p>追踪 AI Agent 前沿动态、M365 Copilot 更新、汽车零部件行业 AI 落地案例与大模型竞争格局。</p>
+                    <div class="meta">
+                        <span>2026-08-26</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="ai-weekly-report-2026-08-12.html" class="report-card">
+                    <div class="eyebrow">AI Weekly Report</div>
+                    <h2>AI 智能体与 M365 Copilot 企业资讯简报</h2>
+                    <p>追踪 AI Agent 前沿动态、M365 Copilot 更新、汽车零部件行业 AI 落地案例与大模型竞争格局。</p>
+                    <div class="meta">
+                        <span>2026-08-12</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="wang-yuquan-ai-2024-2026.html" class="report-card">
+                    <div class="eyebrow">Creator Insights</div>
+                    <h2>王煜全 AI 长播客专题</h2>
+                    <p>汇总王煜全官方频道及第三方频道在 2024-2026 年发布的 AI、科技投资与未来趋势相关视频，附链接与内容概述。</p>
+                    <div class="meta">
+                        <span>2026-09-08</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+
+<a href="suochanglinchao-album.html" class="report-card">
+                    <div class="eyebrow">Creator Insights</div>
+                    <h2>所长林超专辑</h2>
+                    <p>深度解析B站科技博主所长林超，提炼对汽车零部件行业的启示。</p>
+                    <div class="meta">
+                        <span>2026-09-17</span>
+                        <span>→ 查看报告</span>
+                    </div>
+                </a>
+            </div>
+        <div class="history-list" style="max-width:1200px;margin:16px auto 40px;padding:0 24px;">
+<div class="section-title" style="font-size:15px;margin-bottom:8px;">更早的报告</div>
+                <a href="ai-weekly-report-2026-09-09.html">AI 简报 09-09</a>
+                <a href="ai-weekly-report-2026-09-03.html">AI 简报 09-03</a>
+                <a href="ai-weekly-report-2026-08-26.html">AI 简报 08-26</a>
+                <a href="ai-weekly-report-2026-08-12.html">AI 简报 08-12</a>
+                <a href="ai-weekly-report-2026-08-05.html">AI 简报 08-05</a>
+                <a href="ai-weekly-report-2026-07-29.html">AI 简报 07-29</a>
+                <a href="wang-yuquan-ai-2024-2026.html">王煜全 2024-2026</a>
+                <a href="ai-weekly-report-2026-07-20.html">AI 简报 07-20</a>
+                <a href="ai-weekly-report-2026-07-16.html">AI 简报 07-16</a>
+                <a href="ai-weekly-report-2026-07-15.html">AI 简报 07-15</a>
+                <a href="ai-weekly-report-2026-07-15-redesign.html">AI 简报 07-15（redesign）</a>
+        </div>
+        <footer class="footer">
+            <p>© 2026 多多研究报告中心 · 数据来源于公开渠道，仅供参考</p>
+        </footer>
+    </div>
+</body>
+</html>

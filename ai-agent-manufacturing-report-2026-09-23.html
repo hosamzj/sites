@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能体如何真正"上岗"：制造业白皮书里的七岗位账本与三标杆实测</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .toc h2 { margin-top: 0; font-size: 1.4rem; border-bottom: none; color: var(--accent-light); }
+        .toc ul { list-style: none; columns: 2; gap: 40px; }
+        .toc li { margin: 10px 0; break-inside: avoid; }
+        .toc a { color: var(--text-secondary); display: block; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .toc a:hover { color: var(--accent-light); border-bottom-style: solid; text-decoration: none; }
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        .section-intro { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .card-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        .highlight p:last-child { margin-bottom: 0; }
+        .table-wrapper { overflow-x: auto; margin: 32px 0; border: 1px solid var(--border); border-radius: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-hover); }
+        td { color: var(--text-secondary); }
+        ul, ol { padding-left: 28px; margin: 20px 0; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        li::marker { color: var(--accent); }
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .model-box h3 { margin-top: 0; color: var(--accent-light); }
+        .model-item { padding: 16px 0; border-bottom: 1px dashed var(--border); }
+        .model-item:last-child { border-bottom: none; }
+        .model-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-accent { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .tag-neutral { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); }
+        .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 8px; }
+        .footer a { color: var(--accent-light); }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        @media print {
+            body { background: white; color: black; }
+            .navbar, .back-to-top, .breadcrumb { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { background: white; border: 1px solid #ddd; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#ai-tech">AI 与科技</a><span>→</span>智能体如何真正"上岗"：制造业白皮书里的七岗位账本与三标杆实测
+    </div>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">AI 智能体专题 · 制造业落地</div>
+            <h1>智能体如何真正"上岗"：制造业白皮书里的七岗位账本与三标杆实测</h1>
+            <p class="subtitle">拆解腾讯研究院《迈向自适应制造》白皮书——七个岗位的量化账本、三家标杆企业的实测数据，以及哪些数字能当真、哪些要打折。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026年9月23日</div>
+                <div class="meta-item"><div class="meta-dot"></div>DuoDuo Research</div>
+                <div class="meta-item"><div class="meta-dot"></div>AI 与科技</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <div class="toc">
+<ul>
+<li><a href="#_1">一、为什么是现在：中国制造的"硬强软弱"与三个卡点</a></li>
+<li><a href="#_2">二、白皮书的方法论：从"能对话"到"能上岗"的三级跃迁</a></li>
+<li><a href="#_3">三、七个岗位的量化账本</a></li>
+<li><a href="#_4">四、三个标杆企业的实测数据</a></li>
+<li><a href="#_5">五、口径辨析：哪些数字能当真、哪些要打折</a></li>
+<li><a href="#_6">六、落到汽车零部件：三点判断与第一步</a></li>
+<li><a href="#_7">七、数据来源与局限</a></li>
+</ul>
+</div>
+
+        </div>
+
+        <blockquote>
+<p>这是一份带批判视角的深度拆解。腾讯研究院、腾讯云与 WorkBuddy 联合发布的《迈向自适应制造：制造业智能体实践白皮书》给出了一组很"好看"的提效数字，但数字背后藏着两层完全不同的口径——哪些是生产实测、哪些是按 Demo 流程的预期推算，直接决定你拿它做内部立项论证时敢不敢当 ROI 承诺。</p>
+</blockquote>
+<h2 id="_1">一、为什么是现在：中国制造的"硬强软弱"与三个卡点</h2>
+<p>中国制造正处在由大到强的关口，硬件产能与规模全球领先，但向高端升级卡在三个老问题上。</p>
+<ul>
+<li><strong>硬强软弱。</strong> 2025 年我国制造业增加值约 <strong>34.7 万亿元</strong>、全球占比约 30%、连续 16 年世界第一，220 多种工业品产量全球第一；但同年工业软件产品收入仅约 <strong>3330 亿元</strong>，占制造业增加值的比重<strong>不到 1%</strong>。全球云计算市场 SaaS 占比 42%，中国只有 16%，大量企业日常仍依赖本地系统、Excel 甚至手工表单。</li>
+<li><strong>系统割裂。</strong> 规模以上工业企业开展数字化改造的比例已达 89.6%，但近 <strong>59%</strong> 仍处在数字化基础级及以下——大企业系统越上越多却越难连通，数据孤岛林立；中小企业底子薄，核心生产管控仍以人工为主。</li>
+<li><strong>经验断层。</strong> 一线员工老龄化加深，大量不写在手册里的关键判断依赖老师傅，经验难以转化为组织资产，还常随老师傅退休一并流失。</li>
+</ul>
+<p>一句话：<strong>中国制造不缺设备，缺的是把数据和经验变成可运行决策的能力。</strong> 这正是智能体被寄予厚望的地方，也是这份白皮书的起点。</p>
+<h2 id="_2">二、白皮书的方法论：从"能对话"到"能上岗"的三级跃迁</h2>
+<p>白皮书的核心主张，是不能让 AI 停留在知识问答，要让它完成一次"三级跃迁"：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>能力边界</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一级 知识问答</td>
+<td>帮人获取信息</td>
+<td>工具</td>
+</tr>
+<tr>
+<td>第二级 办公助手</td>
+<td>帮人完成工作</td>
+<td>助手</td>
+</tr>
+<tr>
+<td>第三级 数字员工</td>
+<td>接任务、进系统、交付结果</td>
+<td>上岗</td>
+</tr>
+</tbody>
+</table>
+<p>"上岗"的标志不是 AI 能独立出结果，而是<strong>它的产出能被后续环节接收、核验、追溯，进入企业的责任链条</strong>——任务从哪来、中间谁确认、结果交给谁、出事谁担责，每一环都要清楚。</p>
+<p>落到方法上，是三层工程范式：<strong>场景工程</strong>（选对战场——有价值、规则清楚、数据拿得到、结果能验证）、<strong>实证工程</strong>（拿真实任务和真实数据反复跑，不用挑好的样例自证）、<strong>复利工程</strong>（把跑通的技能、规则、模板打包成资产，一次投入反复调用）。落地节奏则是三级进阶：<strong>任务级 → 岗位级 → 组织级</strong>，像搭积木一样一砖一墙垒上去。</p>
+<h2 id="_3">三、七个岗位的量化账本</h2>
+<p>白皮书走进产品、工艺、采购、销售、服务、管理、财务七个岗位，记下了一笔笔"明白账"。下面是合并整理后的完整账本（数字口径说明见第五节）：</p>
+<table>
+<thead>
+<tr>
+<th>岗位</th>
+<th>场景</th>
+<th>人工投入（前）</th>
+<th>智能体辅助（后）</th>
+<th>关键机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品工程师</td>
+<td>BOM 换版基线核对</td>
+<td>3–5 小时</td>
+<td>≈0.5 小时（当天出清单）</td>
+<td>多格式解析、差异提取、影响面梳理</td>
+</tr>
+<tr>
+<td>工艺工程师</td>
+<td>SOP 升版校验</td>
+<td>2–3 天</td>
+<td>≈1 小时（当天送审）</td>
+<td>依据版本/关键参数/作业要求/检验频次/异常处理五维校验</td>
+</tr>
+<tr>
+<td>采购</td>
+<td>齐套缺料预警</td>
+<td>0.5–1 天</td>
+<td>≈1 小时</td>
+<td>真缺口/伪缺口分辨，缺料风险提前约 2 天暴露</td>
+</tr>
+<tr>
+<td>销售</td>
+<td>图纸询价报价</td>
+<td>6–10 小时</td>
+<td>≈0.5 小时</td>
+<td>自动凑齐数据、生成报价</td>
+</tr>
+<tr>
+<td>服务</td>
+<td>报修受理派工</td>
+<td>2.5–3.5 小时</td>
+<td>≈40 分钟</td>
+<td>补齐设备信息、识别安全红线、整理工单</td>
+</tr>
+<tr>
+<td>管理</td>
+<td>经营复盘 / 排产</td>
+<td>3–4 小时</td>
+<td>≈0.5 小时</td>
+<td>优先级规则、插单调整，急单端到端缩至 15 分钟</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>对账开票</td>
+<td>2–3 天</td>
+<td>0.5–1 小时</td>
+<td>差异分类、复核后发函</td>
+</tr>
+</tbody>
+</table>
+<p>三类价值藏在数字后面：<strong>抢时间</strong>（BOM、复盘、SOP）、<strong>防风险</strong>（齐套核查、缺料提前暴露）、<strong>控质量</strong>（SOP 校验自动关联历史异常）。但请注意——<strong>这些是"预期成效测算"口径，不是生产实测</strong>（详见第五节）。</p>
+<h2 id="_4">四、三个标杆企业的实测数据</h2>
+<p>单点提效之外，更有说服力的是把智能体"串成组织能力"的三家企业。这三家给出的才是<strong>企业实践口径的实测数据</strong>，比岗位账本可信得多。</p>
+<p><strong>珠海天威飞马——"一个人就是一个部门"（OPD）。</strong> 采用"业务主导、技术陪跑"：提效流程全部由业务骨干亲手搭建，IT 只做技术支持，跑通的方案进案例库再跨部门复制。已沉淀 <strong>50 多个应用场景、覆盖六大职能</strong>。实测账本：包装标签校核从每月 244 小时压缩到约 5 小时（提效 <strong>48 倍</strong>）；单份标书编制从 36 小时降到 4 小时。其 CIO 的一句话点破本质："真正的 AI，是让智能体之间自动完成协作。"</p>
+<p><strong>广州视声智能——把管理经验蒸馏成 AI 规则。</strong> 面对上万种 PCB 材料，把市场价格、库存水位、在途订单、历史耗用量汇入同一流程，把采购团队多年积累的经验转化为风险分级和决策规则。实测账本：PCB 物料评价从人工 2 天缩到半小时（提效约 <strong>96 倍</strong>）；动态库存与价格联合决策从 3 天缩短到 AI 辅助 2 小时，且支持每月自动刷新。关键是——经验第一次"不再随人走"，成了组织能反复调用、持续修正的能力。</p>
+<p><strong>烟台富美特——专业知识沉淀为可复用的 AI 能力。</strong> 面向食品合规场景：AI 负责标签审核的信息提取与风险提示，专业人员终审把关；法规与风险数据处理从 <strong>1 周缩到 1 天</strong>，报告周期缩减 50%，每日数万条新增数据可自动完成结构化整理。验证了智能体赋能行业服务平台的路径。</p>
+<h2 id="_5">五、口径辨析：哪些数字能当真、哪些要打折</h2>
+<p>这是整份白皮书最需要留个心眼的地方。<strong>数据要分两层看。</strong></p>
+<ul>
+<li><strong>岗位实例（第五节表格）＝预期成效测算。</strong> 白皮书原文对这些提效数字的措辞是"按该任务级智能体的预期成效测算"——即按 Demo 流程推算、或公开行业调研口径，<strong>不是生产实测</strong>。拿去做内部立项论证时，别把这些数字当 ROI 承诺。</li>
+<li><strong>三个标杆企业（第四节）＝企业实践口径实测。</strong> 天威的 48 倍、视声的 96 倍、富美特的 1 周→1 天，是白皮书明确标注"企业实践口径"的、有企业署名背书的数据，经得起更严的推敲。</li>
+</ul>
+<p>这个区分不是吹毛求疵，而是立项时的一条硬边界：<strong>demo 数字是"可能性"，实测数字才是"已发生"。</strong> 前者用来选方向，后者才用来定预期。</p>
+<h2 id="_6">六、落到汽车零部件：三点判断与第一步</h2>
+<p>对车厂/汽车零部件场景，有三条判断值得单独强调。</p>
+<p><strong>1. "第一站是数据活"这个判断，对你们尤其准。</strong> BOM 换版、图纸询价、齐套缺料、对账开票——这些都是数据密集、规则相对清晰、容易出错的活，也正是白皮书说的"系统之间的数据断点"。它们不直接生产产品，却是采购、生产、交付的关键卡口，且"错了最多返工一份文档，人在环上能兜住"——容错空间大、反馈速度快，是<strong>低风险高见效</strong>的切入点，最贴合你"AI 应用落地推广"的职责。</p>
+<p><strong>2. 真正的门槛不是模型，是"三前提"。</strong> 数字员工上岗有三条硬前提：业务系统能连接、岗位规则够明确、结果可评价。前一条和后一条是技术活，中间那条最难——而且<strong>不是技术问题</strong>：规则往往散落在几个老师傅脑子里且互相打架。这三条没补齐，智能体永远停在"能对话"。</p>
+<p><strong>3. 责任不能自动化，人在环上是唯一能落地的架构。</strong> 白皮书所有案例都留着一条共同边界：AI 把该查的查全、把拿不准的标出来、把判断依据摆清楚，<strong>最终决定仍由岗位上的人来下</strong>。这不是能力不足，是责任问题——出了批次事故，你没法让一个模型去签字。落地时先问三件事：后果是否可逆、依据是否可核验、出错谁能负责。走完你会发现，最优解往往是 <strong>AI 干到八成、在最后一米交回给人</strong>，而这一米恰恰是提效最大的地方。</p>
+<h2 id="_7">七、数据来源与局限</h2>
+<p><strong>来源（交叉核对）：</strong> 腾讯研究院、腾讯云、WorkBuddy 联合发布《迈向自适应制造：制造业智能体实践白皮书》（2026-09-10 前后发布，69 页）；36氪授权转载的官方解读《智能体如何在企业"上岗"？》（腾讯研究院，2026-09-10）；新浪财经/数字化企业《4小时变15分钟：WorkBuddy 如何让智能体拿到制造业"上岗证"？》（2026-09-15）；知乎 FDE 视角解读文章。</p>
+<p><strong>局限与提醒：</strong> ① 白皮书由腾讯系联合发布，三家标杆企业均使用 WorkBuddy 平台，属于<strong>厂商自证口径</strong>，未经过独立第三方审计；② 岗位级提效数字为"预期成效测算"，不应直接等同于真实 ROI；③ 不同来源对同一岗位的口径略有差异（如"经营复盘"有 3–4 小时与 16–24 小时两种口径），本文以媒体两个来源交叉确认的数字为准，并统一标注口径；④ 汽车零部件场景的适用性判断为本文作者基于行业常识的推断，非白皮书原结论。引用时建议回溯原文核实。</p>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 DuoDuo Research 整理生成 · 2026年9月23日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

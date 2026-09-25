@@ -3,7 +3,7 @@
 
 Targets:
   (a) Root-level *.html report pages (contain class="navbar" AND
-      class="breadcrumb"; excludes index.html / index-v2.html)
+      class="breadcrumb"; excludes index.html)
   (b) Subdirectory reports: gold-etf/, world-cup-2026/, gpt6-astra/
       (index.html if present, otherwise all *.html in the directory)
 
@@ -22,7 +22,7 @@ from pathlib import Path
 
 MARKER = "waline-comments"
 SUBDIRS = ("gold-etf", "world-cup-2026", "gpt6-astra")
-EXCLUDE_ROOT = {"index.html", "index-v2.html"}
+EXCLUDE_ROOT = {"index.html"}
 
 DIV_TEMPLATE = (
     '<div id="waline-comments" '

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEL vs APH 对照速览（2026-09-29）</title>
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+    .navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-light); }
+    .breadcrumb span { margin: 0 8px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    .report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+    .report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+    .report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+    .report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+    .section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .metric-card { background: var(--card-elevated); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .metric-card .label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--heading); font-size: 1.5rem; font-weight: 700; }
+    .metric-card .delta { font-size: 0.9rem; margin-top: 4px; }
+    .positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+    .risk-list { list-style: none; padding: 0; margin: 0; }
+    .risk-list li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); }
+    .risk-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: 0.5rem; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: underline; }
+    @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#geopolitical" class="active">市场与地缘</a>
+        <a href="index.html#ai-tech">AI 与科技</a>
+        <a href="index.html#auto">中国汽车</a>
+        <a href="index.html#research">专题研究</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#geopolitical">市场与地缘</a><span>→</span>TEL vs APH 对照速览（2026-09-29）
+  </div>
+  <div class="container">
+    <header class="report-header">
+      <div class="subtitle">汽车零部件行业 · 连接器双龙头跟踪</div>
+      <h1>TEL vs APH 对照速览（2026-09-29）</h1>
+      <div class="meta">报告日期：2026-09-29 | 数据窗口：2026-09-07 → 09-28 周报 | 多多整理</div>
+    </header>
+
+    <div class="section">
+      <h2>一、核心观点</h2>
+      <div class="highlight-box">
+        五周周报数据与行业媒体信号互相印证：TEL 的估值修复已在发生（Bernstein 上调 Strong Buy、Q3 营收 +13.8% 超预期），基本盘是「汽车托底 + AI DDN 第二曲线」（年化 24 亿美元）；APH 仍是 AI 高 beta（运行率 105–110 亿美元，6 个月 +37%）。对下游采购方，TE 全线涨价 5–12% 已传导至 Q3 营收，成本压力是现实且即期的。
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>二、五周走势对照</h2>
+      <table>
+        <tr><th>周报期</th><th>TEL 泰科</th><th>APH 安费诺</th><th>当周叙事</th></tr>
+        <tr><td>09-07</td><td>周 +1.66%（6M <span class="negative">-0.14%</span>）</td><td>周 +4.42%（6M +21.94%）</td><td>APH 享 AI/军工溢价；TEL 等待汽车周期触底信号</td></tr>
+        <tr><td>09-14</td><td>$211.96（+3.58%）</td><td>$83.92（+4.57%）</td><td>两者同涨，腾讯财经行情接口补位</td></tr>
+        <tr><td>09-21</td><td>$205.42（+1.01%，6M +4.35%）</td><td>$77.55（-1.27%，6M +19.13%）</td><td>5% 利率下成长股承压；APH AI 运行率 105–110 亿、book-to-bill 1.23</td></tr>
+        <tr><td><strong>09-28</strong></td><td><strong>$218.59（+4.09%）</strong></td><td><strong>$84.09（+4.34%，6M +37.01%）</strong></td><td><strong>TEL 获 Bernstein 上调 Strong Buy／目标 $243；Q3 超预期</strong></td></tr>
+      </table>
+      <div class="grid-2">
+        <div class="metric-card">
+          <div class="label">TEL · Q3 FY26 营收</div>
+          <div class="value">$51.6 亿</div>
+          <div class="delta positive">+13.8% YoY · EPS $2.94 超预期</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">APH · AI 收入运行率</div>
+          <div class="value">$105–110 亿</div>
+          <div class="delta positive">订单 $107 亿 · book-to-bill 1.23</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">TEL · AI 年化收入（DDN）</div>
+          <div class="value">$24 亿+</div>
+          <div class="delta positive">DDN 单季同比 +34%</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">APH · CommScope CCS 收购</div>
+          <div class="value">$105 亿</div>
+          <div class="delta">贡献约 $41 亿年收入</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>三、业务结构对照</h2>
+      <table>
+        <tr><th>维度</th><th>TEL 泰科电子</th><th>APH 安费诺</th></tr>
+        <tr><td>定位</td><td>汽车基本盘托底 + AI 第二曲线</td><td>AI 数据中心高 beta + 军工敞口</td></tr>
+        <tr><td>AI 敞口</td><td>年化 $24 亿（DDN 单季 +34%）</td><td>运行率 $105–110 亿，订单 $107 亿</td></tr>
+        <tr><td>汽车敞口</td><td>核心基本盘：高压连接、铝代铜、传感器</td><td>有布局但占比低于 TEL</td></tr>
+        <tr><td>近期催化</td><td>Bernstein 上调 Strong Buy（目标 $243，共识 $251.36）；10/28 财报</td><td>CommScope CCS 并表；AI 订单 book-to-bill 1.23</td></tr>
+        <tr><td>波动特征</td><td>低估值防御，利率上行期抗跌（9/21 周验证）</td><td>涨幅猛、回调也猛（6M +37% vs TEL +4.35%）</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>四、行业信号 × 周报数据 三重印证</h2>
+      <h3>① 「估值修复」判断被独立验证</h3>
+      <p>9/7 期周报写「TEL 估值修复取决于汽车周期触底信号」；9/28 Bernstein 即上调至 Strong Buy、Q3 营收 +13.8% 超预期。9/8 行业媒体（连接器一号）披露的 DDN 单季 +34%、AI 年化破 24 亿美元，正是这次重估的基本面支撑。行业媒体与市场分析师从两个独立方向收敛到同一结论。</p>
+      <h3>② 涨价是「营收利好 × 成本压力」的双刃剑</h3>
+      <p>TE 新一轮全球调价 5–12%，高端品类（AI 高速、汽车高压）领涨；Q3 营收 +13.8% 中价格传导贡献显著。对 TE 股东是利好，对下游采购方是即期成本压力——且与 9/7 期周报提到的稀土磁体新规（11/10 生效）叠加。</p>
+      <h3>③ Beta 差异决定组合角色不同</h3>
+      <p>APH 是 AI 高 beta：6 个月 +37.01%，订单/出货比 1.23 说明需求仍大于供给；TEL 是「防御 + 修复」：6 个月仅 +4.35%，但 9/21 那周 APH 回调时 TEL 抗跌。9/28 周两者同涨（+4.09% / +4.34%），是风险偏好修复的信号。</p>
+    </div>
+
+    <div class="section">
+      <h2>五、行动含义</h2>
+      <ul class="risk-list">
+        <li><strong>采购端：</strong>TE 全线涨价 5–12% 已落地传导，长周期备货与库存结构优化的评估优先级应提高；11/10 稀土磁体新规生效前是双源排查窗口期。</li>
+        <li><strong>研究端：</strong>铝代铜高压连接器（整车减铜 18–100%）+ 南通基地（$1.5 亿）投产，是线束产业链价值分配与国产化路径的重要变量，建议纳入产业链图谱趋势分支。</li>
+        <li><strong>跟踪端：</strong>TEL 10/28 财报为下个验证点，重点看 DDN 增速与汽车业务毛利率；APH 看 AI 订单 book-to-bill 是否维持 &gt;1.2。</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>本页为内部研究速览，不构成投资建议。股市数据截至各周报期收盘，业务数据来自 TE Connectivity / Amphenol IR 及公开行业报道。</p>
+      <p>来源：DuoDuo Research 地缘政治与市场周报（09-07 → 09-28 期）、公众号「连接器一号」2026-09-08、yfinance / FRED / 腾讯财经。</p>
+      <p>生成时间：2026-09-29</p>
+    </div>
+  </div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

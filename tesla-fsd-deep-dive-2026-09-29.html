@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特斯拉 FSD 十三年进化史深度解析（2026-09-29）</title>
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+    .navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-light); }
+    .breadcrumb span { margin: 0 8px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    .report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+    .report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+    .report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+    .report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+    .section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .metric-card { background: var(--card-elevated); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .metric-card .label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--heading); font-size: 1.5rem; font-weight: 700; }
+    .metric-card .delta { font-size: 0.9rem; margin-top: 4px; }
+    .positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+    .risk-list { list-style: none; padding: 0; margin: 0; }
+    .risk-list li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); }
+    .risk-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: 0.5rem; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: underline; }
+    .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 8px; padding-left: 24px; }
+    .timeline-item { position: relative; margin-bottom: 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+    .timeline-item .t-year { color: var(--accent-light); font-weight: 700; }
+    @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#geopolitical">市场与地缘</a>
+        <a href="index.html#ai-tech">AI 与科技</a>
+        <a href="index.html#auto">中国汽车</a>
+        <a href="index.html#research" class="active">专题研究</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>特斯拉 FSD 十三年进化史深度解析（2026-09-29）
+  </div>
+  <div class="container">
+    <header class="report-header">
+      <div class="subtitle">自动驾驶 · 车规芯片 · 产业链专题</div>
+      <h1>特斯拉 FSD 十三年进化史深度解析</h1>
+      <div class="meta">报告日期：2026-09-29 | 素材：硅谷101《特斯拉FSD进化史》62分钟深度片（含前特斯拉工程师一手访谈）| 多多研究</div>
+    </header>
+
+    <div class="section">
+      <h2>一、核心观点</h2>
+      <div class="highlight-box">
+        特斯拉 FSD 的十三年，本质是一场「在极致成本约束下，用量产车数据换算法迭代」的长期豪赌。它的成功不是单点技术突破，而是五条线索的复利叠加：与谷歌的路线分野、感知架构的四次重构、端到端的断腕重写、自研芯片的四次流片、以及用真实车队换监管信任的运营策略。2026 年的当下，技术已不再是主要瓶颈——真正的战场切换到了「验证、监管与规模化成本」。对产业链的启示同样清晰：单点供应商依赖会倒逼架构级决策（去雷达），算力芯片完全自研有明确的组织边界，而 L4 的商业化速度最终由监管而非模型决定。
+      </div>
+      <div class="grid-2">
+        <div class="metric-card">
+          <div class="label">德州 Robotaxi 车队（截至 09-22）</div>
+          <div class="value">476 辆</div>
+          <div class="delta">67 Cybercab + 409 Model Y</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">端到端代码量变化</div>
+          <div class="value">30万 → 2千行</div>
+          <div class="delta">2023 年端到端重写（V12）</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">FSD V14 模型参数（vs V12）</div>
+          <div class="value">×10</div>
+          <div class="delta">2025-10 发布 · V15 参数再×10、目标 L4</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">HW 整套硬件成本</div>
+          <div class="value">≈ 一台 iPad</div>
+          <div class="delta">低于 MacBook Air · 每瓦智能为优化目标</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>二、十三年时间线</h2>
+      <div class="timeline">
+        <div class="timeline-item"><span class="t-year">2013</span> — 启动自动驾驶；与谷歌路线分歧分手（谷歌 L4 一步到位 vs 马斯克 L2 迭代）</div>
+        <div class="timeline-item"><span class="t-year">2014</span> — HW1.0 装车（Mobileye EyeQ3）；2015 Autopilot 上线</div>
+        <div class="timeline-item"><span class="t-year">2016</span> — 佛州致死事故；与 Mobileye 决裂；HW3.0 立项</div>
+        <div class="timeline-item"><span class="t-year">2017</span> — Transformer 论文发表；转用 NVIDIA；Karpathy 受邀加入</div>
+        <div class="timeline-item"><span class="t-year">2019</span> — HW3.0/AI3 装车（72 TOPS×2，三星合作设计）</div>
+        <div class="timeline-item"><span class="t-year">2021</span> — 移除毫米波雷达（疫情断供为催化剂）；感知四大升级完成</div>
+        <div class="timeline-item"><span class="t-year">2022</span> — Occupancy Network 发布（AI Day）；Karpathy 离职，Elluswamy 接任</div>
+        <div class="timeline-item"><span class="t-year">2023</span> — 端到端立项（30万行→2千行）；HW4.0/AI4 装车（02月）</div>
+        <div class="timeline-item"><span class="t-year">2024</span> — FSD V12 推送车主（01月）；V13（11月）；Cybercab 发布（10月）</div>
+        <div class="timeline-item"><span class="t-year">2025</span> — 奥斯汀 Robotaxi 试点（06月）；V14.1（10月）；Dojo 解散、AI5 自研受挫（08月）</div>
+        <div class="timeline-item"><span class="t-year">2026</span> — Cybercab 奥斯汀公开运营（09月）；AI5 台积电版首次流片（04月）；V15 待发（10月）</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>三、路线之争：两种范式，十三年未分胜负</h2>
+      <p>2013 年的分手决定了自动驾驶行业的两条路线。谷歌（后来的 Waymo）选择昂贵传感器 + 高精地图 + 严格安全冗余，先在限定区域做到 L4 再扩边界；特斯拉选择廉价摄像头装上数百万辆量产车，把不成熟的系统交给真实世界，在事故、争议与返工中迭代。</p>
+      <p>2026 年的现状是：<strong>两条路线都走通了技术，但都未赢得战争</strong>。Waymo 在商业化和实际运营上保持领先；特斯拉证明了激进路线的可行性——无方向盘的 Cybercab 已在奥斯汀公开运营——但美国联邦监管机构已对其启动安全调查。视频的判断是：「下半场无关技术路线，它的名字叫经济之战」——比拼的是谁能更快扩城、把单车成本降到大规模商业化区间。</p>
+    </div>
+
+    <div class="section">
+      <h2>四、硬件线：五次豪赌与三个教训</h2>
+      <h3>① HW1.0 → HW2.5：依赖供应商的代价</h3>
+      <p>起步全靠供应商：Mobileye EyeQ3 芯片 + 基础传感器套件。2016 年佛州事故中系统未能识别横穿的拖挂货车——Mobileye 事先警告过「禁止驾驶员双手离开方向盘」但未被执行——成为双方决裂的催化剂。转投 NVIDIA 后合作摩擦不断：工程师回忆，让 NVIDIA 开放芯片温度显示（几行代码）来回扯皮近半月，还要付费开通。这直接催生了自研决策。</p>
+      <h3>② HW3.0：自研芯片的第一仗</h3>
+      <p>与三星合作设计 AI3（72 TOPS×2），专为当时主流的卷积网络优化，2019 年装车。讽刺的是，设计定稿一年后 Transformer 论文发表——HW3 从架构上就错过了下一个时代，为后续的「算力永不够用」埋下伏笔。</p>
+      <h3>③ HW4.0：拉锯战的典型样本</h3>
+      <ul class="risk-list">
+        <li><strong>摄像头</strong>：120万→500万像素。车规场景重稳定性、帧率而非像素（像素越高，线束越粗、传输越远越难）；马斯克以「人只有两只眼」砍掉前挡一颗摄像头，造成前保险杠盲区，Cybertruck 又被迫加回。</li>
+        <li><strong>芯片数量</strong>：软件团队要求三颗（冗余逻辑复杂化），量产前马斯克因成本拍板改回两颗——「这是最终决定，谁也不要再跟我商量」。</li>
+        <li><strong>GDDR 豪赌</strong>：为破内存带宽瓶颈放弃成熟 LPDDR、押注 GDDR——功耗高、无车规生态、无人为其定制大容量，最终成为 HW4 的持续瓶颈，内部已在开发 HW4.3 改回 LPDDR。</li>
+        <li><strong>成本控制</strong>：整套硬件成本约一台 iPad，低于 MacBook Air；同一颗 AI4 芯片上车又进服务器（像素注入仿真 + 推理验证），摊薄研发成本。</li>
+      </ul>
+      <h3>④ AI5：完全自研的滑铁卢与组织教训</h3>
+      <p>与三星分手后决定 AI5 完全自研——战略正确但执行失当：团队规模与三星数千人的设计团队差一个数量级，且从未独立做过整颗芯片。更致命的是德州项目主管<strong>长期瞒报进度</strong>，「再有两个月」重复近一年；台积电收到图纸后直言「这离流片还差一年」。马斯克随即解雇多人，包括有连带责任的硬件负责人 Peter Bannon（受访者认为他也是受害者），随后亲自接管芯片团队，并行推进两个方案：第三方外包设计 + 台积电工艺（2026-04-15 首次流片、2027 量产，特定任务较 AI4 快 40 倍，业界估 HW5 算力 2000–2500 TOPS、采用 MCM 多芯片模块），以及找回三星做另一版 AI5。最新消息显示 AI5 也可能不上车，主供算力中心与机器人。</p>
+      <div class="highlight-box">
+        <strong>硬件线三个教训</strong>：① 供应商依赖会在最脆弱时刻反噬架构决策（Mobileye 决裂、Continental 断供）；② 内存/带宽类关键选型，生态成熟度优先于纸面性能（GDDR 之败）；③ 芯片完全自研存在组织边界——数千人年的设计经验不是钱能速成的，「里程碑式瞒报」是大型硬件项目的典型死法，需要制度化的真实进度披露机制。
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>五、软件线：四次架构跃迁</h2>
+      <h3>跃迁一：神经网络重构感知（2018–2021）</h3>
+      <p>Karpathy 加入的首要价值其实是招聘——「没有他，顶尖 AI 毕业生凭什么去车厂」。其后的感知四大升级：深度学习端到端替代手工规则；HydraNet 让多摄像头多任务共享同一算力底座（树干共享、树枝分叉）；从「看图片」转向「看视频」（时序信息带来短时记忆）；BEV + Transformer 交叉注意力把 8 摄信息统一投射到俯视坐标系，构建 2.5D 空间模型。</p>
+      <h3>跃迁二：纯视觉与占用网络（2021–2022）</h3>
+      <p>移除毫米波雷达的直接原因是疫情下 Continental 供不上货、谈判破裂——而非技术成熟。代价是测距精度骤降，倒逼出 Occupancy Network：用体素（Voxel）表达 3D 空间占用，不再要求系统「认识」每个物体即可避障。训练真值难题的解法颇具巧思：自动标注网络 + 少数搭载激光雷达的采集车提供 ground truth——鄙视雷达的特斯拉，内部一直在用激光雷达标注数据。</p>
+      <h3>跃迁三：端到端（2023）</h3>
+      <p>工程师 Dhaval Shroff 一句「车用的 ChatGPT」说服马斯克：用神经网络替代全部规则算法，模仿人类驾驶行为学会开车。30 万行代码精简到 2 千行。2023-08 马斯克车载直播首秀（途中闯了一次红灯），2024-01 正式推送车主。值得注意的是，端到端并非全盘推倒——Karpathy 时代的感知网络「像种子一样」被复用；且概念本身英伟达 2016 年已提出，特斯拉是首个量产落地者而非首创者。</p>
+      <h3>跃迁四：规模法则时代（V13 → V14 → V15）</h3>
+      <ul class="risk-list">
+        <li><strong>V13</strong>（2024-11）：光子信息不加预处理直输模型、提升帧率与分辨率、「车位到车位」，对标 AI4 芯片优化，被内部比作「猛禽 V3 一样简洁」。</li>
+        <li><strong>V14.1</strong>（2025-10，跳过 V14.0）：参数×10、引入强化学习、重写 AI 编译器、首次大规模回流量产车；2025 年底 Model 3 加州→南卡 2700 英里全程零干预。</li>
+        <li><strong>V15</strong>（2026-10 待发）：参数再×10、目标 L4，早期版本已在 Robotaxi 车队部署。</li>
+      </ul>
+      <p>针对端到端「黑盒不可解释」的质疑，特斯拉的解法构成完整体系：车端筛选器只上传高价值片段（极限反应、复杂路况）控制训练成本；网络中间节点额外输出 3D 世界表示用于检查注意力；AI4 服务器用世界模型生成仿真环境回放过错片段、注入极端场景验证新版本；音频（警笛等）已参与决策，语音控制在路上。</p>
+    </div>
+
+    <div class="section">
+      <h2>六、商业化真相：技术不再是瓶颈之后</h2>
+      <p>截至 2026-09-22，特斯拉在德州登记的 Robotaxi 车队达 476 辆（67 辆无方向盘 Cybercab + 409 辆 Model Y）。关键事实：</p>
+      <ul class="risk-list">
+        <li><strong>硬件零差别</strong>：Robotaxi 与量产车硬件完全相同，早期为 Cybercab 做的安全冗余优化已全量下放到所有量产车型——软件与许可才是 L2/L4 的分界线。</li>
+        <li><strong>软件双层制</strong>：Robotaxi 跑内部最新最强版本，经长时间验证稳定后才推送量产车；最新版出问题由远程监管机制兜底（受访工程师坦言「此刻每一公里的成本里含着后台盯屏人员的工资」）。</li>
+        <li><strong>扩城与监管</strong>：已在湾区、内华达、亚利桑那等多地获得不同条件运营许可；联邦监管机构对 Cybercab 启动安全调查。前工程师 Srihari 的判断：「这已经不是一个技术问题，主要涉及验证与监管，以及在不同地理区域扩大规模。」</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>七、对汽车产业链的四个启示</h2>
+      <table>
+        <tr><th>启示</th><th>FSD 案例</th><th>产业链含义</th></tr>
+        <tr><td>单一供应商依赖是架构级风险</td><td>Continental 毫米波雷达疫情断供 → 特斯拉直接移除雷达、转向纯视觉</td><td>关键物料（车规芯片、传感器、磁体）的双源认证不是采购问题，是技术路线问题</td></tr>
+        <tr><td>算力芯片自研有组织的边界</td><td>AI5 完全自研因人手/经验不足 + 瞒报而延期一年以上</td><td>车规大算力芯片的「设计人年」门槛数千人级；里程碑治理比技术野心更先决</td></tr>
+        <tr><td>存储/互连选型生态优先</td><td>GDDR 无车规生态成 HW4 持续瓶颈，HW4.3 退回 LPDDR</td><td>带宽指标之外，供货生态与定制成本应进入选型评分卡</td></tr>
+        <tr><td>L4 商业化速度由监管决定</td><td>技术就绪多年，但 Cybercab 仍处有限区域运营 + 联邦调查</td><td>Robotaxi 产业链放量时点取决于法规节奏，硬件备货应跟随牌照而非发布会</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>八、下一步跟踪清单</h2>
+      <ul class="risk-list">
+        <li><strong>2026-10</strong>：FSD V15 发布——L4 能力验证的首个公开版本，关注 Robotaxi 车队表现与监管回应。</li>
+        <li><strong>2026-Q4 → 2027</strong>：AI5 台积电版量产进度、三星版并行状态，以及「AI5 是否装车」的最终决策。</li>
+        <li><strong>扩城战</strong>：下期硅谷101预告 Waymo vs 特斯拉扩城之战——对比两家的单车经济模型。</li>
+        <li><strong>监管</strong>：联邦对 Cybercab 调查结论；各州 L4 许可节奏。</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>本页为内部研究分析，不构成投资建议。事实与数据引自硅谷101《特斯拉FSD进化史》（2026-09，YouTube），含前特斯拉工程师 Kerry Liu、Srihari 一手访谈及公开资料。</p>
+      <p>原始素材：https://youtu.be/2pZ9Gl7qVUo · 生成时间：2026-09-29</p>
+    </div>
+  </div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

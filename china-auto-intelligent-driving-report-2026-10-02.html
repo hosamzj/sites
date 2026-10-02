@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国汽车智能驾驶趋势观察（2026-10-02）</title>
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-card: #232320;
+            --bg-secondary: #1a1a18;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-muted: #7a7872;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-hover: #b55a3c;
+            --border: #30302e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
+        header {
+            background: var(--bg-card);
+            padding: 48px 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+        }
+        h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        .meta { color: var(--text-muted); font-size: 0.9rem; margin-top: 16px; }
+        .section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        h2 { color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); display: inline-block; }
+        h3 { color: var(--text); font-size: 1.2rem; margin: 24px 0 12px; }
+        p { color: var(--text-secondary); margin-bottom: 12px; }
+        ul { margin-left: 20px; color: var(--text-secondary); }
+        li { margin-bottom: 8px; }
+        a { color: var(--accent-light); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            background: rgba(201, 100, 66, 0.15);
+            color: var(--accent-light);
+            border: 1px solid rgba(201, 100, 66, 0.3);
+        }
+        .tag.green { background: rgba(74, 174, 120, 0.15); color: #4aae78; border-color: rgba(74, 174, 120, 0.3); }
+        .tag.blue { background: rgba(88, 166, 255, 0.15); color: #58a6ff; border-color: rgba(88, 166, 255, 0.3); }
+        .tag.yellow { background: rgba(217, 171, 69, 0.15); color: #d9ab45; border-color: rgba(217, 171, 69, 0.3); }
+        .tag.red { background: rgba(226, 95, 95, 0.15); color: #e25f5f; border-color: rgba(226, 95, 95, 0.3); }
+        .tag.purple { background: rgba(177, 102, 255, 0.15); color: #b166ff; border-color: rgba(177, 102, 255, 0.3); }
+        .highlight-box {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 16px 0;
+        }
+        .source {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-weight: 600;
+        }
+        td { color: var(--text-secondary); }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(20, 20, 19, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+        }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .breadcrumb {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        .breadcrumb-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .breadcrumb-container a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb-container a:hover { color: var(--accent); }
+        .breadcrumb-container span:last-child { color: var(--text); }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">多</span>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto" class="active">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">研究报告中心</a>
+            <span>/</span>
+            <a href="index.html#auto">中国汽车</a>
+            <span>/</span>
+            <span>中国汽车智能驾驶趋势观察（2026-10-02）</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>中国汽车智能驾驶趋势观察</h1>
+            <p class="subtitle">覆盖中文平台（微博、B站、百度）与全球英文社区（Reddit、YouTube、Hacker News）近30天舆情；聚焦政策法规、重点企业/车型进展与零部件产业链启示</p>
+            <p class="meta">报告日期：2026-10-02 · 数据窗口：2026-09-02 至 2026-10-02 · 来源：last30days + last30days-cn + 公开网络资料</p>
+        </header>
+
+        <div class="section">
+            <h2>核心摘要</h2>
+            <ul>
+                <li><strong>国庆周中文舆情主线是\"安全边界\"与\"用户体验\"两条线并行：</strong>人民日报 B 站视频（114 万播放）以高速\"智驾\"临近大货车时突然退出导致追尾的实拍案例，强化\"智能驾驶≠自动驾驶\"的监管叙事；与此同时，#智能辅助驾驶有多减压#、小米 YU7\"超级任务\"自定义场景、深蓝 S05 国庆长途自驾实测等内容显示，用户对辅助驾驶的日常价值感知正在从\"新鲜感\"转向\"依赖性\"。</li>
+                <li><strong>特斯拉 FSD 入华进入\"四季度验证期\"：</strong>公司此前承诺的 2026 Q3 全面批准窗口已关闭（截至 9 月底未官宣），目前状态仍为约 5000 台 HW4.0 车型的灰度测试；9 月 24 日北美推送的 v14.1 Lite（HW3 蒸馏版）与中国市场的审批节奏形成对照。上海临港 AI 训练中心 + 百度高精地图的境内数据闭环已就绪，但监管对端到端架构可解释性的审查仍是关键变量。</li>
+                <li><strong>L3 合规体系进入\"双标倒计时\"：</strong>GB 47955—2026（L2 组合驾驶辅助强标，2027-01-01 实施）与 GB 44721—2026（L3/L4 自动驾驶系统安全强标，2027-07-01 实施）构成双层约束；首批 L3 附条件准入的长安深蓝 SL03、北汽极狐 αS 按计划 2026 Q1 起在北京、重庆指定路段上路试点，\"成熟一个、许可一个\"的通道持续敞开。</li>
+                <li><strong>英文社区焦点从\"技术对比\"转向\"补能与生态\"：</strong>Hacker News 热帖关注中国 5 分钟快充（9/24）；Reddit r/SelfDrivingCars 热议小鹏 VLA 2.0 的 2027 全球推送计划（38 赞/51 评论）；吉利收购蔚来能源 30% 股权（投后约 160 亿元）推动换电标准化，被解读为中国 EV 基础设施整合信号。本周 Reddit 源被 403 截断（仅 6 条），英文证据置信度中等，已在正文标注。</li>
+                <li><strong>感知层\"量价剪刀差\"加剧：</strong>禾赛 ATX 累计交付破 100 万台、均价从约 1100 美元降至 260 美元（两年缩水超 3/4）；速腾聚创 2026 H1 ADAS 激光雷达销量 43.66 万颗（+98%）但毛利率回落至 21.8%（-4.1pct），\"增收不增利\"成为行业共性；竞争向上游芯片迁移（速腾 SPAD-SoC 自研芯片降本约 20%），分辨率军备竞赛（2160 线 → 4000 线规划）仍在继续。</li>
+                <li><strong>激光雷达公司集体奔赴\"物理 AI\"第二曲线：</strong>速腾聚创 E2/EM4 成为 NVIDIA Holoscan Sensor Bridge 全球首个量产交付的激光雷达合作伙伴（9/28），机器人业务 H1 销量 28.26 万颗（+510%），并将具身机器人整机业务剥离至曦元机器人独立运营；禾赛、Ouster 同步布局机器人关节、空间相机与彩色激光雷达。</li>
+                <li><strong>比亚迪智驾\"存量升级\"改写行业规则：</strong>天神之眼 C 平台 4.0 无图城市领航 OTA 按计划 9 月进入小规模体验营公测、12 月分批全量推送——数十万存量车主\"不换硬件、免费升级\"，与行业普遍\"硬件定型即停止 OTA\"的做法形成反差；海狮 08（22.99 万起）全系标配天神之眼 5.0 + 激光雷达，高阶智驾下探至主流价位段。</li>
+                <li><strong>零部件产业链启示：</strong>感知硬件降价 + 算力冗余需求（L3 备份算力/供电）并存，供应商需在\"成本领先\"与\"功能安全\"之间给出可验证的平衡方案；换电标准化（吉利-蔚来合作）与 5 分钟快充并行推进，高压平台连接器、液冷充电线束的规格升级窗口开启；智驾数据闭环监管（采集-存储-训练-部署境内化）使车规级存储、域控的本地供应链价值凸显。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>中文平台舆情</h2>
+            <p>数据窗口：2026-09-02 至 2026-10-02；来源：微博（爬虫模式）、B站（last30days-cn 检索；知乎 API 返回 400、头条爬虫异常、百度 SSL 失败，未纳入）。说明：本轮宽泛查询\"中国汽车 智能驾驶\"与定向查询\"智能驾驶 自动驾驶\"合计可用证据为微博 6 条 + B站 4 条，样本量偏小，因此本周中文舆情部分辅以公开新闻与平台热榜交叉验证，置信度已如实标注。</p>
+
+            <h3>1. \"智驾退出致追尾\"官媒警示刷屏：安全边界议题重回中心</h3>
+            <p><span class="tag red">安全</span><span class="tag blue">B站</span><span class="tag yellow">官媒</span></p>
+            <p>9 月 29 日，人民日报在 B 站发布高速实拍案例视频：司机开启\"智驾\"功能后，系统在临近大货车时突然退出，导致追尾事故；交警明确提醒\"'智能驾驶'不是'自动驾驶'，驾驶员一定提高警惕\"。该视频以 <b>114.2 万播放、2.98 万点赞</b>成为本周中文平台传播量最高的智驾内容，B 站随后出现\"辅助驾驶≠自动驾驶\"跟进创作（10/1）。这与 4 月工信部叫停\"智驾\"\"L2+\"等误导性宣传、GB 47955—2026 强制标配驾驶员状态监测的政策脉络一致——监管叙事的公众沟通正在从\"规范企业话术\"下沉到\"教育用户预期\"。对零部件企业而言，DMS（驾驶员监测系统）与脱手检测从\"加分项\"变为\"强标合规件\"，需求确定性进一步增强。</p>
+            <div class="source">来源：<a href="https://www.bilibili.com/video/BV1Pqan6nEZJ" target="_blank">B站@人民日报：高速\"智驾\"退出致追尾警示（9/29，114万播放）</a>、<a href="https://www.bilibili.com/video/BV1j8a66oExW" target="_blank">B站：辅助驾驶≠自动驾驶（10/1）</a></div>
+
+            <h3>2. #智能辅助驾驶有多减压#：用户体验叙事接棒技术参数叙事</h3>
+            <p><span class="tag green">用户体验</span><span class="tag">微博</span></p>
+            <p>国庆期间，微博出现多条以\"减压\"\"省心\"为框架的智驾体验内容：#智能辅助驾驶有多减压#话题下，车主描述高速巡航、拥堵跟车、自动泊车等场景如何降低驾驶精力消耗（10/2）；深蓝 S05 车主记录国庆首日 99.9 公里自驾、电耗 11.1kWh/100km，特别提到\"路上开启智能辅助驾驶，长途开车轻松不少\"（10/2）。问界 M8 的传播则把辅助驾驶与销量、安全认证绑定——\"上市 17 个月累计交付突破 18 万辆、40 万级 SUV 销量第一\"（10/1）。这一转变的意义在于：中文平台的智驾讨论正在从\"能不能用\"转向\"值不值得天天用\"，口碑的积累速度将直接影响各品牌智驾选装率。</p>
+            <div class="source">来源：<a href="https://weibo.com/1891167351/5349516643665229" target="_blank">微博：#智能辅助驾驶有多减压#（10/2）</a>、<a href="https://weibo.com/7360862479/5349517181583643" target="_blank">微博：深蓝 S05 国庆自驾实测（10/2）</a>、<a href="https://weibo.com/1923029542/5349187903291519" target="_blank">微博：问界 M8 交付 18 万辆（10/1）</a></div>
+
+            <h3>3. \"自主创新边界\"争论：去宁德化论调引发产业分工大讨论</h3>
+            <p><span class="tag purple">产业叙事</span><span class="tag yellow">微博</span></p>
+            <p>9 月 22 日，@朱雀财经 转引中国工信新闻观点——\"自主创新不等于什么都自己做\"，以\"波音不造发动机、苹果不造芯片\"论证专业化分工的价值，并带 #去宁德化论调要不得# 话题，获得 548 点赞、44 转发、49 评论，是本周该话题下互动最高的单条。该讨论的背景是整车厂自研电池、智驾、芯片的\"垂直整合\"浪潮与供应链安全之间的张力。对汽车零部件企业而言，这一争论的实质是\"整零关系\"重新定价：在智驾域，主机厂自研算法但外供传感器/执行器的\"半垂直\"模式（如蔚来-禾赛、比亚迪-速腾）正在成为主流，供应商需要证明自己在系统集成中的不可替代性。</p>
+            <div class="source">来源：<a href="https://weibo.com/7750531853/5346023196334105" target="_blank">微博@朱雀财经：自主创新不是\"什么都自己做\"（9/22）</a></div>
+
+            <h3>4. 小米 YU7\"超级任务\"出圈：座舱智能化进入\"用户自定义\"阶段</h3>
+            <p><span class="tag blue">小米</span><span class="tag green">座舱</span></p>
+            <p>10 月 2 日，微博用户展示小米 YU7 的\"超级任务\"功能——可像编程一样自定义场景链：定时开启座椅按摩、到陌生地点自动开启哨兵模式、设置专属欢迎模式，被评价为\"带了个贴心管家出门\"。这代表了智能座舱竞争的范式变化：从厂商预置功能转向用户可编排的自动化（类比手机快捷指令），对车内传感器、车身域控的开放接口能力提出新要求。结合 9 月 24 日北美 FSD v14.1 引入的\"速度配置文件\"（按驾驶风格自定义车速），可以看到中美头部厂商都在把\"个性化\"作为下一阶段的用户粘性抓手。</p>
+            <div class="source">来源：<a href="https://weibo.com/9054522804/5349513462291938" target="_blank">微博：小米 YU7 超级任务体验（10/2）</a>、<a href="https://zh.stats.tessie.com/versions/2026.27.6.5" target="_blank">Tessie：FSD v14.1 速度配置文件（9/24）</a></div>
+        </div>
+
+        <div class="section">
+            <h2>全球英文社区舆情</h2>
+            <p>数据窗口：2026-09-02 至 2026-10-02；来源：last30days 引擎（Hacker News、Reddit、YouTube、GitHub 四源活跃；Reddit 在 6 条后被 403 截断、X/Twitter 未接入、Web 源不可达）。本周英文新增证据 18 条，其中近 7 天内仅 3 条，时效性偏弱，结论以趋势判断为主。</p>
+
+            <h3>1. 小鹏 VLA 2.0 全球推送计划引发技术路线讨论</h3>
+            <p><span class="tag">Reddit</span><span class="tag blue">r/SelfDrivingCars</span><span class="tag green">小鹏</span></p>
+            <p>9 月 5 日，r/SelfDrivingCars 讨论小鹏 2027 年 VLA 2.0 全球 rollout 计划（38 赞/51 评论）——小鹏宣称其为\"中国首个具备 L4 潜力的 AI 驾驶模型\"。评论区的关注点集中在：①VLA（视觉-语言-动作）架构与特斯拉纯端到端路线的异同；②中国路况训练模型在欧美道路的泛化能力；③\"全球推送\"面临的各国监管审批差异。值得注意的是，YouTube 上 What's Inside 频道 5 月实测小鹏 VLA 2.0 北京复杂路况的视频（60.9 万播放）持续被引用为\"中国智驾已接近特斯拉\"的证据，评论区最高赞提问却是\"中国 FSD 在无保护左转场景成熟度如何\"——英文社区的对比框架正从\"参数对比\"转向\"具体场景\".</p>
+            <div class="source">来源：<a href="https://www.reddit.com/r/SelfDrivingCars/comments/1w894gz/xpeng_is_targeting_a_2027_global_rollout_for_its/" target="_blank">r/SelfDrivingCars：小鹏 VLA 2.0 2027 全球推送（9/5）</a>、<a href="https://www.youtube.com/watch?v=JDnqS4E6EJk" target="_blank">YouTube：Is China's New Autopilot Actually Better Than Tesla?</a></div>
+
+            <h3>2. 中国 5 分钟快充登上 Hacker News：补能叙事接棒智驾叙事</h3>
+            <p><span class="tag yellow">Hacker News</span><span class="tag">补能</span></p>
+            <p>9 月 24 日，\"China reaches 5-minute EV charging\"登上 Hacker News（24 分/4 评论），聚焦中国车企在兆瓦级快充上的竞争。这是本月 HN 唯一与中国汽车相关的上榜话题，与此前数月\"Robotaxi\"\"FSD 对比\"类话题形成反差——英文技术社区对中国 EV 的关注点正在从\"自动驾驶多厉害\"扩展到\"补能生态多成熟\"。对零部件企业，这比智驾参数更具直接意义：5 分钟快充意味着 800V/1000V 高压平台、液冷充电连接器、碳化硅功率器件的规格升级窗口。</p>
+            <div class="source">来源：<a href="https://www.newsminimalist.com/articles/chinese-automakers-race-ahead-with-5-minute-ev-fast-charging-b0ce90ad" target="_blank">Hacker News：China reaches 5-minute EV charging（9/24）</a></div>
+
+            <h3>3. 吉利入股蔚来能源：换电标准化的\"英文社区读法\"</h3>
+            <p><span class="tag purple">Reddit</span><span class="tag">换电</span><span class="tag green">基础设施</span></p>
+            <p>9 月 29 日，Reddit 讨论吉利收购蔚来能源（NIO Power）30% 股权、投后估值约 160 亿元的交易，吉利将旗下换电业务\"易易换电\"及 6.4 亿元现金注入。英文社区的解读聚焦于两点：①换电模式 vs 快充模式的路线之争出现\"中国答案\"——头部车企开始整合换电标准而非各自为战；②蔚来通过出售能源业务股权改善现金流，被类比为\"中国版充电基础设施的互联互通 moment\"。结合萝卜快跑 2026 Q1 全无人订单 320 万单、周峰值 35 万单、覆盖 28 城的运营数据，英文社区对中国自动驾驶产业化的讨论正从\"技术演示\"转向\"商业基础设施\"。</p>
+            <div class="source">来源：<a href="https://www.reddit.com/r/STEW_ScTecEngWorld/comments/1wtb4s0/geely_acquires_30_stake_in_nio_power_to_drive/" target="_blank">Reddit：Geely Acquires 30% Stake in NIO Power（9/29）</a>、<a href="https://zhuanlan.zhihu.com/p/2060289471606691748" target="_blank">知乎专栏：Robotaxi 狂奔背后真实发展（运营数据）</a></div>
+
+            <h3>4. 存量视频持续发酵：\"美国博主飞中国实测智驾\"的长尾传播</h3>
+            <p><span class="tag blue">YouTube</span><span class="tag">长尾传播</span></p>
+            <p>Rich Rebuilds 的\"America Is Blocking Chinese EVs... I Flew to China to Find Out Why\"（202 万播放）与 Kim Java 的\"China Self Driving vs US Self Driving - Stunned!\"（48.7 万播放）虽非本周新发，仍持续出现在检索结果前列，评论区维持活跃。这类内容的共同叙事是\"西方媒体说中国车不行 → 实地试驾后真香\"，最高赞评论（2700 赞）已带明显地缘情绪。对产业研究而言，这类视频是观察西方消费者心智变化的低成本窗口——其传播本身也构成中国智驾出海的\"民间口碑资产\"，但情绪化叙事对企业的可验证性要求（实测数据、接管率披露）也在同步提高。</p>
+            <div class="source">来源：<a href="https://www.youtube.com/watch?v=a46Xp8FtWOg" target="_blank">YouTube：Rich Rebuilds 中国行（202万播放）</a>、<a href="https://www.youtube.com/watch?v=A4bh9sgPrcA" target="_blank">YouTube：China Self Driving vs US Self Driving</a>、<a href="https://www.youtube.com/watch?v=NEBHG7YArzw" target="_blank">BBC：Can China repeat its EV success with robotaxis?</a></div>
+        </div>
+
+        <div class="section">
+            <h2>政策法规与标准动态</h2>
+            <p>本月政策面的关键词是\"双标实施倒计时 + FSD 审批悬置\"，强标体系与个案审批形成两条并行主线。</p>
+            <h3>强制性国家标准进入实施倒计时</h3>
+            <ul>
+                <li><strong>GB 47955—2026《智能网联汽车 组合驾驶辅助系统安全要求》</strong>（我国首部 L2 级组合驾驶辅助强标）：2026 年中获批发布，<b>2027 年 1 月 1 日实施</b>。标准将产品分为基础单车道、基础多车道、领航驾驶辅助三类，强制标配驾驶员状态监测（DMS），对脱手和视线偏离设置阶梯式预警，长时间无视提醒将临时锁止辅助功能。</li>
+                <li><strong>GB 44721—2026《智能网联汽车 自动驾驶系统安全要求》</strong>：2026 年 8 月由市场监管总局、国标委批准发布，<b>2027 年 7 月 1 日实施</b>，适用于搭载 L3/L4 系统的 M 类、N 类车辆（自动泊车除外），要求接管能力监测与自动驾驶数据记录系统，为 L3/L4 产品划定统一安全准入基线。</li>
+                <li>两套标准叠加被业内解读为\"给宣称能力与实际能力之间的落差装上量尺\"：2025-2027 年形成\"标准制定—过渡实施—全面生效\"三阶段路径，国海证券等机构判断 L3 正式准入节点有望在 2026 年后到来，当前处于产业链布局关键窗口期。</li>
+            </ul>
+            <h3>L3 准入与上路试点</h3>
+            <ul>
+                <li>首批 L3 附条件准入（2025 年 12 月）：<b>长安深蓝 SL03</b>（重庆内环快速路等，拥堵环境最高 50km/h）、<b>北汽极狐 αS</b>（北京京台高速/大兴机场高速等，最高 80km/h），按计划 2026 年一季度启动上路试点，采取\"特定城市、特定路线、限定时速\"框架，要求驾驶员 10 秒内接管。</li>
+                <li>华为乾崑在北京、上海、广州、深圳、合肥、武汉、重庆 7 城进行高速 L3 路测，为正式商用做最后准备；广汽、智己、岚图、小鹏、一汽-大众等均已公布 L3 规模上车或内部测试进展。</li>
+                <li>《道路交通安全法》修订草案（2025 年 8 月首审）增设\"自动驾驶汽车特别规定\"专章；工信部等九部门 2026 年 9 月 11 日明确\"到 2030 年具备自动驾驶功能的汽车实现规模应用\"。</li>
+            </ul>
+            <h3>特斯拉 FSD 入华：Q3 窗口关闭，四季度进入验证期</h3>
+            <ul>
+                <li><strong>时间线：</strong>2026-05-21 官宣监督版 FSD 支持中国（有限部署，主要适配 AI4/HW4 硬件）；2026-08-22 北美官网更新可用地区清单时将中国移出，引发\"入华受阻\"恐慌；8-26 特斯拉中国辟谣\"上海数据中心人去楼空\"并称已报案；CFO 4 月财报会承诺的\"Q3 更广泛批准\"截至 9 月底未兑现。</li>
+                <li><strong>当前状态：</strong>约 5000 台 HW4.0 车型小范围灰度测试，覆盖北京、上海、杭州、广州等约 10 城；上海临港 AI 训练中心（2026 年 2 月投运）实现\"采集-存储-训练-部署\"境内闭环，与百度合作高精地图并获乙级测绘资质，相关车型通过四项汽车数据安全标准认证。</li>
+                <li><strong>合规适配：</strong>已按监管要求将中文页面\"FSD 完全自动驾驶能力\"更名为\"特斯拉辅助驾驶（TAD）\"，明确 L2 定位与驾驶员责任；6.4 万元买断价暂无订阅制。业内分析指出，端到端纯视觉架构的可解释性（黑盒问题）与 OTA 重大版本提前报备要求，是审批慢于预期的技术内因；作为对照，奔驰、宝马、奥迪均已转向全本土化数据闭环架构。</li>
+                <li><strong>海外监管压力传导：</strong>NHTSA 对 FSD 的调查 2026 年 3 月升级为工程分析（EA26002，覆盖约 320 万辆车），聚焦低能见度下纯视觉感知失效与预警迟滞，已识别 9 起关联事故含 1 起致死；加州 DMV 虚假宣传裁定（2025 年 12 月获行政法官支持）迫使特斯拉在美加停用 Autopilot 一词。这些案例为中国监管提供了审查参照系。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>重点企业/车型智能驾驶进展</h2>
+
+            <h3>华为鸿蒙智行：ADS 4 系上量，问界 M8 成高端家庭智驾标杆</h3>
+            <p>问界 M8 上市 17 个月累计交付突破 18 万辆，拿下上市周期 40 万级 SUV 销量第一，传播锚点为\"领先辅助驾驶 + 硬核安全\"（C-NCAP 超五星、C-IASI 超 5G 全优）；享界 S9 全系标配华为乾崑 ADS 4（CAS 4.0 全维防碰撞，人驾模式 4-150km/h 前向防碰撞）。行业横评数据显示，ADS 4.1 以 99.2% 极端场景准确率位列第一，依托 65 亿公里真实路测数据。余承东 2025 年 12 月表态\"2026 年起鸿蒙智行走入 L3/L3+ 时代\"，高速 L3 正在 7 城路测。</p>
+
+            <h3>比亚迪：天神之眼\"存量 OTA\"模式改写竞争规则</h3>
+            <p>海狮 08（9 月 7 日上市，22.99-27.99 万）全系标配天神之眼 5.0 高阶智驾（激光雷达 + 城市/高速 NOA）、云辇-A 与后轮转向；更值得关注的是存量升级：天神之眼 C 平台 4.0 无图城市领航 OTA 于 9 月进入小规模体验营公测，计划 12 月分批全量推送，数十万老车主不换硬件即可获得城市领航——跳过原计划的城市记忆领航阶段直接对齐 4.0 水平。自研 4nm 车规级智驾芯片\"璇玑 A3\"三颗协同超 2100 TOPS，已进入规模化量产；天神之眼 B 激光雷达版可选装（1.2 万元），已下探至 10 万元级车型。</p>
+
+            <h3>小鹏/小米/理想：三条技术路线的量产竞赛</h3>
+            <p>小鹏 P7 Ultra 以 2250 TOPS 算力、第二代 VLA 主打全场景智驾（100 公里拥堵路段接管 1.2 次，AEB 130km/h），VLA 2.0 计划 2027 年全球推送，被英文社区称为\"中国首个具备 L4 潜力的 AI 驾驶模型\"；小米 SU7 Max 高速 700 公里 0 接管、变道准确率 98.7%，城市功能待 OTA，YU7 则把\"超级任务\"用户自定义场景作为差异化抓手；理想 AD Pro/Max 已切换至地平线 J6M（128TOPS）/英伟达 Thor-U（700TOPS）双平台，自研智驾 AI 推理芯片（约 400 亿晶体管，对标特斯拉 HW5.0 架构）预计 2026 年量产装车，理想同时给出三年内推出首款 L4 车型（取消方向盘/踏板）的愿景。</p>
+
+            <h3>特斯拉中国：Cybercab 只展不卖，FSD 审批待四季度</h3>
+            <p>Cybercab 全国巡展（北京华贸 9/17-9/27、上海兴业太古汇至 9/21）明确不在中国销售、不开展 Robotaxi 运营；FSD 全面批准未在 Q3 兑现，目前灰度测试约 5000 台 HW4.0 车型。北美 9 月 24 日推送 FSD v14.1 Lite（HW3 蒸馏版，含速度配置文件、从车位起步等新功能），与中国市场的审批停滞形成节奏反差。2025 年特斯拉中国销量同比下滑约 4.78% 至 62.6 万辆，2026 年前四个月进一步下滑约 15%，FSD 是手里为数不多的差异化王牌。</p>
+
+            <h3>蔚来/乐道/萤火虫：智驾重回第一梯队压力大，出海换合作</h3>
+            <p>蔚来 9 月 23 日宣布与 HERE Technologies 扩大合作至欧洲全系车型（ET5/ET7/EL6/EL7/EL8 及萤火虫），采用流式地图推进欧洲 NOA 演进，结合蔚来世界模型架构寻求欧洲合规路径。国内市场，第三方分析指出其智驾表现\"与华为、小鹏、理想拉开差距\"，乐道 L90 激光雷达版的推出被解读为\"纯视觉路线未走通\"的信号；2025 年 12 月 ES8 单月交付 22256 台创 40 万元以上车型纪录，但公司 2026 年\"全年盈利\"目标压力不小。换电侧，出售蔚来能源 30% 股权给吉利（投后约 160 亿元）换取标准化联盟与现金流。</p>
+
+            <h3>Robotaxi：萝卜快跑规模化，盈利模型开始被审视</h3>
+            <p>萝卜快跑已覆盖 28 城，2026 Q1 全无人订单 320 万单、3 月单周峰值 35 万单，累计服务订单超 2200 万单、自动驾驶总里程超 3.5 亿公里；行业数据显示头部 Robotaxi 企业单车日均订单约 23 单、日均净收入 338 元。文远知行全球 Robotaxi 车队超 1800 辆。BBC 提出\"中国能否把 Robotaxi 复制成下一个 EV 故事\"的框架性问题——技术与规模已非瓶颈，盈利模型与海外监管（数据合规、地缘审查）成为新焦点。</p>
+
+            <h3>主要玩家智驾配置一览（2026 年 10 月时点）</h3>
+            <table>
+                <tr><th>品牌/车型</th><th>智驾系统</th><th>算力/硬件</th><th>关键进展</th></tr>
+                <tr><td>问界 M8 / 享界 S9</td><td>华为乾崑 ADS 4 / 4.1</td><td>最多 3 颗激光雷达，全栈自研</td><td>M8 累计交付 18 万辆；ADS 4.1 极端场景准确率 99.2%；高速 L3 七城路测</td></tr>
+                <tr><td>比亚迪海狮 08</td><td>天神之眼 5.0</td><td>车顶激光雷达，璇玑 A3 自研芯片</td><td>全系标配下探至 23 万级；天神之眼 C 存量 OTA 12 月全量</td></tr>
+                <tr><td>小鹏 P7 Ultra</td><td>第二代 VLA</td><td>2250 TOPS，双激光雷达</td><td>VLA 2.0 计划 2027 全球推送，宣称具备 L4 潜力</td></tr>
+                <tr><td>小米 SU7 Max / YU7</td><td>全栈自研</td><td>508 TOPS，1 颗激光雷达</td><td>高速 700km 0 接管；YU7\"超级任务\"自定义场景</td></tr>
+                <tr><td>理想 i8 / L 系</td><td>AD Pro / AD Max（VLA）</td><td>J6M 128TOPS / Thor-U 700TOPS</td><td>自研推理芯片（对标 HW5.0）2026 年装车；三年推 L4 车型</td></tr>
+                <tr><td>特斯拉（中国）</td><td>辅助驾驶（TAD，原 FSD）</td><td>AI4/HW4 纯视觉</td><td>约 5000 台灰度测试；Q3 全面批准未兑现；6.4 万买断</td></tr>
+                <tr><td>蔚来/乐道</td><td>世界模型 + NOP</td><td>神玑 NX9031 自研芯片已量产 10 款车型</td><td>欧洲与 HERE 合作扩至全系；L90 激光雷达版信号</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>对汽车零部件行业的启示</h2>
+            <ul>
+                <li><strong>激光雷达：从\"车载单品\"到\"物理 AI 感知平台\"的估值重构。</strong>禾赛 ATX 累计交付破 100 万台、均价两年降超 3/4 至约 260 美元，说明车载 ADAS 雷达已进入规模化降价周期；速腾聚创 H1 机器人雷达销量 +510% 并接入 NVIDIA HSB 生态，禾赛布局空间相机与机器人关节——头部厂商正在用机器人第二曲线对冲车载毛利下滑。对上游光学件、芯片封装供应商而言，车载产线的降本压力与机器人产线的高毛利机会将长期并存。</li>
+                <li><strong>强标合规件成为确定性增量。</strong>GB 47955/44721 双标强制要求的 DMS 驾驶员监测、自动驾驶数据记录系统（DSSAD）、接管能力监测，以及 L3 冗余架构的备份算力/供电/通信链路，是 2027 年前最确定的增量零部件赛道。券商建议关注方向：车载摄像头（豪威、思特威、舜宇）、激光雷达（禾赛、速腾）、连接器（电连技术等）、MCU/SoC（瑞芯微、国芯科技）、模拟芯片（圣邦、纳芯微）、存储（兆易创新、北京君正）等。</li>
+                <li><strong>连接器与线束：高压快充 + 舱驾一体双轮驱动。</strong>5 分钟快充（兆瓦级）与 800V/1000V 平台普及，推动液冷充电连接器、高压互锁回路规格升级；舱驾一体/中央计算架构减少 ECU 数量但提升单点互连规格（高速 SerDes、以太网车载线缆）。\"点位减少、单点价值量提升\"的结构性变化要求连接器厂商按平台架构而非单品做产品规划。</li>
+                <li><strong>车规存储与域控：数据闭环监管利好本土供应链。</strong>特斯拉\"上海闭环\"模式（数据采集→本地存储→本地训练→车端部署）成为跨国车企在华合规范本，奔驰/宝马/奥迪均已转向全本土化数据架构——车规级存储、边缘计算域控的本地供应商获得制度性利好。美光 HBM/存储与\"物理 AI\"叙事在微博被二次传播，反映市场对自动驾驶算力硬件的关注度持续。</li>
+                <li><strong>风险提示：</strong>①强标认证排队可能延后部分车型智驾功能兑现，影响上游放量节奏；②激光雷达均价持续下行，无自研芯片/无规模优势的二三线感知厂商出清风险；③Robotaxi 出海面临数据合规与地缘审查；④FSD 若四季度获批，可能引发智驾定价体系重估（6.4 万买断 vs 本土免费/低价策略）。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>总结与下周关注重点</h2>
+            <p>国庆周的中国智能驾驶舆情呈现\"安全警示与体验种草并存\"的双面结构：官媒对\"智驾退出\"事故的警示与用户对辅助驾驶\"减压\"价值的日常叙事同时刷屏，说明行业已进入\"规模化普及期\"的典型舆论形态——技术不再新鲜，责任边界与真实体验成为核心议题。政策面，双强标进入实施倒计时，L3 首批准入车辆上路试点稳步推进；产业面，比亚迪\"存量 OTA\"模式与激光雷达厂商\"机器人转型\"两条降本曲线交汇，正在重塑零部件的价值分配。对零部件企业而言，2026 Q4 的关键不是追逐单一技术热点，而是在强标合规件（DMS/记录系统/冗余链路）与成本敏感件（感知硬件）之间建立组合式的产能与客户布局。</p>
+            <ul>
+                <li><strong>特斯拉 FSD 四季度审批：</strong>Q3 窗口已关闭，关注 10 月是否有监管表态；若获批，功能边界（城市 vs 高速）与定价策略（是否推订阅制）将引发连锁反应。</li>
+                <li><strong>智界 RX 上市首周交付与口碑：</strong>9/28 上市后首个完整周的上险量、四激光雷达版本占比，以及 B 站质疑类内容的走向。</li>
+                <li><strong>比亚迪天神之眼 C OTA 公测反馈：</strong>9 月体验营的实际表现决定 12 月全量推送的口碑基础，数十万存量车主的升级体验是行业最大规模的一次\"智驾民主化\"试验。</li>
+                <li><strong>国庆出行数据：</strong>假期结束后各品牌公布的智驾激活率、NOA 里程、接管率等运营数据，是检验\"体验叙事\"含金量的硬指标。</li>
+                <li><strong>激光雷达三季报：</strong>禾赛、速腾聚创 Q3 出货与毛利数据，验证\"以量补价\"模型的可持续性；机器人业务占比变化。</li>
+                <li><strong>L3 第二批准入名单：</strong>关注工信部是否公示新一批 L3 附条件准入车型（华为系、小鹏、理想均在候选序列）。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>参考来源</h2>
+            <ul>
+                <li>last30days-cn v3.2.0-cn（微博爬虫模式、B站；数据截至 2026-10-02；知乎 API 400、头条异常、百度 SSL 失败未纳入）</li>
+                <li>last30days v3.18.4（Hacker News / Reddit / YouTube / GitHub，synced 2026-10-02；Reddit 6 条后 403 截断、X/Twitter 未接入、Web 源不可达）</li>
+                <li><a href="https://www.bilibili.com/video/BV1Pqan6nEZJ" target="_blank">B站@人民日报：高速智驾退出致追尾警示（9/29）</a>、<a href="https://www.bilibili.com/video/BV1j8a66oExW" target="_blank">B站：辅助驾驶≠自动驾驶</a>、<a href="https://www.bilibili.com/video/BV1pLaB6bEsb" target="_blank">B站：自动驾驶车路协同实训平台</a></li>
+                <li><a href="https://weibo.com/1891167351/5349516643665229" target="_blank">微博：#智能辅助驾驶有多减压#</a>、<a href="https://weibo.com/7360862479/5349517181583643" target="_blank">微博：深蓝 S05 国庆自驾</a>、<a href="https://weibo.com/1923029542/5349187903291519" target="_blank">微博：问界 M8 交付 18 万辆</a>、<a href="https://weibo.com/9054522804/5349513462291938" target="_blank">微博：小米 YU7 超级任务</a>、<a href="https://weibo.com/7750531853/5346023196334105" target="_blank">微博@朱雀财经：自主创新边界（9/22）</a>、<a href="https://weibo.com/5309025873/5349518977007963" target="_blank">微博：美光存储与物理 AI 概念</a></li>
+                <li><a href="https://www.reddit.com/r/SelfDrivingCars/comments/1w894gz/xpeng_is_targeting_a_2027_global_rollout_for_its/" target="_blank">r/SelfDrivingCars：小鹏 VLA 2.0 全球推送（9/5）</a>、<a href="https://www.reddit.com/r/STEW_ScTecEngWorld/comments/1wtb4s0/geely_acquires_30_stake_in_nio_power_to_drive/" target="_blank">Reddit：吉利入股蔚来能源（9/29）</a>、<a href="https://www.newsminimalist.com/articles/chinese-automakers-race-ahead-with-5-minute-ev-fast-charging-b0ce90ad" target="_blank">Hacker News：中国 5 分钟快充（9/24）</a></li>
+                <li><a href="https://www.youtube.com/watch?v=JDnqS4E6EJk" target="_blank">YouTube：中国智驾 vs 特斯拉实测</a>、<a href="https://www.youtube.com/watch?v=a46Xp8FtWOg" target="_blank">YouTube：Rich Rebuilds 中国行</a>、<a href="https://www.youtube.com/watch?v=NEBHG7YArzw" target="_blank">BBC：中国 Robotaxi 能否复制 EV 成功</a></li>
+                <li><a href="https://www.ncsti.gov.cn/kjdt/kjrd/202608/t20260805_252420.html" target="_blank">北京日报/工信部：GB 44721—2026 强标发布</a>、<a href="https://www.cls.cn/detail/2229764" target="_blank">财联社：首批 L3 准入与产业影响</a>、<a href="https://m.bjnews.com.cn/detail/1765942975168325.html" target="_blank">新京报：L3 车型 2026Q1 试点上路</a>、<a href="https://eu.36kr.com/zh/p/3968661304078848" target="_blank">36氪：FSD 入华进展与双标解读</a>、<a href="https://k.sina.cn/article_7879996685_1d5af350d06802f1nu.html" target="_blank">21世纪经济报道：特斯拉辟谣 FSD 入华受阻（8/26）</a>、<a href="https://tslna.com/tesla-fsd-china-landing-analysis-2026/" target="_blank">TSLNA：FSD 入华全景分析</a></li>
+                <li><a href="https://www.116.com.cn/articles/2X83c3.html" target="_blank">天天在线：比亚迪海狮 08 上市（9/7）</a>、<a href="https://auto.ifeng.com/c/8tWAEnAqbuv" target="_blank">凤凰网：天神之眼 C OTA 4.0 计划</a>、<a href="https://k.sina.cn/article_7857141524_1d452771401903na0c.html" target="_blank">新浪：天神之眼 C OTA 落地节奏拆解</a>、<a href="https://auto.sina.cn/2026-07-10/detail-inihhenr5234700.d.html" target="_blank">新浪汽车：2026 智能车终极指南</a></li>
+                <li><a href="https://mrem.bernama.com/viewsm.php?idm=55367" target="_blank">HERE × 蔚来欧洲合作扩展（9/23）</a>、<a href="https://nev.ofweek.com/2026-01/ART-71000-8500-30679659.html" target="_blank">OFweek：蔚来 2026 隐忧与智驾掉队分析</a>、<a href="https://pdf.dfcfw.com/pdf/H3_AP202603041820272147_1.pdf" target="_blank">东吴证券：主流车企智驾策略比较</a></li>
+                <li><a href="https://www.d1ev.com/news/shichang/312228" target="_blank">盖世汽车：速腾聚创\"孔雀\"量产应用（9/7）</a>、<a href="https://d1ev.com/carnews/xinche/313260" target="_blank">时代周报：速腾聚创英伟达合作与机器人业务（9/29）</a>、<a href="https://m.jiemian.com/article/15009335.html" target="_blank">界面新闻：激光雷达公司的机器人第二曲线</a>、<a href="https://www.hesaitech.com/cn/news/1441" target="_blank">禾赛科技：ATX 获北汽多车型定点</a></li>
+                <li><a href="https://zhuanlan.zhihu.com/p/2060289471606691748" target="_blank">知乎：Robotaxi 狂奔背后真实发展（萝卜快跑运营数据）</a>、<a href="https://auto.sina.cn/2026-09-08/detail-inirauia4776459.d.html" target="_blank">新浪自动驾驶热点小时报（9/8）</a>、<a href="https://www.7its.com/?m=home&c=View&a=index&aid=30995" target="_blank">赛文交通网：Robotaxi 企业 2026 盘点</a></li>
+            </ul>
+            <p class="source">本报告基于公开信息整理，仅供企业内部研究参考，不构成投资建议。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>生成日期：2026-10-02 · DuoDuo Research · <a href="https://github.com/hosamzj/sites" target="_blank">GitHub 仓库</a></p>
+    </footer>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 江湖开场：塔霍湖拍卖与深度学习时代的起源（2026-10-08）</title>
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+    .navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-light); }
+    .breadcrumb span { margin: 0 8px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    .report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+    .report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+    .report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+    .report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+    .section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .metric-card { background: var(--card-elevated); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .metric-card .label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--heading); font-size: 1.5rem; font-weight: 700; }
+    .metric-card .delta { font-size: 0.9rem; margin-top: 4px; }
+    .positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+    .risk-list { list-style: none; padding: 0; margin: 0; }
+    .risk-list li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); }
+    .risk-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: 0.5rem; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: underline; }
+    .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 8px; padding-left: 24px; }
+    .timeline-item { position: relative; margin-bottom: 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+    .timeline-item .t-year { color: var(--accent-light); font-weight: 700; }
+    @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style><body>
+<nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#geopolitical">市场与地缘</a>
+        <a href="index.html#ai-tech">AI 与科技</a>
+        <a href="index.html#auto">中国汽车</a>
+        <a href="index.html#research" class="active">专题研究</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>AI 江湖开场：塔霍湖拍卖与深度学习时代的起源（2026-10-08）
+  </div>
+  
+  <div class="container">
+    <header class="report-header">
+      <h1>AI 江湖开场：塔霍湖拍卖与深度学习时代的起源</h1>
+      <div class="subtitle">AI 产业史 · 人才争夺战 · 算力即权力</div>
+      <div class="meta">报告日期：2026-10-08 ｜ 素材：艾森 Essen《AI 江湖系列 1》34 分钟（B站/YouTube 双平台）｜ 多多研究</div>
+    </header>
+
+    <div class="section">
+      <h2>核心摘要</h2>
+      <div class="highlight-box">
+        2026 年 7 月，英伟达宣布与 Ilya Sutskever 创办的新公司（尚无产品）达成长期合作并投资，黄仁勋盛赞其"从 AlexNet 起为现代 AI 奠基"。而把时间拨回 2009 年，Ilya 的老师 Hinton 曾写信向英伟达索要一张显卡——被婉拒。三年后（2012 年 12 月），Hinton 把自己和两名学生放上塔霍湖赌场酒店的拍卖台，四家巨头邮件竞价到 4,400 万美元时他突然叫停；一年多后，DeepMind 成为谷歌与 Facebook 竞购的对象，价高者仍未得手。两场拍卖都不是价高者得——<strong>真正被拍卖的不是三个人，而是"大规模算力"的入场券</strong>。本报告基于艾森《AI 江湖》第一集全片转录，复盘深度学习时代的开场博弈及其对今天的启示。
+      </div>
+      <div class="grid-2">
+        <div class="metric-card">
+          <div class="label">Hinton 团队拍卖止步价</div>
+          <div class="value">4,400 万美元</div>
+          <div class="delta">2012-12 · 塔霍湖 NIPS 会议 · 2012 当时未公开，2021 年由 Hinton 亲口披露</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">AlexNet  ImageNet 错误率</div>
+          <div class="value">15.3%</div>
+          <div class="delta">亚军约 26% · 10 个百分点差距 = 一个时代 · 训练硬件为两张游戏显卡</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">DeepMind 收购价（报道值）</div>
+          <div class="value">约 4 亿英镑</div>
+          <div class="delta">2014-01 · Facebook 出价更高仍落败 · Hassabis 设三条件：留伦敦/禁军用/设伦理委员会</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Jeff Dean 的"两百万"电话</div>
+          <div class="value">1 通电话</div>
+          <div class="delta">Hinton 在谷歌实习亲闻：算力耗尽可能一个电话解决——大学要写数年 grant 申请</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>一、时间线：从一封拒信到两个拍卖</h2>
+      <table>
+        <thead><tr><th>时间</th><th>事件</th></tr></thead>
+        <tbody>
+          <tr><td>1972</td><td>Hinton 在爱丁堡读博，选题神经网络（当时被视为死胡同），导师每周劝换题，他回答"再给我六个月"，一拖六年</td></tr>
+          <tr><td>1987</td><td>Hinton 移居加拿大加入多伦多大学；因背伤此后终身站立工作（"上次坐下是 2005 年，那是个错误"）</td></tr>
+          <tr><td>2009</td><td>团队用英伟达显卡训练语音识别网络效果惊人；Hinton 在 NIPS 向千名学者喊话"都去买英伟达显卡"，会后写信求寄一张卡——英伟达说"不"</td></tr>
+          <tr><td>2012 夏</td><td>64 岁的 Hinton 以"实习生"身份加入 Google Brain（无合适职位序列），与 Jeff Dean 一见如故</td></tr>
+          <tr><td>2012 秋</td><td>AlexNet 在 ImageNet 夺冠（错误率 15.3% vs 亚军 26%），训练硬件是 Krizhevsky 父母卧室里的两张游戏显卡（"卡我们买，电费他父母付"）</td></tr>
+          <tr><td>2012 秋</td><td>百度率先敲门：余凯向李彦宏汇报，百度副总裁赴多伦多开价 1,200 万美元/三年打包三人，Hinton 同意但提出"先看看别家"——三人公司注册，拍卖设定</td></tr>
+          <tr><td>2012-12</td><td>塔霍湖赌场酒店，谷歌/微软/百度/DeepMind 四方邮件竞价；微软在约 2,000–2,200 万美元退出，DeepMind 以股份代现金最先退出；百度与谷歌缠斗至 4,400 万美元，Hinton 深夜叫停，次日宣布拍卖结束</td></tr>
+          <tr><td>2013-03</td><td>交易完成：两名学生全职加入谷歌，Hinton 兼顾多伦多大学与谷歌</td></tr>
+          <tr><td>2013 同期</td><td>百度成立深度学习研究院（IDL），李彦宏任院长、余凯任副院长；Facebook 挖走 LeCun 建 AI 实验室，LeCun 上任即挖 DeepMind 关键研究员（Hinton 出面请托施压）</td></tr>
+          <tr><td>2014-01</td><td>谷歌宣布收购 DeepMind（报道约 4 亿英镑）。Hassabis 三条件：团队留伦敦、技术禁用于军事、谷歌设独立伦理委员会</td></tr>
+          <tr><td>2024-10</td><td>Hinton 获诺贝尔物理学奖（住在加州廉价汽车旅馆时接到电话）；发布会上他说"最得意的一件事：我的一个学生开除了 Sam Altman"——那个学生是 Ilya</td></tr>
+          <tr><td>2025-12</td><td>Hinton 时隔 13 年公开回应"为何不是百度"：谷歌大脑团队氛围好；竞拍后期"眼看错误的人可能胜出，于是我们结束了拍卖"；当时身体无法长途出行去北京</td></tr>
+          <tr><td>2026-07</td><td>英伟达与 Sutskever 新公司达成长期合作并投资——开场那封要显卡的信，十七年后以另一种方式闭环</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>二、Hinton：站在荒原上守门的人</h2>
+      <p>Hinton 出身数学世家，是布尔（George Boole，布尔代数奠基人）家族后裔。1972 年他在爱丁堡读博时选择神经网络方向——让计算机模仿人脑神经元、从海量样本中学习，而非被灌输规则。这一方向当时被公认是死胡同，导师几乎每周劝换题，他的回答始终是"再给我六个月"，一拖就是六年。去美国任教后，因不满多数 AI 经费来自五角大楼，1987 年移居加拿大多伦多大学。</p>
+      <p>他终身站立工作（少年搬电暖器伤背，五十岁后椎间盘滑脱，"上次坐下是 2005 年，那是个错误"），实验室狭小无窗；申请应用型政府基金时评审意见直言"这个领域不可能有任何工业影响"。Hinton 后来说，真想找到那位评审，当面告诉他：去年美国股市涨幅的 80% 来自这个领域。2009 年之前，他只是一个守着无人相信之路的、站着的老人。</p>
+    </div>
+
+    <div class="section">
+      <h2>三、显卡：被卖主低估的转折点</h2>
+      <p>显卡本为游戏而生——屏幕上数百万像素需要同时计算颜色，即"同时完成成千上万道简单数学题"，这与神经网络所需的"大规模并行简单乘法"完全同构，用显卡训练神经网络远快于标准 CPU。Hinton 实验室是最早用显卡训练神经网络的团队之一：2009 年用英伟达显卡训练语音识别网络，效果好到连他自己都惊讶，年底在全球最大 AI 学术会议上向约千名听众喊话"每个人都该去买一张英伟达显卡"，会后写信给英伟达："我能让 1000 个机器学习研究者买你们的卡，能送我一张吗？"——<strong>英伟达拒绝了</strong>。《纽约客》后来在黄仁勋专访中记下此事：当时英伟达根本没把这群搞神经网络的教授当回事。</p>
+      <p>同期深度学习在技术上连番突破：Krizhevsky 用显卡从航拍照片识别道路，且每加深一层效果显著提升——多层神经网络由此得名"深度学习"。Ilya Sutskever 与 Alex Krizhevsky 是 Hinton 此时仅有的两名研究生：Ilya 提议打 ImageNet 竞赛"我们必须打败 LeCun"；Hinton 与 Krizhevsky 立约"竞赛成绩每提高 1%，文献综述可延后一周"，结果那篇博士必修课论文从此再未交过。2012 年秋，AlexNet 用父母卧室里的两张游戏显卡拿下冠军——<strong>同一年，谷歌用 16,000 个 CPU 核教机器认猫；卖显卡的公司甚至不知道发生了什么</strong>。</p>
+    </div>
+
+    <div class="section">
+      <h2>四、塔霍湖拍卖：四千万美元的悬念</h2>
+      <p>2012 年夏，Hinton 已在 Google Brain 做过"实习生"（64 岁，系统里无合适职位，与 20 多岁的实习生一起参加入职培训，被安排专人照看，直到排队时被上过他课的学生认出）。AlexNet 论文发表后，第一个登门的是中国人余凯：他刚从美国研究机构转投百度组建多媒体部，所在团队是 2010 年 ImageNet 冠军。余凯立即邮件联系 Hinton 并向李彦宏汇报，百度派出副总裁赴多伦多，直球开价：<strong>1,200 万美元/三年打包 Hinton 师徒三人</strong>。Hinton 说可以签——"他指的是那两个学生"。师徒三人的算盘很实际：与其被人分别雇佣，不如开家公司让人收购——"大公司有两个口袋，工资口袋和收购口袋，收购口袋大十倍"。Hinton 问百度能否再看看别家报价，百度同意，三人公司注册，拍卖设定。</p>
+      <p>2012 年 12 月，全球最大 AI 学术会议在塔霍湖两家赌场酒店举办。Hinton 不能坐飞机（必须坐姿起降），躺在巴士和火车后排横穿数千公里到加州，再躺出租车后座上山。拍卖规则：各公司将出价邮件发到 Hinton 的谷歌邮箱，他再转发给其他人（带时间戳）；每次有最低加价，一小时无人加价即结束。微软曾反对"谷歌是我们的死对头，他们会不会偷看邮箱"，最终作罢。竞价方：谷歌、微软、百度、DeepMind（出股份不出现金，最先退出）。微软在约 2,000–2,200 万美元两度进出后彻底退出；2,500 万美元以上只剩百度与谷歌——百度的策略是<strong>每轮在倒计时最后一两分钟出价</strong>，反复"复活"拍卖，Hinton 干脆把每轮时间砍到半小时。</p>
+      <p>细节还原：Hinton 在房间里把垃圾桶倒扣在桌上、笔记本电脑放上面站着打字（站立工作习惯）；他自制"加湿帐篷"（沙发垫+熨衣板+湿毛巾）睡觉，余凯来访时三人赶紧藏起装备；两架飞机在雪山高空拖出交叉尾迹形成巨大的"X"，师生猜测这是否暗示山景城（Mountain View）的谷歌。价格爬到 4,400 万美元的一个深夜，Hinton 以"太累了"暂停，次晨先发邮件推迟，一小时后宣布拍卖结束，并回复百度："此后你们的任何邮件都将转给我的新雇主。"<strong>答案：谷歌。</strong></p>
+      <p>现场还有两处闲笔：会场赠他赌场 VIP 卡（专供豪赌客），他在 VIP 餐厅告诉侍者自己不赌博，对方一脸不信——"懂概率统计的人都不愿赌，赌场讨厌他们"；余凯留在房间椅子上的背包被师徒三人盯着看了很久，好奇里面有没有百度底价的线索，但终究谁也没碰。飞机上余凯偶遇微软研究员邓力（把深度学习引入微软语音识别的人、当年为微软出价的前线代表），两人座位相邻，全程绕着拍卖话题互相试探——都签了保密协议，谁也没承认参与，却都知道"新竞赛已经开始，那声枪响就是拍卖"。</p>
+    </div>
+
+    <div class="section">
+      <h2>五、为什么不是百度？——13 年后的亲口回答</h2>
+      <p>成交价当时未向媒体披露（2021 年 Hinton 自己说出 4,400 万美元这个数字）。中国业界流传三种解释：一是健康原因无法赴华；二是无法判断中国公司对基础研究的投入诚意；三最直接——"就因为百度是中国公司"。</p>
+      <p>2025 年 12 月，在同一学术会议上，Hinton 与 Jeff Dean 同台被问及拍卖旧事，他一口气承认了全部三条："基本上事先已决定谷歌必须赢——那个夏天在谷歌工作太有趣了，Brain 团队太棒了"；"到最后只剩两家公司，眼看错误的人可能赢，我们就结束了拍卖"；"另一个选择是百度——我想我永远弄不懂中国人在想什么，而且当时我根本没法旅行，去不了北京"。</p>
+      <p>片中点题：所谓"好环境"，是有钢铁支撑的。2012 年 10 月谷歌首次公开数据中心照片：一眼望不到头的服务器阵列、红黄蓝绿的管道、工程师骑自行车穿梭；当时全球 9 个数据中心在运转、4 个在建，养护费用来自广告——那年谷歌广告收入 437 亿美元，日均超 1 亿美元。Hinton 在多伦多要写数年申请才能拿到的算力，在谷歌是一通电话。<strong>艾森的判断：谷歌在塔霍湖拍卖中真正的出价，是那个夏天 Jeff Dean 的"两百万"电话。</strong>余凯对此毫无怨悔：那场拍卖让世界最大的公司意识到"三个人值几千万美元"，从此所有人开始认真对待深度学习。</p>
+    </div>
+
+    <div class="section">
+      <h2>六、第二场拍卖：DeepMind 与 Hassabis 的三条件</h2>
+      <p>DeepMind 的故事比 Hinton 早两年起步。2010 年，Hassabis 与 Legg 去旧金山开 AI 未来会议，真正目的是见 Peter Thiel。Hassabis 的蓝图两句话："第一步，搞懂智能；第二步，用它解决其他一切问题。" 会上经人引荐到 Thiel 家中饮鸡尾酒，他不急着推销，先就着桌上棋盘聊马与象——价值相近而走位完全不同的棋子，这才是博弈的张力。几周后 Thiel 投资 225 万美元，成为这家连名字都还没有的公司的第一位大投资人；此后 Skype 创始工程师 Jaan Tallinn、李嘉诚旗下维港投资、甚至马斯克都陆续入股（马斯克自述：不为赚钱，只为"盯着这几个家伙到底在干什么"——记住这句话）。</p>
+      <p>2013 年 DeepMind 名声大噪但仅约 50 人。Hinton 拍卖让所有大公司意识到"能做这种研究的人全球没几个，买到一个少一个"。谷歌率先派专机赴伦敦谈收购；Facebook 同年 12 月挖走 Hinton 的博士后 LeCun 建 AI 实验室，LeCun 上任第一件事就是来挖 DeepMind 的关键研究员（Hinton 亲自出面请托，DeepMind 联创 Suleyman 后来回忆"那一刻我以为 DeepMind 完了"）。Hassabis 的留人方式不是加薪，而是告诉对方：公司即将被收购，你曾认为一文不值的期权可能很快值大钱——人留下了。他还借此催谷歌速决：Facebook 也想要，且出价更高。Mallaby 所著 Hassabis 传记记载：Hassabis 曾与扎克伯格在帕洛阿尔托晚餐，故意把话题从 AI 岔开去聊 VR/AR/3D 打印，扎克伯格样样兴奋——这就是破绽，"对这位老板来说 AI 只是众多闪亮新玩具之一"；而 Hassabis 原话更直白："我厌倦了到处找钱，我要去谷歌拿到海量算力，然后解决智能问题。"</p>
+      <p>2014 年 1 月谷歌宣布收购 DeepMind（报道约 4 亿英镑），价高者 Facebook 落败。Hassabis 向谷歌设三个条件：<strong>团队留在伦敦、技术不得用于军事、谷歌必须设立独立伦理委员会</strong>。同期谷歌自己的布局：2013 年 Jeff Dean 算过一笔账——若语音识别好到 1 亿人每天对手机说 3 分钟，用标准处理器服务器数量得翻倍；他拦住 CFO 说服公司投 5,000 万美元自研 AI 芯片（即后来的 TPU，2015 年进数据中心，比当时标准处理器和显卡快 10–30 倍）。2013 年英伟达研究员与 Andrew Ng 团队合著论文算出：3 台配显卡的服务器可替代谷歌 1,000 台标准服务器训练神经网络——卖显卡的公司"那时候才开始意识到发生了什么"。</p>
+    </div>
+
+    <div class="section">
+      <h2>七、马斯克 vs 佩奇：一场改变 OpenAI 起源的争吵</h2>
+      <p>马斯克与谷歌创始人佩奇是多年老友。据 Isaacson 的马斯克传：2013 年佩奇参加马斯克在纳帕的生日派对，两人就 AI 爆发争论——马斯克认为 AI 终将取代人类、让人类无关紧要甚至灭绝；佩奇反问"机器比我们聪明又怎样？那只是进化的下一个阶段"；马斯克说人类意识是宇宙中珍贵的火种，不能让它熄灭；佩奇骂他"speciesist（物种主义者，偏袒自己物种）"；马斯克答："是的，我挺人类，我就是他妈的爱人类。" 两个老友就此决裂。</p>
+      <p>2013 年底马斯克听说谷歌要收购 DeepMind——他当初投资 DeepMind 就是为了"盯着"，如今眼看它落入佩奇之手。他找到老 PayPal 搭档（Lacker 等），希望凑钱阻击交易；在洛杉矶一场派对上，两人躲进楼上衣帽间与 Hassabis 视频通话一小时，劝其"AI 的未来不该由拉里控制"——未果。2014 年 1 月谷歌宣布收购。这个躲进衣帽间打电话的人后来做了更大的事：2026 年 4 月他在奥克兰联邦法院作证——<strong>"OpenAI 的存在，就是因为拉里·佩奇骂我 speciesist。"</strong>（三年前他在 Tucker Carlson 节目上已认账："是的，我是 speciesist，你抓到我了。"）</p>
+    </div>
+
+    <div class="section">
+      <h2>八、尾声：每个人的下一章</h2>
+      <ul class="risk-list">
+        <li><strong>Hinton</strong>：2024 年 10 月获诺贝尔物理学奖（接电话时住在加州廉价汽车旅馆，当天只睡了两个小时，原计划做的 MRI 取消了）；发布会上名言："我特别得意的一件事——我的一个学生开除了 Sam Altman。"（指 Ilya）</li>
+        <li><strong>Ilya Sutskever</strong>：OpenAI 联合创始人（2016 年黄仁勋亲自把第一台 DGX 超级计算机送到 OpenAI 并签名）；2024 年离开 OpenAI 创办 SSI；2026 年 7 月英伟达与其新公司达成长期合作并投资</li>
+        <li><strong>Alex Krizhevsky</strong>：2017 年离开谷歌（据称对失去兴趣），此后不接受采访、不用社交媒体；2020 年计算机历史博物馆想公开 AlexNet 原始代码，他未出面并让对方去找自己老师，博物馆又花 5 年与谷歌谈判，2025 年才放出</li>
+        <li><strong>余凯</strong>： auction 后飞回北京，与邓力在机舱后排站着聊了一路深度学习；一个月后百度 IDL 成立；后来创办地平线——成为中国车规智驾芯片的代表公司之一</li>
+        <li><strong>黄仁勋/英伟达</strong>：从 2009 年拒绝一张显卡，到 2016 年给 OpenAI 送整机，再到 2026 年投资 Sutskever 新公司——"卖芯片的"最终成了两场拍卖最大的远期赢家</li>
+      </ul>
+      <p>Hinton 对 AlexNet 的总结（转述）："Ilya 认为这事该做，Alex 把它做成了，诺贝尔奖给了我。"</p>
+    </div>
+
+    <div class="section">
+      <h2>九、对汽车产业链与 IT 决策的启示</h2>
+      <ul class="risk-list">
+        <li><strong>算力即权力，且算力会"涨价"成战略资产</strong>：Hinton 拍卖的本质是算力采购权之争（Jeff Dean 一个电话 vs 多伦多数年申请）。今天企业级 AI 竞争同理——算力获取的敏捷度决定迭代速度，车规 AI（智驾大模型、工厂质检大模型）都建立在这一底层逻辑上。</li>
+        <li><strong>人才密度 &gt; 人数</strong>：两场拍卖买的都是"全球屈指可数的几个人"。对企业 AI 落地而言，关键岗位的少数核心人才（数据架构、模型工程化、场景理解）决定了项目成败，人海战术无效。</li>
+        <li><strong>被低估的"配角"会翻盘</strong>：英伟达 2009 年拒绝显卡时不知道自己拒绝的是什么；游戏显卡→深度学习→今天的 CUDA 生态。同理，汽车产业里被低估的边缘技术（如铝代铜、域控架构中的"配角"元器件）也可能因范式切换价值重构——保持技术雷达的谦卑。</li>
+        <li><strong>机制设计决定归属</strong>：Hassabis 用"期权+算力承诺+伦理三条件"战胜了更高的现金报价。企业留人与选合作伙伴同理——长期承诺与价值观对齐比短期价格更有粘性。</li>
+        <li><strong>基础研究投入的"看不懂"是常态</strong>：评审当年断言神经网络"不可能有工业影响"。企业 AI 立项评审应对此有制度性容错，否则注定错过自己的"AlexNet 时刻"。</li>
+        <li><strong>地缘因素从第一天就写进 AI 史</strong>：Hinton 因无法赴华与"看不懂中国公司"错过百度；2013 年那一幕今天正以算力管制、芯片出口限制的形式重演——汽车芯片国产化（见本站《中国汽车线束与车规芯片产业链》研究）是同一历史脉络的延续。</li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">来源：艾森 Essen《塔霍湖赌场楼上，全世界最懂概率的人正在竞价拍卖三个人，这是 AI 时代开场的序幕。AI 江湖系列 1》（B站/YouTube，34 分钟），经 youtube-transcript-api 全文转录后整理。人物引语与金额均出自片中叙述，涉外部著作（Cade Metz、Mallaby、Isaacson）的部分为片方转述。本页为内容整理与产业解读，不构成投资建议。</p>
+    </div>
+  </div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

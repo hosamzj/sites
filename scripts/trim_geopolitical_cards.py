@@ -17,6 +17,11 @@ CARD_RE = re.compile(
     r'\n\s*<a href="(geopolitical-market-report-\d{4}-\d{2}-\d{2}\.html)" class="report-card">.*?</a>',
     re.S,
 )
+# 网格中的固定 URL 特色卡（如 TEL vs APH 对照页）不属于地缘周报序列，重建网格时必须原样保留
+ANY_CARD_RE = re.compile(
+    r'\n\s*<a href="([^"]+)" class="report-card">.*?</a>',
+    re.S,
+)
 HIST_RE = re.compile(r'<div class="history-list">(.*?)</div>', re.S)
 
 
@@ -72,7 +77,13 @@ def main() -> int:
             )
             if m:
                 keep_blocks.append(m.group(0))
-        new_grid = '<div class="report-grid">' + "".join(keep_blocks) + "\n            </div>"
+        new_grid = '<div class="report-grid">' + "".join(keep_blocks)
+        # 保留固定 URL 特色卡（如 tel-aph-compare），避免重建时被丢弃
+        geo_urls = set(keep) | set(move)
+        for m in ANY_CARD_RE.finditer(grid):
+            if m.group(1) not in geo_urls:
+                new_grid += m.group(0)
+        new_grid += "\n            </div>"
         seg = seg[:grid_start] + new_grid + seg[grid_close + len("</div>"):]
 
         # 历史列表 = 移出的卡片 + 原有历史（去重、倒序）

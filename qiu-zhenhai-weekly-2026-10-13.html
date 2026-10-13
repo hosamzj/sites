@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱震海频道每周精选 | 2026-10-06 ~ 2026-10-12</title>
+    <meta name="description" content="邱震海 YouTube 频道每周精选：美国中期选举压力陡增与内政大震荡预警、普京给特朗普送能源大礼欧洲最担心的事发生、俄乌升级与莫斯科\"世界新秩序\"话术延伸（2026-10-06 ~ 2026-10-12）">
+    <meta name="update" content="2026-10-13">
+<style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto 20px;
+        }
+        .date-range {
+            display: inline-block;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: var(--accent-light);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .summary ul {
+            list-style: none;
+        }
+        .summary li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .summary li:last-child {
+            border-bottom: none;
+        }
+        .summary li strong {
+            color: var(--text);
+        }
+        .video-card {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            height: 100%;
+            min-height: 180px;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            background: rgba(201, 100, 66, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .video-card:hover .play-icon {
+            opacity: 1;
+        }
+        .video-info {
+            padding: 24px 24px 24px 0;
+        }
+        .video-info h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            text-decoration: underline;
+        }
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+            .video-info {
+                padding: 0 20px 20px;
+            }
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+<div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span>专题研究<span>→</span>邱震海频道每周精选
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_lIwW6yoXAobONFnDSxq6DJotbsEV4nX3MT0cd6som55Q=s72-c-k-c0x00ffffff-no-rj" alt="邱震海">
+                <span>邱震海 · YouTube 频道</span>
+            </div>
+            <h1 class="title">邱震海频道每周精选</h1>
+            <p class="subtitle">香港全球化中心（CGHK）和震海会创始人、德国图宾根大学博士。用"说真话、说实话、说人话"带您了解国际风云及其背后的发展趋势。</p>
+            <div class="date-range">📅 2026-10-06 ~ 2026-10-12 · 本周更新 2 期</div>
+        </header>
+
+                <section class="summary">
+            <h2>🎯 本周核心脉络</h2>
+            <ul>
+                <li><strong>美国中期选举冲击波：</strong>选举前一个月，特朗普压力陡增，提前放出狠话，暗示国会失守即开启"攻击模式"，美国内政或迎大震荡。对内强硬姿态与其外交上的交易冲动互为表里，选情正成为理解一切美国动作的第一变量。</li>
+                <li><strong>普京的能源大礼与俄美交易：</strong>10 月 9 日普京与特朗普长达 90 分钟通话，敲定柴油协议，特朗普在选前拿到关键筹码；欧洲最担心的事正在发生——美俄走近以欧洲能源安全为代价。</li>
+                <li><strong>欧洲安全困境加深（延伸）：</strong>俄乌局势再次升级之际，莫斯科急抛"世界新秩序"拉拢中国入局；邱震海提醒当心两头忽悠。普京力推中美俄三方同桌会谈，中方尚未接话，真正卡点在白宫——同框容易，同桌门槛极高。</li>
+            </ul>
+        </section>
+
+                <section class="video-list">
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=EjSN8rSGtOA" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/EjSN8rSGtOA/hqdefault.jpg" alt="中期选举前一个月，普京给特朗普送上能源大礼，欧洲最担心的事情发生了" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=EjSN8rSGtOA" target="_blank">中期选举前一个月，普京给特朗普送上能源大礼，欧洲最担心的事情发生了</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.10.10</span>
+                        <span class="views">👁 24,427 次观看</span>
+                    </div>
+                    <p class="description">10 月 9 日普京与特朗普进行长达 90 分钟通话，双方敲定柴油协议，特朗普在中期选举前拿到关键筹码；欧洲最担心的事，正在发生。</p>
+                    <a href="https://www.youtube.com/watch?v=EjSN8rSGtOA" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=PE9iEA9RKZ4" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/PE9iEA9RKZ4/hqdefault.jpg" alt="中期选举压力陡增，特朗普提前放出狠话，美国政局或迎大震荡" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=PE9iEA9RKZ4" target="_blank">中期选举压力陡增，特朗普提前放出狠话，美国政局或迎大震荡</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.10.07</span>
+                        <span class="views">👁 24,118 次观看</span>
+                    </div>
+                    <p class="description">美国中期选举逼近，特朗普压力陡增，并暗示一旦国会失守将开启"攻击模式"，美国内政会否迎来更大震荡？与此同时，俄罗斯连续释放信号，力推深圳 APEC 期间举行三方峰会。美国政治变局与大国博弈叠加，深圳或成全球格局变化的重要舞台。</p>
+                    <a href="https://www.youtube.com/watch?v=PE9iEA9RKZ4" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+
+            <div class="section-label">延伸回顾 · 上周要闻（已收录于上期报告）</div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=5jWAd5KCBb8" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/5jWAd5KCBb8/hqdefault.jpg" alt="俄乌局势再次升级，莫斯科却急抛世界新秩序，中国要当心两头忽悠" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=5jWAd5KCBb8" target="_blank">俄乌局势再次升级，莫斯科却急抛世界新秩序，中国要当心两头忽悠</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.10.05</span>
+                        <span class="views">👁 18,998 次观看</span>
+                    </div>
+                    <p class="description">俄乌战火再起波澜，莫斯科此时急切抛出"世界新秩序"构想。邱震海提醒：需警惕各方拉中国"站队"式的话术，当心被两头忽悠，保持战略定力。</p>
+                    <a href="https://www.youtube.com/watch?v=5jWAd5KCBb8" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=34XlUxTOGY8" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/34XlUxTOGY8/hqdefault.jpg" alt="普京喊话中美俄三方会谈，中方尚未接话，但真正卡点却在白宫" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=34XlUxTOGY8" target="_blank">普京喊话中美俄三方会谈，中方尚未接话，但真正卡点却在白宫</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.10.03</span>
+                        <span class="views">👁 19,009 次观看</span>
+                    </div>
+                    <p class="description">普京在瓦尔代会议上提议，借深圳 APEC 举办中美俄三方同桌会谈。同框合影容易，三方坐下来商谈门槛极高——这不是重建战后秩序，而是大国应对俄乌、中东冲突的一次重要协商尝试。</p>
+                    <a href="https://www.youtube.com/watch?v=34XlUxTOGY8" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>报告由 DuoDuo Research 自动生成 · 数据来源：YouTube RSS · 更新于 2026-10-13</p>
+            <p style="margin-top:8px; font-size:12px; opacity:0.7;">注：观看次数为 RSS 抓取时点数据，可能与当前数值略有出入。本周频道仅更新 2 期，另附 2 期上周延伸回顾。</p>
+            <p style="margin-top:12px;"><a href="index.html">← 返回研究报告中心</a></p>
+        </footer>
+    </div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

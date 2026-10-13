@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 真正的机会在哪里：吴恩达三部曲交叉验证（2026-10-13）</title>
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+    .navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-light); }
+    .breadcrumb span { margin: 0 8px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    .report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+    .report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+    .report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+    .report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+    .section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .metric-card { background: var(--card-elevated); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .metric-card .label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--heading); font-size: 1.5rem; font-weight: 700; }
+    .metric-card .delta { font-size: 0.9rem; margin-top: 4px; }
+    .positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+    .risk-list { list-style: none; padding: 0; margin: 0; }
+    .risk-list li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); }
+    .risk-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: 0.5rem; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: underline; }
+    .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 8px; padding-left: 24px; }
+    .timeline-item { position: relative; margin-bottom: 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+    .timeline-item .t-year { color: var(--accent-light); font-weight: 700; }
+    @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#geopolitical">市场与地缘</a>
+        <a href="index.html#ai-tech">AI 与科技</a>
+        <a href="index.html#auto">中国汽车</a>
+        <a href="index.html#research" class="active">专题研究</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>AI 真正的机会在哪里：吴恩达三部曲交叉验证（2026-10-13）
+  </div>
+    <main class="container">
+    <div class="report-header">
+      <h1>AI 真正的机会在哪里</h1>
+      <div class="subtitle">吴恩达三部曲交叉验证：斯坦福最新访谈 × YC 创业课 × 视频深读</div>
+      <div class="meta">发布日期：2026-10-13 · 整理：多多 · 来源：斯坦福大学对话（2026-10）、YC 创业学院演讲（2025-07）、B 站解读视频（BV1EK4Q65Eox）、LangChain Interrupt 对谈</div>
+    </div>
+
+    <div class="section">
+      <h2>一、为什么是吴恩达：一份 15 年不缺席的答卷</h2>
+      <p>近十年每一轮 AI 浪潮，吴恩达几乎都在现场：2011 年创立 Google Brain（深度学习热的基础设施起点）、2012 年联合创办 Coursera（慕课第一波）、2014–2017 年担任百度首席科学家、参与创办并运营 AI Fund（每月创办一家初创公司的节奏）、现任 DeepLearning.AI 创始人。他的观点值得认真对待，不是因为他是"AI 布道者"，而是因为他同时站在科研、教育、产业落地三条线的交叉点上。</p>
+      <p>更重要的是<strong>他的立场</strong>：他既不是"AGI 末日论"者，也不是纯底层技术鼓吹者。过去一年他反复讲的三个判断——炒作过度、机会在应用层、人类判断力是护城河——在近一个月的<strong>斯坦福对话、YC 演讲、LangChain 对谈</strong>三个场合互相印证，且被刚上线的 B 站解读视频（本报告分析对象之一）几乎逐条复述。这不是巧合，而是一份足够稳定、可以拿来下注的框架。</p>
+      <div class="highlight-box">本报告的用法：不是转述吴恩达说了什么，而是把三份一手材料 + 一份中文解读视频交叉比对，找出<strong>被反复验证的机会主张</strong>，再落到企业和个人层面。所有结论均标注来源。</div>
+    </div>
+
+    <div class="section">
+      <h2>二、斯坦福最新访谈（2026-10-12，笔记侠整理）：这轮"AI 将毁灭人类"恐慌，是精心策划的游说</h2>
+      <div class="grid-2">
+        <div>
+          <h3>1. 把 AI 比作核武器，是极不负责任的类比</h3>
+          <p>"前者帮我们完成工作，后者会摧毁城市，这两者之间没有任何关联。"吴恩达判断，过去几周新闻头条集体转向"AI 将毁灭人类"，和几年前针对开放权重模型的围剿如出一辙——花几十亿美元训练模型的企业，借"安全"之名推动严苛监管，把新进入者尤其是开源对手挡在门外。他认为目前没有证据显示 AI 获得了任何可能导致人类灭绝的危险能力。</p>
+          <h3>2. "1200 个 Agent 攻击 Hugging Face"被误读了</h3>
+          <p>这确实是 Agent 协作能力的一次进步，但问题出在 OpenAI 内部缺乏安全运营规范：沙盒机制存在漏洞、缺乏对 Agent 集群行为的监控流程。"普通个人笔记本电脑上经常有超过一千个后台进程同时运行。让 1200 个 Agent 协同工作是进步，但不是世界末日。"每次技术突破总有人利用公众和监管者的技术盲区炒作。</p>
+          <h3>3. 对环保最有利的做法，恰恰是多建数据中心</h3>
+          <p>关于数据中心耗水的争议源于一本书的事实错误。数据中心效率远高于本地工作负载，把传统高污染的本地工作迁过去反而最环保。如果恐慌战导致扼杀创新的监管，对美国和发展中国家都是巨大损失。</p>
+        </div>
+        <div>
+          <h3>4. 开放权重：一条夺不走的 AI 获取途径</h3>
+          <p>前沿模型再"不贵"，对许多发展中国家仍偏贵。开放权重模型为资源不足的个人、企业、政府和研究机构提供了关键获取途径——"没有其他人能阻止你们使用它"。主权 AI 从零自研极其昂贵，但一个国家或共同体支持开源模型，不需要任何人"拥有"它。美国实验室也做不了每个国家的方言，开放权重让各国研究团队能自行适配本国语言与应用场景。</p>
+          <h3>5. 行业仍招不到足够的 AI 原生工程师</h3>
+          <p>"如果还有人用 2022 年、也就是 ChatGPT 出现之前的方式写代码，企业不会雇佣他们。"具备 AI 原生思维的人才供不应求；软件工程正在向金融、营销等职业渗透，如果软件工程领域的变革是先兆，他对全球就业市场乐观——前提是人接受再培训。</p>
+        </div>
+      </div>
+      <p><strong>这份访谈与本站昨日发布的 B 站解读视频高度呼应</strong>：视频里"AGI 时间表是骗局""应用层不是两个季度而是十年""剩下的 60% 会更值钱"三条主张，都能在这里找到一手出处。不同的是，视频是二次解读（含 UP 主个人演绎），斯坦福对话是吴恩达本人的最新原话。</p>
+    </div>
+
+    <div class="section">
+      <h2>三、核心分析框架：可验证任务 vs 判断力任务</h2>
+      <p>这是三份材料中最有杠杆的一个概念，值得单独展开：</p>
+      <ul class="risk-list">
+        <li><strong>可验证任务</strong>：有明确对错答案——编程（代码要么跑通要么不跑）、证明数学定理、回答事实性问题。强化学习让 AI 能自我验证、反复试错，进展极快。</li>
+        <li><strong>不可验证任务</strong>：需要判断力——该开发什么软件、营销口号怎么定、在这个国家还是那个国家拓展市场。没有数学上的标准答案，只有"好得多"和"差得多"。</li>
+      </ul>
+      <p>吴恩达的判断：<strong>从可验证任务推广到不可验证任务，中间的鸿沟比大家普遍认为的大得多</strong>。而且评测本身存在系统性扭曲——我们知道怎么测可验证任务，测"判断力"痛苦又昂贵，于是大家都不测，结果我们看到的全是"惊人的进步"。</p>
+      <p>结论性推论：<strong>一份工作拆成多个任务后，约 30–40% 可由 AI 自动化，剩下约 60% 目前没有合理的自动化路径。当那 40% 变得极其廉价时，剩下的 60% 作为互补品反而更值钱。</strong>这就是"这类人以后最值钱"的真正含义——值钱的是判断力、上下文整合能力（"上次老板那么说的时候，从他说话的方式我能感觉到他要么很喜欢要么很讨厌"这类人类独有经验）。</p>
+      <div class="highlight-box">反直觉但自洽：AI 越擅长写代码，懂代码的人越值钱；AI 越擅长生成点子，能甄别好点子的营销总监越值钱。稀缺的不是产出，而是<strong>甄别产出质量的能力</strong>。</div>
+      <p>对照历史，大众媒体已在同一错误上栽过至少三次：1997 年 IBM 深蓝胜卡斯帕罗夫后"AI 无所不能"落空、IBM Watson 在《危险边缘》获胜后通用化遥遥无期、AlphaGo 胜李世石又是绝佳公关。每一次突破都被外推为全面替代，每一次都被证伪。这次现代 AI 的通用性确实更强，但"可验证/不可验证"的分界线依然清晰。</p>
+    </div>
+
+    <div class="section">
+      <h2>四、YC 创业课（2025-07-11）：应用层风口 + 执行速度</h2>
+      <p>斯坦福访谈回答了"AI 能做到什么"，YC 演讲回答的是"创业者该干什么"：</p>
+      <ul class="risk-list">
+        <li><strong>机会在应用层</strong>：技术栈分四层——半导体、超大规模云、基础模型、应用层。媒体聚光灯集中在前三层，但商业回报在应用层，因为"只有应用层产生足够收益，才能反哺底下三层"。（与 B 站视频里的 stack 模型图、麦肯锡 13 万亿美元增量判断一致）</li>
+        <li><strong>智能体工作流决定项目成败</strong>：线性输出 vs 迭代式工作流（提纲→调研→初稿→自评→修改）。AI Fund 的合规文件、医疗诊断、法律推理项目里，"是否采用智能体工作流往往决定项目成败"。最具商业价值的机会是<strong>把现有或新设计的工作流程转化为智能体架构</strong>。</li>
+        <li><strong>模糊想法烧钱，具体方案印钞</strong>："用 AI 优化医疗资源"太模糊；"开发一个让患者在线预约 MRI 设备的软件"当天就能开工。具体创意的三个优势：方向明确全速推进、成败快速得出结论、源自领域专家的长期思考。</li>
+        <li><strong>原型效率提升 10 倍+，成熟代码 30–50%</strong>：验证阶段"快速行动，保持责任"——代码在自己笔记本上跑时可以暂时不完美，发布前再解决安全。</li>
+        <li><strong>代码从资产变成消耗品</strong>：团队上个月把一个代码库完全重构了三次，因为换技术栈变得轻而易举。贝索斯的"单向门/双向门"决策论正在反转——过去选数据库是单向门，如今很多架构决策成了可逆的双向门。</li>
+        <li><strong>产品经理比工程师稀缺</strong>：工程效率提升 10–100 倍后，瓶颈转移到"决定做什么"——有的团队提出 2 个产品经理配 1 个工程师（他职业生涯第一次见）。懂编程的产品经理和懂产品的工程师表现最好。</li>
+        <li><strong>乐高积木式积累</strong>：每掌握一个构建模块（提示工程、RAG、微调、评估系统、护栏、语音），组合空间指数增长。</li>
+        <li><strong>执行速度与成功率强正相关</strong>：具体创意、快速决策、用好 AI 编程工具、高效反馈回路、紧盯技术动态。</li>
+      </ul>
+      <p><strong>附带的两个反炒作表态</strong>：不同意"AI 太危险要严管"（AI 像电力，是强大工具，安全不取决于技术本身而取决于使用方式；"负责任地使用 AI"才是正确表述）；坚持开源是创新护城河（警惕以"安全"为名的技术垄断，加州 SB-1047 就是前车之鉴）。这两点与斯坦福访谈的"游说论"和"开放权重论"完全一致，构成跨时间的稳定立场。</p>
+    </div>
+
+    <div class="section">
+      <h2>五、LangChain Interrupt 对谈：Agent 让瓶颈转移到"产品管理"与数据架构</h2>
+      <p>与 Harrison Chase 的对谈把同一套逻辑推到企业内：</p>
+      <ul class="risk-list">
+        <li><strong>编程智能体的真正变化是生产链条重分配</strong>：代码实现提速 10–100 倍后，需求定义、用户反馈、优先级判断、产品边界成为新瓶颈——"产品管理瓶颈"。</li>
+        <li><strong>自下而上的"百花齐放"只是点状提效</strong>：银行用 AI 做贷款审批，若只是把 1 小时人工审核变成 AI 审核，价值有限；更大机会是重构整个流程，推出"10 分钟获批"的产品——营销、数据、审批、尽调、执行一起变。（与 B 站视频中的贷款分水岭案例一字不差同源）</li>
+        <li><strong>FDE（前线部署工程师）是高关注角色</strong>：但吴恩达认为多数企业会是"内部工程师为主 + 一小支 FDE 团队嵌入"的结构，而非全员 FDE。FDE 恰好覆盖他总结的 AI 时代四项技能：构建部署 AI 应用、软件工程基础、编码 Agent、Shaping the Build（理解业务和客户目标，参与决定产品该做什么）。</li>
+        <li><strong>数据架构是下一个千万到数亿美元级改造项目</strong>：过去 20 年企业投入组织结构化数据，如今 AI 能处理非结构化数据（文本、图片、PDF、音频），"如何组织非结构化数据让 Agent 在正确时间正确位置使用"突然变得重要。痛点包括数据碎片化、治理缺失、权限系统原本为人设计而非为 Agent 设计。他预判未来几年会出现大规模数据架构改造——让数据 agent-ready。</li>
+        <li><strong>选择权比折扣值钱</strong>：供应商给 20–30% 折扣换三年长约，他几乎从不签超一年合同——因为不知道一年后最好的供应商是谁。同样，别让 FDE 把系统深度绑定单一模型或平台，否则一两年后选择权归零。</li>
+        <li><strong>开放权重稳定落后前沿 6–9 个月，但够用</strong>：他的团队大量使用开放权重模型（有时微调），希望大家继续支持；对"模型发布前检查"的监管动向保持担忧。</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>六、交叉验证：视频、访谈、演讲在哪些主张上是一致的</h2>
+      <table>
+        <tr><th>主张</th><th>B 站解读视频</th><th>斯坦福访谈（10-12）</th><th>YC 演讲（2025-07）</th><th>LangChain 对谈</th></tr>
+        <tr><td>AGI 炒作过度，勿按末日叙事决策</td><td>★ 核心主线</td><td>★ 核心主线</td><td>★ 问答环节明确</td><td>★ 略有涉及</td></tr>
+        <tr><td>机会在应用层，价值大头在科技行业之外</td><td>★ stack 模型图</td><td>★ 十年长跑论</td><td>★ 开场即讲</td><td>○ 默认前提</td></tr>
+        <tr><td>点状提效 vs 流程重构（贷款案例）</td><td>★ 分水岭案例</td><td>★ 走进银行找流程</td><td>○ 具体创意原则</td><td>★ 原话复述</td></tr>
+        <tr><td>瓶颈转移到"想清楚做什么"</td><td>★ 出题的人最贵</td><td>★ 判断力鸿沟</td><td>★ 产品管理瓶颈</td><td>★ 核心论点</td></tr>
+        <tr><td>编程仍是表达力，人人该学</td><td>★ 三段论</td><td>★ 2022 方式不雇</td><td>★ "史上最糟职业建议"</td><td>○ 技能图谱</td></tr>
+        <tr><td>失业恐慌被夸大，替代的是不用 AI 的人</td><td>★ AI 背锅侠论</td><td>★ 40%/60% 互补论</td><td>★ AI 创造岗位</td><td>—</td></tr>
+        <tr><td>开放模型与选择权</td><td>—</td><td>★ 主权 AI</td><td>★ 反 SB-1047</td><td>★ 合同不超一年</td></tr>
+      </table>
+      <p>★=明确主张，○=隐含前提/侧面涉及，—=未提及。<strong>四条全亮的行（AGI 炒作、应用层、点状 vs 重构、瓶颈转移）是吴恩达跨场合最稳定的四条判断</strong>，也是这份报告的置信度最高的结论区。B 站视频的价值在于：它用中文语境（翻译官红利、越土越蓝海、水果店老板娘）把这些主张翻译成了普通人能执行的动作——解读虽有演绎成分，但骨架与一手材料一一对应。</p>
+    </div>
+
+    <div class="section">
+      <h2>七、落到纸面：AI 真正的机会在哪里（综合三源的答案）</h2>
+      <div class="grid-2">
+        <div class="metric-card">
+          <div class="label">对企业</div>
+          <div class="value" style="font-size:1.1rem;line-height:1.6">把核心业务流程里 30–40% 的可验证环节自动化，同时重构整条流程（不是优化环节）——贷款从一周到 10 分钟的质变式重构才是价值所在</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">对个人</div>
+          <div class="value" style="font-size:1.1rem;line-height:1.6">判断力 × 领域上下文 × 会用 AI 的组合——"懂业务 + 懂一点编程 + 会指挥 AI"，同时吃下自动化红利和互补品溢价</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">对技术选型</div>
+          <div class="value" style="font-size:1.1rem;line-height:1.6">不为供应商折扣牺牲选择权：合同不超一年、架构可替换、警惕绑定单一模型——开放权重是保留选择权的保险</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">对组织</div>
+          <div class="value" style="font-size:1.1rem;line-height:1.6">自上而下锁定 1–2 条值得重构的核心流程，配产品经理型瓶颈角色；同时让全员（CFO、HR、前台）学基础编程，避免"百个员工百个小火苗"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>八、对汽车制造业 IT 决策的启示</h2>
+      <ul class="risk-list">
+        <li><strong>按"可验证/不可验证"给 IT 项目清单做分诊</strong>：质检视觉、测试用例生成、代码审查等可验证环节适合快速 AI 化；需求定义、供应商谈判、产线改造决策属于判断力任务，AI 是参谋不是主角。</li>
+        <li><strong>别做"点状提效"的受害者</strong>：把报价流程从 4 小时压到 2 小时是点状；把"报价-议价-下单-交付"整条链重做成客户 10 分钟拿结果的体验才是重构。立项评审时加一个问题：这个项目是在优化环节，还是在重做流程？</li>
+        <li><strong>把 AI 当"数字劳动力"管理而不是"工具采购"</strong>：Agent 需要台账、权限、审计、回收流程——这直接呼应我们此前关于网络安全 AI 新王的报告：未来每个企业都要管理自己的 Agent 军团，身份安全和数据架构是前置投资。</li>
+        <li><strong>数据架构改造提前排期</strong>：制造业主数据、工艺文档、质量记录多为非结构化 PDF，"agent-ready 化"是未来 2–3 年的千万级项目，先在一条产线试点。</li>
+        <li><strong>培训标的锚定"AI 原生工作方式"</strong>：不是教员工用某个聊天机器人，而是让财务、HR、供应链人员具备基础编程与 Agent 编排能力——"还在用 2022 年方式工作的人"在企业内同样会贬值。</li>
+        <li><strong>不为 AGI 叙事付决策溢价</strong>：按十年应用层长跑做规划，押注具体流程和具体场景，而不是押注某个"全能 AI"很快接管一切的赌注。</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>九、来源与局限</h2>
+      <ul class="risk-list">
+        <li>斯坦福大学对话（2026-10-12，笔记侠整理，新浪转载）：一手访谈精编。</li>
+        <li>YC 创业学院演讲（2025-07-11，腾讯科技编译，36氪转载）：一手演讲全文。</li>
+        <li>LangChain Interrupt 大会吴恩达 × Harrison Chase 对谈（AI前线编译，虎嗅转载）：一手对谈编译。</li>
+        <li>B 站解读视频（BV1EK4Q65Eox，22 分 46 秒）：二次解读，含 UP 主个人演绎，本站已另有<a href="andrew-ng-ai-opportunity-2026-10-13.html">逐节深读报告</a>。该视频无字幕，本站以本地 Whisper 转写整理，专名已校对；解读中的具体数字（如"60% 的 60%"等）以一手材料为准，本报告引用处均已标注"片中转述"。</li>
+        <li>局限：斯坦福访谈为媒体精编版而非逐字稿；LangChain 对谈为编译版本。个别转述细节可能与原话有出入，关键数字已交叉核对。</li>
+      </ul>
+      <div class="highlight-box">本报告为研究笔记，不构成投资建议。</div>
+    </div>
+  </main>
+
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

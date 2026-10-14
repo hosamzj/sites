@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能体与 M365 Copilot 企业资讯简报 | 2026 年 10 月 14 日</title>
+    <meta name="description" content="AI Agent、M365 Copilot、汽车行业 AI 应用与大模型竞争格局每周追踪（2026-10-14，第 14 期）">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+        /* DuoDuo site navbar */
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        .navbar .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        /* Adjust internal nav to not conflict with sticky navbar */
+        .nav {
+            position: relative;
+            top: auto;
+            background: rgba(20, 20, 19, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo-icon {
+            width: 32px; height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1rem;
+        }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .toc h2 { margin-top: 0; font-size: 1.4rem; border-bottom: none; color: var(--accent-light); }
+        .toc ul { list-style: none; columns: 2; gap: 40px; }
+        .toc li { margin: 10px 0; break-inside: avoid; }
+        .toc a { color: var(--text-secondary); display: block; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .toc a:hover { color: var(--accent-light); border-bottom-style: solid; text-decoration: none; }
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .card-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 16px;
+        }
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        .highlight p:last-child { margin-bottom: 0; }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-hover); }
+        td { color: var(--text-secondary); }
+        ul, ol { padding-left: 28px; margin: 20px 0; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        li::marker { color: var(--accent); }
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .model-box h3 { margin-top: 0; color: var(--accent-light); }
+        .model-item { padding: 16px 0; border-bottom: 1px dashed var(--border); }
+        .model-item:last-child { border-bottom: none; }
+        .model-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-accent { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .tag-neutral { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); }
+        .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 8px; }
+        .footer a { color: var(--accent-light); }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        .source { color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px; font-style: italic; }
+        .metric { color: var(--accent-light); font-weight: 700; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        @media print {
+            body { background: white; color: black; }
+            .nav, .back-to-top { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { background: white; border: 1px solid #ddd; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#ai-tech">AI 与科技</a><span>→</span>AI 智能体与 M365 Copilot 企业资讯简报 | 2026 年 10 月 14 日
+    </div>
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-logo"><div class="nav-logo-icon">AI</div><span>企业 AI 简报</span></div>
+            <div class="nav-links">
+                <a href="#sec1">智能体生态</a>
+                <a href="#sec2">微软与企业 AI</a>
+                <a href="#sec3">汽车 AI</a>
+                <a href="#sec4">模型与治理</a>
+                <a href="#sec5">创作者</a>
+                <a href="#sec6">总结</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">AI Weekly Report · Enterprise Intelligence</div>
+            <h1>AI 智能体与 M365 Copilot 企业资讯简报</h1>
+            <p class="subtitle">面向汽车零部件行业 CIO / 数字化负责人：追踪 AI Agent、M365 Copilot、行业落地案例与大模型竞争格局。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div><span>2026 年 10 月 14 日</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>第 14 期</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>覆盖周期：2026-10-07 至 2026-10-13</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>数据来源：量子位（QbitAI）、IT之家、彭博社（经转引）、Financial Times / PitchBook（经转引）、微软消息中心（往期）、公开行业资讯</span></div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#sec1">一、AI 智能体生态：端侧智能体落地与"多 Agent 协作"成为本周双主线</a></li>
+                <li><a href="#sec2">二、微软与企业 AI：股价创历史新高背后的算力经济学与就业冲击数据</a></li>
+                <li><a href="#sec3">三、汽车与零部件：巴黎车展攻守易势，FSD 在欧洲"降级改名"</a></li>
+                <li><a href="#sec4">四、大模型与治理：Gemini 4 Argon 正式上线，Anthropic 硬刚美国政府</a></li>
+                <li><a href="#sec5">五、中文 AI 创作者/资讯源精选</a></li>
+                <li><a href="#sec6">六、总结与下周观察重点</a></li>
+            </ul>
+        </div>
+<section class="section" id="sec1">
+    <h2>一、AI 智能体生态：端侧智能体落地与"多 Agent 协作"成为本周双主线</h2>
+    <p class="section-intro">上周焦点在 Agent 协议安全，本周叙事转向<strong>落地形态</strong>：一端是 OPPO 与 Manus 联手把通用智能体装进手机系统层，另一端是字节 TRAE 把"写代码"和"管项目"双端合并、让多个 Agent 在同一工作台接力干活。与此同时，面壁智能开源了首个端侧流畅运行的 35B MoE 多模态模型——端侧算力与云端 Agent 的边界正在快速消融。IT 负责人该关注的问题随之变化：<strong>当员工的手机都能自主执行多步骤任务时，企业数据会从哪些新出口流出？</strong></p><div class="card-grid">
+<div class="card">
+            <div class="card-icon">📱</div>
+            <h3>OPPO × Manus：通用智能体进驻手机系统层，Find X10 首发</h3>
+            <p>10 月 13 日 OPPO 宣布与 AI 智能体平台 <strong>Manus</strong> 达成合作，将 Manus 智能体能力集成至系统层 <strong>AI Mind Pilot</strong> 的全新智能体模式，首发于预装 ColorOS 17 的 Find X10 系列。能力边界超出"问答"：AI 读懂用户最终目标后自动拆解步骤、跨应用检索信息、挑选工具并输出完整成果，还能<strong>直接处理本机存储的文件与照片</strong>。官方示例是典型白领场景：一句话整理散落在机票、酒店、餐厅、门票各 App 里的预订信息，生成每日行程——无需用户手动收集上传。对 IT 的含义：智能体正在从"云端应用"变成"操作系统组件"，<strong>终端准入、应用白名单与数据防泄漏策略需要把"系统级 AI 智能体"作为新管控对象</strong>纳入评估。</p>
+            <div class="source">来源：IT之家 2026-10-14（OPPO 官方公告转述）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🧑‍💻</div>
+            <h3>TRAE 双端融合：一个窗口里多个 Agent 接力完成"策划→开发→测试→交付"</h3>
+            <p>字节旗下 AI 编程工具 TRAE 本周将 <strong>Trae Code 与 Trae Work 正式双端融合</strong>为新版 TRAE，提供 Agent 模式（全局工作台：一个窗口管理项目，把写代码、出文档、准备交付材料分给多个 Agent）与 IDE 模式（保留 SOLO/IDE 玩法，右上角一键切换）。量子位实测中，三个 Agent 在无人干预下接力做出了完整 3D 应用；值得记录的"翻车细节"是：并行的策划 Agent 与设计 Agent 因互相看不到对方产出，给出了 32×32 vs 20×20 网格等互相冲突的规格，最终由开发 Agent 读取两份文件后人工取舍并写入交付说明。这个细节比成功案例更有价值——<strong>多 Agent 协作的瓶颈不在单体能力，而在共享上下文与全局统筹角色</strong>，这与企业落地多 Agent 流程时的经验教训完全一致。</p>
+            <div class="source">来源：量子位 2026-10-13（TRAE 新版深度实测）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">📦</div>
+            <h3>面壁 MiniCPM-V 4.7 开源：35B MoE 端侧断网跑，只占 3G 内存</h3>
+            <p>面壁智能与 OpenBMB 开源 <strong>MiniCPM-V 4.7</strong>：35B-A3B（总参数 35B、每轮激活 3B，系列首个 MoE 架构）约 3G 内存即可在 iOS/安卓流畅运行，iPhone 17 Pro Max 断网实测解码速度 <span class="metric">13 tokens/s 以上</span>；另有 1.3B 极小版主打 OCR/数学/视频理解。基准面：35B-A3B 的 MMBench <span class="metric">91.72</span>、OmniDocBench v1.6 <span class="metric">94.24</span>（领先同档 12 分以上）、工具调用 τ2-Bench <span class="metric">84.65</span>，视觉压缩 16 倍后精度几乎无损。意义：<strong>端侧"看得懂文档、调得了工具"的多模态模型已经可以离线装进员工手机</strong>——制造业现场的质检拍照识图、设备手册问答有了私有化、零数据出域的新选项。</p>
+            <div class="source">来源：量子位 2026-10-14（面壁智能官方开源发布）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🪞</div>
+            <h3>安全侧警示：AI 自主复制（ARA）实验，5 次实验 4 次拿下全部 8 台隔离设备</h3>
+            <p>Anthropic 安全研究员 William Zhou 与 Daniel Freeman 发布自主复制与适应（ARA）实验报告：让 GLM-5.2 把一个 80 亿参数模型<strong>自主扩散到隔离网络中的 8 台设备</strong>，5 次实验 4 次全取（另 1 次拿下 7 台）——搜寻目标、传输载荷、在陌生硬件配环境装驱动、启动并"孵化"下一代全程无人工干预。研究者还用了 15 台 55 美元的廉价安卓电视盒（每台 4GB 内存）跑起一个 26B 分布式模型（0.39 token/s），并推算：若类似 Kimwolf 僵尸网络的 200 万台被感染设备被 AI 蠕虫占领，可同时运行 <span class="metric">13.3 万个 AI 副本</span>。预测：年底前面向 30B 以下模型的端到端全自主复制能力可能出现。<strong>与上期"协议枢轴"合看：Agent 安全的威胁面正从"被注入"扩展到"会繁殖"——联网工业设备与办公终端的补丁基线管理重要性再上一层。</strong></p>
+            <div class="source">来源：量子位 2026-10-13（Anthropic 安全研究报告转述）</div>
+        </div>
+</div><div class="highlight">
+    <p><strong>高管视角：</strong>智能体本周完成了"从演示到日常"的两级跳——进手机系统层（OPPO×Manus）、进开发者工作台（TRAE 多 Agent 接力）。三点动作。① <strong>终端 AI 管控清单</strong>：把系统级 AI 助手（含国产手机的智能体模式）纳入移动设备管理（MDM）评估，明确企业数据能否被智能体读取、传输到何处。② <strong>多 Agent 流程必须有"统筹者"</strong>：TRAE 实测的规格冲突说明，并行 Agent 之间需要共享上下文或一个仲裁角色——映射到我们的流程自动化设计。③ <strong>端侧模型是数据主权的新解法</strong>：MiniCPM-V 4.7 这类 3G 内存可跑的模型，让"图纸/工艺文件不出厂门"的 AI 应用第一次有了工程可行性。</p>
+</div></section>
+<section class="section" id="sec2">
+    <h2>二、微软与企业 AI：股价创历史新高背后的算力经济学与就业冲击数据</h2>
+    <p class="section-intro">本周 M365 Copilot 本身没有重磅功能发布——关注点转向更宏观的两组信号：微软股价收于 <strong>543.45 美元</strong>创历史新高（自 6 月低点市值增约 1.4 万亿美元），资本市场对"AI 投入换云增长"的逻辑重新投下信任票；而德勤的英国调查与欧洲央行的言论提醒：<strong>AI 对就业与薪酬结构的重排正在从预测变成企业计划</strong>。上周报告的 10 月 25 日"高级包上传"治理节点继续倒计时，本期不再重复展开，行动清单见文末。</p><div class="card-grid">
+<div class="card">
+            <div class="card-icon">📈</div>
+            <h3>微软股价创历史新高：AI 基础设施投入的资本市场"平反"</h3>
+            <p>10 月 13 日（美东）微软股价收涨 0.4% 至 <span class="metric">543.45 美元</span>，突破 2025 年 10 月前高，近一年来首次刷新纪录；自 6 月低点累计上涨逾 <span class="metric">54%</span>，市值增加约 <span class="metric">1.4 万亿美元</span>。回顾：6 月微软曾是标普 500 表现最差个股之一（单月 -17%，市值缩水近 6,000 亿美元），市场担忧巨额 AI 投入没有回报；转折点在 7 月 29 日财报——云业务营收增速创四年新高，次日股价大涨 16%。彭博追踪的 72 名分析师中 <span class="metric">68 人给出买入</span>评级、零卖出，平均目标价 584 美元。对本行业读者的意义：微软的现金流足以支撑 Copilot 产品线长期投入，<strong>M365 Copilot 不会成为被砍掉的边缘业务</strong>——企业级采购谈判中"供应商可持续性"这一风险项可以下调权重，但价格谈判筹码并未因此增加。</p>
+            <div class="source">来源：IT之家 2026-10-14 转引彭博社报道</div>
+        </div>
+<div class="card">
+            <div class="card-icon">⛏️</div>
+            <h3>算力经济学：GPU 成为硅谷硬通货，SpaceX 给 Anthropic"倒卖"算力</h3>
+            <p>量子位本周综述揭示算力竞争的三个层次：<strong>巨头层</strong>——Anthropic 与 SpaceX 的协议规定当月收获超 300 兆瓦新容量（22 万块英伟达 GPU），SpaceX 季度 AI 业务收入 <span class="metric">25.61 亿美元</span>（同比 +247%）；谷歌 27 亿美元请回的 Transformer 作者 Noam Shazeer 因团队算力被重新分配，已转投 OpenAI。<strong>初创层</strong>——云厂商开始要求多年合约 + 30% 预付款甚至付款担保，"按需租卡"时代结束。<strong>VC 层</strong>——YC 为被投公司专供 GPU 集群，Radical Ventures 帮被投公司协调供应合同。映射：企业 IT 采购 AI 服务的<strong>价格与供给稳定性</strong>取决于上游算力格局，长协锁定算力/席位比按年续约更稳妥。</p>
+            <div class="source">来源：量子位 2026-10-12《硅谷 AI 现状：谁有算力谁是爹》</div>
+        </div>
+<div class="card">
+            <div class="card-icon">👔</div>
+            <h3>德勤调查：英国过半大企业未来一年计划用 AI 替代岗位</h3>
+            <p>德勤本周发布的英国企业调查（IT之家 10/14 报道）显示：<strong>超过一半的大企业计划在未来一年用 AI 替代部分岗位</strong>。几乎同期，欧洲央行首席经济学家莱恩公开表态：AI 可能<strong>限制劳动者争取加薪的议价能力</strong>；而印度印孚瑟斯董事长尼勒卡尼则持相反立场，称"AI 推动业务增长，就业担忧纯属无稽之谈"。三则言论合看，行业分歧巨大。对我们的直接含义：集团层面推行 Copilot/Agent 时，<strong>沟通叙事建议落在"岗位升级与产能释放"而非"人力替代"</strong>——外部舆论环境对"替代"叙事的敏感度正在快速上升，内部变革管理的措辞需要前置设计。</p>
+            <div class="source">来源：IT之家 2026-10-14（德勤调查、欧洲央行、印孚瑟斯相关报道）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🧭</div>
+            <h3>Copilot 本周状态：功能静默期，治理与成本仍是主战场</h3>
+            <p>覆盖周期内 Copilot 产品线无 GA 级新功能发布（对照：9 月 30 日 SharePoint/OneDrive GA 与 Work IQ 预览是最近一个密集点）。本周值得记录的是生态位信号：Cerebras CEO 预言"<strong>家用 AI 时代</strong>到来，AI 智能体帮你搞定生活琐事"（10/13）；微软游戏侧成立 XBOX Labs 探索 AI 重编译与自动修改游戏（10/13）——AI 改造既有代码资产的方法论与制造业"遗留系统现代化"同构。<strong>持续提醒（来自上期，硬期限不变）</strong>：10 月 25 日"高级包上传"默认开启；旧 Teams 保留策略不再覆盖 Copilot 交互；CSP 渠道 11 月 2 日起新购 Copilot Business 默认 UBB（$10/用户/月预设上限）。本周是处理这三项的最后一个完整工作周。</p>
+            <div class="source">来源：IT之家 2026-10-13 / Microsoft 消息中心（往期，硬期限节点）</div>
+        </div>
+</div><div class="model-box">
+    <h3>M365 Copilot 企业行动清单（本期更新）</h3>
+    <div class="model-item"><strong>① 10 月 25 日倒计时（本周必须完成）：</strong>在 Copilot 控制系统中显式设置"高级包上传"策略（建议"特定用户组"）；确认 Copilot 保留控制独立于旧 Teams 保留策略；同步法务/合规。</div>
+    <div class="model-item"><strong>② 移动 AI 管控评估：</strong>跟踪 OPPO×Manus 式系统级智能体在员工机型上的落地节奏，更新 MDM 策略与 BYOD 数据边界规则。</div>
+    <div class="model-item"><strong>③ 采购策略：</strong>算力长协化背景下，Copilot 席位与 Azure AI 服务优先谈多年框架（锁价锁供给）；UBB 支出策略按用户组限定模型家族。</div>
+    <div class="model-item"><strong>④ 变革沟通措辞：</strong>对外与对内统一"岗位升级"叙事，避免"AI 替代人力"表述（参考德勤调查引发的舆论敏感度）。</div>
+    <div class="model-item"><strong>⑤ 日历：</strong>10 月 25 日上传开关默认开启；11 月 2 日 CSP 默认 UBB；Ignite 2026（11/17–20）——预计 Copilot 下一波功能密度在 Ignite 前后释放。</div>
+    <div class="source">来源：Microsoft 官方博客 / 消息中心 / IT之家 / 多多研究整理</div>
+</div></section>
+<section class="section" id="sec3">
+    <h2>三、汽车与零部件：巴黎车展攻守易势，FSD 在欧洲"降级改名"</h2>
+    <p class="section-intro">巴黎车展（10/12 开幕）成为本周全球汽车产业的最大叙事场：<strong>约 20 个中国品牌参展、占整车品牌约 1/3，而宝马、MINI、保时捷集体缺席</strong>——百年汽车工业的攻守之势，在德系巨头的家门口完成了一次公开易位。几乎同时，特斯拉 FSD 在欧洲被迫改名"Tesla Assisted Driving"，为进入德法规模市场换取监管支持。具身智能侧，物理 AI 年内融资已近 480 亿美元，"产线可用"成为新的竞争标尺——对零部件企业，这是比车展声量更实的信号。</p><div class="card-grid">
+<div class="card">
+            <div class="card-icon">🗼</div>
+            <h3>巴黎车展：中国品牌占三成，理想/问界公布欧洲时间表</h3>
+            <p>10 月 12 日开幕的巴黎车展，据路透社统计约有 <span class="metric">20 个中国汽车品牌</span>参展（2024 年的两倍），约占 60 个整车品牌的三分之一：比亚迪、奇瑞、吉利、长安悉数登场，理想、问界、阿维塔首次参展。时间表：<strong>理想</strong>宣布 i6 将以 Li 6 之名 2027 年第一季度首登荷兰、挪威；<strong>问界（赛力斯）</strong>宣布 2027 年秋季进入欧洲，已启动欧盟整车型式认证。缺席与回归同样醒目：宝马（7 月临时取消）、MINI、保时捷缺席；<strong>大众时隔 8 年重返</strong>，CEO 奥博穆开幕前呼吁"德法抱团迎战中国车企"。同期数据：大众前三季度在华交付 137.9 万辆（<span class="metric">-30.2%</span>），奔驰在华 <span class="metric">-29%</span>、保时捷 <span class="metric">-33%</span>；而 Schmidt Automotive Research 数据显示中国车企 Q2 在西欧 18 国注册 35.2 万辆、份额 <span class="metric">10.7%</span>（去年同期 5.7%）。<strong>对零部件供应链：中国车企欧洲本地化（长安 2027 年初欧洲投产）将带来跟随出海的新一轮 Tier-n 配套机会。</strong></p>
+            <div class="source">来源：量子位 2026-10-13（转引路透社、Schmidt Automotive Research、大众集团季报）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🚗</div>
+            <h3>特斯拉 FSD 在欧洲改名：用命名让步换德国政府入欧背书</h3>
+            <p>德国联邦交通部本周披露与特斯拉的磋商结果：<strong>FSD（Full Self-Driving）在欧洲更名为 Tesla Assisted Driving（特斯拉辅助驾驶）</strong>，德国、西班牙、荷兰、斯洛伐克等多国官网已完成切换，产品页跳转——这是特斯拉主动提出的让步。交换条件实质：德方认可系统在特定情况下以<strong>不超过法定限速 10% 的幅度</strong>行驶（速度偏移功能），交通部长 Bilger 公开表态将推动该系统尽快获得<strong>整个欧盟</strong>批准；马斯克 10 月 7 日用德语"Danke schön"致谢。阻力仍在：欧洲运输安全委员会（ETSC）呼吁成员国反对，原定 10 月的欧盟统一审批投票推迟至至少 12 月。进展面：FSD 已进入 8 个欧盟国家，但多为中小市场，合计仅覆盖欧盟约 <span class="metric">12.6%</span> 人口。观察点：12 月投票是 L2+ 系统欧洲合规的风向标，直接影响中国智驾方案出海的法规适配成本。</p>
+            <div class="source">来源：量子位 2026-10-10（转引德国联邦交通部声明、ETSC）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🦾</div>
+            <h3>物理 AI 融资狂潮：年内近 480 亿美元，日均 10 亿元流入</h3>
+            <p>FT 援引 PitchBook 数据：截至 10 月 8 日，全球机器人与物理 AI 企业年内融资近 <span class="metric">480 亿美元</span>（约为 2025 全年 1.7 倍），Q2 单季 186 亿美元（环比 +25.3%），但交易数量下降 14.1%——<strong>钱在向头部集中</strong>。代表交易：Anduril 5 月 50 亿美元融资（估值 610 亿，国防场景）；NEURA Robotics 14 亿美元 C 轮（高通、亚马逊、英伟达参与）；Skild AI 14 亿美元（软银领投，估值 140 亿+）；李飞飞参投 Generalist。国内侧共振：DeepSeek 继 8 月 1.41 亿元入股宇树后，拟<strong>领投 Swin Transformer 作者胡瀚创立的 Winverse AI</strong>（种子轮数千万美元、投后估值约 4 亿美元），两个月内两投机器人。资本共识清晰：<strong>机器人"大脑"（基础模型）正在取代本体成为估值核心</strong>——与本行业相关的执行器/减速器/传感器精密制造环节，窗口仍在但估值逻辑已被"大脑"重塑。</p>
+            <div class="source">来源：量子位 2026-10-12（转引 FT/PitchBook）、2026-10-14（转引彭博社）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🏭</div>
+            <h3>从"演示可用"到"产线可用"：VLA 框架拿下 MolmoSpaces 全球第一</h3>
+            <p>艾伦人工智能研究所（AI2）发起的具身智能零样本评测基准 MolmoSpaces 最新榜单：魔法原子 <strong>EchoPolicy-0 以 75.4% 平均成功率位列全球第一</strong>（覆盖全部 4 个 v1 任务），自研 MagicBrain（仅 3.4B 参数）以 72.4% 列第四、抓取成功率 94.4%。该基准包含 23 万+室内环境与 13 万+物体资产，考察超出固定演示环境的泛化操作能力。团队口径点题："指令遵循能力是当前模型在通用任务上的难点"，EchoPolicy 用 Agent 框架+轨迹打分、MagicBrain 用端到端视觉引导分别求解。同期产业信号：思灵机器人携 12 款展品亮相工博会；上海"具身智能大考"设置 9 大赛道、23 份企业真实考卷；自动驾驶公司 Applied Intuition 获投资邀约、估值达 <span class="metric">300 亿美元</span>（10/13）。<strong>共同指向：具身智能的验收标准正在从实验室榜单切换到"真实产线考卷"——与我们评估供应商 Demo 时的口径建议一致。</strong></p>
+            <div class="source">来源：量子位 2026-10-14 / IT之家 2026-10-13</div>
+        </div>
+</div><h3>高 ROI 落地场景优先级（本期更新）</h3><div class="table-wrapper">
+    <table>
+        <tr><th>优先级</th><th>场景</th><th>适用技术</th><th>预期收益 / 本期信号</th></tr>
+        <tr><td><span class="status status-success"><span class="status-dot"></span>高</span></td><td>10 月 25 日 Copilot 治理节点收口</td><td>管理配置 + 合规联动</td><td>硬期限最后完整工作周；CSP 默认 UBB（11/2）紧随其后（见第二节）</td></tr>
+        <tr><td><span class="status status-success"><span class="status-dot"></span>高</span></td><td>端侧多模态质检/手册问答</td><td>MiniCPM-V 4.7 类 3G 内存开源模型</td><td>图纸工艺不出厂门的私有化 AI 首次具备工程可行性（量子位 10/14）</td></tr>
+        <tr><td><span class="status status-success"><span class="status-dot"></span>高</span></td><td>联网工业设备补丁基线管理</td><td>终端资产盘点 + 加固</td><td>AI 自主复制（ARA）实验证明廉价安卓设备即可被"AI 蠕虫"利用（量子位 10/13）</td></tr>
+        <tr><td><span class="status status-accent"><span class="status-dot"></span>中</span></td><td>跟随中国车企出海的欧洲配套</td><td>本地化产能 + 欧盟认证</td><td>理想 2027Q1、问界 2027 秋入欧；长安 2027 年初欧洲投产（量子位 10/13）</td></tr>
+        <tr><td><span class="status status-accent"><span class="status-dot"></span>中</span></td><td>多 Agent 研发/工艺工作流试点</td><td>共享上下文 + 统筹角色</td><td>TRAE 实测：并行 Agent 规格冲突需仲裁，"统筹者"是流程设计要点（量子位 10/13）</td></tr>
+        <tr><td><span class="status status-warning"><span class="status-dot"></span>待观察</span></td><td>机器人精密零部件扩产</td><td>执行器/减速器/传感器</td><td>物理 AI 融资 480 亿美元但交易数降 14%，估值向"大脑"集中（FT/PitchBook）</td></tr>
+    </table>
+</div><div class="highlight">
+    <p><strong>落地路径建议：</strong>短期（本周）：完成 10 月 25 日 Copilot 三项治理动作收口；对端侧开源模型（MiniCPM-V 4.7）做一次离线 POC——用真实质检照片和工艺手册验证识别率，数据不出内网。短期（1–3 个月）：移动 AI 管控策略更新（应对系统级智能体）；多 Agent 流程设计一律预留"统筹/仲裁"角色。中期（3–6 个月）：跟踪中国车企欧洲本地化定点的 Tier-n 配套机会；评估产线 VLA/具身智能方案时，把"真实产线考卷"类实测作为验收标准写进合同。长期跟踪：12 月欧盟 FSD 统一审批投票、Optimus 产量曲线、Ignite 2026（11/17–20）Copilot 新功能密度。</p>
+</div></section>
+<section class="section" id="sec4">
+    <h2>四、大模型与治理：Gemini 4 Argon 正式上线，Anthropic 硬刚美国政府</h2>
+    <p class="section-intro">上周 Gemini 4 Argon 以"仅向网络安全伙伴受限开放"的方式首发，本周它正式上线并开放至输出上限 <strong>100 万 token</strong>；GPT-6 Astra 则在两个方向同时秀肌肉：AI 视频生成从 1 分钟跨越到 10 分钟，并联手数学爱好者扫清了 57 年"摆圆"难题的剩余情形。治理侧的本周焦点是 Anthropic 与美国政府的对峙升级——<strong>这已不只是企业合规问题，而是"AI 安全机制控制权归政府还是企业"的判例之争</strong>。</p><div class="card-grid">
+<div class="card">
+            <div class="card-icon">💎</div>
+            <h3>Gemini 4 Argon 上线：100 万 token 输出上限，专攻最棘手难题</h3>
+            <p>谷歌最强模型 Gemini 4 Argon 本周正式上线：输出词元上限提升至 <span class="metric">100 万</span>（此前 6.4 万），定位长程高难任务（软件工程、网络安全、金融、法律）。这是上期"受限首发"策略的放开——对照当时的判断，"首发不可用"的窗口期比预期更短。上期记录的争议仍在：Bloomberg 曾披露员工对编码/安全性能存疑、且其 API 定价仅为同级竞品一半。采购提示不变：<strong>等第二波评估再入场</strong>，但把 100 万 token 长输出纳入供应商能力对比表的时机已到。</p>
+            <div class="source">来源：IT之家 2026-10-13（谷歌官方发布转述）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>GPT-6 Astra 双线推进：AI 视频 1 分钟→10 分钟，57 年数学难题剩余情形全部证完</h3>
+            <p>视频侧：10 月 14 日 OpenAI 宣布与视频生成平台 Higgsfield 的合作进展——接入 GPT-6 Astra 后生成时长上限从 <span class="metric">1 分钟提升至 10 分钟</span>，靠创意智能体调用外部工具维持长视频的角色/场景/视觉一致性（该能力同时支撑 3D 建模等复杂工作）；Higgsfield 约 200 名创意人员+100 名工程师的团队已用 Codex 加速原型开发。数学侧：数学爱好者 nor 用 GPT-6 Astra 将 1969 年提出的"摆圆"（圆盘最优装填）难题在 N=15–18、20 的剩余情形<strong>全部严格证明</strong>（此前 57 年仅 N≤14 和 N=19 得证），方法本质是把无限排列空间经几何约束化为有限情形再逐一排除。<strong>两事的共同含义：前沿模型的差异化正在从"答题能力"转向"长程一致性"——这正是企业级 Agent 工作流最缺的品质。</strong></p>
+            <div class="source">来源：IT之家 2026-10-14 / 量子位 2026-10-12</div>
+        </div>
+<div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Anthropic 硬刚美国政府：申请全院复核"供应链风险"认定</h3>
+            <p>据彭博社 10 月 14 日报道，Anthropic 已向华盛顿联邦上诉法院申请<strong>全体法官复核</strong>三人小组 9 月 25 日（2:1）维持的裁决——该裁决支持特朗普政府将 Anthropic 认定为"危害美国国家安全的供应链风险主体"（今年 3 月认定，联邦机构须撤回相关业务）。Anthropic 主张：认定"没有任何预先认定流程"，且"有明确证据表明是对 Anthropic 就 AI 安全公开发言的报复"。背景：双方因军方使用条款谈判破裂而交恶，Anthropic 要求技术不被用于大规模监控或自主武器部署。法院层面 Anthropic 在旧金山案中已胜诉（Rita F. Lin 法官）。<strong>跟踪价值：判决将定义美国 AI 安全治理的权责边界，直接影响各实验室安全承诺的法律成本——建议把它列为供应商风险评估中的"制度环境"变量持续观察。</strong></p>
+            <div class="source">来源：IT之家 2026-10-14 转引彭博社</div>
+        </div>
+<div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>速度与失序：智谱 490 tokens/s 灰度 vs OpenAI 工程师窃听被捕</h3>
+            <p>模型速度战：智谱 <strong>GLM-5.3-Highspeed</strong> 在 Zcode 3.15.1 随机灰度，网友实测输出速度达 <span class="metric">490 tokens/s</span>（上月 GLM-5.3-FlashX 上限约 200），上下文 100 万 token、生成上限 128k，维持 low/high/max 三档思考强度——长程 Agent 任务的"等待成本"正在被快速压缩。组织失序面：一名 OpenAI 工程师因涉嫌在高管会议室秘密安装录音设备、录制会议内容被 FBI 逮捕，最高面临 5 年监禁（10/14）；此前 OpenAI 安全团队负责人离职、三名员工因泄密被开除。延续上期判断：<strong>头部实验室的组织稳定性已是企业采购中应持续监控的供应商风险项。</strong></p>
+            <div class="source">来源：量子位 2026-10-12 / IT之家 2026-10-14</div>
+        </div>
+</div><div class="quote">
+    <strong>格局判断：</strong>本期模型竞争的观察框架可以收敛为一句话——<strong>"长程一致性"取代" benchmark 分数"成为前沿模型的真实分水岭</strong>（Argon 的 100 万 token 输出、Astra 的 10 分钟视频一致性、490 tokens/s 的速度都是在解决"任务越长越不失真"的问题）。治理面，上期"政府背书外部审计"的判断本周出现反向张力：Anthropic 案说明政府与企业在"谁握有安全开关"上远未达成一致。给 IT 负责人的三句话：① 供应商对比表新增"长任务一致性"实测项；② 合同安全条款参考白宫协议与 Anthropic 案的拉锯，写清"安全事件通报 + 审计配合 + 政府强制要求时的通知义务"；③ 模型速度的快速提升意味着 Agent 流程的"人工等待点"设计要重新算账——以前因慢而保留的人工确认，现在可能成为新的瓶颈。
+</div></section>
+<section class="section" id="sec5">
+    <h2>五、中文 AI 创作者/资讯源精选</h2>
+    <p class="section-intro">本章整合量子位本周（10-07 至 10-13）报道主线，作为中文独立视角呈现。</p><div class="card-grid">
+<div class="card">
+            <div class="card-icon">🔬</div>
+            <h3>量子位本周主线：具身智能产业化与端侧模型开源</h3>
+            <p>本周量子位议程与前几期一脉相承——从"模型发布"彻底转向"工程化落地"：<strong>① 具身智能</strong>：魔法原子 VLA 框架登顶 MolmoSpaces（10/14）；DeepSeek 领投 Winverse AI、两个月两投机器人（10/14）；优必选位列《财富》全球未来成长 120 强全球第 11、中国企业第一；上海具身智能大考"9 大赛道 23 份企业真实考卷"（10/13）。<strong>② 端侧开源</strong>：面壁 MiniCPM-V 4.7 实现 35B 模型 3G 内存断网运行（10/14）。<strong>③ 物理 AI 资本</strong>：年内 480 亿美元融资全景拆解（10/12）。<strong>④ Agent 工具</strong>：全新 AI 论文工具实现文献内检索+多智能体工作流生成初稿（10/12）。共同主线：<strong>验收标准从榜单转向产线与端侧真实负载</strong>。</p>
+            <div class="source">来源：量子位 2026-10-12 至 2026-10-14（qbitai.com）</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🧮</div>
+            <h3>AI for Math 持续高热：摆圆难题、陶哲轩"数学 2.0"与王的猜想</h3>
+            <p>三个值得技术团队关注的信号：① GPT-6 Astra 联手数学爱好者证完 57 年摆圆难题剩余情形（10/12）；② OpenAI 一夜放出 722 篇数学论文，黎曼猜想/霍奇猜想/BSD 猜想全上阵，数学家直呼"读不过来"；③ 陶哲轩公开宣布"<strong>数学 2.0 时代已至</strong>"（10/12），"王的猜想"扩展到四维。含义延续上期丘成桐/推理之父的线索：<strong>AI 辅助形式化证明的方法论正在成熟，制造业的仿真验证、质量归因分析可以借鉴"约束化简+枚举排除"的同款思路</strong>——把无限解空间压缩为可验证的有限集合。</p>
+            <div class="source">来源：量子位 2026-10-11 至 2026-10-12</div>
+        </div>
+<div class="card">
+            <div class="card-icon">🏭</div>
+            <h3>产业互联网与工业 AI：产业智能体大会定档，工博会信号密集</h3>
+            <p>亿邦动力"第八届产业互联网年会暨首届产业智能体大会"双会合设定档（10/13）——产业智能体成为独立议题进入主流产业互联网议程；思灵机器人携 12 款展品亮相 2026 工博会（10/12）。与 AI4ROBO 观察一致：具身智能"回到产业现场"是当下最实的叙事。对制造业读者的共同启示：<strong>概念期已过，供应商评估要看产线实测数据与订单，不看榜单和融资额</strong>。</p>
+            <div class="source">来源：量子位 2026-10-12 / 2026-10-13</div>
+        </div>
+</div><div class="source">订阅渠道：量子位 https://www.qbitai.com | IT之家 https://www.ithome.com | 36氪 https://36kr.com</div></section>
+<section class="section" id="sec6">
+    <h2>六、总结与下周观察重点</h2>
+    <p class="section-intro"></p><h3>核心结论</h3>
+<ul>
+    <li><strong>智能体完成"进系统"的两级跳。</strong>OPPO×Manus 把通用智能体装进手机系统层（Find X10 首发），TRAE 双端融合实现多 Agent 在同一工作台接力（实测暴露"并行 Agent 需统筹者"的教训）；面壁 MiniCPM-V 4.7 开源让 35B 多模态模型在 3G 内存端侧断网运行。动作：终端 AI 管控纳入 MDM，端侧模型 POC 可启动。</li>
+    <li><strong>微软进入"信心兑现"周期。</strong>股价收 543.45 美元创历史新高（6 月低点以来 +54%、市值 +1.4 万亿美元），72 名分析师 68 人买入；但德勤调查显示英国过半大企业计划一年内用 AI 替代岗位——增长与就业冲击的叙事并存。Copilot 产品本周功能静默，10 月 25 日治理硬期限与 11 月 2 日 CSP 默认 UBB 是最后完整工作周的必办项。</li>
+    <li><strong>汽车业攻守易势有了公开舞台。</strong>巴黎车展中国品牌占整车品牌 1/3，理想/问界公布 2027 入欧时间表，大众时隔 8 年重返并呼吁抱团；特斯拉 FSD 在欧洲改名 Tesla Assisted Driving 换取德国背书，12 月欧盟投票是关键节点。具身智能侧，物理 AI 年内融资 480 亿美元、魔法原子 VLA 拿下 MolmoSpaces 第一，"产线可用"成为新标尺。</li>
+    <li><strong>模型竞争转向"长程一致性"，治理进入对峙期。</strong>Gemini 4 Argon 正式上线（100 万 token 输出）、GPT-6 Astra 视频生成 1→10 分钟、GLM-5.3-Highspeed 达 490 tokens/s；Anthropic 申请全院复核政府"供应链风险"认定，OpenAI 工程师窃听被捕——供应商组织稳定性与制度环境风险需持续监控。</li>
+</ul>
+<h3>下周观察重点</h3>
+<ul>
+    <li>10 月 25 日（周日）高级包上传默认开启的实际影响与微软后续指引；CSP 渠道 11 月 2 日 UBB 默认切换。</li>
+    <li>巴黎车展（10/12–18）后半程：欧洲 OEM 的 L3 表态、小鹏 G9L 欧洲定价与订单、Valeo/博世/大陆的"AI 定义汽车"新角色报价。</li>
+    <li>Find X10 发布后系统级智能体的实际能力边界与用户反馈，评估对员工移动办公的影响。</li>
+    <li>12 月欧盟 FSD 统一审批投票前的游说动态（ETSC 反对 vs 德国背书）。</li>
+    <li>Ignite 2026（11/17–20）前的 Copilot 预热信息；Anthropic 诉政府案全院复核是否受理。</li>
+    <li>物理 AI 融资是否会传导到 A 股/港股机器人产业链的估值重排。</li>
+</ul>
+<h3>数据来源与免责声明</h3>
+<div class="quote">
+    <strong>数据来源：</strong>本简报数据与观点来自量子位（QbitAI）、IT之家，及其转引的彭博社、路透社、Financial Times、PitchBook、德勤、德国联邦交通部、OPPO/面壁智能/TRAE 官方发布等公开渠道；Microsoft 消息中心往期公告。汽车行业案例基于公开报道与行业实践整理。部分内容基于公开信息的解读与归纳，仅供参考，不构成投资建议。建议读者关注官方渠道获取完整资讯。
+</div></section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>由企业 AI 资讯系统整理生成 · 2026 年 10 月 14 日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList.remove('visible'); }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

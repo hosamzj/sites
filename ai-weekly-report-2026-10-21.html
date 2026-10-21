@@ -436,7 +436,7 @@
             <h2>目录</h2>
             <ul>
                 <li><a href="#sec1">一、AI 智能体生态：国产 Flash 双雄把 Agent 性价比推上新临界，开源智能体操作系统补齐工程底座</a></li>
-                <li><a href="#sec2">二、微软与企业 AI：Copilot 10 月版本波落地\"搜索即对话\"，10/25 治理硬期限进入倒计时</a></li>
+                <li><a href="#sec2">二、微软与企业 AI：Copilot 10 月版本波落地"搜索即对话"，10/25 治理硬期限进入倒计时</a></li>
                 <li><a href="#sec3">三、汽车与零部件：巴黎车展余温下的智能化出海与 RISC-V 车规芯片路线图</a></li>
                 <li><a href="#sec4">四、大模型与合规：Claude / Gemini / GPT 新版齐曝光，法律垂类模型上榜首</a></li>
                 <li><a href="#sec5">五、总结与下周观察重点</a></li>
@@ -444,125 +444,125 @@
         </div>
 <section class="section" id="sec1">
     <h2>一、AI 智能体生态：国产 Flash 双雄把 Agent 性价比推上新临界，开源智能体操作系统补齐工程底座</h2>
-    <p class="section-intro">本周智能体赛道的主线是<strong>\"成本曲线\"</strong>：DeepSeek 与 MiniMax 两款国产 Flash 模型先后刷新 Agent 任务的性能/价格比，把\"旗舰模型才能干复杂活\"的默认假设打得粉碎；同时，清华开源的 PilotDeck 2.0 从工程侧回答了一个更朴素的问题——<strong>当一家企业要同时跑几十个 Agent 时，记忆怎么管、成本怎么降、任务怎么在后台持续跑</strong>。对正在评估智能体落地的 IT 负责人，这一周的信息量足够更新一次 POC 方案。</p>
+    <p class="section-intro">本周智能体赛道的主线是<strong>"成本曲线"</strong>：DeepSeek 与 MiniMax 两款国产 Flash 模型先后刷新 Agent 任务的性能/价格比，把"旗舰模型才能干复杂活"的默认假设打得粉碎；同时，清华开源的 PilotDeck 2.0 从工程侧回答了一个更朴素的问题——<strong>当一家企业要同时跑几十个 Agent 时，记忆怎么管、成本怎么降、任务怎么在后台持续跑</strong>。对正在评估智能体落地的 IT 负责人，这一周的信息量足够更新一次 POC 方案。</p>
     <div class="card-grid">
         <div class="card">
             <div class="card-icon">⚡</div>
-            <h3>DeepSeek V4.1-Flash-1017：官方定义\"性能—费用的帕累托改进\"，顺手发布自研搜索 API</h3>
-            <p>10 月 17 日 DeepSeek 发布 <strong>V4.1-Flash-1017</strong>（10/15 曾发生全球性宕机，两天后新模型即上架，官方并做了补偿）。与上一版 V4.1 Flash 相比，新模型在代码、Agent 任务等基准上\"整齐抬头\"，同时任务运行时间和输出长度被一起压下来——官方称之为\"性能—费用的帕累托改进\"：以前想让 Agent 干活更好，得接受它多想、多跑、多吐 Token；现在模型开始\"少绕路、少说废话\"。DeepSWE 测试中，该模型已在 DeepSeek Harness、腾讯 CodeBuddy / WorkBuddy 等框架下把性能-成本边界继续外推，Harness 需升级至 0.2.1-rc.1 以上才能吃满。配套动作：自研搜索引擎开放 <strong>Search / Fetch 两个 API</strong>——Search 支持限定网站、语言、发布时间，Fetch 把网页抓取成 Markdown 交给模型，<span class=\"metric\">每千次成功请求 5 元、失败不收费</span>，<strong>11 月 1 日前限时免费</strong>，可直接在 Harness、Claude Code、Codex 中调用。动作建议：Agent 的\"联网检索\"环节从自拼方案转向评估此类托管搜索 API，注意 11/1 免费期后的成本重估。</p>
-            <div class="source\">来源：量子位 2026-10-17（DeepSeek 官方发布转述）</div>
+            <h3>DeepSeek V4.1-Flash-1017：官方定义"性能—费用的帕累托改进"，顺手发布自研搜索 API</h3>
+            <p>10 月 17 日 DeepSeek 发布 <strong>V4.1-Flash-1017</strong>（10/15 曾发生全球性宕机，两天后新模型即上架，官方并做了补偿）。与上一版 V4.1 Flash 相比，新模型在代码、Agent 任务等基准上"整齐抬头"，同时任务运行时间和输出长度被一起压下来——官方称之为"性能—费用的帕累托改进"：以前想让 Agent 干活更好，得接受它多想、多跑、多吐 Token；现在模型开始"少绕路、少说废话"。DeepSWE 测试中，该模型已在 DeepSeek Harness、腾讯 CodeBuddy / WorkBuddy 等框架下把性能-成本边界继续外推，Harness 需升级至 0.2.1-rc.1 以上才能吃满。配套动作：自研搜索引擎开放 <strong>Search / Fetch 两个 API</strong>——Search 支持限定网站、语言、发布时间，Fetch 把网页抓取成 Markdown 交给模型，<span class="metric">每千次成功请求 5 元、失败不收费</span>，<strong>11 月 1 日前限时免费</strong>，可直接在 Harness、Claude Code、Codex 中调用。动作建议：Agent 的"联网检索"环节从自拼方案转向评估此类托管搜索 API，注意 11/1 免费期后的成本重估。</p>
+            <div class="source">来源：量子位 2026-10-17（DeepSeek 官方发布转述）</div>
         </div>
         <div class="card">
             <div class="card-icon">🐇</div>
-            <h3>MiniMax M3.1 Flash：ALE 29.6% 拿下\"国模 Agent 第一\"，与 DeepSeek 形成互补路由</h3>
-            <p>国庆期间以匿名模型\"Space Bunny（玉兔）\"在 OpenRouter 屠榜的 MiniMax 新模型正式揭面——<strong>M3.1 Flash</strong>（10/20 报道）。关键数据：Agents' Last Exam (ALE) <span class=\"metric\">29.6%</span> 斩获国模第一；DeepSWE v1.1 达 <span class=\"metric\">73.7%</span>，反超 GPT-6.1 Sol、Claude Opus 5、Claude Fable 5，仅次于 DeepSeek V4.1-Flash-1017 的 77 分；网络安全基准 CyberGym <span class=\"metric\">82.2</span> 与 GLM-5.3、GPT-5.6 Sol 同处全球第一梯队；金融工具链 BankerToolBench <span class=\"metric\">76.2</span> 与 Claude Opus 5 并列第一；Zapier 开源的 AutomationBench-AA（横跨销售、营销、客服、财务、HR 的工作流自动化）中，单任务成本<span class=\"metric\">不到 0.05 美元</span>。推理速度最快 <span class=\"metric\">200+ TPS</span>（P50 维持 170+），串四个子 Agent\"从等红绿灯到无感刷新\"。社区已总结出\"闲时 DeepSeek（谷价）、忙时 MiniMax（峰价）\"的双 Flash 路由打法——<strong>Token 成本管理正式进入\"多供应商路由\"时代</strong>，企业 Agent 平台选型时应把路由能力列为标配需求。</p>
-            <div class=\"source\">来源：量子位 2026-10-20（MiniMax M3.1 Flash 发布）</div>
+            <h3>MiniMax M3.1 Flash：ALE 29.6% 拿下"国模 Agent 第一"，与 DeepSeek 形成互补路由</h3>
+            <p>国庆期间以匿名模型"Space Bunny（玉兔）"在 OpenRouter 屠榜的 MiniMax 新模型正式揭面——<strong>M3.1 Flash</strong>（10/20 报道）。关键数据：Agents' Last Exam (ALE) <span class="metric">29.6%</span> 斩获国模第一；DeepSWE v1.1 达 <span class="metric">73.7%</span>，反超 GPT-6.1 Sol、Claude Opus 5、Claude Fable 5，仅次于 DeepSeek V4.1-Flash-1017 的 77 分；网络安全基准 CyberGym <span class="metric">82.2</span> 与 GLM-5.3、GPT-5.6 Sol 同处全球第一梯队；金融工具链 BankerToolBench <span class="metric">76.2</span> 与 Claude Opus 5 并列第一；Zapier 开源的 AutomationBench-AA（横跨销售、营销、客服、财务、HR 的工作流自动化）中，单任务成本<span class="metric">不到 0.05 美元</span>。推理速度最快 <span class="metric">200+ TPS</span>（P50 维持 170+），串四个子 Agent"从等红绿灯到无感刷新"。社区已总结出"闲时 DeepSeek（谷价）、忙时 MiniMax（峰价）"的双 Flash 路由打法——<strong>Token 成本管理正式进入"多供应商路由"时代</strong>，企业 Agent 平台选型时应把路由能力列为标配需求。</p>
+            <div class="source">来源：量子位 2026-10-20（MiniMax M3.1 Flash 发布）</div>
         </div>
         <div class="card">
             <div class="card-icon">🗂️</div>
             <h3>清华 PilotDeck 2.0 开源：智能体操作系统，白盒记忆 + 工作舱隔离，任务成本降 83%</h3>
-            <p>清华大学 THUNLP 实验室联合面壁智能、OpenBMB 开源 <strong>PilotDeck 2.0</strong>（AGPL-3.0，支持 macOS/Linux/Windows/Docker），原生支持 MCP，直击企业多 Agent 并行的三大痛点：<strong>① 工作舱（WorkSpace）物理隔离</strong>——每个项目有专属文件系统、记忆库、技能集，多任务并行不再\"记忆串台\"；<strong>② 白盒记忆</strong>——记忆的生成、抽取、存储、调用全链路可见可查可改，记错了一键回滚，不用整段对话作废；<strong>③ Smart Routing 分层编排</strong>——强模型管决策、小模型干杂活，官方 7 个高难度任务横评：单体 Claude Sonnet 4.6 得分 69.1 但单次 <span class=\"metric\">$18.36</span>，路由编排后（Sonnet 4.6 + MiniMax-M2.7）得分 70.6、成本仅 <span class=\"metric\">$3.15</span>；社媒运营场景从 $12.58 降到 <span class=\"metric\">$2.83</span>，<strong>成本砍掉约六分之五、质量反升</strong>。另有 Always-on 常驻模式：关掉聊天窗口后 Agent 仍后台推进长周期任务并产出落地文件与总结报告，Web/CLI/企业微信/飞书行为一致。这是本周对\"智能体工程化\"最有参考价值的一项开源进展，值得纳入内部平台的技术雷达。</p>
-            <div class=\"source\">来源：量子位 2026-10-17（OpenBMB 开源发布，github.com/OpenBMB/PilotDeck）</div>
+            <p>清华大学 THUNLP 实验室联合面壁智能、OpenBMB 开源 <strong>PilotDeck 2.0</strong>（AGPL-3.0，支持 macOS/Linux/Windows/Docker），原生支持 MCP，直击企业多 Agent 并行的三大痛点：<strong>① 工作舱（WorkSpace）物理隔离</strong>——每个项目有专属文件系统、记忆库、技能集，多任务并行不再"记忆串台"；<strong>② 白盒记忆</strong>——记忆的生成、抽取、存储、调用全链路可见可查可改，记错了一键回滚，不用整段对话作废；<strong>③ Smart Routing 分层编排</strong>——强模型管决策、小模型干杂活，官方 7 个高难度任务横评：单体 Claude Sonnet 4.6 得分 69.1 但单次 <span class="metric">$18.36</span>，路由编排后（Sonnet 4.6 + MiniMax-M2.7）得分 70.6、成本仅 <span class="metric">$3.15</span>；社媒运营场景从 $12.58 降到 <span class="metric">$2.83</span>，<strong>成本砍掉约六分之五、质量反升</strong>。另有 Always-on 常驻模式：关掉聊天窗口后 Agent 仍后台推进长周期任务并产出落地文件与总结报告，Web/CLI/企业微信/飞书行为一致。这是本周对"智能体工程化"最有参考价值的一项开源进展，值得纳入内部平台的技术雷达。</p>
+            <div class="source">来源：量子位 2026-10-17（OpenBMB 开源发布，github.com/OpenBMB/PilotDeck）</div>
         </div>
         <div class="card">
             <div class="card-icon">🛠️</div>
-            <h3>DeepSeek Harness 注册 B 站官方号：\"一切皆插件\"的 Agent 运行平台开始面向国内推广</h3>
-            <p>在 10/15 宕机事故同时，名为\"DeepSeekHarness\"的 B 站官方账号悄然上线。Harness 是 DeepSeek 已推出的开源 Agent 运行平台：模型负责思考，Harness 负责调工具、改文件、执行命令、把复杂任务拆给多个子 Agent，核心定位\"Everything is a plugin\"。结合 V4.1-Flash-1017 对该平台的专项优化与 6 元新用户赠金，DeepSeek 正把 Harness 从开发者圈层推向国内大众与企业市场。对 IT 负责人的两点提示：<strong>其一</strong>，员工个人使用 Harness/Claude Code 类 Agent 工具处理工作文件的影子 IT 风险在上升，DLP 策略需覆盖 Agent 工作目录与插件调用；<strong>其二</strong>，10/15 全球宕机（对话服务 + V4 Pro / V4.1 Flash API 全受影响，第三方平台 24 小时内 86 条报障）再次证明——<strong>关键业务流对单一模型 API 的依赖必须有降级方案</strong>。</p>
-            <div class=\"source\">来源：量子位 2026-10-15（DeepSeek 服务中断事故记录 + B站账号观察）</div>
+            <h3>DeepSeek Harness 注册 B 站官方号："一切皆插件"的 Agent 运行平台开始面向国内推广</h3>
+            <p>在 10/15 宕机事故同时，名为"DeepSeekHarness"的 B 站官方账号悄然上线。Harness 是 DeepSeek 已推出的开源 Agent 运行平台：模型负责思考，Harness 负责调工具、改文件、执行命令、把复杂任务拆给多个子 Agent，核心定位"Everything is a plugin"。结合 V4.1-Flash-1017 对该平台的专项优化与 6 元新用户赠金，DeepSeek 正把 Harness 从开发者圈层推向国内大众与企业市场。对 IT 负责人的两点提示：<strong>其一</strong>，员工个人使用 Harness/Claude Code 类 Agent 工具处理工作文件的影子 IT 风险在上升，DLP 策略需覆盖 Agent 工作目录与插件调用；<strong>其二</strong>，10/15 全球宕机（对话服务 + V4 Pro / V4.1 Flash API 全受影响，第三方平台 24 小时内 86 条报障）再次证明——<strong>关键业务流对单一模型 API 的依赖必须有降级方案</strong>。</p>
+            <div class="source">来源：量子位 2026-10-15（DeepSeek 服务中断事故记录 + B站账号观察）</div>
         </div>
     </div>
     <div class="highlight">
         <h4>给汽车零部件 IT 负责人的本周行动项</h4>
-        <p><strong>1. 更新 Agent POC 成本模型：</strong>以\"DeepSeek V4.1-Flash-1017 + MiniMax M3.1 Flash 双路由\"重新测算智能体单任务成本——两个模型分别强化代码任务与跨 SaaS 工作流/金融工具链，社区实测单任务已可压到 0.05 美元级；<strong>2. 技术雷达新增 PilotDeck 2.0：</strong>白盒记忆与\"强模型决策+小模型执行\"的路由架构，直接对应企业多 Agent 治理的两个最痛问题；<strong>3. 建立模型可用性预案：</strong>10/15 DeepSeek 宕机是本月第二起主流 API 全球性故障，关键流程应配置双供应商故障转移。</p>
+        <p><strong>1. 更新 Agent POC 成本模型：</strong>以"DeepSeek V4.1-Flash-1017 + MiniMax M3.1 Flash 双路由"重新测算智能体单任务成本——两个模型分别强化代码任务与跨 SaaS 工作流/金融工具链，社区实测单任务已可压到 0.05 美元级；<strong>2. 技术雷达新增 PilotDeck 2.0：</strong>白盒记忆与"强模型决策+小模型执行"的路由架构，直接对应企业多 Agent 治理的两个最痛问题；<strong>3. 建立模型可用性预案：</strong>10/15 DeepSeek 宕机是本月第二起主流 API 全球性故障，关键流程应配置双供应商故障转移。</p>
     </div>
 </section>
 <section class="section" id="sec2">
-    <h2>二、微软与企业 AI：Copilot 10 月版本波落地\"搜索即对话\"，10/25 治理硬期限进入倒计时</h2>
-    <p class=\"section-intro\">微软本周发布了 Microsoft 365 Copilot 的 10 月版本波（对应 9/22–10/06 更新，Microsoft Learn 发行说明），核心是把\"找信息\"和\"用信息\"合成一步；管理侧则给了连接器治理的自助能力与 SharePoint 权限审计新报表。距离 10 月 25 日（周日）高级包上传默认开启的治理硬期限只剩最后一个完整工作周。</p>
-    <div class="card-grid\">
+    <h2>二、微软与企业 AI：Copilot 10 月版本波落地"搜索即对话"，10/25 治理硬期限进入倒计时</h2>
+    <p class="section-intro">微软本周发布了 Microsoft 365 Copilot 的 10 月版本波（对应 9/22–10/06 更新，Microsoft Learn 发行说明），核心是把"找信息"和"用信息"合成一步；管理侧则给了连接器治理的自助能力与 SharePoint 权限审计新报表。距离 10 月 25 日（周日）高级包上传默认开启的治理硬期限只剩最后一个完整工作周。</p>
+    <div class="card-grid">
         <div class="card">
-            <div class=\"card-icon\">🔍</div>
+            <div class="card-icon">🔍</div>
             <h3>M365 Copilot Search 内嵌对话：搜索结果直接成为聊天上下文</h3>
-            <p>10 月版本波的头牌功能（Roadmap ID 512429，Windows/Web）：Microsoft 365 Chat 直接嵌入 Copilot Search——用户在搜索结果页即可追问、综合洞察、生成内容，无需在搜索与聊天两个工具间切换。微软给出的价值主张是\"减少工作流碎片化、加速决策\"。对知识密集型场景（工程文档检索、质量异常排查、跨部门知识定位）这意味着检索动作的交互轮次减少。<span class=\"tag tag-accent\">逐步推送</span> <span class=\"tag tag-neutral\">Current Channel</span></p>
-            <div class=\"source\">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
+            <p>10 月版本波的头牌功能（Roadmap ID 512429，Windows/Web）：Microsoft 365 Chat 直接嵌入 Copilot Search——用户在搜索结果页即可追问、综合洞察、生成内容，无需在搜索与聊天两个工具间切换。微软给出的价值主张是"减少工作流碎片化、加速决策"。对知识密集型场景（工程文档检索、质量异常排查、跨部门知识定位）这意味着检索动作的交互轮次减少。<span class="tag tag-accent">逐步推送</span> <span class="tag tag-neutral">Current Channel</span></p>
+            <div class="source">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">🔁</div>
+            <div class="card-icon">🔁</div>
             <h3>Regenerate 与 Switch Model：一次提示，多模型比价</h3>
-            <p>Web 端 Copilot Chat 新增\"重新生成\"操作：对最新一条回答可直接点 <strong>Try Again</strong> 获取替代答案，或选 <strong>Switch Model</strong> 换用另一个底层模型重答，无需重输提示词。微软此举事实上把\"多模型切换\"做成了标准 UI——与本周国产双 Flash 路由的趋势互为印证：<strong>模型路由正在从运维技巧变成产品默认能力</strong>，评估企业 Agent 平台时应要求同等灵活性。</p>
-            <div class=\"source\">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
+            <p>Web 端 Copilot Chat 新增"重新生成"操作：对最新一条回答可直接点 <strong>Try Again</strong> 获取替代答案，或选 <strong>Switch Model</strong> 换用另一个底层模型重答，无需重输提示词。微软此举事实上把"多模型切换"做成了标准 UI——与本周国产双 Flash 路由的趋势互为印证：<strong>模型路由正在从运维技巧变成产品默认能力</strong>，评估企业 Agent 平台时应要求同等灵活性。</p>
+            <div class="source">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">🛡️</div>
+            <div class="card-icon">🛡️</div>
             <h3>管理侧两件套：连接器规则自助编辑 + SharePoint 特殊组权限审计</h3>
-            <p><strong>连接器治理自助化</strong>：管理员现可在 M365 管理中心（Settings → Search &amp; intelligence → Data sources）直接编辑已有连接器的查询字符串（query string）与用户身份映射规则，无需提交支持工单——权限映射漂移、过滤条件收紧等场景从\"支持周期\"变为\"分钟级自修复\"，这对合规承诺（访问治理）是直接加分项。<strong>SharePoint 权限审计</strong>：管理中心新增报表，可逐项查看授予 \"Everyone\" / \"Everyone except external users\" 特殊组的条目级权限，导出后做权限审计与未授权访问排查——与 Copilot 普及带来的\"过度共享内容被 AI 检索放大\"风险直接相关，建议本季度跑一次全量审计。</p>
-            <div class=\"source\">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
+            <p><strong>连接器治理自助化</strong>：管理员现可在 M365 管理中心（Settings → Search &amp; intelligence → Data sources）直接编辑已有连接器的查询字符串（query string）与用户身份映射规则，无需提交支持工单——权限映射漂移、过滤条件收紧等场景从"支持周期"变为"分钟级自修复"，这对合规承诺（访问治理）是直接加分项。<strong>SharePoint 权限审计</strong>：管理中心新增报表，可逐项查看授予 "Everyone" / "Everyone except external users" 特殊组的条目级权限，导出后做权限审计与未授权访问排查——与 Copilot 普及带来的"过度共享内容被 AI 检索放大"风险直接相关，建议本季度跑一次全量审计。</p>
+            <div class="source">来源：Microsoft Learn — Microsoft 365 Copilot Release Notes（2026-10-06 版本波）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">⏰</div>
+            <div class="card-icon">⏰</div>
             <h3>治理倒计时：10/25 高级包上传默认开启，11/2 CSP 渠道 UBB 切换</h3>
-            <p>上期提示的两项硬期限本周进入最后窗口：<strong>10 月 25 日（周日）</strong>——SharePoint 高级管理中心\"高级包上传默认开启\"（默认将对 OneDrive/SharePoint 启用 AI 就绪的上传处理），尚未在管理中心确认配置的企业，周一会直接吃到默认行为；<strong>11 月 2 日</strong>——CSP 渠道按席位计费向用量计费（UBB）默认切换。建议：本周内完成 ①高级包默认策略确认与例外清单，②CSP 合同下用量基线的最后一次核对（上周报告期已提示，勿再拖延）。</p>
-            <div class=\"source\">来源：Microsoft 365 管理中心消息中心（往期公告，本期为期限提醒）</div>
+            <p>上期提示的两项硬期限本周进入最后窗口：<strong>10 月 25 日（周日）</strong>——SharePoint 高级管理中心"高级包上传默认开启"（默认将对 OneDrive/SharePoint 启用 AI 就绪的上传处理），尚未在管理中心确认配置的企业，周一会直接吃到默认行为；<strong>11 月 2 日</strong>——CSP 渠道按席位计费向用量计费（UBB）默认切换。建议：本周内完成 ①高级包默认策略确认与例外清单，②CSP 合同下用量基线的最后一次核对（上周报告期已提示，勿再拖延）。</p>
+            <div class="source">来源：Microsoft 365 管理中心消息中心（往期公告，本期为期限提醒）</div>
         </div>
     </div>
 </section>
 <section class="section" id="sec3">
     <h2>三、汽车与零部件：巴黎车展余温下的智能化出海与 RISC-V 车规芯片路线图</h2>
-    <p class=\"section-intro\">巴黎车展（10/12 开幕）的后半周报道把焦点从\"中国品牌来了\"转向\"技术怎么落地欧洲\"：比亚迪给出欧洲补能与高阶智驾的明确时间表；AIVA（赛豆）ME7 进入工信部申报，\"AI 定义汽车\"从口号进入量产流程。而对零部件企业更关键的是底层变化——<strong>达摩院玄铁发布了 RISC-V 车规路线图，车用计算底座可能出现第三条路线</strong>。</p>
-    <div class=\"card-grid\">
-        <div class=\"card\">
-            <div class=\"card-icon\">🚗</div>
+    <p class="section-intro">巴黎车展（10/12 开幕）的后半周报道把焦点从"中国品牌来了"转向"技术怎么落地欧洲"：比亚迪给出欧洲补能与高阶智驾的明确时间表；AIVA（赛豆）ME7 进入工信部申报，"AI 定义汽车"从口号进入量产流程。而对零部件企业更关键的是底层变化——<strong>达摩院玄铁发布了 RISC-V 车规路线图，车用计算底座可能出现第三条路线</strong>。</p>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🚗</div>
             <h3>比亚迪：欧洲 3000 座闪充站 2027 年底建成，腾势 CNOA 2027 年落地欧洲</h3>
-            <p>巴黎车展集中展示第二代刀片电池、闪充技术与\"天神之眼\"智驾：ATTO 8 成为登陆欧洲的首款第二代刀片电池车型；<strong>补能</strong>——2027 年底前在欧洲建成 <span class=\"metric\">3000 座</span>闪充站；<strong>智驾</strong>——腾势城市领航辅助（CNOA）官宣 2027 年率先落地欧洲、搭载 Z9GT。全球化数据：截至 2026 年 9 月，比亚迪新能源车覆盖 120 多个国家和地区、全球累计销量破 <span class=\"metric\">1820 万辆</span>，2026 年前九个月海外销量 <span class=\"metric\">133 万辆</span>已超 2025 全年。同期比亚迪官宣成为 <strong>2026 APEC 会议官方合作伙伴</strong>——中国车企的全球化叙事从卖车进入\"国际活动基建\"层面。对零部件供应链的含义：欧洲本地化产能、闪充桩供应链、符合欧盟数据与智驾法规的零部件认证需求将持续放量。</p>
-            <div class=\"source\">来源：量子位 2026-10（比亚迪巴黎车展官方发布转述、APEC 合作公告）</div>
+            <p>巴黎车展集中展示第二代刀片电池、闪充技术与"天神之眼"智驾：ATTO 8 成为登陆欧洲的首款第二代刀片电池车型；<strong>补能</strong>——2027 年底前在欧洲建成 <span class="metric">3000 座</span>闪充站；<strong>智驾</strong>——腾势城市领航辅助（CNOA）官宣 2027 年率先落地欧洲、搭载 Z9GT。全球化数据：截至 2026 年 9 月，比亚迪新能源车覆盖 120 多个国家和地区、全球累计销量破 <span class="metric">1820 万辆</span>，2026 年前九个月海外销量 <span class="metric">133 万辆</span>已超 2025 全年。同期比亚迪官宣成为 <strong>2026 APEC 会议官方合作伙伴</strong>——中国车企的全球化叙事从卖车进入"国际活动基建"层面。对零部件供应链的含义：欧洲本地化产能、闪充桩供应链、符合欧盟数据与智驾法规的零部件认证需求将持续放量。</p>
+            <div class="source">来源：量子位 2026-10（比亚迪巴黎车展官方发布转述、APEC 合作公告）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">🧠</div>
-            <h3>AIVA（赛豆）ME7 工信部申报：\"先有 AI，再有车\"进入量产目录</h3>
-            <p>工信部第 412 批新车公示中，AIVA ME7 申报图与参数公开：中大型纯电 SUV（4999×1999×1616mm、轴距 3050mm），单电机 270kW / 双电机 420kW，宁德时代三元锂，车顶激光雷达，9/28 已在巴黎完成全球首秀。AIVA 今年 6 月发布时提出\"AI 定义汽车，先有 AI，再有车\"的路径，全系定位 20 万元以上主流市场，外界推测 ME7 售价 20 万+。智能座舱、辅助驾驶方案与车载芯片尚未完整披露。观察点：<strong>20 万级市场已出现 800V/900V 平台 + 700km 续航 + 高阶辅助驾驶的密集供给</strong>，智能化配置正在从溢价项变成准入项，对应零部件 BOM 中智能化占比继续抬升。</p>
-            <div class=\"source\">来源：量子位 2026-10（工信部第 412 批申报信息）</div>
+            <div class="card-icon">🧠</div>
+            <h3>AIVA（赛豆）ME7 工信部申报："先有 AI，再有车"进入量产目录</h3>
+            <p>工信部第 412 批新车公示中，AIVA ME7 申报图与参数公开：中大型纯电 SUV（4999×1999×1616mm、轴距 3050mm），单电机 270kW / 双电机 420kW，宁德时代三元锂，车顶激光雷达，9/28 已在巴黎完成全球首秀。AIVA 今年 6 月发布时提出"AI 定义汽车，先有 AI，再有车"的路径，全系定位 20 万元以上主流市场，外界推测 ME7 售价 20 万+。智能座舱、辅助驾驶方案与车载芯片尚未完整披露。观察点：<strong>20 万级市场已出现 800V/900V 平台 + 700km 续航 + 高阶辅助驾驶的密集供给</strong>，智能化配置正在从溢价项变成准入项，对应零部件 BOM 中智能化占比继续抬升。</p>
+            <div class="source">来源：量子位 2026-10（工信部第 412 批申报信息）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">🔩</div>
+            <div class="card-icon">🔩</div>
             <h3>达摩院玄铁：首款 ASIL-B+D 双认证 RISC-V 车规 CPU，发布自动驾驶处理器路线图</h3>
-            <p>10 月 19 日 RISC-V 中国峰会（深圳），达摩院玄铁发布车规增强处理器 <strong>E908A</strong>——<strong>业界首款同时达到 ASIL-B 与 ASIL-D 标准的 RISC-V CPU IP</strong>，单点安全度量 SPFM 业内首次超过 <span class=\"metric\">90%</span>，面向安全岛、域控、车载网关等实时计算场景；同时首次发布自动驾驶与具身智能产品路线图，下一代 C950A 目标性能达现有 RISC-V 车规产品的 <span class=\"metric\">5 倍</span>。玄铁 C950 已在四类 Agentic AI 负载上较主流传统架构提升 10% 以上（Qwen3.8-Flash-Next 推理 43 token/s）。行业预测 RISC-V 处理器年出货增速 50%、2030 年市占约 25%。<strong>对零部件企业的意义：车用 MCU/域控的第三路线（X86/Arm 之外的 RISC-V）已从\"可用\"走向\"可靠\"并开始定路线图</strong>，中长期 BOM 成本与供应安全评估应纳入 RISC-V 选项。</p>
-            <div class=\"source\">来源：量子位 2026-10-19（RISC-V 中国峰会，达摩院玄铁官方发布）</div>
+            <p>10 月 19 日 RISC-V 中国峰会（深圳），达摩院玄铁发布车规增强处理器 <strong>E908A</strong>——<strong>业界首款同时达到 ASIL-B 与 ASIL-D 标准的 RISC-V CPU IP</strong>，单点安全度量 SPFM 业内首次超过 <span class="metric">90%</span>，面向安全岛、域控、车载网关等实时计算场景；同时首次发布自动驾驶与具身智能产品路线图，下一代 C950A 目标性能达现有 RISC-V 车规产品的 <span class="metric">5 倍</span>。玄铁 C950 已在四类 Agentic AI 负载上较主流传统架构提升 10% 以上（Qwen3.8-Flash-Next 推理 43 token/s）。行业预测 RISC-V 处理器年出货增速 50%、2030 年市占约 25%。<strong>对零部件企业的意义：车用 MCU/域控的第三路线（X86/Arm 之外的 RISC-V）已从"可用"走向"可靠"并开始定路线图</strong>，中长期 BOM 成本与供应安全评估应纳入 RISC-V 选项。</p>
+            <div class="source">来源：量子位 2026-10-19（RISC-V 中国峰会，达摩院玄铁官方发布）</div>
         </div>
         <div class="card">
-            <div class=\"card-icon\">🤖</div>
-            <h3>具身智能\"世界模型\"竞赛：优必选 Thinker-WM 三榜第一，全球挑战赛闭幕</h3>
-            <p>优必选 <strong>Thinker-WM</strong> 在三大具身世界模型基准（真实机器人交互基准、EWMBench、仿真基准 WorldArena Track-1）全部拿下第一：核心是以统一动态 Transformer（UDT）把 RGB、度量深度、机器人动作纳入同一共享动态表征，实现视频-动作联合生成、世界预测、策略推理等多能力合一——直指\"拼接式世界模型丢失物理因果\"的行业痛点。同期，首届全球具身智能应用创新挑战赛暨 2026 中国机器人大赛 10/18 在杭州闭幕：清华、浙大、上交等 <span class=\"metric\">2000+ 支队伍、近 5000 名选手</span>真机实操，10 家上市公司企业家现场颁奖。产业信号：<strong>具身智能的评测重心从单项性能转向产线级系统综合能力</strong>，与制造业场景（分拣、质检、上下料）的对接通道在制度化。</p>
-            <div class=\"source\">来源：量子位 2026-10（优必选官方发布、大赛闭幕报道）</div>
+            <div class="card-icon">🤖</div>
+            <h3>具身智能"世界模型"竞赛：优必选 Thinker-WM 三榜第一，全球挑战赛闭幕</h3>
+            <p>优必选 <strong>Thinker-WM</strong> 在三大具身世界模型基准（真实机器人交互基准、EWMBench、仿真基准 WorldArena Track-1）全部拿下第一：核心是以统一动态 Transformer（UDT）把 RGB、度量深度、机器人动作纳入同一共享动态表征，实现视频-动作联合生成、世界预测、策略推理等多能力合一——直指"拼接式世界模型丢失物理因果"的行业痛点。同期，首届全球具身智能应用创新挑战赛暨 2026 中国机器人大赛 10/18 在杭州闭幕：清华、浙大、上交等 <span class="metric">2000+ 支队伍、近 5000 名选手</span>真机实操，10 家上市公司企业家现场颁奖。产业信号：<strong>具身智能的评测重心从单项性能转向产线级系统综合能力</strong>，与制造业场景（分拣、质检、上下料）的对接通道在制度化。</p>
+            <div class="source">来源：量子位 2026-10（优必选官方发布、大赛闭幕报道）</div>
         </div>
     </div>
 </section>
 <section class="section" id="sec4">
     <h2>四、大模型与合规：Claude / Gemini / GPT 新版齐曝光，法律垂类模型上榜首</h2>
-    <p class=\"section-intro\">旗舰模型进入\"密集曝光期\"：Anthropic 新款 Claude 被内测者称为\"重大飞跃\"，谷歌 Gemini 4 Carbon 被指\"能打 Opus 5.5\"，GPT-6.1 Terra 现身微软 Copilot 代码。同期两个信号值得企业注意：苹果智能中国版落地路径明确（接入千问），以及法律垂类开源模型 GLM-Legal 登顶双榜——<strong>合规与合同审查类 AI 应用出现了可自建的开源选项</strong>。</p>
-    <div class="card-grid\">
-        <div class=\"card\">
-            <div class=\"card-icon\">🔮</div>
-            <h3>下一代旗舰集体曝光：Claude\"修 Bug 治本\"、Gemini 4 Carbon、GPT-6.1 Terra</h3>
-            <p>10/20 报道汇总：<strong>① 新版 Claude</strong>——内测者称在推理与直觉上显著更好，修单个 bug 时会识别其背后的类级根因并主动询问是否一并修复，\"能跳出思维定势\"而非复读常识建议；<strong>② Gemini 4 Carbon</strong>——谷歌内部编程平台 Jetski 内测，员工评价\"感觉与 Opus 5.5 相当\"，编程优于已发布的 Argon，视觉理解继续领先（YouTube 数据训练）；谷歌工程师以\"你听说过递归自我改进（RSI）吗\"回应，暗示训练范式变化；<strong>③ GPT-6.1 Terra</strong>——出现在微软 Copilot 代码中，定位更便宜模型以支撑 ChatGPT 免费层的 Chat/Work/Codex 三模式合并；GPT-6.1 Sol 在 COBOL 迁移测试中达 <span class=\"metric\">97.9%</span> 准确率（COBOL 支撑超 40% 银行系统、80% 面对面信用卡交易）——<strong>遗留系统现代化的经济性拐点值得制造业老系统（MES/老 ERP 接口）团队关注</strong>。</p>
-            <div class=\"source\">来源：量子位 2026-10-20（内测泄露信息汇总，未经官方确认）</div>
+    <p class="section-intro">旗舰模型进入"密集曝光期"：Anthropic 新款 Claude 被内测者称为"重大飞跃"，谷歌 Gemini 4 Carbon 被指"能打 Opus 5.5"，GPT-6.1 Terra 现身微软 Copilot 代码。同期两个信号值得企业注意：苹果智能中国版落地路径明确（接入千问），以及法律垂类开源模型 GLM-Legal 登顶双榜——<strong>合规与合同审查类 AI 应用出现了可自建的开源选项</strong>。</p>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🔮</div>
+            <h3>下一代旗舰集体曝光：Claude"修 Bug 治本"、Gemini 4 Carbon、GPT-6.1 Terra</h3>
+            <p>10/20 报道汇总：<strong>① 新版 Claude</strong>——内测者称在推理与直觉上显著更好，修单个 bug 时会识别其背后的类级根因并主动询问是否一并修复，"能跳出思维定势"而非复读常识建议；<strong>② Gemini 4 Carbon</strong>——谷歌内部编程平台 Jetski 内测，员工评价"感觉与 Opus 5.5 相当"，编程优于已发布的 Argon，视觉理解继续领先（YouTube 数据训练）；谷歌工程师以"你听说过递归自我改进（RSI）吗"回应，暗示训练范式变化；<strong>③ GPT-6.1 Terra</strong>——出现在微软 Copilot 代码中，定位更便宜模型以支撑 ChatGPT 免费层的 Chat/Work/Codex 三模式合并；GPT-6.1 Sol 在 COBOL 迁移测试中达 <span class="metric">97.9%</span> 准确率（COBOL 支撑超 40% 银行系统、80% 面对面信用卡交易）——<strong>遗留系统现代化的经济性拐点值得制造业老系统（MES/老 ERP 接口）团队关注</strong>。</p>
+            <div class="source">来源：量子位 2026-10-20（内测泄露信息汇总，未经官方确认）</div>
         </div>
-        <div class=\"card">
-            <div class=\"card-icon\">📱</div>
+        <div class="card">
+            <div class="card-icon">📱</div>
             <h3>苹果智能中国版路径确定：接入阿里千问，10 月底发布测试版</h3>
-            <p>10 月 15 日库克在上海确认：Apple Intelligence 及阿里千问大模型已获批准，<strong>10 月底发布中国测试版本</strong>，首批功能含实时翻译、书写工具、照片清除工具；Siri AI 不在本批。对在华跨国制造企业的影响：员工 iPhone 将很快自带系统级 AI 能力——与第 14 期 OPPO×Manus 的系统级智能体趋势叠加，<strong>\"终端自带 AI\"成为 MDM/DLP 策略必须覆盖的新基线</strong>，建议提前测试千问版书写工具与翻译的数据流路径。</p>
-            <div class=\"source\">来源：量子位 2026-10-15（库克上海媒体采访）</div>
+            <p>10 月 15 日库克在上海确认：Apple Intelligence 及阿里千问大模型已获批准，<strong>10 月底发布中国测试版本</strong>，首批功能含实时翻译、书写工具、照片清除工具；Siri AI 不在本批。对在华跨国制造企业的影响：员工 iPhone 将很快自带系统级 AI 能力——与第 14 期 OPPO×Manus 的系统级智能体趋势叠加，<strong>"终端自带 AI"成为 MDM/DLP 策略必须覆盖的新基线</strong>，建议提前测试千问版书写工具与翻译的数据流路径。</p>
+            <div class="source">来源：量子位 2026-10-15（库克上海媒体采访）</div>
         </div>
-        <div class=\"card">
-            <div class=\"card-icon\">⚖️</div>
+        <div class="card">
+            <div class="card-icon">⚖️</div>
             <h3>智谱 GLM-Legal：Harvey LAB + LegalBench 双榜开源第一，合同审查落地开箱</h3>
-            <p>智谱开源法律专用模型 <strong>GLM-Legal</strong>：Vals AI 法律测评中，以 <span class=\"metric\">19.2%</span> 任务全通过率与 <span class=\"metric\">86.23%</span> 准确率摘下 Harvey LAB 与 LegalBench 双榜开放权重模型榜首（Harvey LAB 首版即含 1200+ 项模拟律所任务、覆盖并购/知识产权/银行金融等 24 个领域，采用\"全条件通过\"严苛评分）。演示能力已到实操级：供应商更换场景下把终止通知期从 60 天改到 30 天并增补 90 天过渡支持，成果交接范围逐项对应合同条款；跨境出海场景把新加坡/马来/印尼隐私合规拆成可执行清单。<strong>对制造业合规/采购/法务的意义：合同审查与出海合规的 Agent 化出现可私有化部署的开源基座</strong>，数据不出域场景值得 POC；但需注意其比 Gemini 4 Argon 慢约 30 分钟/任务量级，交互式场景需评估时延。</p>
-            <div class=\"source\">来源：量子位 2026-10-17（智谱官方发布）</div>
+            <p>智谱开源法律专用模型 <strong>GLM-Legal</strong>：Vals AI 法律测评中，以 <span class="metric">19.2%</span> 任务全通过率与 <span class="metric">86.23%</span> 准确率摘下 Harvey LAB 与 LegalBench 双榜开放权重模型榜首（Harvey LAB 首版即含 1200+ 项模拟律所任务、覆盖并购/知识产权/银行金融等 24 个领域，采用"全条件通过"严苛评分）。演示能力已到实操级：供应商更换场景下把终止通知期从 60 天改到 30 天并增补 90 天过渡支持，成果交接范围逐项对应合同条款；跨境出海场景把新加坡/马来/印尼隐私合规拆成可执行清单。<strong>对制造业合规/采购/法务的意义：合同审查与出海合规的 Agent 化出现可私有化部署的开源基座</strong>，数据不出域场景值得 POC；但需注意其比 Gemini 4 Argon 慢约 30 分钟/任务量级，交互式场景需评估时延。</p>
+            <div class="source">来源：量子位 2026-10-17（智谱官方发布）</div>
         </div>
-        <div class=\"card">
-            <div class=\"card-icon\">📡</div>
+        <div class="card">
+            <div class="card-icon">📡</div>
             <h3>可用性警示：本月第二起主流 API 全球故障（DeepSeek 10/15）</h3>
-            <p>10 月 15 日上午 8:11（北京时间）起，DeepSeek 对话服务、V4 Pro API、V4.1 Flash API 全部部分中断，官方定位并修复，第三方监测平台 24 小时内收到 <span class=\"metric\">86+</span> 条报障，波及卢森堡、波兰、纽约等地用户。这是继月初异常后本月第二起。叠加本周国产 Flash 双雄推动的\"多供应商路由\"趋势，形成一条完整的企业级结论：<strong>智能体平台的供应商冗余设计不再是高可用锦上添花，而是成本优化（路由）与业务连续性（故障转移）的共同前提</strong>。</p>
-            <div class=\"source\">来源：量子位 2026-10-15（status.deepseek.com 事故记录）</div>
+            <p>10 月 15 日上午 8:11（北京时间）起，DeepSeek 对话服务、V4 Pro API、V4.1 Flash API 全部部分中断，官方定位并修复，第三方监测平台 24 小时内收到 <span class="metric">86+</span> 条报障，波及卢森堡、波兰、纽约等地用户。这是继月初异常后本月第二起。叠加本周国产 Flash 双雄推动的"多供应商路由"趋势，形成一条完整的企业级结论：<strong>智能体平台的供应商冗余设计不再是高可用锦上添花，而是成本优化（路由）与业务连续性（故障转移）的共同前提</strong>。</p>
+            <div class="source">来源：量子位 2026-10-15（status.deepseek.com 事故记录）</div>
         </div>
     </div>
     <div class="model-box">
@@ -579,11 +579,11 @@
     <h2>五、总结与下周观察重点</h2>
     <h3>核心结论</h3>
     <ul>
-        <li><strong>Agent 经济学被国产 Flash 改写。</strong>DeepSeek V4.1-Flash-1017（性能-费用帕累托改进 + 自研搜索 API）与 MiniMax M3.1 Flash（ALE 国模第一、0.05 美元级单任务）在一周内双双刷新性价比临界，\"闲时 DeepSeek、忙时 MiniMax\"的多供应商路由成为社区标准打法。动作：更新 Agent POC 成本模型，把路由能力列为平台选型标配。</li>
-        <li><strong>智能体工程化补齐两块拼图。</strong>清华 PilotDeck 2.0 用\"白盒记忆 + 工作舱隔离 + 强模型决策/小模型执行\"回答多 Agent 治理问题（成本降 83%），DeepSeek Harness 借 B 站官方号开启国内推广（影子 IT 风险上升）。</li>
-        <li><strong>微软 Copilot 10 月版本波把\"搜索即对话\"做成默认体验</strong>，管理侧开放连接器自助治理与 SharePoint 特殊组权限审计；10/25 高级包默认开启与 11/2 CSP UBB 切换进入最后窗口，本周必须完成配置确认。</li>
+        <li><strong>Agent 经济学被国产 Flash 改写。</strong>DeepSeek V4.1-Flash-1017（性能-费用帕累托改进 + 自研搜索 API）与 MiniMax M3.1 Flash（ALE 国模第一、0.05 美元级单任务）在一周内双双刷新性价比临界，"闲时 DeepSeek、忙时 MiniMax"的多供应商路由成为社区标准打法。动作：更新 Agent POC 成本模型，把路由能力列为平台选型标配。</li>
+        <li><strong>智能体工程化补齐两块拼图。</strong>清华 PilotDeck 2.0 用"白盒记忆 + 工作舱隔离 + 强模型决策/小模型执行"回答多 Agent 治理问题（成本降 83%），DeepSeek Harness 借 B 站官方号开启国内推广（影子 IT 风险上升）。</li>
+        <li><strong>微软 Copilot 10 月版本波把"搜索即对话"做成默认体验</strong>，管理侧开放连接器自助治理与 SharePoint 特殊组权限审计；10/25 高级包默认开启与 11/2 CSP UBB 切换进入最后窗口，本周必须完成配置确认。</li>
         <li><strong>汽车侧：出海技术落地时间表明确 + 车用计算底座出现第三条路线。</strong>比亚迪欧洲 3000 闪充站/CNOA 2027、AIVA ME7 进入申报（20 万级智能化成准入项）、玄铁 RISC-V 车规路线图（ASIL-B+D 双认证）三件事分别指向补能基建、智能化普及与芯片供应安全。</li>
-        <li><strong>旗舰竞争进入\"曝光季\"，合规垂类出现开源选项。</strong>Claude 新版/Gemini 4 Carbon/GPT-6.1 Terra 齐曝光；GLM-Legal 登顶法律双榜；苹果智能中国版 10 月底测试——终端自带 AI 与法律/合同 Agent 化都是可立即启动评估的落地场景。</li>
+        <li><strong>旗舰竞争进入"曝光季"，合规垂类出现开源选项。</strong>Claude 新版/Gemini 4 Carbon/GPT-6.1 Terra 齐曝光；GLM-Legal 登顶法律双榜；苹果智能中国版 10 月底测试——终端自带 AI 与法律/合同 Agent 化都是可立即启动评估的落地场景。</li>
     </ul>
     <h3>下周观察重点</h3>
     <ul>

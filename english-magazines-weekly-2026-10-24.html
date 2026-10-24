@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语外刊精选 | 2026 年 10 月 24 日 | DuoDuo Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navbar */
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        .navbar .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+        /* Magazine sections */
+        .magazine-section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .magazine-section:last-child { border-bottom: none; }
+        .magazine-header {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .cover {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .magazine-info h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .magazine-info .zh-name {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .magazine-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .magazine-meta span {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: var(--bg-hover);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .magazine-desc {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+        .latest-issue {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .issue-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .issue-date {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .download-btn::before {
+            content: '↓';
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Archive */
+        .archive {
+            margin-top: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .archive h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        .archive-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .archive-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-tertiary);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .archive-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .archive-table tr:last-child td { border-bottom: none; }
+        .archive-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+        }
+        .archive-formats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .download-link {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .download-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .archive-source a {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0 60px;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .footer a { color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .magazine-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .cover { max-width: 220px; }
+            .magazine-info h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>英语外刊精选 | 2026 年 10 月 24 日
+    </div>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">English Magazines Weekly</div>
+            <h1>英语外刊精选</h1>
+            <p class="subtitle">每周精选经济学人、纽约客、大西洋月刊、连线等优质英语外刊，提供 EPUB、MOBI、PDF 多格式下载链接。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>报告日期：2026 年 10 月 24 日</div>
+                <div class="meta-item"><div class="meta-dot"></div>2026 年第 43 周</div>
+                <div class="meta-item"><div class="meta-dot"></div>来源：hehonghui/awesome-english-ebooks</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="magazine-section" id="economist">
+            <div class="magazine-header">
+                <div class="cover" style="background-color: #e3120b">
+                    <img src="assets/english-magazines-covers/economist_2026.10.24.webp" alt="The Economist 2026.10.24" loading="lazy">
+                </div>
+                <div class="magazine-info">
+                    <div class="magazine-meta">
+                        <span class="frequency">周刊</span>
+                        <span class="update-day">每周五</span>
+                    </div>
+                    <h2>The Economist <span class="zh-name">经济学人</span></h2>
+                    <p class="magazine-desc">全球政经、商业与科技分析的首选英文周刊</p>
+                    <div class="latest-issue">
+                        <div class="issue-label">最新一期</div>
+                        <div class="issue-date">2026.10.24</div>
+                        <div class="download-buttons">
+                            <a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.24/TheEconomist.2026.10.24.epub" class="download-btn epub" target="_blank" rel="noopener">EPUB</a>
+<a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.24/TheEconomist.2026.10.24.mobi" class="download-btn mobi" target="_blank" rel="noopener">MOBI</a>
+<a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.24/TheEconomist.2026.10.24.pdf" class="download-btn pdf" target="_blank" rel="noopener">PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="archive">
+                <h4>往期归档</h4>
+                <table class="archive-table">
+                    <thead><tr><th>日期</th><th>下载格式</th><th>来源</th></tr></thead>
+                    <tbody><tr>
+                    <td class="archive-date">2026.10.17</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.17/TheEconomist.2026.10.17.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.17/TheEconomist.2026.10.17.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.10.17" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.10.10</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.10/TheEconomist.2026.10.10.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.10/TheEconomist.2026.10.10.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.10/TheEconomist.2026.10.10.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.10.10" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.10.03</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.03/TheEconomist.2026.10.03.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.10.03/TheEconomist.2026.10.03.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.10.03" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.26</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.26/TheEconomist.2026.09.26.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.26/TheEconomist.2026.09.26.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.26/TheEconomist.2026.09.26.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.09.26" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.19</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.19/TheEconomist.2026.09.19.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.19/TheEconomist.2026.09.19.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.19/TheEconomist.2026.09.19.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.09.19" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.12</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.12/TheEconomist.2026.09.12.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.12/TheEconomist.2026.09.12.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.09.12" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.05</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.05/TheEconomist.2026.09.05.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.05/TheEconomist.2026.09.05.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.09.05/TheEconomist.2026.09.05.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.09.05" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.29</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.29/TheEconomist.2026.08.29.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.29/TheEconomist.2026.08.29.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.29/TheEconomist.2026.08.29.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.08.29" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.22</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.22/TheEconomist.2026.08.22.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.22/TheEconomist.2026.08.22.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.22/TheEconomist.2026.08.22.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.08.22" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.15</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.15/TheEconomist.2026.08.15.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.15/TheEconomist.2026.08.15.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.15/TheEconomist.2026.08.15.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.08.15" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.08</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.08/TheEconomist.2026.08.08.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.08/TheEconomist.2026.08.08.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.08/TheEconomist.2026.08.08.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.08.08" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.01</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.01/TheEconomist.2026.08.01.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.01/TheEconomist.2026.08.01.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/01_economist/te_2026.08.01/TheEconomist.2026.08.01.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/01_economist/te_2026.08.01" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+        <section class="magazine-section" id="new_yorker">
+            <div class="magazine-header">
+                <div class="cover" style="background-color: #222222">
+                    <img src="assets/english-magazines-covers/new_yorker_2026.10.26.webp" alt="The New Yorker 2026.10.26" loading="lazy">
+                </div>
+                <div class="magazine-info">
+                    <div class="magazine-meta">
+                        <span class="frequency">周刊</span>
+                        <span class="update-day">每周六</span>
+                    </div>
+                    <h2>The New Yorker <span class="zh-name">纽约客</span></h2>
+                    <p class="magazine-desc">美国文化、时政评论与深度报道的标志性杂志</p>
+                    <div class="latest-issue">
+                        <div class="issue-label">最新一期</div>
+                        <div class="issue-date">2026.10.26</div>
+                        <div class="download-buttons">
+                            <a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.26/new_yorker.2026.10.26.epub" class="download-btn epub" target="_blank" rel="noopener">EPUB</a>
+<a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.26/new_yorker.2026.10.26.mobi" class="download-btn mobi" target="_blank" rel="noopener">MOBI</a>
+<a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.26/new_yorker.2026.10.26.pdf" class="download-btn pdf" target="_blank" rel="noopener">PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="archive">
+                <h4>往期归档</h4>
+                <table class="archive-table">
+                    <thead><tr><th>日期</th><th>下载格式</th><th>来源</th></tr></thead>
+                    <tbody><tr>
+                    <td class="archive-date">2026.10.19</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.19/new_yorker.2026.10.19.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.19/new_yorker.2026.10.19.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.19/new_yorker.2026.10.19.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.10.19" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.10.12</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.12/new_yorker.2026.10.12.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.12/new_yorker.2026.10.12.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.12/new_yorker.2026.10.12.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.10.12" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.10.05</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.05/new_yorker.2026.10.05.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.05/new_yorker.2026.10.05.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.10.05/new_yorker.2026.10.05.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.10.05" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.28</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.28/new_yorker.2026.09.28.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.28/new_yorker.2026.09.28.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.28/new_yorker.2026.09.28.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.09.28" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.21</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.21/new_yorker.2026.09.21.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.21/new_yorker.2026.09.21.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.21/new_yorker.2026.09.21.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.09.21" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.14</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.14/new_yorker.2026.09.14.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.14/new_yorker.2026.09.14.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.14/new_yorker.2026.09.14.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.09.14" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.09.07</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.07/new_yorker.2026.09.07.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.07/new_yorker.2026.09.07.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.09.07/new_yorker.2026.09.07.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.09.07" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.31</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.31/new_yorker.2026.08.31.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.31/new_yorker.2026.08.31.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.31/new_yorker.2026.08.31.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.08.31" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.24</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.24/new_yorker.2026.08.24.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.24/new_yorker.2026.08.24.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.24/new_yorker.2026.08.24.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.08.24" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.17</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.17/new_yorker.2026.08.17.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.17/new_yorker.2026.08.17.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.17/new_yorker.2026.08.17.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.08.17" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.10</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.10/new_yorker.2026.08.10.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.10/new_yorker.2026.08.10.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.10/new_yorker.2026.08.10.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.08.10" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.03</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.03/new_yorker.2026.08.03.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.03/new_yorker.2026.08.03.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/02_new_yorker/2026.08.03/new_yorker.2026.08.03.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/02_new_yorker/2026.08.03" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+        <section class="magazine-section" id="atlantic">
+            <div class="magazine-header">
+                <div class="cover" style="background-color: #174ad6">
+                    <img src="assets/english-magazines-covers/atlantic_2026.09.02.webp" alt="The Atlantic 2026.09.02" loading="lazy">
+                </div>
+                <div class="magazine-info">
+                    <div class="magazine-meta">
+                        <span class="frequency">月刊</span>
+                        <span class="update-day">每月2号</span>
+                    </div>
+                    <h2>The Atlantic <span class="zh-name">大西洋月刊</span></h2>
+                    <p class="magazine-desc">聚焦美国政治、社会与全球议题的深度月刊</p>
+                    <div class="latest-issue">
+                        <div class="issue-label">最新一期</div>
+                        <div class="issue-date">2026.09.02</div>
+                        <div class="download-buttons">
+                            <a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.09.02/Atlantic_2026.09.02.epub" class="download-btn epub" target="_blank" rel="noopener">EPUB</a>
+<a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.09.02/Atlantic_2026.09.02.pdf" class="download-btn pdf" target="_blank" rel="noopener">PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="archive">
+                <h4>往期归档</h4>
+                <table class="archive-table">
+                    <thead><tr><th>日期</th><th>下载格式</th><th>来源</th></tr></thead>
+                    <tbody><tr>
+                    <td class="archive-date">2026.08.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.08.02/Atlantic_2026.08.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.08.02/Atlantic_2026.08.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.08.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.07.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.07.02/Atlantic_2026.07.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.07.02/Atlantic_2026.07.02.mobi" class="download-link mobi" target="_blank" rel="noopener">MOBI</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.07.02/Atlantic_2026.07.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.07.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.06.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.06.02/Atlantic_2026.06.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.06.02/Atlantic_2026.06.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.06.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.05.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.05.02/Atlantic_2026.05.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.05.02/Atlantic_2026.05.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.05.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.04.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.04.02/Atlantic_2026.04.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.04.02/Atlantic_2026.04.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.04.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.03.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.03.02/Atlantic_2026.03.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.03.02/Atlantic_2026.03.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.03.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.02.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.02.02/Atlantic_2026.02.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.02.02/Atlantic_2026.02.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.02.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.01.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.01.02/Atlantic_2026.01.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/04_atlantic/2026.01.02/Atlantic_2026.01.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/04_atlantic/2026.01.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+        <section class="magazine-section" id="wired">
+            <div class="magazine-header">
+                <div class="cover" style="background-color: #000000">
+                    <img src="assets/english-magazines-covers/wired_2026.10.02.webp" alt="Wired 2026.10.02" loading="lazy">
+                </div>
+                <div class="magazine-info">
+                    <div class="magazine-meta">
+                        <span class="frequency">月刊</span>
+                        <span class="update-day">每月2号</span>
+                    </div>
+                    <h2>Wired <span class="zh-name">连线</span></h2>
+                    <p class="magazine-desc">科技、文化、商业与未来趋势的前沿报道</p>
+                    <div class="latest-issue">
+                        <div class="issue-label">最新一期</div>
+                        <div class="issue-date">2026.10.02</div>
+                        <div class="download-buttons">
+                            <a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.10.02/wired_2026.10.02.epub" class="download-btn epub" target="_blank" rel="noopener">EPUB</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="archive">
+                <h4>往期归档</h4>
+                <table class="archive-table">
+                    <thead><tr><th>日期</th><th>下载格式</th><th>来源</th></tr></thead>
+                    <tbody><tr>
+                    <td class="archive-date">2026.09.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.09.02/wired_2026.09.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.09.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.08.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.08.02/wired_2026.08.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.08.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.07.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.07.02/wired_2026.07.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.07.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.06.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.06.02/wired_2026.06.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.06.02/wired_2026.06.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.06.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.05.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.05.02/wired_2026.05.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.05.02/wired_2026.05.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.05.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.04.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.04.02/wired_2026.04.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.04.02/wired_2026.04.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.04.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.03.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.03.02/wired_2026.03.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.03.02/wired_2026.03.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.03.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.02.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.02.02/wired_2026.02.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.02.02/wired_2026.02.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.02.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr><tr>
+                    <td class="archive-date">2026.01.02</td>
+                    <td class="archive-formats"><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.01.02/wired_2026.01.02.epub" class="download-link epub" target="_blank" rel="noopener">EPUB</a><a href="https://raw.githubusercontent.com/hehonghui/awesome-english-ebooks/master/05_wired/2026.01.02/wired_2026.01.02.pdf" class="download-link pdf" target="_blank" rel="noopener">PDF</a></td>
+                    <td class="archive-source"><a href="https://github.com/hehonghui/awesome-english-ebooks/tree/master/05_wired/2026.01.02" target="_blank" rel="noopener">GitHub ↗</a></td>
+                </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>数据来源：<a href="https://github.com/hehonghui/awesome-english-ebooks" target="_blank" rel="noopener">awesome-english-ebooks</a></p>
+            <p>报告由 DuoDuo Research 自动生成，仅供学习交流使用</p>
+        </div>
+    </footer>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>连接器双雄深度对标与展望：安费诺 vs 泰科 + 中国厂商破局者推演（2026-11-01）</title>
+  <style>
+    :root {
+      --bg: #141413;
+      --bg-elevated: #1c1c1a;
+      --bg-card: #232320;
+      --bg-hover: #2a2a26;
+      --text-primary: #faf9f5;
+      --text-secondary: #b0aea5;
+      --text-tertiary: #87867f;
+      --accent: #c96442;
+      --accent-light: #d97757;
+      --accent-dark: #a65032;
+      --accent2: #5b8fd9;
+      --border: #30302e;
+      --border-light: #3d3d3a;
+      --success: #4ade80;
+      --warning: #f59e0b;
+      --negative: #f87171;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg); color: var(--text-primary);
+      line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', 'PingFang SC', serif; font-weight: 500; line-height: 1.25; color: var(--text-primary); }
+    h2 { font-size: 1.9rem; margin: 3rem 0 1.2rem; padding-bottom: .7rem; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1.3rem; margin: 2rem 0 .8rem; color: var(--accent-light); }
+    h4 { font-size: 1.1rem; margin: 1.5rem 0 .6rem; }
+    p { margin-bottom: 1.1rem; color: var(--text-secondary); }
+    ul, ol { margin: 0 0 1.1rem 1.4rem; color: var(--text-secondary); }
+    li { margin-bottom: .5rem; }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: underline; }
+    strong { color: var(--text-primary); font-weight: 600; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .navbar { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all .2s; }
+    .nav-links a:hover { color: var(--text-primary); background: rgba(201,100,66,.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201,100,66,.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); } .breadcrumb span { margin: 0 8px; }
+    .hero { background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%); padding: 64px 0 48px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,100,66,.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; }
+    .eyebrow { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding: 6px 12px; border: 1px solid var(--accent-dark); border-radius: 20px; background: rgba(201,100,66,.08); }
+    .hero h1 { font-size: 2.6rem; max-width: 900px; margin-bottom: 1.2rem; background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero .subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.6rem; }
+    .hero .meta { display: flex; gap: 24px; flex-wrap: wrap; color: var(--text-tertiary); font-size: .9rem; }
+    .meta-item { display: flex; align-items: center; gap: 8px; }
+    .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .highlight-box { background: rgba(201,100,66,.08); border-left: 4px solid var(--accent); border-radius: 8px; padding: 20px 22px; margin: 20px 0; color: var(--text-primary); }
+    .highlight-box p { color: var(--text-primary); margin-bottom: .6rem; } .highlight-box p:last-child { margin-bottom: 0; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin: 24px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 20px 0; }
+    .metric-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+    .metric-card .label { color: var(--text-secondary); font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--text-primary); font-size: 1.45rem; font-weight: 700; }
+    .metric-card .delta { font-size: .88rem; margin-top: 4px; color: var(--text-secondary); }
+    .positive { color: var(--success) !important; } .negative { color: var(--negative) !important; } .warn { color: var(--warning) !important; }
+    .aph { color: var(--accent-light); font-weight: 600; } .tel { color: var(--accent2); font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .92rem; }
+    th, td { padding: 11px 13px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,.03); white-space: nowrap; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .chart-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 24px 0; overflow-x: auto; }
+    .chart-title { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .chart-sub { font-size: .82rem; color: var(--text-tertiary); margin-bottom: 16px; }
+    .chart-legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: .82rem; color: var(--text-secondary); margin-top: 12px; }
+    .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+    .tag { display: inline-block; font-size: .72rem; padding: 2px 9px; border-radius: 12px; border: 1px solid var(--border-light); color: var(--text-secondary); margin-left: 6px; white-space: nowrap; }
+    .tag-high { color: var(--negative); border-color: rgba(248,113,113,.4); }
+    .tag-mid { color: var(--warning); border-color: rgba(245,158,11,.4); }
+    .tag-low { color: var(--text-tertiary); }
+    .footer { text-align: center; color: var(--text-tertiary); font-size: .85rem; padding: 40px 24px 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: .5rem; color: var(--text-tertiary); }
+    .src { font-size: .82rem; color: var(--text-tertiary); }
+    .src li { margin-bottom: .3rem; }
+    #backToTop { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transition: all .3s; z-index: 200; }
+    #backToTop.visible { opacity: .9; visibility: visible; }
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 12px; }
+      .hero h1 { font-size: 1.7rem; } .hero { padding: 40px 0 32px; }
+      h2 { font-size: 1.5rem; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="index.html#geopolitical">市场与地缘</a>
+      <a href="index.html#ai-tech">AI 与科技</a>
+      <a href="index.html#auto">中国汽车</a>
+      <a href="index.html#research" class="active">专题研究</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>连接器双雄深度对标与展望（2026-11-01）
+</div>
+
+<header class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow">专题研究 · 连接器行业 · 深度对标</div>
+    <h1>连接器双雄深度对标与展望：330亿对199亿之后，谁先踩中下一波红利</h1>
+    <p class="subtitle">安费诺 vs 泰科电子：同窗口成绩单拆解、未来 2-3 年趋势推演（224G/448G、CPO、800V 电源架构），以及中国厂商谁最有潜力率先在高速光连接上破局的系统性评估。</p>
+    <div class="meta">
+      <div class="meta-item"><span class="meta-dot"></span>报告日期：2026-11-01</div>
+      <div class="meta-item"><span class="meta-dot"></span>数据窗口：FY2026 / 2026 Q3（两家 10-28 同天发财报）</div>
+      <div class="meta-item"><span class="meta-dot"></span>DuoDuo Research 整理生成</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- 更新时间: 2026-11-01 -->
+
+  <div class="highlight-box" style="margin-top:32px;">
+    <p><strong>一句话结论：</strong>安费诺用一笔 105 亿美元的 CommScope 收购把泰科甩开了两个身位，但这个差距的本质是「AI 绑定深度」而非全面优劣——泰科以 22% 的经营利润率和 1.14 的订单出货比证明了基本盘的韧性；未来 2-3 年变数在三个赛道：448G 迁移、CPO 光进铜退、800V 电源架构。中国阵营中，<strong>立讯精密是唯一具备「光+铜+热+电源」全栈且绑定英伟达 Tier1 的玩家</strong>，纯光赛道则是仕佳光子与太辰光增速最猛，铜互连方向沃尔核材/兆龙互连确定性最高。</p>
+  </div>
+
+  <h2>一、同窗口成绩单：330.7 亿 vs 198.9 亿，差出来的 132 亿是什么</h2>
+  <p>2025 年 10 月到 2026 年 9 月，同一时间段内两家全球连接器巨头的成绩单：<strong class="aph">安费诺四个季度合计 330.7 亿美元</strong>（季度增速 49%→58%→55%→65%），<strong class="tel">泰科 2026 财年全年 198.9 亿美元</strong>（季度增速 22%→15%→14%→12%）。泰科此前已蝉联行业榜首 40 余年，2025 年首次被反超后，差距不是在缩小，而是在加速拉大。</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">季度营收对照（亿美元，2025 Q4 – 2026 Q3 同一自然窗口）</div>
+    <div class="chart-sub">安费诺为自然年季度；泰科为财年季度（FY26 Q1–Q4，财年止于 2026-09-25），窗口基本对齐</div>
+    <svg viewBox="0 0 720 340" width="720" style="min-width:680px" role="img" aria-labelledby="c1-title c1-desc">
+      <title id="c1-title">安费诺与泰科季度营收柱状对比图</title>
+      <desc id="c1-desc">四个季度中，安费诺营收从64.4亿增至102.3亿，泰科从47亿增至53.1亿，安费诺逐季拉开差距。</desc>
+      <!-- gridlines -->
+      <line x1="50" y1="280" x2="700" y2="280" stroke="#3d3d3a" stroke-width="1"/>
+      <line x1="50" y1="210" x2="700" y2="210" stroke="#30302e" stroke-width="1"/>
+      <line x1="50" y1="140" x2="700" y2="140" stroke="#30302e" stroke-width="1"/>
+      <line x1="50" y1="70" x2="700" y2="70" stroke="#30302e" stroke-width="1"/>
+      <text x="40" y="284" fill="#87867f" font-size="11" text-anchor="end">0</text>
+      <text x="40" y="214" fill="#87867f" font-size="11" text-anchor="end">40</text>
+      <text x="40" y="144" fill="#87867f" font-size="11" text-anchor="end">80</text>
+      <text x="40" y="74" fill="#87867f" font-size="11" text-anchor="end">120</text>
+      <!-- Q1 -->
+      <rect x="100" y="169" width="52" height="111" fill="#d97757" rx="3"/>
+      <rect x="158" y="170" width="52" height="110" fill="#5b8fd9" rx="3" opacity="0.85"/>
+      <text x="126" y="162" fill="#faf9f5" font-size="12" text-anchor="middle" font-weight="600">64.4</text>
+      <text x="184" y="163" fill="#b0aea5" font-size="12" text-anchor="middle">47.0</text>
+      <!-- Q2 -->
+      <rect x="255" y="128" width="52" height="152" fill="#d97757" rx="3"/>
+      <rect x="313" y="169" width="52" height="111" fill="#5b8fd9" rx="3" opacity="0.85"/>
+      <text x="281" y="121" fill="#faf9f5" font-size="12" text-anchor="middle" font-weight="600">76.0</text>
+      <text x="339" y="162" fill="#b0aea5" font-size="12" text-anchor="middle">47.1</text>
+      <!-- Q3 -->
+      <rect x="410" y="73" width="52" height="207" fill="#d97757" rx="3"/>
+      <rect x="468" y="159" width="52" height="121" fill="#5b8fd9" rx="3" opacity="0.85"/>
+      <text x="436" y="66" fill="#faf9f5" font-size="12" text-anchor="middle" font-weight="600">88.0</text>
+      <text x="494" y="152" fill="#b0aea5" font-size="12" text-anchor="middle">51.6</text>
+      <!-- Q4 -->
+      <rect x="565" y="40" width="52" height="240" fill="#d97757" rx="3"/>
+      <rect x="623" y="155" width="52" height="125" fill="#5b8fd9" rx="3" opacity="0.85"/>
+      <text x="591" y="33" fill="#faf9f5" font-size="12" text-anchor="middle" font-weight="600">102.3</text>
+      <text x="649" y="148" fill="#b0aea5" font-size="12" text-anchor="middle">53.1</text>
+      <!-- x labels -->
+      <text x="155" y="302" fill="#b0aea5" font-size="12" text-anchor="middle">25Q4 / FY26Q1</text>
+      <text x="310" y="302" fill="#b0aea5" font-size="12" text-anchor="middle">26Q1 / FY26Q2</text>
+      <text x="465" y="302" fill="#b0aea5" font-size="12" text-anchor="middle">26Q2 / FY26Q3</text>
+      <text x="620" y="302" fill="#b0aea5" font-size="12" text-anchor="middle">26Q3 / FY26Q4</text>
+      <text x="375" y="326" fill="#87867f" font-size="11" text-anchor="middle">同窗口单季对照（左柱安费诺，右柱泰科）</text>
+    </svg>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#d97757"></span>安费诺 APH（自然年季度）</span>
+      <span><span class="legend-dot" style="background:#5b8fd9"></span>泰科电子 TEL（财年季度）</span>
+    </div>
+  </div>
+
+  <p>拆开看，差距由三层构成：</p>
+  <ul>
+    <li><strong>增速层（核心）</strong>：剔除并购和汇率的有机增长，安费诺稳定在 <strong class="aph">30-37%</strong>，泰科稳定在 <strong class="tel">12-15%</strong>——安费诺的内生增速是泰科的 2.5 到 3 倍。泰科这个增速放在全球连接器行业（整体个位数增长）已是优等生，只是对手是另一个量级。</li>
+    <li><strong>结构层</strong>：安费诺 Q3 单季 64% 营收来自通讯板块（AI 数据中心高速互连），单价高、认证粘性强、满产摊薄固定成本；泰科一半营收来自交通板块，汽车业务全年有机增长仅 3.0%，利润率天然受限。</li>
+    <li><strong>并购层</strong>：安费诺 105 亿美元现金收购 CommScope CCS（2026 年 1 月完成），直接给通讯板块贡献约 48 个百分点的并购增速；泰科全年并购预算 16 亿美元（14 亿投向 Astrodyne TDI），节奏克制。即便把并购拿掉，安费诺通讯板块 Q3 有机增长仍达 51%，内生动能依然更强。</li>
+  </ul>
+
+  <div class="chart-wrap">
+    <div class="chart-title">增速曲线：报告口径与有机口径都在分叉</div>
+    <div class="chart-sub">同比增速 %（报告口径 = 含并购与汇率；有机 = 剔除后）。安费诺逐季加速，泰科逐季放缓</div>
+    <svg viewBox="0 0 720 280" width="720" style="min-width:680px" role="img" aria-labelledby="c2-title c2-desc">
+      <title id="c2-title">安费诺与泰科季度同比增速折线图</title>
+      <desc id="c2-desc">安费诺报告口径增速从49%升至65%，有机增速稳定在30%以上；泰科从22%降至12%，有机增速12-15%。</desc>
+      <line x1="50" y1="220" x2="700" y2="220" stroke="#3d3d3a"/>
+      <line x1="50" y1="163" x2="700" y2="163" stroke="#30302e"/>
+      <line x1="50" y1="106" x2="700" y2="106" stroke="#30302e"/>
+      <line x1="50" y1="49" x2="700" y2="49" stroke="#30302e"/>
+      <text x="40" y="224" fill="#87867f" font-size="11" text-anchor="end">0%</text>
+      <text x="40" y="167" fill="#87867f" font-size="11" text-anchor="end">20%</text>
+      <text x="40" y="110" fill="#87867f" font-size="11" text-anchor="end">40%</text>
+      <text x="40" y="53" fill="#87867f" font-size="11" text-anchor="end">60%</text>
+      <!-- APH reported -->
+      <polyline points="110,80 280,54 450,63 620,34" fill="none" stroke="#d97757" stroke-width="2.5"/>
+      <circle cx="110" cy="80" r="4" fill="#d97757"/><circle cx="280" cy="54" r="4" fill="#d97757"/><circle cx="450" cy="63" r="4" fill="#d97757"/><circle cx="620" cy="34" r="4" fill="#d97757"/>
+      <text x="110" y="68" fill="#d97757" font-size="11" text-anchor="middle">49%</text>
+      <text x="280" y="42" fill="#d97757" font-size="11" text-anchor="middle">58%</text>
+      <text x="450" y="51" fill="#d97757" font-size="11" text-anchor="middle">55%</text>
+      <text x="620" y="22" fill="#d97757" font-size="11" text-anchor="middle">65%</text>
+      <!-- APH organic dashed -->
+      <polyline points="110,114 280,126 450,134 620,114" fill="none" stroke="#d97757" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+      <circle cx="110" cy="114" r="3" fill="#d97757" opacity="0.7"/><circle cx="280" cy="126" r="3" fill="#d97757" opacity="0.7"/><circle cx="450" cy="134" r="3" fill="#d97757" opacity="0.7"/><circle cx="620" cy="114" r="3" fill="#d97757" opacity="0.7"/>
+      <!-- TEL reported -->
+      <polyline points="110,157 280,177 280,177 450,180 620,186" fill="none" stroke="#5b8fd9" stroke-width="2.5"/>
+      <circle cx="110" cy="157" r="4" fill="#5b8fd9"/><circle cx="280" cy="177" r="4" fill="#5b8fd9"/><circle cx="450" cy="180" r="4" fill="#5b8fd9"/><circle cx="620" cy="186" r="4" fill="#5b8fd9"/>
+      <text x="110" y="145" fill="#5b8fd9" font-size="11" text-anchor="middle">22%</text>
+      <text x="280" y="165" fill="#5b8fd9" font-size="11" text-anchor="middle">15%</text>
+      <text x="450" y="168" fill="#5b8fd9" font-size="11" text-anchor="middle">14%</text>
+      <text x="620" y="174" fill="#5b8fd9" font-size="11" text-anchor="middle">12%</text>
+      <!-- TEL organic dashed -->
+      <polyline points="110,177 280,183 450,186 620,183" fill="none" stroke="#5b8fd9" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+      <circle cx="110" cy="177" r="3" fill="#5b8fd9" opacity="0.7"/><circle cx="280" cy="183" r="3" fill="#5b8fd9" opacity="0.7"/><circle cx="450" cy="186" r="3" fill="#5b8fd9" opacity="0.7"/><circle cx="620" cy="183" r="3" fill="#5b8fd9" opacity="0.7"/>
+      <text x="110" y="264" fill="#b0aea5" font-size="12" text-anchor="middle">25Q4/FY26Q1</text>
+      <text x="280" y="264" fill="#b0aea5" font-size="12" text-anchor="middle">26Q1/FY26Q2</text>
+      <text x="450" y="264" fill="#b0aea5" font-size="12" text-anchor="middle">26Q2/FY26Q3</text>
+      <text x="620" y="264" fill="#b0aea5" font-size="12" text-anchor="middle">26Q3/FY26Q4</text>
+    </svg>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#d97757"></span>安费诺 · 报告口径</span>
+      <span><span class="legend-dot" style="background:#d97757;opacity:.55"></span>安费诺 · 有机（虚线）</span>
+      <span><span class="legend-dot" style="background:#5b8fd9"></span>泰科 · 报告口径</span>
+      <span><span class="legend-dot" style="background:#5b8fd9;opacity:.55"></span>泰科 · 有机（虚线）</span>
+    </div>
+  </div>
+
+  <h2>二、数通差距：安费诺单季 ≈ 泰科 DDN 两年</h2>
+  <p>口径说明：安费诺通讯解决方案板块覆盖数据中心、电信网络、宽带接入、光纤连接全场景；泰科 DDN（数字数据网络）只是工业板块下的数通互连细分。范围不完全对等，但体量差距依然显著。</p>
+  <div class="grid-2">
+    <div class="metric-card">
+      <div class="label">安费诺 · IT Datacom 2026Q3</div>
+      <div class="value">$49 亿 <span style="font-size:.9rem;color:var(--success)">+117%</span></div>
+      <div class="delta">占总营收 48%，其中 AI 约占 3/4；AI 年化运行率推算约 $140–150 亿</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">泰科 · DDN FY2026 全年</div>
+      <div class="value">$31.8 亿 <span style="font-size:.9rem;color:var(--success)">+44%</span></div>
+      <div class="delta">Q4 单季 $9.49 亿（+34%）；FY26 订单 +70%，是泰科订单增长第一引擎</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">安费诺 · 调整后经营利润率（Q3）</div>
+      <div class="value">29.7%</div>
+      <div class="delta">通讯板块利润率 33.1%；严苛环境 +35%</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">泰科 · 调整后经营利润率（FY26Q4）</div>
+      <div class="value">22.1%</div>
+      <div class="delta positive">同比 +100bp；全年 FCF $34 亿（100% 转换率）</div>
+    </div>
+  </div>
+  <p>两组订单数据同样说明问题：<strong class="aph">安费诺 Q3 订单 121.7 亿（+99%），book-to-bill 1.19</strong>；<strong class="tel">泰科 Q4 订单 61 亿（+29%），book-to-bill 1.14</strong>，全年订单 222 亿（+27%）、期末在手订单 80 亿（年内 +20 亿，其中 60% 来自 DDN 与航空国防）。泰科不是没踩中 AI——DDN 全年 +44%、订单 +70% 在传统连接器行业已是炸裂级——问题是基数太小，且工业板块全年才 99 亿，DDN 只占三分之一不到。</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">收入结构对照：两家公司已经是两种生意</div>
+    <div class="chart-sub">2026Q3 单季分部占比。安费诺 = AI 数通主导；泰科 = 交通+工业双轮，DDN 仅占 17.9%</div>
+    <svg viewBox="0 0 720 210" width="720" style="min-width:680px" role="img" aria-labelledby="c4-title c4-desc">
+      <title id="c4-title">安费诺与泰科收入结构堆叠条形图</title>
+      <desc id="c4-desc">安费诺64%营收来自通讯板块；泰科53%来自工业方案、49%来自交通方案，其中DDN数通占18%。</desc>
+      <text x="0" y="45" fill="#b0aea5" font-size="12">安费诺 Q3</text>
+      <rect x="80" y="28" width="384" height="30" fill="#d97757" rx="4"/>
+      <rect x="464" y="28" width="118" height="30" fill="#8a6d5c" rx="0"/>
+      <rect x="582" y="28" width="94" height="30" fill="#5c5650" rx="0"/>
+      <text x="272" y="47" fill="#fff" font-size="12" text-anchor="middle" font-weight="600">通讯 64%</text>
+      <text x="523" y="47" fill="#fff" font-size="11" text-anchor="middle">严苛 19.7%</text>
+      <text x="629" y="47" fill="#fff" font-size="11" text-anchor="middle">互连传感</text>
+      <text x="0" y="125" fill="#b0aea5" font-size="12">泰科 Q4</text>
+      <rect x="80" y="108" width="118" height="30" fill="#5b8fd9" rx="4"/>
+      <rect x="198" y="108" width="198" height="30" fill="#3d5a80" rx="0"/>
+      <rect x="396" y="108" width="186" height="30" fill="#7a90b0" rx="0"/>
+      <rect x="582" y="108" width="94" height="30" fill="#5c5650" rx="0"/>
+      <text x="139" y="127" fill="#fff" font-size="11" text-anchor="middle" font-weight="600">DDN 18%</text>
+      <text x="297" y="127" fill="#fff" font-size="11" text-anchor="middle">工业其他 35%</text>
+      <text x="489" y="127" fill="#fff" font-size="11" text-anchor="middle">交通 46%</text>
+      <text x="629" y="127" fill="#fff" font-size="11" text-anchor="middle">传感等</text>
+      <text x="80" y="170" fill="#87867f" font-size="11">注：泰科「交通」含汽车 $19.3 亿（+7%）/商用交通/传感；「工业其他」含自动化互联生活、能源、航空国防、医疗</text>
+    </svg>
+  </div>
+
+  <p>利润率的 7.6 个百分点差距（29.7% vs 22.1%）不是经营效率问题，而是业务结构问题：安费诺踩在 AI 数通这条行业利润最厚的曲线上，泰科的主体仍是「稳定但低毛利」的交通业务。一句话——<strong>不是泰科不够优秀，是它没站在利润最厚的那段曲线上。</strong></p>
+
+  <h2>三、财报细节与资本市场反应：两种估值逻辑被继续放大</h2>
+  <p>10 月 28 日两家同天发财报，全部超指引上限，但股价反应截然相反：</p>
+  <ul>
+    <li><strong class="aph">安费诺</strong>：Q4 指引营收 $103–105 亿（约 +60%）、调整后 EPS $0.81–0.83（+65–69%）；全年 $369–371 亿、EPS $2.82–2.84（约 +70%）。CommScope 全年销售预期由 $46 亿上调至 $51 亿、EPS 增厚由 $0.15 上调至 $0.18，整合顺利。股息 +20%、新批 3 年 $40 亿回购。财报日股价 <span class="positive">+3.52%</span>（收 $80.96）；BNP 目标价 $110→115，UBS/Truist 均 Buy（$111/$112），目标价区间 $100–116。</li>
+    <li><strong class="tel">泰科</strong>：FY27 指引 Q1 营收约 $53.5 亿（+15%）、EPS 约 $3.30（+21%）；全年有机增速与 FY26 的 12% 相当（双位数）。<strong>DDN 预计 FY27 增收超 $10 亿，一半以上落在下半年</strong>（AI 相关为主）。Astrodyne TDI 预计 FY27 Q1 末交割。FY26 股东回报 $28 亿（回购 $18.92 亿 + 股息 $8.69 亿）。财报日股价反而 <span class="negative">-1.82%</span>（收 $221.24，beat 后获利回吐）——但次日 UBS $253→263、Citi $230→260 双双上调，19 家共识 Buy，平均目标价约 $257。</li>
+  </ul>
+  <p>市场用脚投票的逻辑很直白：给安费诺定价的是「AI 弹性」，给泰科定价的是「稳健现金流」——即便泰科业绩与指引双超预期，只要增速故事不够快，短期就涨不动。这是两种估值逻辑，不是简单的谁对谁错；但「AI 数通能否讲出更强增长故事」将持续决定两家的市值差。</p>
+
+  <h2>四、未来 2-3 年趋势推演：三个赛道定胜负</h2>
+  <div class="card">
+    <h3 style="margin-top:0">① 224G → 448G：迁移节奏比路线更重要</h3>
+    <p>1.6T 以太网正在从蓝图变成现实。ECOC 2026 上，安费诺已完成 224G/lane 光模块与 112G/lane 铜互连的互通演示；448G PAM6、CPC（共封装铜）与 NPO（近封装光）平台均已出样，主打「224G→448G 平滑迁移」。对两家都是增量，但安费诺在每一个 lane 速率节点上都领先半步。</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">② CPO / 光进铜退之争：两家罕见地立场一致——「互连总量在涨，别赌单一路线」</h3>
+    <p>安费诺的判断是「铜未死」：ACC/AEC 有源铜缆替代被动 DAC，铜光共设计，NPO/CPC/NPC 架构可互换部署以对冲路线风险（CommScope 收购正是补光的关键一手）。泰科的应对是 RAM Photonics 布局芯片近端/片上光纤，同时强调电源连接与制程无关（agnostic）——<strong>光进铜退反而提升其电源连接含量</strong>。对行业客户而言，这意味着 3 年内不是「铜换光」的替代剧本，而是「铜光电源齐扩容」的总量剧本。</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">③ 800V HVDC 电源架构：被低估的第三条战线</h3>
+    <p>泰科已发布 800VDC 白皮书，称客户处于不同试验阶段；DDN 中电源连接约占 30%，增速将快于 DDN 整体。安费诺称电源互连已是 AI 业务重要组成，800V 架构带来增量。AI 机柜功率密度冲向数百 kW，供电架构从 54V 向 800V HVDC 演进，电源连接器/母排/配电单元的技术含量和单价都在抬升——这是泰科相对更有禀赋（工业+能源客户基础）、也是国产厂商可以同步发力的赛道。</p>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">营收差距轨迹：2025 年反超 → 2026 年差距近一倍</div>
+    <div class="chart-sub">年度营收（亿美元）。2026 为安费诺指引中值 $370 亿 vs 泰科 FY26 实际 $198.9 亿</div>
+    <svg viewBox="0 0 720 300" width="720" style="min-width:680px" role="img" aria-labelledby="c3-title c3-desc">
+      <title id="c3-title">安费诺与泰科年度营收差距柱状图</title>
+      <desc id="c3-desc">2025年安费诺231亿对泰科173亿；2026年预计370亿对199亿，差距扩大到约170亿。</desc>
+      <line x1="60" y1="250" x2="700" y2="250" stroke="#3d3d3a"/>
+      <line x1="60" y1="185" x2="700" y2="185" stroke="#30302e"/>
+      <line x1="60" y1="120" x2="700" y2="120" stroke="#30302e"/>
+      <line x1="60" y1="55" x2="700" y2="55" stroke="#30302e"/>
+      <text x="50" y="254" fill="#87867f" font-size="11" text-anchor="end">0</text>
+      <text x="50" y="189" fill="#87867f" font-size="11" text-anchor="end">100</text>
+      <text x="50" y="124" fill="#87867f" font-size="11" text-anchor="end">200</text>
+      <text x="50" y="59" fill="#87867f" font-size="11" text-anchor="end">300</text>
+      <!-- 2025 -->
+      <rect x="150" y="143" width="80" height="107" fill="#d97757" rx="4"/>
+      <rect x="245" y="172" width="80" height="78" fill="#5b8fd9" rx="4" opacity="0.85"/>
+      <text x="190" y="135" fill="#faf9f5" font-size="13" text-anchor="middle" font-weight="600">231</text>
+      <text x="285" y="164" fill="#b0aea5" font-size="13" text-anchor="middle">173</text>
+      <text x="238" y="272" fill="#b0aea5" font-size="12" text-anchor="middle">2025</text>
+      <!-- 2026 -->
+      <rect x="430" y="0.5" width="80" height="249.5" fill="#d97757" rx="4"/>
+      <rect x="525" y="134" width="80" height="116" fill="#5b8fd9" rx="4" opacity="0.85"/>
+      <text x="470" y="14" fill="#faf9f5" font-size="13" text-anchor="middle" font-weight="600">370（指引中值）</text>
+      <text x="565" y="126" fill="#b0aea5" font-size="13" text-anchor="middle">198.9</text>
+      <text x="518" y="272" fill="#b0aea5" font-size="12" text-anchor="middle">2026（APH 指引 / TEL 实际）</text>
+      <!-- gap annotation -->
+      <line x1="515" y1="6" x2="525" y2="6" stroke="#f59e0b" stroke-dasharray="4,3"/>
+      <text x="640" y="72" fill="#f59e0b" font-size="11" text-anchor="middle">差距 ≈ $170 亿</text>
+    </svg>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#d97757"></span>安费诺 APH</span>
+      <span><span class="legend-dot" style="background:#5b8fd9"></span>泰科电子 TEL</span>
+    </div>
+  </div>
+
+  <h3>两家公司的未来画像（我们的判断）</h3>
+  <table>
+    <tr><th>维度</th><th>安费诺：激进派吃到 AI 最大红利</th><th>泰科：稳健派的反击窗口</th></tr>
+    <tr><td>增长引擎</td><td>IT Datacom 全年翻倍以上；2026 指引 +70% EPS</td><td>DDN FY27 增收超 $10 亿（H2 为主）；全年有机 ~12%</td></tr>
+    <tr><td>核心风险</td><td>AI 单一赛道+英伟达链的高集中度；P/E ~37 倍的估值回撤（10 月两周累跌约 15% 已演示过一次）</td><td>AI 故事不够快则市值差继续被定价；汽车基本盘仅 +3% 有机</td></tr>
+    <tr><td>胜负手</td><td>CommScope 整合兑现 + 448G/CPO 路线不押错</td><td>800V 电源架构 + Astrodyne TDI 切入 AI 电源滤波，把「agnostic」变成新叙事</td></tr>
+    <tr><td>更可能的情景</td><td>差距继续扩大 12-18 个月，直到 AI capex 增速见顶</td><td>守住 20%+ 利润率与双位数有机增长，等风来</td></tr>
+  </table>
+
+  <h2>五、中国厂商竞争力全景：谁能在高速光连接上率先破局</h2>
+  <p>AI 互连红利是真的，但正在快速向头部集中。11 家中国上市互连厂商 2026 年三季报全部出炉，我们按「数通收入规模 / 技术代际 / 客户质量 / 增速」四个维度打分（1-5 分）：</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">中国厂商 AI 互连竞争力总分排序</div>
+    <div class="chart-sub">四维打分（规模/代际/客户/增速，各 1-5）合计。对标：安费诺 IT Datacom 单季 $49 亿（+117%）、泰科 DDN 单季 $9.49 亿（+34%）</div>
+    <svg viewBox="0 0 720 420" width="720" style="min-width:680px" role="img" aria-labelledby="c5-title c5-desc">
+      <title id="c5-title">中国厂商AI互连竞争力横向条形图</title>
+      <desc id="c5-desc">立讯精密17分居首，光迅科技16分，太辰光和仕佳光子各15分，电连技术和意华股份8分垫底。</desc>
+      <!-- rows: name x=0-130, bar x=140.. scale 20px per point -->
+      <text x="125" y="39" fill="#b0aea5" font-size="12" text-anchor="end">立讯精密</text>
+      <rect x="140" y="24" width="340" height="20" fill="#d97757" rx="3"/><text x="488" y="39" fill="#faf9f5" font-size="12" font-weight="600">17</text>
+      <text x="125" y="75" fill="#b0aea5" font-size="12" text-anchor="end">光迅科技</text>
+      <rect x="140" y="60" width="320" height="20" fill="#5b8fd9" rx="3"/><text x="468" y="75" fill="#faf9f5" font-size="12" font-weight="600">16</text>
+      <text x="125" y="111" fill="#b0aea5" font-size="12" text-anchor="end">太辰光</text>
+      <rect x="140" y="96" width="300" height="20" fill="#5b8fd9" rx="3"/><text x="448" y="111" fill="#faf9f5" font-size="12">15</text>
+      <text x="125" y="147" fill="#b0aea5" font-size="12" text-anchor="end">仕佳光子</text>
+      <rect x="140" y="132" width="300" height="20" fill="#5b8fd9" rx="3"/><text x="448" y="147" fill="#faf9f5" font-size="12">15</text>
+      <text x="125" y="183" fill="#b0aea5" font-size="12" text-anchor="end">沃尔核材/乐庭</text>
+      <rect x="140" y="168" width="280" height="20" fill="#c9a227" rx="3"/><text x="428" y="183" fill="#faf9f5" font-size="12">14</text>
+      <text x="125" y="219" fill="#b0aea5" font-size="12" text-anchor="end">鼎通科技</text>
+      <rect x="140" y="204" width="260" height="20" fill="#c9a227" rx="3"/><text x="408" y="219" fill="#faf9f5" font-size="12">13</text>
+      <text x="125" y="255" fill="#b0aea5" font-size="12" text-anchor="end">兆龙互连</text>
+      <rect x="140" y="240" width="260" height="20" fill="#c9a227" rx="3"/><text x="408" y="255" fill="#faf9f5" font-size="12">13</text>
+      <text x="125" y="291" fill="#b0aea5" font-size="12" text-anchor="end">中航光电</text>
+      <rect x="140" y="276" width="260" height="20" fill="#c9a227" rx="3"/><text x="408" y="291" fill="#faf9f5" font-size="12">13</text>
+      <text x="125" y="327" fill="#b0aea5" font-size="12" text-anchor="end">华丰科技</text>
+      <rect x="140" y="312" width="220" height="20" fill="#8a8a84" rx="3"/><text x="368" y="327" fill="#faf9f5" font-size="12">11</text>
+      <text x="125" y="363" fill="#b0aea5" font-size="12" text-anchor="end">电连技术</text>
+      <rect x="140" y="348" width="160" height="20" fill="#8a8a84" rx="3"/><text x="308" y="363" fill="#faf9f5" font-size="12">8</text>
+      <text x="125" y="399" fill="#b0aea5" font-size="12" text-anchor="end">意华股份</text>
+      <rect x="140" y="384" width="160" height="20" fill="#8a8a84" rx="3"/><text x="308" y="399" fill="#faf9f5" font-size="12">8</text>
+      <text x="140" y="416" fill="#87867f" font-size="11">0　　　4　　　8　　　12　　　16　　　20（四维合计满分 20）</text>
+    </svg>
+  </div>
+
+  <h3>第一梯队详解</h3>
+  <table>
+    <tr><th>公司</th><th>AI 暴露度</th><th>2026 前三季业绩</th><th>关键进展</th><th>主要风险</th></tr>
+    <tr><td><strong>立讯精密</strong><br><span class="src">002475</span></td><td><span class="tag tag-high">高</span></td><td>营收 2850 亿 (+29.0%)；归母 130.6 亿 (+13.4%)</td><td>英伟达核心 Tier1（GB200 量产、GB300 预研）；224G 高速线缆量产、448G 预研；光互连覆盖 LRO/LPO/XPO/NPO/CPO 至 3.2T；唯一「光铜热电源」全栈中国厂商</td><td>毛利率仅 ~11.9%；苹果依赖高，AI 收入占比仍低、利润弹性被稀释</td></tr>
+    <tr><td><strong>光迅科技</strong><br><span class="src">002281</span></td><td><span class="tag tag-high">高</span></td><td>营收 116.8 亿 (+36.9%)；归母 12.84 亿 (+78.7%)</td><td>国资全品类光器件龙头；Q3 单季 +54%/+103%；高端数通份额追赶中</td><td>高端数通份额落后中际旭创/新易盛</td></tr>
+    <tr><td><strong>太辰光</strong><br><span class="src">300570</span></td><td><span class="tag tag-high">高</span></td><td>营收 20.1 亿 (+65.4%)；归母 2.95 亿 (+13.3%)</td><td>全球 MPO 高密度光连接+Shuffle 布线龙头；CPO 交换机 MPO 端口核心受益者；Q3 单季营收 +161%</td><td>汇兑损失、新产能良率爬坡</td></tr>
+    <tr><td><strong>仕佳光子</strong><br><span class="src">688313</span></td><td><span class="tag tag-mid">中高</span></td><td>营收 27.2 亿 (+74.5%)；归母 5.86 亿 (+95.4%)</td><td>AWG/光引擎平台型；Q3 单季 +116%/+226%；卡位 CPO 光引擎；机构预测 2026 净利 ~7.4 亿 (+98%)</td><td>产能瓶颈、定增摊薄</td></tr>
+    <tr><td><strong>沃尔核材/乐庭智联</strong><br><span class="src">002130</span></td><td><span class="tag tag-mid">中高</span></td><td>营收 74.4 亿 (+22.3%)；归母 8.77 亿 (+6.8%)</td><td>PCIe 系列+单通道 224G 均稳定量产（国内稀缺批量能力）；客户含安费诺/莫仕/泰科/立讯及英伟达链；2025 高速通信线收入 10.2 亿 (+238%)</td><td>铜缆被 AEC/光替代的技术路线风险</td></tr>
+    <tr><td><strong>兆龙互连</strong><br><span class="src">300913</span></td><td><span class="tag tag-high">高</span></td><td>营收 19.8 亿 (+30.6%)；归母 1.83 亿 (+32.7%)</td><td>国内少数英伟达 800G DAC 认证厂商；1.6T 验证中；Q3 单季 +39.4%/+59.7%</td><td>DAC 受 AEC/光替代威胁；利润体量小</td></tr>
+  </table>
+  <p class="src">其余厂商速览：鼎通科技（688668）QSFP-DD 112G 量产、224G 开发中，是安费诺/莫仕/泰科的精密组件二级供应商（前三季 +33%）；中航光电（002179）牵头 GW 级开放智算中心高速互连工作组，液冷订单积压扩产（Q3 单季 +47.9%）；华丰科技（688629）华为高速背板核心供应商但增收不增利；电连技术与意华股份尚处培育/承压期。</p>
+
+  <h3>我们的结论：破局者分三条战线</h3>
+  <div class="highlight-box">
+    <p><strong>1. 全栈破局：立讯精密（002475）。</strong>唯一同时握有「光+铜+热+电源」四张牌且深度绑定英伟达 Tier1 的中国厂商——224G 已量产、448G 在预研、光互连覆盖到 3.2T、GB200 量产 GB300 预研。它有切入 CPO/NPO 的完整能力，短板是 AI 收入占比低、~12% 的毛利率意味着赚的是制造的辛苦钱。<strong>它最像「下一个安费诺」的胚子，但还差一次对高端互连资产的激进并购。</strong></p>
+    <p><strong>2. 纯光赛道：仕佳光子 + 太辰光。</strong>如果 CPO 路线胜出，这两家在全球供应链中已具不可替代性：仕佳卡位 CPO 光引擎（Q3 净利 +226%，增速全场最猛），太辰卡位 CPO 交换机 MPO 高密度端口（Q3 营收 +161%）。光互连是中国阵营唯一「已并跑甚至局部反超」的战线。</p>
+    <p><strong>3. 铜互连确定性：沃尔核材/乐庭 + 兆龙互连。</strong>224G 国内稀缺量产能力 + 英伟达 800G DAC 认证，短期确定性最高；长期需直面 AEC/光替代的技术路线风险。</p>
+  </div>
+
+  <h3>与安费诺/泰科的差距量级</h3>
+  <ul>
+    <li><strong>收入</strong>：11 家中国厂商 AI 数通相关收入合计估算约 <strong>$50–70 亿/年</strong>，仅约等于安费诺 IT Datacom 一个季度的体量（$49 亿），或泰科 DDN 的 1.6-2.2 倍；</li>
+    <li><strong>技术</strong>：光互连（模块/器件）已并跑甚至局部反超；连接器本体（高速背板、Cage 精密件、材料与冲压工艺）落后半代至一代，多数仍以二级供应角色嵌入安费诺/莫仕/泰科体系（鼎通、乐庭即为代表——它们既是国产替代者，也是安费诺/泰科的供应商）；</li>
+    <li><strong>客户与标准</strong>：深度绑定英伟达/华为两链，缺全球云厂商直接认证与互连标准话语权；</li>
+    <li><strong>时间窗口</strong>：铜/背板互连落后约 1 代（3-5 年）；CPO 时代 3-5 年内有望缩小至 1 代以内——CPO 就是文章说的「换道」窗口。</li>
+  </ul>
+
+  <h2>六、风险提示与数据口径</h2>
+  <ul class="src">
+    <li>泰科为财年制（2026 财年止于 2026-09-25），安费诺为日历年，季度数据不完全对齐；同窗口对比为近似口径。</li>
+    <li>安费诺 2026-09-02 完成 1 拆 2 股票拆分，每股数据均为拆分后口径。</li>
+    <li>市场份额、AI 收入运行率（$140–150 亿）等为基于财报口径的推算值，非公司直接披露；太辰光/仕佳光子 2026 全年为机构预测值。</li>
+    <li>中国厂商评分（1-5 分）为本报告基于公开财报与行业信息的分析判断，非审计数据；连接器行业统计口径差异较大，份额与增速均为行业普遍估算。</li>
+    <li>投资风险提示：安费诺 P/E 约 37 倍，10 月已发生两周约 15% 的估值压缩；AI capex 若见顶，高集中度风险将快速定价。本文不构成投资建议。</li>
+  </ul>
+
+  <h2>七、来源</h2>
+  <ol class="src">
+    <li>《同时期，330亿 vs 199亿！安费诺把泰科甩开了132亿》奔跑吧丶连接器，2026-10-31（本文核心对比框架来源，数据已与财报逐项核实）</li>
+    <li>Amphenol 2026 Q3 业绩公告与电话会纪要（investor.amphenol.com / fool.com，2026-10-28）</li>
+    <li>TE Connectivity FY2026 Q4/全年业绩公告、演示材料与 800VDC 白皮书（investors.te.com / te.com，2026-10-28）</li>
+    <li>分析师观点：BNP Paribas、UBS、Citi、Truist（fxempire / tradingview / marketscreener，2026-10-28/29）</li>
+    <li>《连接器双雄对标：安费诺如何反超泰科》本站专题研究（2026-09-16，2026-10-29 更新）</li>
+    <li>《TEL vs APH 对照速览》本站周报期跟踪（至 2026-10-26 期）</li>
+    <li>中国厂商数据：2026 年三季报披露（东方财富 / 第一财经 / 21 世纪经济报道，2026-10 下旬）；Bishop & Associates 行业框架（2026-10-21）</li>
+  </ol>
+</main>
+
+<footer class="footer">
+  <p>由 DuoDuo Research 整理生成 · 2026-11-01</p>
+  <p>GitHub 仓库：github.com/hosamzj/sites · 本报告不构成投资建议</p>
+</footer>
+
+<button id="backToTop" title="回到顶部">↑</button>
+<div id="waline-comments" style="max-width:1080px;margin:0 auto;padding:0 24px 40px;"></div>
+<script>
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
+<script>
+  Waline.init({
+    el: "#waline-comments",
+    serverURL: "https://comment.hosamzj.cn",
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true,
+  });
+</script>
+</body>
+</html>

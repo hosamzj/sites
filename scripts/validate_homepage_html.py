@@ -57,6 +57,11 @@ class Checker(HTMLParser):
             if "section-header" in cls:
                 self.section_header_depth = len(self.stack) + 1
             elif "history-list" in cls:
+                # history-list 不得嵌在 report-grid 内：grid 会把它当普通网格项压成一列（2026-11-02 专题研究事故）
+                if self.grid_depth and len(self.stack) + 1 > self.grid_depth:
+                    self.errors.append(
+                        f"#{self.section}: history-list 嵌套在 report-grid 内（grid 未闭合）at {self.getpos()}"
+                    )
                 self.history_depth = len(self.stack) + 1
             elif "report-grid" in cls and self.section in SECTIONS:
                 self.grid_depth = len(self.stack) + 1

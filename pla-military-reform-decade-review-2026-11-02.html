@@ -52,7 +52,10 @@
     .timeline-item::before { content: ""; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
     .timeline-item .t-year { color: var(--accent-light); font-weight: 700; }
     @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
-  </style>
+    .chart-fig { margin: 20px 0; }
+  .chart-fig img { width: 100%; border-radius: 8px; border: 1px solid #30302e; display: block; }
+  .chart-fig figcaption { color: #87867f; font-size: 12.5px; margin-top: 8px; line-height: 1.6; }
+</style>
 </head>
 <body>
 <nav class="navbar">
@@ -96,45 +99,38 @@
     <p>但「一切人」（视频语，指部分观点）认为按美元绝对值比较肤浅，理由有二：中国军工体系举国协同、美国则是五大寡头层层分肥（1280 美元一个咖啡杯、3 万美元一个马桶圈的成本加成合同）；且中国拥有完整工业体系，同样的钱能买到更多装备。</p>
     <div class="highlight-box">按 SIPRI 2025 年统一美元口径：美国军事支出约 9,540 亿美元，中国约 3,360 亿美元，差距 2.84 倍。要论证「中国实际购买力超美」，需证明中国每美元预算买到美国 2.84 倍以上的军事投入——这正是各研究机构分歧所在。</div>
     <p>购买力研究的主要结论：澳大利亚洛伊研究所与麻省理工安全研究项目认为中国军队投入购买力仅相当于美国的 <b>36%</b>；军事购买力 PPP 理论提出者、澳籍经济学家彼得·罗伯逊则认为达到 <b>60%</b>。视频特意指出，这些都是西方视角，中方从未公布自己的测算。</p>
+    <figure class="chart-fig">
+      <img src="assets/report-charts/pla-ppp-estimates.webp" alt="中国军费购买力估算：不同研究机构的结论" loading="lazy">
+      <figcaption>▲ 原片 05:21 截图：中国军费购买力估算——洛伊研究所 / 麻省理工安全研究项目结论为 36%，彼得·罗伯逊的研究区间为 36%~100%。</figcaption>
+    </figure>
     <p>哈佛贝尔弗中心唱出「反调」：美国 1 万亿美元执行的是<b>全球任务</b>，中国 3,360 亿美元聚焦<b>东亚单点</b>——战略目标不同，倍数不能直接对打。其依据是兰德公司 2015 年《中美军事力量计分卡》：在台湾与南沙两个具体场景下，中国凭借地理与不断增长的能力，已能对美国在中国周边的军事优势构成极大挑战。耐人寻味的是，该报告牵头作者埃里克·赫金博瑟姆（Eric Heginbotham）正是 2024 年麻省理工购买力研究的领头作者之一——一个人得出两个结论：总量上中国明显低于美国，西太局部中国已能挑战美军。贝尔弗中心据此判断：美军在西太的压倒性优势<b>早在 2015 年就已被明显改变</b>——而 2015 年恰是军改启动之年。</p>
-    <svg viewBox="0 0 640 240" width="100%" style="max-width:640px" role="img" aria-label="中美军费对比图">
-  <text x="0" y="20" fill="#faf9f5" font-size="15" font-weight="700">2025 年 SIPRI 统一口径：美国 ≈ 中国 × 2.84</text>
-  <text x="0" y="58" fill="#b0aea5" font-size="13">美国 9,540 亿美元</text>
-  <rect x="120" y="44" width="480" height="22" rx="4" fill="#c96442" opacity="0.9"/>
-  <text x="0" y="100" fill="#b0aea5" font-size="13">中国 3,360 亿美元</text>
-  <rect x="120" y="86" width="169" height="22" rx="4" fill="#4ade80" opacity="0.85"/>
-  <line x1="120" y1="130" x2="600" y2="130" stroke="#30302e"/>
-  <text x="0" y="158" fill="#b0aea5" font-size="12">名义预算（2026 财年）</text>
-  <text x="0" y="178" fill="#87867f" font-size="12">美国 1.01 万亿美元 / 中国 1.94 万亿元人民币（+7%）</text>
-  <text x="0" y="212" fill="#87867f" font-size="12">购买力研究分歧：洛伊研究所 / 麻省理工 ≈ 36%，彼得·罗伯逊 ≈ 60%</text>
-</svg>
+    <figure class="chart-fig" style="max-width:560px">
+      <img src="assets/report-charts/pla-rand-scorecard-cover.webp" alt="兰德公司中美军事力量计分卡报告封面" loading="lazy">
+      <figcaption>▲ 原片 06:03 截图：兰德公司《The U.S.-China Military Scorecard》报告封面——台湾与南沙两个场景下中国已能挑战美军区域优势。</figcaption>
+    </figure>
+    <figure class="chart-fig">
+      <img src="assets/report-charts/pla-sipri-budget-2025.webp" alt="2025年中美军事支出对比（SIPRI统一口径）" loading="lazy">
+      <figcaption>▲ 原片 04:24 截图：2025 年中美军事支出对比（SIPRI 统一口径，以美元计）——美国 9,540 亿 vs 中国 3,360 亿美元，差距 2.84 倍。</figcaption>
+    </figure>
   </div>
 
   <div class="section">
     <h2>二、体检第一项：指挥中枢——「大陆军」换血了吗</h2>
-    <p>军改核心是「军委管总、战区主战、军种主建」，但机构建起来、岗位设出来，坐进去的人不可能 overnight 熟练。视频举了人民日报 2026 年 8 月报道的中部战区参谋<b>李畅</b>案例：这位原陆军营长调任战区机关前自学海空军手册、参数背得滚瓜烂熟，却在第一场跨军种协同推演中「张不开嘴」——技术参数在联合筹划面前废纸一张，最终只能向一线飞行员、舰长挨个请教重新补课。</p>
+    <p>军改核心是「军委管总、战区主战、军种主建」，但机构建起来、岗位设出来，坐进去的人不可能 overnight 熟练。
+    <figure class="chart-fig" style="max-width:640px">
+      <img src="assets/report-charts/pla-five-theaters-map.webp" alt="五大战区示意图" loading="lazy">
+      <figcaption>▲ 原片 25:30 截图：军委管总、战区主战、军种主建——七大军区撤并为五大战区后的指挥架构示意。</figcaption>
+    </figure>视频举了人民日报 2026 年 8 月报道的中部战区参谋<b>李畅</b>案例：这位原陆军营长调任战区机关前自学海空军手册、参数背得滚瓜烂熟，却在第一场跨军种协同推演中「张不开嘴」——技术参数在联合筹划面前废纸一张，最终只能向一线飞行员、舰长挨个请教重新补课。</p>
     <p>这类个体的阵痛背后是人事结构的真实变化。视频引用美国国防大学对 2015–2022 年军改七年约 150–200 名核心高级将领的追踪：</p>
-    <svg viewBox="0 0 640 260" width="100%" style="max-width:640px" role="img" aria-label="解放军高级将领军种背景变化">
-  <text x="0" y="18" fill="#faf9f5" font-size="15" font-weight="700">副大军区级以上高级将领背景：2015 → 2022</text>
-  <g font-size="12" fill="#b0aea5">
-    <text x="70" y="48">陆军</text><text x="70" y="86">海军</text><text x="70" y="124">空军</text><text x="70" y="162">火箭军/战略支援/信息等新质力量</text>
-  </g>
-  <g>
-    <rect x="260" y="34" width="345" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="612" y="48" fill="#b0aea5" font-size="11">69%</text>
-    <rect x="260" y="72" width="60"  height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="325" y="86" fill="#b0aea5" font-size="11">12%</text>
-    <rect x="260" y="110" width="70" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="335" y="124" fill="#b0aea5" font-size="11">14%</text>
-    <rect x="260" y="148" width="25" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="290" y="162" fill="#b0aea5" font-size="11">5%</text>
-  </g>
-  <g>
-    <rect x="260" y="56" width="245" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="510" y="70" fill="#b0aea5" font-size="11">49%</text>
-    <rect x="260" y="94" width="90"  height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="355" y="108" fill="#b0aea5" font-size="11">18%</text>
-    <rect x="260" y="132" width="95" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="360" y="146" fill="#b0aea5" font-size="11">19%</text>
-    <rect x="260" y="170" width="70" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="335" y="184" fill="#b0aea5" font-size="11">14%</text>
-  </g>
-  <text x="260" y="210" fill="#87867f" font-size="11">上排 2015（军改启动）　下排 2022　·　来源：美国国防大学追踪报告（视频引用）</text>
-  <text x="260" y="232" fill="#87867f" font-size="11">七年间陆军背景占比下降 20 个百分点，新质力量从 5% 升至 14%</text>
-</svg>
+    <figure class="chart-fig">
+      <img src="assets/report-charts/pla-theater-commanders.webp" alt="军改后战区指挥岗位来源更趋多元" loading="lazy">
+      <figcaption>▲ 原片 21:10 截图：军改后战区指挥岗位来源更趋多元——海军、空军将领进入战区主官岗位（如乙晓光等跨军种任职案例）。</figcaption>
+    </figure>
     <p>军种比例均衡了，但联合能力没有自动增强。国防大学对 30–40 名顶尖将领的穿透研究指出：到 2022 年 77% 的高级军官挂过联合履历，但不少人的联合履历相当薄弱，军改早期联合部门内部仍弥漫浓厚的陆军行政色彩——几十年的大陆军惯性，换两块战区牌子不可能三五年洗净。对此军委的手术刀切向人才流水线源头：2017 年 7 月新组建的国防大学被下达死命令「联合作战」，联合作战学院 8 月挂牌，10 月首期联合岗位资格培训班开班——10 个月、17 门高强度跨兵种课程，学员直接扔到战区实战值班席位和红蓝对抗一线接受即时考核。</p>
+    <figure class="chart-fig">
+      <img src="assets/report-charts/pla-joint-resume-data.webp" alt="国防大学联合履历追踪数据" loading="lazy">
+      <figcaption>▲ 原片 21:55 截图：美国国防大学对军改后高级将领联合履历的穿透研究数据——2022 年 77% 高级军官挂过联合履历，但普遍偏薄弱。</figcaption>
+    </figure>
     <p>支撑判断的还有一个微观切片：2025 年 6 月辽宁舰、山东舰双航母编队在西太远海训练，日本防卫大臣中谷元证实 5 月底至 6 月 19 日舰载机起降约 <b>1,000 架次</b>，日方「夜以继日、苦不堪言」。双航母协同、互为对手的对抗训练、跨军种联动——这是十年前的体制无法组织的复杂度。</p>
   </div>
 
@@ -145,6 +141,10 @@
       <li><b>跨越-2016 朱日和</b>：五个战区陆军各抽一个合成旅对阵专业蓝军旅，陆军史上第一次把空军航空兵、战略支援力量全程捆在一起练；背靠背自主对抗、无剧本，导演部随时插入突发特情；指挥员临机决断评估权重从 20% 拉到 35%；全履带重装部队 360 公里行军限时 36 小时，机械故障和人员虚脱直接见证淘汰。</li>
       <li><b>火力-2016 山丹</b>：陆军新体制下首场跨区基地化防空对决，「蓝军」是正牌空军王牌——歼击机超低空突防、多路饱和突袭、全频段电磁压制。被揍得灰头土脸的防空旅长在复盘时说：「我这一辈子从来没有如此真切地感受到战场的生存压力。」</li>
     </ul>
+    <figure class="chart-fig" style="max-width:560px">
+      <img src="assets/report-charts/pla-decision-weight-35.webp" alt="指挥员临机决断评估权重从20%提升到35%" loading="lazy">
+      <figcaption>▲ 原片 28:03 截图：朱日和对抗中导演部将指挥员临机决断评估权重从 20% 直接拉到 35%。</figcaption>
+    </figure>
     <p>2017 年是军改最重的年份：当年大型训练最少，因为陆军骨架被整体敲碎重拼——18 个集团军番号全部作废，重组为第 71–83 共 <b>13 个集团军</b>；军-师-团-营四级体制砍掉师团两级，变为军-旅-营三级扁平架构；旅成为基本作战单位，下辖合成、炮兵、防空、侦察、作战支援、勤务保障等 9 个营的合成旅「像缩小版集团军」，可独立完成全链条任务。番号从 71 起算，既避开老番号去留的荣誉之争，也暗合「七一」。</p>
     <div class="timeline">
       <div class="timeline-item"><span class="t-year">1985</span> 百万大裁军：35 个军 → 24 个集团军</div>
@@ -190,7 +190,7 @@
     <ul class="risk-list">
       <li>原片：<a href="https://youtu.be/K9XK7hjbEO0">再快一点《习近平军改：十年整军，解放军到底能不能打？》</a>（2026-10-29，59:47）</li>
       <li>片中引用的公开研究：SIPRI 军费数据库、兰德公司 2015《中美军事力量计分卡》、哈佛贝尔弗中心 2021 研究、美国国防大学将领履历追踪报告、洛伊研究所 / 麻省理工 / 彼得·罗伯逊军费购买力研究</li>
-      <li>本页经本地 Whisper 转写后人工整理，专名已校正（如兰德、贝尔弗中心、中谷元、歼-20、涡扇-15、东风-17、祁发宝、陈祥榕等），人名地名以原片及公开资料为准</li>
+      <li>本页图表均为原片视频截图（已标注时间点），正文经本地 Whisper 转写后人工整理，专名已校正（如兰德、贝尔弗中心、中谷元、歼-20、涡扇-15、东风-17、祁发宝、陈祥榕等），人名地名以原片及公开资料为准</li>
       <li>文中军事数据与判断均为原片观点及其引用来源的转述，本页不构成任何投资建议或军事立场背书，仅供研究参考</li>
     </ul>
   </div>

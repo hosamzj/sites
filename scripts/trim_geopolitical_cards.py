@@ -59,7 +59,10 @@ def main() -> int:
         grid_start = seg.find('<div class="report-grid">')
         # 网格结束位置：最后一张卡片之后紧跟的 </div>（卡片内部含多个 </div>，不能用第一个）
         grid_tail = seg[grid_start:]
-        card_hits = list(CARD_RE.finditer(grid_tail))
+        # 必须用 ANY_CARD_RE（含特色卡）定位最后一张卡：CARD_RE 只匹配地缘周报，
+        # 若 tel-aph-compare 等特色卡排在网格末尾，会把 grid_close 切到特色卡 eyebrow 的 </div> 处，
+        # 导致特色卡开标签被丢弃、HTML 结构损坏（2026-11-02 事故根因）
+        card_hits = list(ANY_CARD_RE.finditer(grid_tail))
         if not card_hits:
             print("ERROR: 网格内未找到卡片", file=sys.stderr)
             return 1

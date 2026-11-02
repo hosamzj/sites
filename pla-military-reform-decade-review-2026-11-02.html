@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>习近平军改十年：解放军到底能不能打？深度解析（2026-11-02）</title>
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+    .navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+    .nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+    .nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent-light); }
+    .breadcrumb span { margin: 0 8px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    .report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+    .report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+    .report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+    .report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+    .section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+    .section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .metric-card { background: var(--card-elevated); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+    .metric-card .label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .metric-card .value { color: var(--heading); font-size: 1.5rem; font-weight: 700; }
+    .metric-card .delta { font-size: 0.9rem; margin-top: 4px; }
+    .positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+    .risk-list { list-style: none; padding: 0; margin: 0; }
+    .risk-list li { padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); }
+    .risk-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+    .footer p { margin-bottom: 0.5rem; }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: underline; }
+    .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 8px; padding-left: 24px; }
+    .timeline-item { position: relative; margin-bottom: 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+    .timeline-item .t-year { color: var(--accent-light); font-weight: 700; }
+    @media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="index.html#geopolitical">市场与地缘</a>
+        <a href="index.html#ai-tech">AI 与科技</a>
+        <a href="index.html#auto">中国汽车</a>
+        <a href="index.html#research" class="active">专题研究</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>习近平军改十年：解放军到底能不能打？（2026-11-02）
+  </div>
+  
+
+<div class="container">
+  <div class="report-header">
+    <h1>习近平军改十年：解放军到底能不能打？</h1>
+    <div class="subtitle">「再快一点」军改系列收官篇 · 一张给十年军改的硬核体检单</div>
+    <div class="meta">原片：再快一点《习近平军改：十年整军，解放军到底能不能打？》｜2026-10-29 发布｜59:47｜报告整理：2026-11-02</div>
+  </div>
+
+  <div class="section">
+    <h2>开篇：四个关键数字</h2>
+    <div class="grid-2">
+      <div class="metric-card"><div class="label">2026 中国国防预算</div><div class="value">1.94 万亿元</div><div class="delta positive">同比 +7%，世界第二</div></div>
+      <div class="metric-card"><div class="label">2026 美国国防预算</div><div class="value">1.01 万亿美元</div><div class="delta negative">约占全球军费 40%</div></div>
+      <div class="metric-card"><div class="label">SIPRI 统一口径倍数</div><div class="value">2.84×</div><div class="delta warn">购买力研究：36% ~ 60% 两说</div></div>
+      <div class="metric-card"><div class="label">军改启动至今</div><div class="value">10 年+</div><div class="delta">2015.10 中央军委改革工作会议</div></div>
+    </div>
+    <p style="margin-top:16px">这是「再快一点」军改系列的最后一期。前两期拆解了 2015 年军改的启动逻辑，本期则拉出一张「硬核体检单」，从<b>指挥中枢、实战训练、军工体系、战斗意志</b>四项指标逐一过筛，最后回答那个老问题：这支四十年未经历大规模现代战争检验的军队，到底能不能打。本报告基于原片全文转写整理，观点归属原片及其引用的公开研究。</p>
+  </div>
+
+  <div class="section">
+    <h2>一、军费账本：2.84 倍的差距，与购买力之争</h2>
+    <p>视频从钱讲起。2026 年 3 月财政部预算报告公布：中央本级国防支出 19,095.61 亿元、增长 7%，加上地方安排全国约 1.94 万亿元人民币。对面美国 2026 财年国防预算 1.01 万亿美元，一家约占全球军费四成，其中 1,133 亿美元强制性拨款供总统特朗普「乾坤独断」调用——光这部分按汇率就顶得上中国大半年军费。</p>
+    <p>但「一切人」（视频语，指部分观点）认为按美元绝对值比较肤浅，理由有二：中国军工体系举国协同、美国则是五大寡头层层分肥（1280 美元一个咖啡杯、3 万美元一个马桶圈的成本加成合同）；且中国拥有完整工业体系，同样的钱能买到更多装备。</p>
+    <div class="highlight-box">按 SIPRI 2025 年统一美元口径：美国军事支出约 9,540 亿美元，中国约 3,360 亿美元，差距 2.84 倍。要论证「中国实际购买力超美」，需证明中国每美元预算买到美国 2.84 倍以上的军事投入——这正是各研究机构分歧所在。</div>
+    <p>购买力研究的主要结论：澳大利亚洛伊研究所与麻省理工安全研究项目认为中国军队投入购买力仅相当于美国的 <b>36%</b>；军事购买力 PPP 理论提出者、澳籍经济学家彼得·罗伯逊则认为达到 <b>60%</b>。视频特意指出，这些都是西方视角，中方从未公布自己的测算。</p>
+    <p>哈佛贝尔弗中心唱出「反调」：美国 1 万亿美元执行的是<b>全球任务</b>，中国 3,360 亿美元聚焦<b>东亚单点</b>——战略目标不同，倍数不能直接对打。其依据是兰德公司 2015 年《中美军事力量计分卡》：在台湾与南沙两个具体场景下，中国凭借地理与不断增长的能力，已能对美国在中国周边的军事优势构成极大挑战。耐人寻味的是，该报告牵头作者埃里克·赫金博瑟姆（Eric Heginbotham）正是 2024 年麻省理工购买力研究的领头作者之一——一个人得出两个结论：总量上中国明显低于美国，西太局部中国已能挑战美军。贝尔弗中心据此判断：美军在西太的压倒性优势<b>早在 2015 年就已被明显改变</b>——而 2015 年恰是军改启动之年。</p>
+    <svg viewBox="0 0 640 240" width="100%" style="max-width:640px" role="img" aria-label="中美军费对比图">
+  <text x="0" y="20" fill="#faf9f5" font-size="15" font-weight="700">2025 年 SIPRI 统一口径：美国 ≈ 中国 × 2.84</text>
+  <text x="0" y="58" fill="#b0aea5" font-size="13">美国 9,540 亿美元</text>
+  <rect x="120" y="44" width="480" height="22" rx="4" fill="#c96442" opacity="0.9"/>
+  <text x="0" y="100" fill="#b0aea5" font-size="13">中国 3,360 亿美元</text>
+  <rect x="120" y="86" width="169" height="22" rx="4" fill="#4ade80" opacity="0.85"/>
+  <line x1="120" y1="130" x2="600" y2="130" stroke="#30302e"/>
+  <text x="0" y="158" fill="#b0aea5" font-size="12">名义预算（2026 财年）</text>
+  <text x="0" y="178" fill="#87867f" font-size="12">美国 1.01 万亿美元 / 中国 1.94 万亿元人民币（+7%）</text>
+  <text x="0" y="212" fill="#87867f" font-size="12">购买力研究分歧：洛伊研究所 / 麻省理工 ≈ 36%，彼得·罗伯逊 ≈ 60%</text>
+</svg>
+  </div>
+
+  <div class="section">
+    <h2>二、体检第一项：指挥中枢——「大陆军」换血了吗</h2>
+    <p>军改核心是「军委管总、战区主战、军种主建」，但机构建起来、岗位设出来，坐进去的人不可能 overnight 熟练。视频举了人民日报 2026 年 8 月报道的中部战区参谋<b>李畅</b>案例：这位原陆军营长调任战区机关前自学海空军手册、参数背得滚瓜烂熟，却在第一场跨军种协同推演中「张不开嘴」——技术参数在联合筹划面前废纸一张，最终只能向一线飞行员、舰长挨个请教重新补课。</p>
+    <p>这类个体的阵痛背后是人事结构的真实变化。视频引用美国国防大学对 2015–2022 年军改七年约 150–200 名核心高级将领的追踪：</p>
+    <svg viewBox="0 0 640 260" width="100%" style="max-width:640px" role="img" aria-label="解放军高级将领军种背景变化">
+  <text x="0" y="18" fill="#faf9f5" font-size="15" font-weight="700">副大军区级以上高级将领背景：2015 → 2022</text>
+  <g font-size="12" fill="#b0aea5">
+    <text x="70" y="48">陆军</text><text x="70" y="86">海军</text><text x="70" y="124">空军</text><text x="70" y="162">火箭军/战略支援/信息等新质力量</text>
+  </g>
+  <g>
+    <rect x="260" y="34" width="345" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="612" y="48" fill="#b0aea5" font-size="11">69%</text>
+    <rect x="260" y="72" width="60"  height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="325" y="86" fill="#b0aea5" font-size="11">12%</text>
+    <rect x="260" y="110" width="70" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="335" y="124" fill="#b0aea5" font-size="11">14%</text>
+    <rect x="260" y="148" width="25" height="18" rx="3" fill="#c96442" opacity="0.55"/><text x="290" y="162" fill="#b0aea5" font-size="11">5%</text>
+  </g>
+  <g>
+    <rect x="260" y="56" width="245" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="510" y="70" fill="#b0aea5" font-size="11">49%</text>
+    <rect x="260" y="94" width="90"  height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="355" y="108" fill="#b0aea5" font-size="11">18%</text>
+    <rect x="260" y="132" width="95" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="360" y="146" fill="#b0aea5" font-size="11">19%</text>
+    <rect x="260" y="170" width="70" height="18" rx="3" fill="#4ade80" opacity="0.8"/><text x="335" y="184" fill="#b0aea5" font-size="11">14%</text>
+  </g>
+  <text x="260" y="210" fill="#87867f" font-size="11">上排 2015（军改启动）　下排 2022　·　来源：美国国防大学追踪报告（视频引用）</text>
+  <text x="260" y="232" fill="#87867f" font-size="11">七年间陆军背景占比下降 20 个百分点，新质力量从 5% 升至 14%</text>
+</svg>
+    <p>军种比例均衡了，但联合能力没有自动增强。国防大学对 30–40 名顶尖将领的穿透研究指出：到 2022 年 77% 的高级军官挂过联合履历，但不少人的联合履历相当薄弱，军改早期联合部门内部仍弥漫浓厚的陆军行政色彩——几十年的大陆军惯性，换两块战区牌子不可能三五年洗净。对此军委的手术刀切向人才流水线源头：2017 年 7 月新组建的国防大学被下达死命令「联合作战」，联合作战学院 8 月挂牌，10 月首期联合岗位资格培训班开班——10 个月、17 门高强度跨兵种课程，学员直接扔到战区实战值班席位和红蓝对抗一线接受即时考核。</p>
+    <p>支撑判断的还有一个微观切片：2025 年 6 月辽宁舰、山东舰双航母编队在西太远海训练，日本防卫大臣中谷元证实 5 月底至 6 月 19 日舰载机起降约 <b>1,000 架次</b>，日方「夜以继日、苦不堪言」。双航母协同、互为对手的对抗训练、跨军种联动——这是十年前的体制无法组织的复杂度。</p>
+  </div>
+
+  <div class="section">
+    <h2>三、体检第二项：实战训练——从「演戏」到「演训」</h2>
+    <p>2016 年下半年，陆军领导机构刚成立就打出两场标志性演习，砸碎「自嗨模式」：</p>
+    <ul class="risk-list">
+      <li><b>跨越-2016 朱日和</b>：五个战区陆军各抽一个合成旅对阵专业蓝军旅，陆军史上第一次把空军航空兵、战略支援力量全程捆在一起练；背靠背自主对抗、无剧本，导演部随时插入突发特情；指挥员临机决断评估权重从 20% 拉到 35%；全履带重装部队 360 公里行军限时 36 小时，机械故障和人员虚脱直接见证淘汰。</li>
+      <li><b>火力-2016 山丹</b>：陆军新体制下首场跨区基地化防空对决，「蓝军」是正牌空军王牌——歼击机超低空突防、多路饱和突袭、全频段电磁压制。被揍得灰头土脸的防空旅长在复盘时说：「我这一辈子从来没有如此真切地感受到战场的生存压力。」</li>
+    </ul>
+    <p>2017 年是军改最重的年份：当年大型训练最少，因为陆军骨架被整体敲碎重拼——18 个集团军番号全部作废，重组为第 71–83 共 <b>13 个集团军</b>；军-师-团-营四级体制砍掉师团两级，变为军-旅-营三级扁平架构；旅成为基本作战单位，下辖合成、炮兵、防空、侦察、作战支援、勤务保障等 9 个营的合成旅「像缩小版集团军」，可独立完成全链条任务。番号从 71 起算，既避开老番号去留的荣誉之争，也暗合「七一」。</p>
+    <div class="timeline">
+      <div class="timeline-item"><span class="t-year">1985</span> 百万大裁军：35 个军 → 24 个集团军</div>
+      <div class="timeline-item"><span class="t-year">1998 / 2003</span> 依次精简至 21 个、18 个</div>
+      <div class="timeline-item"><span class="t-year">2015.10</span> 中央军委改革工作会议：军改全面部署，四总部制终结、七大军区改五大战区</div>
+      <div class="timeline-item"><span class="t-year">2016</span> 跨越-2016 朱日和 / 火力-2016 山丹：实战化训练元年</div>
+      <div class="timeline-item"><span class="t-year">2017</span> 18 个集团军重组为 13 个；国防大学联合作战学院成立</div>
+      <div class="timeline-item"><span class="t-year">2025.6</span> 辽宁舰+山东舰双航母西太训练，日方统计舰载机起降约 1,000 架次</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>四、体检第三项：军工体系——任督二脉与全产业链</h2>
+    <p>军改同步完成的国防科技大洗牌，外行很少注意：撤销总装备部，组建<b>中央军委装备发展部</b>，新设<b>军委科学技术委员会</b>——装备采购的部门分割、各自立项被打通，装备发展部抓型号全生命周期管理和内部竞标（沈飞 vs 成飞、江南造船 vs 大连造船同台打擂），军工企业利润率被国家严格封离在 5% 左右，省下的钱强制回流研发与产线。</p>
+    <p>十年装备成果（视频口径）：换装国产涡扇-15 的歼-20 批量列装，全球首型双座五代机带着隐身无人僚机上天，歼-35 成熟——中国成为全球唯一同时量产两款隐身五代机的国家；055 大驱双波段相控阵 + 112 单元通用垂发拉开与伯克级的代差；福建舰跳过蒸汽弹射直接上中压直流电磁弹射；东风-17 乘波体高超音速导弹与鹰击-21 反舰高超构建反介入「铁幕」。</p>
+    <div class="highlight-box">视频点出的「终极底牌」不是单件武器，而是工业体系：造船总吨位产能约为美国 200 倍以上；相控阵雷达、弹载芯片、红外导引头、光纤陀螺与全球 80% 的无人机供应链在长三角珠三角；炮弹特种钢、发射药硝化棉、固体推进剂依托中国占全球半壁江山的重化工与钢铁产能。五角大楼自己的供应链排查都承认：美军战机导弹里成千上万基础元器件和稀土磁材，绕地球一圈源头还是中国。</div>
+  </div>
+
+  <div class="section">
+    <h2>五、体检第四项：战斗意志——「清澈的爱，只为中国」</h2>
+    <p>针对「独生子女娇生惯养、上战场就崩溃」的论调，视频用 2020 年 6 月<b>加勒万河谷</b>作答：海拔四五千米冰河中，团长祁发宝张开双臂挡在一线，19 岁的陈祥榕、24 岁的肖思远与王焯冉在混战中牺牲。陈祥榕战斗日记里那句「清澈的爱，只为中国」，成为这一代士兵精神底色的注脚。视频的判断是：现代战斗意志的基石是组织纪律与专业自信——当士兵手握厘米级射击单元的武器、身后是随时可呼叫的合成旅重炮群与空中支援，体系赋予的降维打击自信取代了过去靠狂热、毒品或金钱驱动的模式；再叠加职业化待遇与安置保障托底，「独生子女软蛋论」可以丢掉了。</p>
+  </div>
+
+  <div class="section">
+    <h2>六、终极问题：到底能不能打</h2>
+    <p>视频给出的结论分两层。第一层是地缘政治判断：在西太平洋第一岛链以内，背靠 14 亿人口与最庞大实体制造业、拥有完整侦察-指挥-火力链条的中国，没有任何域外强权能靠远洋补给线跨洋战胜。第二层是军事学的铁律：<b>任何军队的终极体检报告只能在见血的战场上打分</b>。解放军已整整四十年没有大规模现代战争洗礼，演习系统再先进、下饺子再密集，这一项仍是空白。</p>
+    <p>参照系是美军：1986 年《戈德华特-尼科尔斯法案》完成联合作战体制改革后，美军用三年磨剑，1989 年 12 月以「正义事业行动」入侵巴拿马完成军改后首次实战测试（活捉诺列加），1991 与 1996 年两次海湾战争交出世代范本。视频最后留下的问题是：默默磨剑十余年的解放军，「它的巴拿马在哪里」——而那一天真正降临时，这支军队将以什么方式向世界宣告自己的成色。</p>
+    <div class="highlight-box">体检单四项结论：① 指挥中枢——大陆军结构打破、联合造血机制运转十年；② 实战训练——剧本式演习被砸烂，背靠背极限对抗常态化；③ 军工体系——研发采购打通 + 全球唯一全产业链底座；④ 战斗意志——加勒万河谷已给出切片答案。唯一没有答案的，是实战本身。</div>
+  </div>
+
+  <div class="section">
+    <h2>对产业与 IT 决策的启示</h2>
+    <ul class="risk-list">
+      <li><b>供应链韧性即战略资产</b>：视频反复强调的「民用产能 ↔ 军工产能」双向转换逻辑，对制造业同样成立——平时在民用市场卷成本的能力，就是战/疫/灾时的转产动员能力。企业数字化建设中的供应商多元化、关键物料国产化跟踪，值得按「准动员」标准再评估一遍。</li>
+      <li><b>组织变革的换血周期以十年计</b>：军改经验显示，体制到位只是第一步，人事与流程的真正磨合需要 7–10 年（77% 有联合履历但普遍薄弱）。企业推组织/流程变革（如 IT 与 OT 融合、AI 落地）时，「制度发布 ≠ 能力形成」，人才流水线的重建才是关键投资。</li>
+      <li><b>考核指挥棒决定训练质量</b>：朱日和把「临机决断」权重从 20% 拉到 35%，行为立刻改变。KPI/OKR 设计同理——考核什么，组织就练什么。</li>
+      <li><b>地缘风险是真实的经营变量</b>：第一岛链内的供应链、航运与人员布局假设，建议纳入企业连续性规划的常规压力测试场景。</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>来源与说明</h2>
+    <ul class="risk-list">
+      <li>原片：<a href="https://youtu.be/K9XK7hjbEO0">再快一点《习近平军改：十年整军，解放军到底能不能打？》</a>（2026-10-29，59:47）</li>
+      <li>片中引用的公开研究：SIPRI 军费数据库、兰德公司 2015《中美军事力量计分卡》、哈佛贝尔弗中心 2021 研究、美国国防大学将领履历追踪报告、洛伊研究所 / 麻省理工 / 彼得·罗伯逊军费购买力研究</li>
+      <li>本页经本地 Whisper 转写后人工整理，专名已校正（如兰德、贝尔弗中心、中谷元、歼-20、涡扇-15、东风-17、祁发宝、陈祥榕等），人名地名以原片及公开资料为准</li>
+      <li>文中军事数据与判断均为原片观点及其引用来源的转述，本页不构成任何投资建议或军事立场背书，仅供研究参考</li>
+    </ul>
+  </div>
+</div>
+<div class="footer">
+  <p>DuoDuo Research · 专题研究</p>
+  <p>基于公开视频内容整理 · 2026-11-02</p>
+</div>
+
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

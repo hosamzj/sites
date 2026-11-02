@@ -104,7 +104,17 @@ def main() -> int:
 
         text = text[:sec_start] + seg + text[sec_end:]
         INDEX_FILE.write_text(text, encoding="utf-8")
-        print(f"✅ 已写回 {INDEX_FILE}（网格 {len(keep)} 张，历史 {len(all_hist)} 条）")
+        # 写回后自校验：结构损坏立即失败退出（非零码），阻止上游 push 脚本 commit
+        import subprocess as _sp
+        v = _sp.run(
+            [sys.executable, str(REPO_DIR / "scripts" / "validate_homepage_html.py")],
+            cwd=str(REPO_DIR), capture_output=True, text=True,
+        )
+        if v.returncode != 0:
+            print(v.stdout, file=sys.stderr)
+            print("ERROR: 写回后结构校验失败，已中止（index.html 可能处于损坏状态，请检查）", file=sys.stderr)
+            return 1
+        print(f"✅ 已写回 {INDEX_FILE}（网格 {len(keep)} 张，历史 {len(all_hist)} 条，结构校验通过）")
     else:
         print("(dry-run；加 --apply 生效)")
     return 0

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立讯精密专题深读：从富士康流水线到泰科家门口</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .toc h2 { margin-top: 0; font-size: 1.4rem; border-bottom: none; color: var(--accent-light); }
+        .toc ul { list-style: none; columns: 2; gap: 40px; }
+        .toc li { margin: 10px 0; break-inside: avoid; }
+        .toc a { color: var(--text-secondary); display: block; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .toc a:hover { color: var(--accent-light); border-bottom-style: solid; text-decoration: none; }
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        .section-intro { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0; }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .card-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        .highlight p:last-child { margin-bottom: 0; }
+        .table-wrapper { overflow-x: auto; margin: 32px 0; border: 1px solid var(--border); border-radius: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-hover); }
+        td { color: var(--text-secondary); }
+        ul, ol { padding-left: 28px; margin: 20px 0; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        li::marker { color: var(--accent); }
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .model-box h3 { margin-top: 0; color: var(--accent-light); }
+        .model-item { padding: 16px 0; border-bottom: 1px dashed var(--border); }
+        .model-item:last-child { border-bottom: none; }
+        .model-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-accent { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .tag-neutral { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); }
+        .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 8px; }
+        .footer a { color: var(--accent-light); }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        @media print {
+            body { background: white; color: black; }
+            .navbar, .back-to-top, .breadcrumb { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { background: white; border: 1px solid #ddd; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>立讯精密专题深读
+    </div>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">专题研究 · 连接器竞争格局</div>
+            <h1>立讯精密专题：从富士康流水线到泰科家门口，威胁有多大？</h1>
+            <p class="subtitle">一场视频号争论引发的全景拆解：2026 半年报数据、Leoni 并购整合、汽车业务与 TE 的正面碰撞、"旗手 vs 组装厂"的裁决</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div>2026年11月7日</div>
+                <div class="meta-item"><div class="meta-dot"></div>DuoDuo Research</div>
+                <div class="meta-item"><div class="meta-dot"></div>专题研究</div>
+            </div>
+            <!-- 更新时间: 2026-11-07 -->
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#origin">一、缘起：一场视频号上的两派争论</a></li>
+                <li><a href="#fundamentals">二、基本面：2026 半年报拆解</a></li>
+                <li><a href="#founder">三、王来春与立讯的崛起路径</a></li>
+                <li><a href="#leoni">四、Leoni 收购：5.25 亿欧元的全球化跳板</a></li>
+                <li><a href="#auto">五、汽车业务：与 TE 的正面碰撞</a></li>
+                <li><a href="#ai">六、第三战场：AI 数据中心</a></li>
+                <li><a href="#verdict">七、"旗手"还是"组装厂"？证据裁决</a></li>
+                <li><a href="#implications">八、对 TE 的启示</a></li>
+                <li><a href="#sources">九、数据口径与来源</a></li>
+            </ul>
+        </div>
+
+        <h2 id="origin">一、缘起：一场视频号上的两派争论</h2>
+        <p>2026 年 8-9 月，视频号账号「奔跑吧丶连接器」连发两条立讯精密相关内容：一条评企业（"国产替代旗手" vs "靠并购堆出来的组装厂"），一条评创始人王来春（2026 福布斯中国杰出商界女性榜第一）。评论区两派对立鲜明：</p>
+        <div class="quote">"有人说立讯是国产替代的旗手，从深圳小厂干到全球前十，把外资高端连接器的价格直接打下来一截；也有人说它就是靠并购堆出来的组装厂，核心专利不如泰科莫仕，全靠成本优势卷市场。但没人能否认：这二十多年，它是真的从富士康的外包小弟，一路干到了泰科、安费诺都得提防的地步。"</div>
+        <p>本报告用公开财报与行业数据，把这两个判断放到证据的天平上。先给结论：<strong>两派都只说对了一半。</strong>立讯确实不是技术原创型公司，但"组装厂"标签严重低估了它的制造平台能力与并购整合纪律；它对 TE 的威胁是真实的，但威胁的性质和节奏，与视频号的叙事有很大出入。</p>
+
+        <h2 id="fundamentals">二、基本面：2026 半年报拆解</h2>
+        <p>2026 年上半年，立讯精密实现营业收入 <strong>1745.04 亿元，同比 +40.16%</strong>；归母净利润 78.43 亿元，同比 +18.04%；扣非净利润 59.62 亿元，同比仅 +6.47%。毛利率 11.78%，同比提升 0.17 个百分点。</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>业务板块（2026 H1）</th>
+                    <th>营收</th>
+                    <th>占比</th>
+                    <th>同比</th>
+                    <th>毛利率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>消费电子</td>
+                    <td>1224.76 亿元</td>
+                    <td>70.18%</td>
+                    <td>+19.27%</td>
+                    <td>10.25%</td>
+                </tr>
+                <tr>
+                    <td>汽车电子</td>
+                    <td>323.91 亿元</td>
+                    <td>18.56%</td>
+                    <td><strong>+274.10%</strong></td>
+                    <td>14.14%</td>
+                </tr>
+                <tr>
+                    <td>通信与数据中心</td>
+                    <td>166.09 亿元</td>
+                    <td>9.52%</td>
+                    <td>+49.66%</td>
+                    <td>17.29%</td>
+                </tr>
+                <tr>
+                    <td>其他</td>
+                    <td>30.28 亿元</td>
+                    <td>1.74%</td>
+                    <td>+47.08%</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>三个关键信号，视频号叙事都没讲：</p>
+        <ul>
+            <li><strong>增长质量弱于增长规模。</strong> 营收 +40% 但扣非净利只 +6.5%；上半年还承受了约 19.86 亿元的汇兑损失。低毛利、重资产、强周期的制造特征没有变——这是"规模叙事"和"利润叙事"的巨大落差。</li>
+            <li><strong>汽车的高增长主要是"买"来的。</strong> +274% 的增量与 2025 年 7 月 Leoni 并表高度吻合（上年同期汽车业务仅 86.58 亿元）。剔除并购的内生增速依然可观，但远没有 274% 那样夸张。</li>
+            <li><strong>业务结构在快速多元化。</strong> 消费电子占比从 2025 全年的 79.5% 降到 70.2%，苹果依赖度（第一大客户占比）从 2024 年的 70.74% 降到 2025 年的 56.68%——"去单一大客户化"是战略主线，汽车与 AI 数据中心是两个答案。</li>
+        </ul>
+
+        <h2 id="founder">三、王来春与立讯的崛起路径</h2>
+        <p>王来春的故事是标准的"流水线逆袭"：富士康打工出身，1997 年离职创业，从连接器代工厂起步。立讯 2004 年成立、2010 年上市，早期靠承接富士康外溢订单生存——"富士康外包小弟"的说法由此而来。真正的转折点是深度绑定苹果：从 Lightning 线、AirPods 声学整机，一路做到 Apple Watch 与 iPhone 组装。2011 年起通过连续并购（联滔、昆山玮丰、美特、美律等）拼出"声光电热磁"全品类能力。</p>
+        <div class="model-box">
+            <h3>立讯能力的真实底色</h3>
+            <div class="model-item"><strong>制造平台型公司</strong> 官方口径：汇聚超 260 种工艺制程，支撑超 500 种产品类别。核心竞争力是"把任何精密制造品类做到规模化、自动化、低成本"，而非单点技术原创。</div>
+            <div class="model-item"><strong>垂直整合 + 快速跟随</strong> 在连接器领域采取"技术跟随 + 成本领先"策略：等头部厂商完成市场教育与客户验证后，以更低成本和更快爬坡切入。224G/448G 高速互联、CPC 等产品的路径均是如此。</div>
+            <div class="model-item"><strong>并购整合纪律罕见</strong> 从美特（声学）、美律（扬声器）、汇聚科技（线缆），到 Leoni（线束）、闻泰 ODM/OEM 资产，几乎每一单都在 12-24 个月内扭亏。2025 财年 Leoni 并购首年即扭亏为盈，被深圳证监局作为跨境并购典型案例刊载——这不是"堆规模"，是有一套可复用的投后整合方法论。</div>
+            <div class="model-item"><strong>专利争议的胜负手</strong> 2022 年美国 ITC 337 调查（安费诺发起），立讯最终胜诉：仅少数上一代产品落入一件专利的部分权利要求，且已由现行方案取代；其余指控不侵权或专利无效。这至少证明其高速连接技术路径不是简单的抄袭拼装。</div>
+        </div>
+
+        <h2 id="leoni">四、Leoni 收购：5.25 亿欧元的全球化跳板</h2>
+        <p>2025 年 7 月 10 日，立讯完成对德国百年线束巨头 Leoni AG 50.1% 股权及其全资子公司 Leoni Kabel 100% 股权的交割，总对价 5.25 亿欧元。这单并购的含金量：</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Leoni 资产</th>
+                    <th>价值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>行业地位</td>
+                    <td>欧洲第一、全球第四大汽车线束及电缆系统供应商</td>
+                </tr>
+                <tr>
+                    <td>客户网络</td>
+                    <td>覆盖奔驰、宝马、大众等全球 80% 以上主流车企，含欧系与日系核心主机厂</td>
+                </tr>
+                <tr>
+                    <td>全球产能</td>
+                    <td>26 个国家、52 家子公司，深耕西欧/东欧/北非/美洲/亚洲</td>
+                </tr>
+                <tr>
+                    <td>整合成果</td>
+                    <td>并购首年扭亏为盈，2026 上半年"经营表现超预期"（王来春在业绩说明会口径）</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>战略意义在于三件事同时成立：<strong>产能复用</strong>（跳过海外建厂 5-8 年的周期）、<strong>客户直通</strong>（中国车企出海需要本地化配套，Leoni 网络就是现成的交付底座）、<strong>采购协同</strong>（线束 Tier 1 的庞大物料采购体量反向压价）。对一家年营收 3300 亿人民币的公司，5.25 欧元买到全球车企供应链的"入场券"，性价比极高。这也是"组装厂论"最站不住脚的地方：<strong>堆并购不难，难的是每单都能消化。</strong></p>
+
+        <h2 id="auto">五、汽车业务：与 TE 的正面碰撞</h2>
+        <p>立讯汽车电子已形成四大产品线，目标直指"全球领先 Tier 1"。对照 TE 的优势版图逐项评估：</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>立讯汽车产品线</th>
+                    <th>进展（2026 H1 口径）</th>
+                    <th>对 TE 的威胁等级</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>连接器（高压/低压/高速）</td>
+                    <td>高压连接器已导入所有全球主流新能源车企；高速连接器实现量产，自称"少数能量产全系列高速连接器的供应商之一"</td>
+                    <td><span class="status status-warning"><span class="status-dot"></span>高</span></td>
+                </tr>
+                <tr>
+                    <td>线束（低压/高压/特种）</td>
+                    <td>Leoni 并表后具备全球交付能力，国内线束行业头部</td>
+                    <td><span class="status status-warning"><span class="status-dot"></span>高</span></td>
+                </tr>
+                <tr>
+                    <td>智能控制（座舱/智驾域控）</td>
+                    <td>L2+ 算力平台导入 10 家车企 50+ 车型；AR-HUD 交付；L3 与舱驾融合为 2027 车型开发</td>
+                    <td><span class="status status-accent"><span class="status-dot"></span>中</span></td>
+                </tr>
+                <tr>
+                    <td>智能底盘与动力</td>
+                    <td>后轮转向量产（国内主流车型）、"一炮打响"；电驱动百万台级 ODM 规模；与京西智行资源整合</td>
+                    <td><span class="status status-accent"><span class="status-dot"></span>中</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>但威胁的边界同样清晰：</strong></p>
+        <ul>
+            <li><strong>盈利质量差一个量级。</strong> 立讯汽车业务毛利率 14.14%，公司整体扣非增速 6.5%；对比 TE 调整后营业利润率约 22%。立讯的竞争武器是成本与响应速度，不是定价权——它能抢到份额，但每一分钱都赚得很辛苦。</li>
+            <li><strong>认证壁垒仍在 TE 一侧。</strong> 汽车连接器"车型认证周期两三年起、换供应商成本极高"的护城河没有消失。立讯高压连接器"导入所有主流车企"更多是中国新能源客户的快速放量，在全球传统车企平台与高端车型上，TE 的先发绑定依然深厚。</li>
+            <li><strong>端子与材料工艺的代差。</strong> TE 的 AMP 端子尺寸规格是行业互配基准，材料配方、冲压模具、镀层工艺是几十年积累。立讯在成品连接器层面追得快，在"行业标尺"层面仍是跟随者。</li>
+        </ul>
+        <div class="highlight">
+            <p><strong>小结：</strong>立讯汽车业务对 TE 的真实威胁不在今天的高端利润池，而在两个方向：① 中国新能源客户的快速迭代市场（这个池子 TE 本来就在丢份额）；② 借 Leoni 网络把中国车企出海订单的"本地化交付"环节截流——这部分是增量市场的竞争，不是存量替代。</p>
+        </div>
+
+        <h2 id="ai">六、第三战场：AI 数据中心</h2>
+        <p>这是立讯当前资本关注度最高的方向，也是它真正可能改写全球格局的地方：</p>
+        <ul>
+            <li><strong>高速铜互联</strong>：224G 已量产，448G 预研中，CPC 产品计划 2027 下半年商用。市场传闻其正争取成为英伟达 Cable Cartridge（单柜价值约 12 万美元、安费诺独家供应）的二供——若成真，将打破 AI 服务器机柜内价值量最高环节的垄断。</li>
+            <li><strong>光互联</strong>：800G 已量产出货，1.6T 客户验证中，LRO/LPO/XPO/NPO/CPO 均有布局。</li>
+            <li><strong>热管理与电源</strong>：液冷产品在北美核心客户导入；服务器电源从三次电源做到一次电源规模出货，卡位 48V/800V HVDC 架构升级。</li>
+        </ul>
+        <p>通信与数据中心板块 2026 H1 营收 166.09 亿元（+49.66%）、毛利率 17.29%——是三大板块中毛利最高的。值得注意的是，<strong>这个战场立讯的对手首先是安费诺和莫仕，而不是 TE</strong>；它 2022 年 337 胜诉正是在这个领域。对 TE 的含义：AI 数通的增长故事若被安费诺+立讯上下夹击，行业利润池的分配将进一步向"高速化、定制化"倾斜，传统汽车连接器利润反哺新业务的压力会更大。</p>
+
+        <h2 id="verdict">七、"旗手"还是"组装厂"？证据裁决</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>指控/赞誉</th>
+                    <th>证据检验</th>
+                    <th>裁决</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>"靠并购堆出来的组装厂"</td>
+                    <td>Leoni 首年扭亏、闻泰 ODM 整合、历史上美特/美律均消化成功；但扣非增速仅 6.5%、毛利率 11.78%，制造属性远大于技术属性</td>
+                    <td>半对：并购是真的，整合能力被低估；"组装厂"作为利润质量描述成立，作为能力描述不成立</td>
+                </tr>
+                <tr>
+                    <td>"核心专利不如泰科莫仕"</td>
+                    <td>337 调查胜诉证明技术路径自主；但原创性专利池深度、行业标准话语权确实仍逊于 TE（端子规格基准）与安费诺（AI 高速专利布局）</td>
+                    <td>成立：是"快速跟随者"而非"规则制定者"</td>
+                </tr>
+                <tr>
+                    <td>"把外资高端连接器价格打下来"</td>
+                    <td>高压连接器、高速连接器的国产替代确实压低了报价；行业涨价潮中国产厂商涨幅（3-8%）低于安费诺，份额逻辑清晰</td>
+                    <td>成立：这正是它对 TE 中国业务最直接的冲击形式</td>
+                </tr>
+                <tr>
+                    <td>"泰科、安费诺都得提防"</td>
+                    <td>汽车端：威胁在中国客户与出海增量市场；AI 端：威胁在安费诺的 Cable Cartridge 垄断地位。两个战场都不是存量高端市场的正面替代</td>
+                    <td>成立但需加限定：提防的不是"被颠覆"，而是"利润池被边缘化"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="implications">八、对 TE 的启示</h2>
+        <ol>
+            <li><strong>守利润池，不抢份额战。</strong> 立讯的打法在标准化、快速迭代、成本敏感的市场几乎无解。TE 的理性应对是把资源压在高可靠、长认证、强法规的领域（高压平台核心件、智驾关键接口、端子标准），让出它最擅长卷的那部分低毛利市场。</li>
+            <li><strong>中国客户响应速度是真正的短板警报。</strong> 立讯"导入所有主流新能源车企"的速度，对应的是 TE 中国决策链的响应时长。本土化的不是工厂，而是产品定义权。</li>
+            <li><strong>警惕 Leoni 模式的复制。</strong> 如果"中国制造成本 + 欧洲客户网络"的组合跑通，同样的打法可以复制到其他品类（传感器、电源、热管理）。观察指标：Leoni 整合后在欧洲车企平台定点中的渗透率。</li>
+            <li><strong>AI 数据中心的跟随窗口有限。</strong> 若立讯 2027 年 CPC 商用 + 英伟达二供落地，高速互联的利润池将重演消费连接器的历史。TE 需要在 224G/448G 客户验证节奏上给出更有攻击性的答案。</li>
+        </ol>
+
+        <h2 id="sources">九、数据口径与来源</h2>
+        <p>本报告数据以立讯精密官方披露为准：2026 年半年度报告全文（2026-08-25，巨潮资讯网）、2025 年年度报告（2026-04-15）、Leoni 收购进展公告（2025-07-11）、投资者关系活动记录表（2025-008、2026-001）、深圳证监局《上市公司监管通讯》2025 年第 2 期（Leoni 并购案例）。行业对比数据参考 Bishop &amp; Associates 口径、TE Connectivity 与 Amphenol 财报及公开行业研究。</p>
+        <p><strong>口径提示</strong>：立讯汽车业务 +274.10% 含 Leoni 并表因素，与内生增速不可直接比较；"导入所有全球主流新能源车企"等表述为公司业绩说明会口径，未经第三方验证；市场份额类数据行业统计口径差异较大，本报告不做精确数值断言。视频号内容（「奔跑吧丶连接器」，2026-08-30 / 2026-09-02）仅作为舆论样本引用，其叙事倾向不代表事实校验结果。</p>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>由 DuoDuo Research 整理生成 · 2026年11月7日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+<!-- Waline comments -->
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: "#waline-comments",
+    serverURL: "https://comment.hosamzj.cn",
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true,
+  });
+</script>
+</body>
+</html>

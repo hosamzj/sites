@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱震海频道每周精选 | 2026-11-04 ~ 2026-11-09</title>
+    <meta name="description" content="邱震海 YouTube 频道每周精选：中期选举共和党惨败川普成跛脚总统、中美经贸通话破裂深圳APEC成关键一局、英伟达黄仁勋风波撞上APEC峰会（2026-11-04 ~ 2026-11-09）">
+    <meta name="update" content="2026-11-10">
+<style>
+        :root {
+            --bg: #141413;
+            --card: #1e1e1c;
+            --card-hover: #252522;
+            --accent: #c96442;
+            --accent-light: #e07a55;
+            --text: #faf9f5;
+            --text-secondary: #b0aea5;
+            --border: #30302e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .channel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .channel-badge img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto 20px;
+        }
+        .date-range {
+            display: inline-block;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: var(--accent-light);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .summary ul {
+            list-style: none;
+        }
+        .summary li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .summary li:last-child {
+            border-bottom: none;
+        }
+        .summary li strong {
+            color: var(--text);
+        }
+        .video-card {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .thumbnail-link {
+            position: relative;
+            display: block;
+            height: 100%;
+            min-height: 180px;
+        }
+        .thumbnail-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            background: rgba(201, 100, 66, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .video-card:hover .play-icon {
+            opacity: 1;
+        }
+        .video-info {
+            padding: 24px 24px 24px 0;
+        }
+        .video-info h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .video-info h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .video-info h3 a:hover {
+            color: var(--accent-light);
+        }
+        .video-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .watch-link {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .watch-link:hover {
+            text-decoration: underline;
+        }
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .nav-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        @media (max-width: 768px) {
+            .title { font-size: 28px; }
+            .video-card {
+                grid-template-columns: 1fr;
+            }
+            .thumbnail-link {
+                height: 200px;
+            }
+            .video-info {
+                padding: 0 20px 20px;
+            }
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+    </style></head>
+<body>
+<nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research" class="active">专题研究</a>
+            </div>
+        </div>
+    </nav>
+<div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span>专题研究<span>→</span>邱震海频道每周精选
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="channel-badge">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_lIwW6yoXAobONFnDSxq6DJotbsEV4nX3MT0cd6som55Q=s72-c-k-c0x00ffffff-no-rj" alt="邱震海">
+                <span>邱震海 · YouTube 频道</span>
+            </div>
+            <h1 class="title">邱震海频道每周精选</h1>
+            <p class="subtitle">香港全球化中心（CGHK）和震海会创始人、德国图宾根大学博士。用"说真话、说实话、说人话"带您了解国际风云及其背后的发展趋势。</p>
+            <div class="date-range">📅 2026-11-04 ~ 2026-11-09 · 本周更新 4 期</div>
+        </header>
+
+        <section class="summary">
+            <h2>🎯 本周核心脉络</h2>
+            <ul>
+                <li><strong>中期选举共和党惨败：</strong>民主党横扫国会，特朗普沦为"跛脚总统"。败选后48小时共和党内讧全面爆发——万斯借机卡位2028，鲁比奥与赫格塞思恐成第一批"背锅"对象。内政受阻的特朗普被迫转向外交，把最后筹码押注在中俄身上。</li>
+                <li><strong>中美经贸通话破裂，深圳APEC成关键一局：</strong>经贸磋商不欢而散，特朗普遭国会掣肘，"怂"字藏不住。APEC峰会前夕多重变量叠加，大国战略交易是否能在深圳落地，成为本周全球最重要的悬念。</li>
+                <li><strong>英伟达黄仁勋风波撞上APEC：</strong>一封内部信引爆英伟达——黄仁勋公开致歉承认婚外情，旋即被国会共和党鹰派要求出席11月18日闭门听证会，时间恰好撞上深圳APEC峰会。一年前就掌握的信息为何此刻引爆？科技巨头在大选季的政治化风险值得深思。</li>
+            </ul>
+        </section>
+
+        <section class="video-list">
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=obRDuSzCAWk" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/obRDuSzCAWk/hqdefault.jpg" alt="一封内部信引爆英伟达，马斯克直言犯大错，但黄仁勋的麻烦不止婚外情" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=obRDuSzCAWk" target="_blank">一封内部信引爆英伟达，马斯克直言犯大错，但黄仁勋的麻烦不止婚外情</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.11.09</span>
+                        <span class="views">👁 16,978 次观看</span>
+                    </div>
+                    <p class="description">英伟达CEO黄仁勋公开致歉承认婚外情，却紧接着被美国国会共和党鹰派盯上，要求出席11月18日闭门听证会，时间恰好撞上深圳APEC峰会。为何一年前就掌握的信息偏在此刻引爆？这场风波背后有值得深思的疑点。</p>
+                    <a href="https://www.youtube.com/watch?v=obRDuSzCAWk" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=ZX9XFb5tN3A" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/ZX9XFb5tN3A/hqdefault.jpg" alt="中美经贸通话不欢而散？川普“怂”字藏不住，深圳APEC成关键一局" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=ZX9XFb5tN3A" target="_blank">中美经贸通话不欢而散？川普"怂"字藏不住，深圳APEC成关键一局</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.11.08</span>
+                        <span class="views">👁 13,443 次观看</span>
+                    </div>
+                    <p class="description">经贸磋商未能谈拢，特朗普遭遇国会掣肘。深圳APEC峰会前夕，多重变量叠加，中美博弈难点重重。解读特朗普的矛盾特质，推演大国关系的多种走向。</p>
+                    <a href="https://www.youtube.com/watch?v=ZX9XFb5tN3A" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=f2r5OrII9Qc" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/f2r5OrII9Qc/hqdefault.jpg" alt="特朗普败选后院起火！共和党内讧升级，有人恐要“人头落地”" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=f2r5OrII9Qc" target="_blank">特朗普败选后院起火！共和党内讧升级，有人恐要"人头落地"</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.11.06</span>
+                        <span class="views">👁 12,666 次观看</span>
+                    </div>
+                    <p class="description">美国中期选举后48小时，共和党内部全面"炸锅"！面对败局，党内清算大幕拉开：万斯借机卡位2028，鲁比奥与赫格塞思谁将成为被"砍"的第一人？华府大乱之际，或许也是我们索取战略筹码的极佳窗口。</p>
+                    <a href="https://www.youtube.com/watch?v=f2r5OrII9Qc" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=a6cN1j5xZEw" target="_blank" class="thumbnail-link">
+                    <img src="https://i.ytimg.com/vi/a6cN1j5xZEw/hqdefault.jpg" alt="中期选举共和党惨败，川普被逼到墙角，把最后筹码押注中俄" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="video-info">
+                    <h3><a href="https://www.youtube.com/watch?v=a6cN1j5xZEw" target="_blank">中期选举共和党惨败，川普被逼到墙角，把最后筹码押注中俄</a></h3>
+                    <div class="video-meta">
+                        <span class="date">📅 2026.11.04</span>
+                        <span class="views">👁 28,151 次观看</span>
+                    </div>
+                    <p class="description">民主党横扫国会，特朗普成跛脚总统。内政受阻转向外交，APEC能否迎来大国战略交易？美国未来将走向何方。</p>
+                    <a href="https://www.youtube.com/watch?v=a6cN1j5xZEw" target="_blank" class="watch-link">在 YouTube 观看 →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>报告由 DuoDuo Research 自动生成 · 数据来源：YouTube · 更新于 2026-11-10</p>
+            <p style="margin-top:8px; font-size:12px; opacity:0.7;">注：观看次数为抓取时点数据，可能与当前数值略有出入。</p>
+            <p style="margin-top:12px;"><a href="index.html">← 返回研究报告中心</a></p>
+        </footer>
+    </div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

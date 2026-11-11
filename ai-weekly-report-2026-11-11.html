@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能体与 M365 Copilot 企业资讯简报 | 2026 年 11 月 11 日</title>
+    <meta name="description" content="AI Agent、M365 Copilot、汽车行业 AI 应用与大模型竞争格局每周追踪（2026-11-11，第 18 期）">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+        :root {
+            --bg: #141413;
+            --bg-elevated: #1c1c1a;
+            --bg-card: #232320;
+            --bg-hover: #2a2a26;
+            --text-primary: #faf9f5;
+            --text-secondary: #b0aea5;
+            --text-tertiary: #87867f;
+            --accent: #c96442;
+            --accent-light: #d97757;
+            --accent-dark: #a65032;
+            --border: #30302e;
+            --border-light: #3d3d3a;
+            --ring: #c96442;
+            --success: #4ade80;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        h1 { font-size: 3.2rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.5rem; margin: 2.2rem 0 1rem 0; color: var(--accent-light); }
+        h4 { font-size: 1.2rem; margin: 1.8rem 0 0.8rem 0; color: var(--text-primary); }
+        p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+        a { color: var(--accent-light); text-decoration: none; transition: all 0.2s ease; }
+        a:hover { color: var(--accent); text-decoration: underline; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-elevated) 100%);
+            padding: 80px 0 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 100, 66, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding: 6px 12px;
+            border: 1px solid var(--accent-dark);
+            border-radius: 20px;
+            background: rgba(201, 100, 66, 0.08);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .hero .meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; }
+        .meta-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+        /* DuoDuo site navbar */
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        .navbar .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(201, 100, 66, 0.1);
+        }
+        .nav-links a.active {
+            color: var(--accent-light);
+            background: rgba(201, 100, 66, 0.15);
+        }
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        /* Adjust internal nav to not conflict with sticky navbar */
+        .nav {
+            position: relative;
+            top: auto;
+            background: rgba(20, 20, 19, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+            .breadcrumb {
+                padding: 16px 16px 0;
+            }
+        }
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo {
+            font-family: Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo-icon {
+            width: 32px; height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1rem;
+        }
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .toc h2 { margin-top: 0; font-size: 1.4rem; border-bottom: none; color: var(--accent-light); }
+        .toc ul { list-style: none; columns: 2; gap: 40px; }
+        .toc li { margin: 10px 0; break-inside: avoid; }
+        .toc a { color: var(--text-secondary); display: block; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .toc a:hover { color: var(--accent-light); border-bottom-style: solid; text-decoration: none; }
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .card h3 { margin-top: 0; font-size: 1.25rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0; }
+        .card-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(201, 100, 66, 0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 16px;
+        }
+        .quote {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            margin: 32px 0;
+            border-radius: 0 16px 16px 0;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .highlight {
+            background: rgba(201, 100, 66, 0.08);
+            border: 1px solid var(--accent-dark);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 32px 0;
+        }
+        .highlight p:last-child { margin-bottom: 0; }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+        th {
+            background: var(--bg-elevated);
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--bg-hover); }
+        td { color: var(--text-secondary); }
+        ul, ol { padding-left: 28px; margin: 20px 0; }
+        li { margin: 12px 0; color: var(--text-secondary); }
+        li::marker { color: var(--accent); }
+        .model-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+        }
+        .model-box h3 { margin-top: 0; color: var(--accent-light); }
+        .model-item { padding: 16px 0; border-bottom: 1px dashed var(--border); }
+        .model-item:last-child { border-bottom: none; }
+        .model-item strong { color: var(--text-primary); display: block; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .tag-accent { background: rgba(201, 100, 66, 0.15); color: var(--accent-light); border: 1px solid var(--accent-dark); }
+        .tag-neutral { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border); }
+        .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-success { color: var(--success); }
+        .status-success .status-dot { background: var(--success); }
+        .status-warning { color: var(--warning); }
+        .status-warning .status-dot { background: var(--warning); }
+        .status-accent { color: var(--accent-light); }
+        .status-accent .status-dot { background: var(--accent-light); }
+        .footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .footer p { color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 8px; }
+        .footer a { color: var(--accent-light); }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { background: var(--accent); color: white; border-color: var(--accent); }
+        .source { color: var(--text-tertiary); font-size: 0.85rem; margin-top: 12px; font-style: italic; }
+        .metric { color: var(--accent-light); font-weight: 700; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.25rem; }
+            .hero { padding: 50px 0 40px 0; }
+            .toc ul { columns: 1; }
+            .card-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .table-wrapper { border-radius: 12px; }
+            th, td { padding: 12px 14px; }
+        }
+        @media print {
+            body { background: white; color: black; }
+            .nav, .back-to-top { display: none; }
+            .hero { background: white; }
+            .card, .toc, .quote, .highlight, .model-box { background: white; border: 1px solid #ddd; break-inside: avoid; }
+        }
+    </style>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="nav-brand-icon">多</div>
+                <span>DuoDuo Research</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#geopolitical">市场与地缘</a>
+                <a href="index.html#ai-tech" class="active">AI 与科技</a>
+                <a href="index.html#auto">中国汽车</a>
+                <a href="index.html#research">专题研究</a>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumb">
+        <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#ai-tech">AI 与科技</a><span>→</span>AI 智能体与 M365 Copilot 企业资讯简报 | 2026 年 11 月 11 日
+    </div>
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="nav-logo"><div class="nav-logo-icon">AI</div><span>企业 AI 简报</span></div>
+            <div class="nav-links">
+                <a href="#sec1">智能体生态</a>
+                <a href="#sec2">微软与企业 AI</a>
+                <a href="#sec3">汽车 AI</a>
+                <a href="#sec4">模型格局</a>
+                <a href="#sec5">总结</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="eyebrow">AI Weekly Report · Enterprise Intelligence</div>
+            <h1>AI 智能体与 M365 Copilot 企业资讯简报</h1>
+            <p class="subtitle">面向汽车零部件行业 CIO / 数字化负责人：追踪 AI Agent、M365 Copilot、行业落地案例与大模型竞争格局。</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-dot"></div><span>2026 年 11 月 11 日</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>第 18 期</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>覆盖周期：2026-11-05 至 2026-11-11</span></div>
+                <div class="meta-item"><div class="meta-dot"></div><span>数据来源：Microsoft Learn 发行说明、Microsoft Partner Center / Tech Community、Reuters、Automotive News、IBM / Salesforce / Adobe 官方公告、Anthropic / Google / OpenAI 官方渠道</span></div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#sec1">一、AI 智能体生态：A2A 与 MCP 进入同一基金会，「OpenAPI—MCP—A2A」三层栈成共识</a></li>
+                <li><a href="#sec2">二、微软与企业 AI：Copilot Chat 公平使用限流落地——未购许可员工的「免费午餐」结束了</a></li>
+                <li><a href="#sec3">三、汽车与零部件：AI 数据中心「抢产能」，车规芯片与 PCB 供应链拉响警报</a></li>
+                <li><a href="#sec4">四、大模型格局：Claude Fable 5.2 降价提速，Gemini 4 Carbon 面向开发者开放</a></li>
+                <li><a href="#sec5">五、总结与下周观察重点</a></li>
+            </ul>
+        </div>
+<section class="section" id="sec1">
+    <h2>一、AI 智能体生态：A2A 与 MCP 进入同一基金会，「OpenAPI—MCP—A2A」三层栈成共识</h2>
+    <h3>1. Google A2A 协议加入 Agentic AI Foundation，与 MCP「同一屋檐」</h3>
+    <p>Google 与 Agentic AI Foundation（AAIF，Linux 基金会旗下，由 AWS、Anthropic、Google、Microsoft、OpenAI 共同资助）宣布：<strong>A2A（Agent2Agent）协议正式加入基金会</strong>，与 MCP 并列成为开放智能体基础设施的两大支柱。A2A v1.0 稳定版已于 2026 年 3 月发布，支持多协议绑定、版本协商、多租户与带加密签名的 Agent Card；目前已在移动平台、云 AI 基础设施、金融、供应链与企业 IT 生产环境中运行。同期行业讨论形成清晰共识——<strong>三层栈分工：OpenAPI 管 API 边界、MCP 管工具边界、A2A 管智能体边界</strong>，IBM 的简化表述是「每个智能体边界用 A2A，每个工具边界用 MCP」；企业自研 Agent 集成应「先 OpenAPI、再按需加 MCP / A2A」。（来源：<a href="https://www.enterpriseaiworld.com/Articles/News/News/Googles-A2A-Open-Standard-Joins-the-Agentic-AI-Foundation-Enabling-Collaboration-with-Other-Open-Agent-Infrastructure-Projects-176164.aspx">Enterprise AI World</a>、<a href="https://www.beri.net/article/mcp-vs-a2a-vs-openapi-agent-integration-standard-2026">Rajesh Beri 集成标准分析（2026-11-03）</a>）</p>
+    <h3>2. Adobe CX Enterprise Coworker 一周铺满六大 AI 平台</h3>
+    <p>Adobe 于 11 月 4 日宣布其智能体产品 CX Enterprise Coworker 正式进入 <strong>ChatGPT（插件形态）、Claude、Gemini for Business、Microsoft Copilot、Databricks Genie 与 IBM watsonx Orchestrate</strong>，AWS 与 Snowflake 随后跟进。该产品完全基于 MCP 与 A2A 开放标准构建，并同步发布一批预置 MCP 连接器（Amazon Ads、Demandbase、Meta 广告、Microsoft Work IQ、RainFocus、Snowflake Cortex AI 等）；埃森哲、德勤、EY、IBM、PwC 等咨询方正基于它构建行业版本。信号意义大于产品本身：<strong>企业级智能体的默认交付形态已从「平台独占」转向「跨平台分发 + 开放协议底座」</strong>——自建 Agent 如果锁死在单一生态，未来接入成本会越来越高。（来源：<a href="https://news.adobe.com/news/2026/11/adobe-integrates-agentic-cx-enterprise-coworker-into-ai-platforms">Adobe 官方新闻稿（2026-11-04）</a>、<a href="https://thenextweb.com/news/adobe-cx-enterprise-coworker-chatgpt-claude-gemini-copilot">The Next Web</a>）</p>
+    <h3>3. 治理「三件套」集中落地：身份、熔断、钱包</h3>
+    <p>上期的 IBM watsonx Orchestrate 治理框架本周进入收获期：<strong>IBM Agent Identity 正式 GA</strong>，并同步发布 HashiCorp Vault 2.2，支持智能体专用账户与凭据管控，组合成「最小权限 + 风险秒级吊销」方案；<strong>Salesforce 在 Agent Fabric 中 GA 了 Agent Kill Switch（一键熔断）与 Model Wallet（按智能体设美元/Token  spend 上限）</strong>，Agent Evals 评估 11 月进入 Beta、2027 年 1 月 GA；<strong>Oracle 发布 25 个内嵌于 Fusion ERP / HCM / 供应链 / CX 的智能体应用</strong>，全部运行在既有权限与审批体系内；ServiceNow 与 Google Cloud 的工作流互通（MCP + A2A）已对共有客户 GA。智能体治理从「白皮书议题」变成「产品功能清单」——选型时可直接逐项对照。（来源：<a href="https://dwaynehelena.com/tech-leaders-brief/weekly/2026-11-02/index.html">Tech Leaders Brief 2026-11-02</a>）</p>
+    <h3>4. 数据侧跟进：GoodData 提出「Agentic Serving Plane」新类目</h3>
+    <p>GoodData.AI 于 11 月 10 日发布 Agentic Serving Plane：位于企业数据平台与消费端之间的受治理执行层，为高并发、富上下文的智能体数据负载提供工作负载服务、业务语义、上下文接地与访问控制，并通过 MCP Server 让外部 Agent 访问同一套受治理指标。对已有数据仓库的企业，这预示 BI/语义层平台都将陆续长出「Agent 接口」——数据治理边界要按「机器消费者」重新设计。（来源：<a href="https://www.thenewstribune.com/press-releases/article318012211.html">Tacoma News Tribune / ACCESS Newswire（2026-11-10）</a>）</p>
+    <div class="quote"><strong>对 IT 负责人的意义：</strong>协议之争已基本收束——MCP 连工具、A2A 连智能体、OpenAPI 连系统。本周该做的是：① 盘点内部自研/采购的 Agent 集成是否遵循三层栈，避免点对点私有协议债；② 把「Agent 身份、熔断开关、Spend 上限、评估」四项治理功能纳入选型 checklist（IBM / Salesforce 方案可直接对标）；③ 评估 Adobe CX Coworker 这类「一次构建、多平台分发」模式对自有 Agent 交付架构的启发。</div>
+</section>
+<section class="section" id="sec2">
+    <h2>二、微软与企业 AI：Copilot Chat 公平使用限流落地——未购许可员工的「免费午餐」结束了</h2>
+    <h3>1. 本周最重要变化：Copilot Chat fair use limits（11 月 2 日 / 11 月 9 日分两批生效）</h3>
+    <p>微软本周正式对<strong>未购买 Microsoft 365 Copilot 许可的商业租户用户</strong>扩展 Copilot Chat 的公平使用限制：11 月 2 日起适用于 ≤2,000 席位的组织，<strong>11 月 9 日起（本周日）适用于 >2,000 席位的组织</strong>——即大多数中大型企业本周已生效。要点：① Copilot Chat 仍包含在 M365 订阅内、未被移除，达到限值后产品内提示恢复时间，进行中的回复不被打断；② 微软<strong>不公布具体数值</strong>，限额随时变化且<strong>管理员无法查看、配置或覆盖</strong>（Message Center MC1536158 / MC1536163）；③ 用户触限后会看到 M365 Copilot / Copilot Business 的升级引导——本质是微软把 Copilot Chat 从「福利」重新定位为「试用漏斗」。对员工的直接体感是「Copilot 时好时坏」，IT 必须主动沟通，否则 helpdesk 工单会在本周集中爆发。（来源：<a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-november">Microsoft Partner Center 公告（2026-11-04）</a>、<a href="https://www.computerworld.com/article/4245658/microsoft-extends-undisclosed-usage-restrictions-on-copilot-chat-for-enterprise-users.html">Computerworld</a>、<a href="https://www.crn.com/news/ai/2026/microsoft-starts-limiting-copilot-chat-usage-for-users-without-paid-licenses">CRN</a>）</p>
+    <h3>2. 11 月 4 日发行说明：治理与采纳度量再升级</h3>
+    <ul>
+        <li><strong>Agents usage report（管理后台）</strong>：首个按「许可/未许可用户 × 发布者类型（用户自建 / 本组织 / 微软 / 合作伙伴）」交叉细分的智能体使用报表，支持用户—智能体配对级明细——影子智能体（shadow agents）从此无所遁形，是配合上述限流做治理的关键工具。</li>
+        <li><strong>Copilot Search 权威内容管理</strong>：管理员可在 Copilot &gt; Search &gt; Authoritative content 中指定最多 100 个 SharePoint 站点作为权威来源，提升其在 Copilot 搜索中的排序——知识质量治理从「禁什么」扩展到「推什么」。</li>
+        <li><strong>Excel</strong>：Copilot 修改工作簿后，聊天窗响应内直接给出跳转链接（新表、区域、图表均可点击定位），修改透明度与复核效率提升；<strong>PowerPoint</strong>：支持创建自定义技能（custom skills），并可引用 SharePoint / OneDrive 文件生成演示文稿。</li>
+        <li><strong>Planner Agent 能力下放到基础计划</strong>：任务执行与状态汇报不再要求升级计划。</li>
+    </ul>
+    <p>（来源：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes">Microsoft Learn Copilot Release Notes（2026-11-04）</a>）</p>
+    <h3>3. Connector 写操作 GA 与 EU 数据边界</h3>
+    <ul>
+        <li><strong>Connector write actions 正式 GA</strong>：Copilot Chat 与 Cowork 中可用自然语言对连接系统执行创建/更新/删除，默认策略为「读取工具始终允许、写入工具需审批」，Office 应用内写操作即将跟进——智能体从「会读」正式走向「会写」，审批流配置必须先行。（来源：<a href="https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/turn-copilot-insights-into-action-with-connector-write-capabilities/4571160">Microsoft Copilot 官方博客</a>）</li>
+        <li><strong>Claude 模型正式进入 EU Data Boundary</strong>（11 月 5 日）：欧盟租户可在数据驻留合规前提下使用 Copilot 内的 Anthropic 模型，跨国制造企业分区合规策略可简化。（来源：<a href="https://www.microsoft.com/en-us/copilot/blog/product/microsoft-copilot/">Microsoft Copilot Blog</a>）</li>
+        <li><strong>Cost Management API 新增 credit 审批</strong>：管理员可按用户批量审批/拒绝 Copilot 点数请求，按量计费的财务管控闭环补齐。（来源：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/whats-new">Microsoft Learn 开发者更新</a>）</li>
+        <li><strong>Microsoft Ignite（11 月 17–20，旧金山 + 线上）</strong>：Copilot 与 Agent 创新是核心议程，Autopilot / Home / Code 的 GA 节奏预计官宣，建议提前注册线上场次。</li>
+    </ul>
+    <div class="quote"><strong>行动清单（本周可完成）：</strong>① 面向全员发一封「Copilot Chat 限流说明」：解释限值机制、恢复时间提示、以及什么场景值得申请 M365 Copilot 许可——把抱怨转化为采购需求清单；② 用新的 Agents usage report 拉取未许可用户的高频使用名单，按部门量化许可缺口（这是最硬的采购论据）；③ 为 Connector 写操作的「Needs approval」默认策略定义审批人矩阵；④ 把 Authoritative content 的首批 100 个站点清单交给知识管理团队。</div>
+</section>
+<section class="section" id="sec3">
+    <h2>三、汽车与零部件：AI 数据中心「抢产能」，车规芯片与 PCB 供应链拉响警报</h2>
+    <h3>1. Nexperia / 意法半导体齐警告：成熟制程产能正被 AI 抽走</h3>
+    <p>11 月 10 日慕尼黑 Electronica 电子展期间，Reuters 报道了两条叠加的供应链警报：荷兰芯片商 <strong>Nexperia</strong> 临时 CEO Stefan Tilger 表示公司「订单完全超额认购（totally oversubscribed）」——竞争对手把产能从二极管、晶体管等成熟器件转向 AI 数据中心与机器人需求，「汽车行业目前正遭受重创」；<strong>意法半导体 CEO Jean-Marc Chery</strong> 前一日（11 月 9 日）同样警告代工与封测厂正把资源从汽车/工业应用移走。这是继上期简报封测三季报「AI 与汽车抢产能」判断之后，供应链瓶颈首次由原厂 CEO 在公开场合确认。对 Tier1/Tier2 的直接含义：车规分立器件、功率器件、MCU 的交期与价格进入上行通道，<strong>提前锁产能、谈长协比等缺料再行动更重要</strong>。（来源：<a href="https://www.newsobserver.com/news/business/article318011687.html">Reuters via News & Observer（2026-11-10）</a>）</p>
+    <h3>2. 波及面扩大：传统存储与多层 PCB 同样告急</h3>
+    <p>Automotive News 11 月 6 日报道：AI 服务器放量正在挤占<strong>车规 legacy 存储芯片与多层 PCB</strong> 的供给——AI 服务器对高多层 PCB 的需求推升了板材与产能占用，汽车电子（单车 PCB 价值量随智能化持续上升）面临双重挤压。建议把 PCB、存储纳入与芯片同级的供应风险看板，并对 2027 款车型定点物料做替代性评审。（来源：<a href="https://www.autonews.com/technology/ai/ane-ai-boom-shortage-chips-circuit-boards-1106/">Automotive News（2026-11-06）</a>）</p>
+    <h3>3. AMNA 2026：Agentic AI 在工厂的落地样本——Autoliv、BorgWarner、Kistler</h3>
+    <p>Automotive Manufacturing North America 2026 论坛上，三家零部件企业分享了从 PoC 走向规模化的真实路径：<strong>Autoliv</strong> 用 AI Agent 自动核查采购订单与预发货通知（ASN），更早识别缺料风险、压低安全库存；<strong>BorgWarner</strong> 将 AI 用于工程过程合规审计，把问题发现在终检之前，审计产能与下游过程质量双提升；<strong>Kistler</strong> 的方案通过持续监测设备「运行/停机/阻塞/缺料」四态数据，由 Agent 分析数周历史数据定位长期生产瓶颈。共性结论：技术本身不是决定因素，<strong>数据一致性、可靠模型与清晰商业案例</strong>三者齐备才能规模化——与上期丰田案例「先数据底座、后 AI」互为印证。（来源：<a href="https://www.automotivemanufacturingsolutions.com/features/from-connected-data-to-virtual-factories-how-ai-delivers-value-in-automotive-manufacturing/2762426">Automotive Manufacturing Solutions</a>）</p>
+    <h3>4. 物理 AI 进厂：JTEKT 随机抓取 97.1%，NTN × Yazaki 机器人质检</h3>
+    <ul>
+        <li><strong>JTEKT</strong>（11 月 2 日）：等速万向节（CVJ）产线物理 AI 试验，随机摆放零件的随机抓取成功率达 <strong>97.1%</strong>——「非结构化物料处理」这一自动化最后盲区开始被攻陷。</li>
+        <li><strong>NTN × Yazaki</strong>（11 月 5 日）：在 Yazaki 裾野创新基地部署 i-WRIST 机器人模块，启动 AI + 机器人自动化视觉检测联合试验。</li>
+        <li><strong>TIER IV</strong>（11 月 2 日）：主导开发开源自动驾驶软件 Autoware 2.0，端到端 AI 架构进入下一代；韩国 ivis 参与贸工部开源 AI-SDV 平台与云端虚拟验证环境项目——开源路线在智驾工具链的权重上升。</li>
+    </ul>
+    <p>（来源：<a href="https://www.marklines.com/en/news/tag/259/ai">MarkLines 行业动态汇总</a>）</p>
+    <div class="quote"><strong>给供应链与制造数字化的启示：</strong>本期最重要的不是某个 AI 用例，而是「AI 需求 → 半导体产能 → 汽车供给」的传导链已进入 CEO 级公开表态阶段。建议：① 立即复核 2027 上半年量产项目的车规芯片/PCB 供应保障，必要时启动双源认证；② 把 Autoliv 式「Agent 核查 PO/ASN」列入供应链数字化候选清单——投入小、ROI 路径清晰；③ 跟踪物理 AI 抓取/质检试验结果，评估在机加上下料环节的替代窗口。</div>
+</section>
+<section class="section" id="sec4">
+    <h2>四、大模型格局：Claude Fable 5.2 降价提速，Gemini 4 Carbon 面向开发者开放</h2>
+    <h3>1. Anthropic Claude Fable 5.2 / Mythos 5.2（11 月 9 日）：旗舰再降价 20%</h3>
+    <p>Anthropic 发布迄今最强双旗舰：<strong>Fable 5.2 公开发布，Mythos 5.2 仅限授权组织</strong>。定价降至 <strong>$8 / 百万输入、$40 / 百万输出</strong>（Fable 5.1 为 $10 / $50），输出速度提升最高 30%；官方定位「最具野心的开放式技术工作」。多个评测口径显示其从 Gemini 4 Carbon 手中夺回综合第一。Copilot 用户侧的关联：PowerPoint 底层已用 Sonnet 5.5、Researcher 与 Copilot Studio 可选 Anthropic 模型，Fable 系列进入 Copilot 模型池只是节奏问题——企业侧应关注模型路由带来的单位任务成本变化。（来源：<a href="https://deyronlabs.com/en/topics/models/">Deyron Labs 模型追踪</a>、<a href="https://www.nextinterrupt.com/topics/ai">NextInterrupt</a>）</p>
+    <h3>2. Google Gemini 4 Carbon 正式开放 API（11 月 10 日）</h3>
+    <p>继两周前网安防御者限定试用后，Gemini 4 Carbon 于 11 月 10 日向付费 API 用户与 AI Ultra 订阅者全面开放：<strong>限时价 $2 / 百万输入、$10 / 百万输出，11 月 30 日后恢复 $4 / $20</strong>；同步在 Antigravity 环境提供 <code>/swarm</code> 多智能体模式。Google 还发布了 200 项任务的 MKA 视觉知识工作基准（与 Artificial Analysis 合作），并推出 Gemini Robotics 2.5——官方称 200 项任务成功率高於基线 30%–100%，已向机器人合作伙伴推送。限时定价窗口是低成本评测该模型与 Claude Fable 5.2 的难得机会。（来源：<a href="https://theagenticweekly.com/news">The Agentic Weekly（2026-11-10）</a>、<a href="https://aiweekly.co/ai-news-today/">AI Weekly</a>）</p>
+    <h3>3. OpenAI：GPT-6 Cyber 限批发布，图像模型 2.6 铺开</h3>
+    <p>OpenAI 于 11 月 5 日发布 <strong>GPT-6 Cyber</strong>：面向网络安全场景的限定模型，首批仅向获批的 Daybreak Red 客户通过 API 与 Codex 开放——与 Gemini 4 Carbon 的「先网安后公众」路线如出一辙，头部实验室正把网安作为前沿模型的受控首发场景。同期 GPT-Image-2.6（Flare / Sunburst）图像模型于 11 月 4 日 GA，官方称出图速度提升 50%。（来源：<a href="https://theagenticweekly.com/models/this-week">The Agentic Weekly 本周模型清单</a>）</p>
+    <h3>4. 性价比层与开源层同步活跃</h3>
+    <ul>
+        <li><strong>Meta Muse Ember</strong>（11 月 9 日）：Muse 家族最轻量档，<strong>$0.10 / $0.50 每百万 Token</strong>，在 AutomationBench 上超越 Haiku 5.5 而成本仅三分之一——高频自动化任务的性价比锚点再次下移。</li>
+        <li><strong>美团 LongCat-2.5 开源权重</strong>（11 月 9 日，MIT 协议）：1.6T 参数 MoE、每 Token 激活约 48B、<strong>100 万 Token 上下文</strong>，面向长程 Agent 任务——国产开源模型在长上下文 Agent 赛道的发力值得部署评测。</li>
+        <li><strong>NVIDIA GR00T 2</strong>（CoRL 2026）：20 亿参数视觉-语言-动作模型，50 项机器人任务一次性成功率达 71%；叠加 Gemini Robotics 2.5，机器人基础模型进入「季度迭代」节奏。</li>
+    </ul>
+    <div class="quote"><strong>格局判断：</strong>「旗舰降价 + 网安首发 + 开源追长上下文」三条线并行：旗舰模型单价年内已两轮下探（Fable 系列 -20%），多模型路由的账越来越好算；企业无需押注单一供应商，重点是建立评测—路由—成本回看的闭环机制。11 月 30 日 Carbon 定价窗口截止前，建议完成与 Fable 5.2 的同题对比评测。</div>
+</section>
+<section class="section" id="sec5">
+    <h2>五、总结与下周观察重点</h2>
+    <h3>核心结论</h3>
+    <ul>
+        <li><strong>智能体协议之争收束。</strong>A2A 加入 Agentic AI Foundation 与 MCP 并列，「OpenAPI—MCP—A2A」三层栈成为行业共识；Adobe 一周铺满六大平台证明「开放协议 + 跨平台分发」已是企业 Agent 的默认交付形态。</li>
+        <li><strong>Agent 治理从议题变成功能。</strong>IBM Agent Identity GA、Salesforce Kill Switch + Model Wallet GA、微软 Agents usage report——身份、熔断、钱包、评估四件套均可对标采购。</li>
+        <li><strong>Copilot Chat 限流是本周对企业影响最大的变化。</strong>>2,000 席位组织 11 月 9 日生效，管理员不可见不可调；用好 Agents usage report 把「用户抱怨」转化为「许可采购量」是最务实的应对。</li>
+        <li><strong>汽车供应链进入 AI 挤出效应的确认期。</strong>Nexperia「完全超额认购」与 ST 的公开警告标志车规成熟制程、存储、PCB 三重挤压开始，2027 项目物料保障应立即复核。</li>
+        <li><strong>工厂 Agentic AI 出现可复制的轻量入口。</strong>Autoliv 的 PO/ASN 核查、BorgWarner 的工程合规审计证明：不碰产线改造的 Agent 用例 ROI 路径最短，适合作为 2027 预算的先行项。</li>
+        <li><strong>旗舰模型性价比继续改善。</strong>Claude Fable 5.2 降价 20% 提速 30%，Gemini 4 Carbon 限时半价开放，Muse Ember 把自动化任务成本打到 $0.10 级——模型路由闭环机制比选边更重要。</li>
+    </ul>
+    <h3>下周观察重点</h3>
+    <ul>
+        <li><strong>Microsoft Ignite（11/17–20）</strong>：Autopilot / Home / Code 的 GA 节奏、按量计费（FinOps for AI）细则、Copilot Studio 与 Agent 平台重大更新。</li>
+        <li><strong>Copilot Chat 限流首周反馈</strong>：helpdesk 工单量、Agents usage report 数据、许可升级的部门分布。</li>
+        <li><strong>Gemini 4 Carbon 定价窗口（11/30 截止）</strong>前后的企业评测结论与 Google 是否扩大 /swarm 多智能体能力。</li>
+        <li><strong>Fable 5.2 / Mythos 5.2 进入 Copilot 与第三方平台</strong>的集成进度；Muse Ember 对 Haiku 系工作负载的替代速度。</li>
+        <li><strong>车规供应链</strong>：Nexperia 安世事件后续、意法半导体产能表态、PCB 交期报价变化；国内封测厂车规产能分配。</li>
+        <li><strong>物理 AI 进厂</strong>：JTEKT 97.1% 抓取试验是否转为产线部署；GR00T 2 / Gemini Robotics 2.5 的工厂试点名单。</li>
+    </ul>
+    <h3>数据来源与免责声明</h3>
+    <div class="quote">
+        <strong>数据来源：</strong>本简报信息来自 Enterprise AI World（A2A 加入 AAIF）、Rajesh Beri 集成标准分析（2026-11-03）、Adobe 官方新闻稿（2026-11-04）、The Next Web、Tech Leaders Brief（2026-11-02，IBM / Salesforce / Oracle / ServiceNow 治理动态）、Tacoma News Tribune（GoodData，2026-11-10）、Microsoft Partner Center 公告（2026-11-04）、Microsoft Learn Copilot Release Notes（2026-11-04）、Computerworld、CRN、Microsoft Copilot 官方博客（Connector 写操作、EU Data Boundary）、Microsoft Learn 开发者更新、Reuters via News & Observer（2026-11-10，Nexperia / ST）、Automotive News（2026-11-06，存储与 PCB）、Automotive Manufacturing Solutions（AMNA 2026）、MarkLines（JTEKT / NTN / TIER IV 动态）、Deyron Labs、NextInterrupt、The Agentic Weekly、AI Weekly（模型发布追踪）等公开渠道。内容基于公开信息的解读与归纳，仅供参考，不构成投资建议。
+    </div>
+</section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>由企业 AI 资讯系统整理生成 · 2026 年 11 月 11 日</p>
+            <p>GitHub 仓库：<a href="https://github.com/hosamzj/sites">github.com/hosamzj/sites</a></p>
+        </div>
+    </footer>
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) { backToTop.classList.add('visible'); } else { backToTop.classList.remove('visible'); }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
+<p style="text-align:center;color:#7a7872;font-size:14px;margin:32px auto 8px;">💬 有不同看法或补充？欢迎在下方留言区交流。</p>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

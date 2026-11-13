@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>33年创始人两周被扫地出门：谁扳倒了黄仁勋？（2026-11-13）</title>
+  <meta name="description" content="艾森 Essen 视频深度整理：英伟达创始人黄仁勋辞职事件、两周时间线、华盛顿权力合围、公司治理结构与 AI 芯片产业链影响。">
+  <!-- 素材：艾森 Essen《33年创始人，两周被扫地出门：谁扳倒了黄仁勋？》（YouTube，2026-11-13，47:11）；中文语音本地 Whisper large-v3-turbo 转写整理，专名以原片与公开文件为准。 -->
+  <!-- 更新时间: 2026-11-13 -->
+  <style>
+:root { --bg: #141413; --card: #232320; --card-elevated: #2a2a26; --accent: #c96442; --accent-light: #e07a55; --accent2: #d97757; --text: #faf9f5; --text-secondary: #b0aea5; --text-tertiary: #87867f; --heading: #ffffff; --border: #30302e; --positive: #4ade80; --negative: #f87171; --warn: #fbbf24; --purple: #a78bfa; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; }
+.navbar { background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.navbar .nav-container { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 16px; }
+.nav-brand-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text); }
+.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; padding: 8px 14px; border-radius: 20px; transition: all 0.2s ease; }
+.nav-links a:hover { color: var(--text); background: rgba(201, 100, 66, 0.1); }
+.nav-links a.active { color: var(--accent-light); background: rgba(201, 100, 66, 0.15); }
+.breadcrumb { max-width: 1200px; margin: 0 auto; padding: 20px 24px 0; font-size: 13px; color: var(--text-secondary); }
+.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent-light); }
+.breadcrumb span { margin: 0 8px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+.report-header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+.report-header h1 { color: var(--heading); font-size: 2.2rem; margin: 0 0 16px; letter-spacing: -0.02em; font-weight: 700; }
+.report-header .subtitle { color: var(--accent-light); font-size: 1rem; margin-bottom: 10px; }
+.report-header .meta { color: var(--text-secondary); font-size: 0.9rem; }
+.section { background: var(--card); border-radius: 20px; padding: 32px; margin-bottom: 28px; border: 1px solid var(--border); }
+.section h2 { color: var(--accent-light); font-size: 1.4rem; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.section h3 { color: var(--heading); font-size: 1.15rem; margin: 24px 0 12px; }
+.section p { color: var(--text-secondary); margin-bottom: 1rem; }
+.section b, .section strong { color: var(--text); }
+.highlight-box { background: rgba(201, 100, 66, 0.08); border-left: 4px solid var(--accent); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+.warn-box { background: rgba(251, 191, 36, 0.08); border-left: 4px solid var(--warn); padding: 18px 20px; border-radius: 8px; margin: 16px 0; color: var(--text); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+.kpi { background: var(--card-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.kpi .num { font-size: 1.45rem; font-weight: 700; color: var(--accent-light); }
+.kpi .lbl { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 4px; line-height: 1.5; }
+.quote { border-left: 3px solid var(--accent); background: var(--card-elevated); padding: 12px 18px; margin: 16px 0; border-radius: 0 8px 8px 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
+.quote .who { display: block; margin-top: 6px; font-size: 0.8rem; color: var(--text-tertiary); }
+.timeline { position: relative; margin: 24px 0; padding-left: 28px; border-left: 2px solid var(--accent); }
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item::before { content: ''; position: absolute; left: -35px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+.timeline-item .t-year { font-weight: 700; color: var(--accent-light); font-size: 0.95rem; }
+.timeline-item p { margin: 4px 0 0; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--accent-light); font-weight: 600; background: rgba(255,255,255,0.03); }
+tr:hover td { background: rgba(255,255,255,0.03); }
+table.cmp th, table.cmp td { border: 1px solid var(--border); }
+.chart-fig { margin: 24px 0; background: var(--card-elevated); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.chart-fig img { width: 100%; display: block; }
+.chart-fig figcaption { padding: 12px 16px; color: var(--text-tertiary); font-size: 0.85rem; line-height: 1.6; }
+.source-list { margin: 12px 0 0 20px; color: var(--text-secondary); }
+.source-list li { margin-bottom: 8px; }
+.footer { text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding: 40px 0 60px; border-top: 1px solid var(--border); margin-top: 40px; }
+.footer p { margin-bottom: 0.5rem; }
+a { color: var(--accent2); text-decoration: none; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+.positive { color: var(--positive); } .negative { color: var(--negative); } .warn { color: var(--warn); } .purple { color: var(--purple); }
+@media (max-width: 768px) { .navbar .nav-container { flex-direction: column; gap: 12px; padding: 16px; } .nav-links a { padding: 6px 10px; font-size: 13px; } .breadcrumb { padding: 16px 16px 0; } .container { padding: 20px 16px 60px; } .report-header h1 { font-size: 1.6rem; } .section { padding: 20px; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-icon">多</div><span>DuoDuo Research</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="index.html#geopolitical">市场与地缘</a>
+      <a href="index.html#ai-tech">AI 与科技</a>
+      <a href="index.html#auto">中国汽车</a>
+      <a href="index.html#research" class="active">专题研究</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="index.html">研究报告中心</a><span>→</span><a href="index.html#research">专题研究</a><span>→</span>33年创始人两周被扫地出门：谁扳倒了黄仁勋？
+</div>
+<div class="container">
+  <article class="article">
+    <header class="report-header">
+      <h1>33年创始人，两周被扫地出门：谁扳倒了黄仁勋？</h1>
+      <p class="subtitle">英伟达权力交接、华盛顿合围与 AI 芯片地缘政治的深度拆解</p>
+      <div class="meta">报告日期：2026-11-13 ｜ 素材：艾森 Essen（YouTube，47:11，10,708 次观看 / 930 赞 / 428 评论）｜ 多多研究</div>
+    </header>
+
+    <div class="section">
+      <h2>〇、先把事实与解读分开</h2>
+      <p><b>已确认的硬事实</b>：英伟达董事会于 2026 年 11 月 11 日接受黄仁勋辞去总裁、CEO 及董事职务，生效即时；CFO 科莱特·克雷斯（Colette Kress）出任临时 CEO；1993 年起任董事的哈维·琼斯（Harvey C. Jones）成为公司首位董事会主席。SEC 在 11 月 12 日 08:52（美东）接收 8-K，英伟达同日发布新闻稿。</p>
+      <p><b>仍需谨慎的部分</b>：视频的主线不是“谁按公司章程完成交接”，而是“谁把政治、舆论与公司治理压力推到董事会桌前”。间谍指控、婚外情报道、国会动机、特朗普交易计算，都属于正在发展的新闻与媒体叙事；截至本页发布，公开信息尚未显示黄仁勋本人已被起诉或制裁。</p>
+      <div class="warn-box"><b>阅读提示：</b>下文按“公开事实 + 片中梳理 + 产业解读”三层标注。艾森的强项是把两周内分散的新闻串成权力结构；其中涉及个人私德、族裔与国家安全指控的部分，应保留证据意识，不宜把报道措辞直接等同于司法结论。</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="num">33 年</div><div class="lbl">黄仁勋从 1993 年创办英伟达到离职的掌舵时间</div></div>
+        <div class="kpi"><div class="num">约 20 小时</div><div class="lbl">片中从 11 月 11 日 12:43《经济学人》社论上线，到次日 08:52 8-K 提交的收口窗口</div></div>
+        <div class="kpi"><div class="num">3.58%</div><div class="lbl">片中引用的黄仁勋持股比例；英伟达一股一票、无创始人超级投票权</div></div>
+        <div class="kpi"><div class="num">&gt;13% → 约 -4%</div><div class="lbl">消息冲击后盘中跌幅与周四收盘跌幅的公开报道口径</div></div>
+      </div>
+      <figure class="chart-fig">
+        <img src="assets/report-charts/ai-jianghu-jensen-8k-notice.webp" alt="原片 00:26 截图：SEC 8-K 时间线">
+        <figcaption>▲ 原片 00:26 截图：视频以 11 月 12 日 08:52 的 SEC 8-K 公告作为叙事起点。严格说，8-K 记载的“最早事件日期”为 11 月 11 日，SEC 接收时间为 11 月 12 日 08:52。</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>一、两周时间线：从“间谍报道”到“接受辞呈”</h2>
+      <div class="timeline">
+        <div class="timeline-item"><div class="t-year">10/29 · 纽约时报放第一枪</div><p>报道称，与黄仁勋关系密切的中国女商人黄乐（Huang Le，音译）被指向北京传递情报；特朗普政府早已收到简报但未行动。艾森强调：六位记者联名、两位跑白宫条线，真正的读者不是硅谷，而是白宫。</p></div>
+        <div class="timeline-item"><div class="t-year">10/30–10/31 · 跟进与短暂停火</div><p>华尔街日报跟进报道；新加坡内政部随后澄清，称相关调查聚焦服务器采购申报，并非“间谍活动”。特朗普在海湖庄园称希望黄仁勋“一切都好”。从 10/31 到 11/3 投票前，重磅报道突然安静。</p></div>
+        <div class="timeline-item"><div class="t-year">11/3 · 中期选举改变保护伞价格</div><p>片中判断：选前特朗普控制白宫与国会，护住黄仁勋的政治成本较低；民主党大胜后，国会调查、传票与“科技巨头—特朗普关系”议题同时升温，保护伞开始漏雨。</p></div>
+        <div class="timeline-item"><div class="t-year">11/4–11/10 · 国会、媒体与情报叙事加压</div><p>众议院三委员会主席要求黄仁勋 11/18 闭门说明；民主党参议员舒默把矛头指向“特朗普保护朋友”；纽约时报从“中国间谍”到“疑似中国间谍”的标题措辞，被片中作为“先定罪、后补救”的证据。</p></div>
+        <div class="timeline-item"><div class="t-year">11/11 · 董事会前夜</div><p>《经济学人》12:43 上线“黄仁勋必须走人”社论；16:00 收盘英伟达仍涨 2.87%；16:55 纽约时报再曝第二段关系；17:28 华尔街日报称董事会准备罢免；盘后跌幅最深约 8.6%。当晚董事会开会。</p></div>
+        <div class="timeline-item"><div class="t-year">11/12 · 8-K 与继任</div><p>08:52 SEC 接收 8-K：接受黄仁勋辞呈，科莱特·克雷斯任临时 CEO，哈维·琼斯任首位董事会主席。路透社随后又报道第三位亲密关系对象；华尔街日报一边回顾创业史，一边评估“AI 热潮最好的公关资产沉没”。</p></div>
+      </div>
+      <figure class="chart-fig">
+        <img src="assets/report-charts/ai-jianghu-jensen-economist-must-go.webp" alt="原片 21:35 截图：经济学人社论">
+        <figcaption>▲ 原片 21:35 截图：《经济学人》社论“Jensen Huang must go”。艾森把这篇社论视为 11 月 11 日下午“压垮董事会”的第一张公开牌。</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>二、艾森的核心解释：一场五方合围，而不是单一丑闻</h2>
+      <p>视频最有价值的部分，是把“婚外情为什么突然变成死罪”拆成一个多玩家博弈：婚外情本身很少直接杀死一位业绩极强的 CEO，真正让它变成死罪的是先前扣上的“国家安全 / 间谍”帽子，以及这个帽子在选举后突然有了政治用途。</p>
+      <table class="cmp">
+        <tr><th>玩家</th><th>片中判断的真实目标</th><th>使用的工具</th><th>得到什么</th></tr>
+        <tr><td>情报与安全口</td><td>把黄乐事件纳入“中国渗透”框架</td><td>匿名官员放话、媒体简报、国家安全话语</td><td>让私德丑闻升级为忠诚测试</td></tr>
+        <tr><td>共和党对华鹰派</td><td>收紧对华芯片出口</td><td>国会听证、传票威胁、党团联名</td><td>打掉最积极的 H200 游说者</td></tr>
+        <tr><td>民主党 / 进步派</td><td>把黄仁勋变成特朗普的“罪证”</td><td>国会监督、文件保全、25% 关税合宪性追问</td><td>削弱科技富豪与特朗普联盟</td></tr>
+        <tr><td>主流媒体与评论版</td><td>左右两翼各自完成叙事定调</td><td>标题措辞、社论、讽刺专栏</td><td>把“疑似”磨成公众印象中的“坐实”</td></tr>
+        <tr><td>英伟达董事会</td><td>止损、收回创始人方向盘</td><td>独立调查、章程权力、继任安排</td><td>快速切割风险，并把治理权收归董事会</td></tr>
+      </table>
+      <div class="quote">“情报口扣帽子，鹰派出刀，大报造势，董事会收网。每个人都只推了一小把，每一把都推得理直气壮；最后没有人需要为结果负责。”<span class="who">——艾森 Essen 视频主线概括</span></div>
+      <p><b>这把刀为什么快？</b>因为黄仁勋站得太近：既能影响下一代 AI 芯片路线，又能与台积电、韩国存储厂和全球数据中心资本协同，还能直接进白宫影响对华政策。一个人同时握着技术、资本、制造与政治四条线，是英伟达的战略资产；一旦出事，也变成最容易被两党共同攻击的“高价值节点”。</p>
+    </div>
+
+    <div class="section">
+      <h2>三、公司治理：他为什么挡不住 6 张票？</h2>
+      <p>艾森把 11 月 11 日夜间称为“董事会收网”。按片中梳理，英伟达章程下董事会过半数即可免除 CEO；但没有正当理由要移除一名董事，需要三分之二股东投票。因此黄仁勋若要彻底离开董事会，必须自己签署辞任董事。</p>
+      <p>关键在于：黄仁勋只有约 3.58% 股份，英伟达又是一股一票，没有给创始人保留超级投票权。平时这从不是问题——因为业绩、行业声望与组织信任替他投票；但当外部政治压力、媒体叙事与董事会风险判断同时转向时，他没有一张制度上的“否决牌”。</p>
+      <div class="highlight-box"><b>和乔布斯、卡兰尼克不同：</b>乔布斯 1985 年被赶出苹果时，Macintosh 卖不动、公司在裁员；卡兰尼克 2017 年离开 Uber 时，公司丑闻缠身、大股东逼宫。艾森强调，黄仁勋离开时的英伟达仍在巅峰：业务向上、股东支持、公司内无公开对手、行业认可近乎一边倒。正因如此，把他推出去的力量只能主要来自公司外部。</div>
+      <p>这也意味着，英伟达的交接不是一次“经营失败后的被动换帅”，而是典型的<b>政治冲击触发治理重估</b>：董事会四天前还说“没有理由认为国家安全或公司机密受损，并对黄仁勋及团队有信心”，四天后便接受辞呈。变的未必是证据，更可能是保住他的价格。</p>
+    </div>
+
+    <div class="section">
+      <h2>四、特朗普变量：从保护伞到“什么都不做”</h2>
+      <p>视频对特朗普的刻画很冷：不是公开翻脸，而是在最需要他的时候重新计算成本。选举前，黄仁勋能替白宫吸引投资、谈成对华芯片生意、陪同访华；选举后，替他撑伞意味着得罪国会、情报机构与媒体，还要消耗本就紧张的第二期政治资本。</p>
+      <p>时间线里最有信息量的是措辞变化：</p>
+      <table>
+        <tr><th>日期</th><th>特朗普公开口径</th><th>信号</th></tr>
+        <tr><td>11/8</td><td>“我只知道他是个好人，他做得非常出色”；不后悔此前未行动</td><td>仍试图以个人背书覆盖国家安全叙事</td></tr>
+        <tr><td>11/9</td><td>称亲自通话，相信黄仁勋不知道对方是间谍；“后面交给 FBI”</td><td>从个人担保切换为程序托词</td></tr>
+        <tr><td>11/10</td><td>称自己“刚刚才知道这些指控”</td><td>与“一年前已听简报”的报道正面冲突，开始切割</td></tr>
+        <tr><td>11/11</td><td>董事会讨论去留当天，特朗普一言不发</td><td>不消耗政治资本，即是最清楚的表态</td></tr>
+        <tr><td>11/12</td><td>黄仁勋辞职数小时后，发帖称“能接替他的只有苹果蒂姆·库克”</td><td>把事件包装成传奇交接，而非政治失败</td></tr>
+      </table>
+      <div class="quote">“在华盛顿的权力游戏里，没有朋友，只有筹码。最残酷的背叛，往往不需要翻脸，只需要在你最需要帮助的时候什么都不做。”<span class="who">——艾森 Essen 视频结尾前的核心判断</span></div>
+    </div>
+
+    <div class="section">
+      <h2>五、媒体、证据与“身份变量”：视频里最刺耳也最值得警惕的一段</h2>
+      <p>艾森用了相当篇幅批评标题与副标题如何塑造公众印象：主标题守住“疑似”，副标题却把“被情报机构认定 / 确认”写得更重；网页先入为主，隔夜再补“疑似”。这种做法并非只影响黄仁勋个人，而是决定了一场国家安全叙事能否在证据公开前完成定罪。</p>
+      <p>视频还把此事放进美国华裔遭遇的“忠诚测试”历史：李文和案、陈刚案、司法部“中国行动计划”的终止与反思。艾森的尖锐之处在于：<b>政客很少说“因为族裔”，他们只说“中共”；种族被翻译成国家安全之后，就既无法指控，也难以反驳。</b>这也是为何黄仁勋在婚外情道歉信里要写“我爱我们的国家”“我为自己是美国人而自豪”——在视频看来，这不是写给妻子的，是写给忠诚测试机器的。</p>
+      <figure class="chart-fig">
+        <img src="assets/report-charts/ai-jianghu-jensen-nyt-second-relationship.webp" alt="原片 22:28 截图：纽约时报第二段关系报道">
+        <figcaption>▲ 原片 22:28 截图：纽约时报披露第二段关系的画面。第二段报道不是独立存在，它与《经济学人》社论、华尔街日报“准备罢免”报道在同一下午形成连锁反应。</figcaption>
+      </figure>
+      <figure class="chart-fig">
+        <img src="assets/report-charts/ai-jianghu-jensen-wsj-ousted.webp" alt="原片 22:54 截图：华尔街日报报道黄仁勋已被罢免">
+        <figcaption>▲ 原片 22:54 截图：华尔街日报页面标题“Jensen Huang Has Been Ousted as Nvidia CEO”。对董事会而言，真正可怕的不是私德新闻，而是“董事会要动手”本身被公开。</figcaption>
+      </figure>
+    </div>
+
+    <div class="section">
+      <h2>六、真正会失去什么：不是产能，而是跨体系信任网络</h2>
+      <p>黄仁勋当然不是不可替换的单点故障：GPU 架构、CUDA 生态、供应链与数据中心客户都有惯性，第二天芯片照样出货。艾森也不认为美国会立刻在 AI 竞赛中输给中国。真正难替换的，是他能把四套语言讲成同一套行动的能力：</p>
+      <ul class="source-list">
+        <li><b>技术语言：</b>决定下一代 AI 芯片与系统架构往哪里走；</li>
+        <li><b>资本语言：</b>让全球数据中心巨头围绕同一路线投入数千亿美元；</li>
+        <li><b>制造语言：</b>与台积电、韩国存储、封装测试伙伴形成长期产能协同；</li>
+        <li><b>政治语言：</b>进入白宫，直接影响对华芯片许可、关税与出口管制。</li>
+      </ul>
+      <p>临时 CEO 科莱特·克雷斯是财务与运营高手，适合稳定资本市场、客户承诺与内部秩序；但“稳定器”不等于“路线缔造者”。如果继任者无法同时维持亚洲供应链、美国政府与中国市场之间的微妙平衡，英伟达的产品路线图或许不断，<b>地缘政治腾挪空间会变窄</b>。</p>
+      <div class="highlight-box"><b>对中国的含义：</b>艾森的判断是，北京不需要主动做什么，只要看着美国自己拆桥。卡中国芯片多年的体系，一旦少了最懂如何维护跨体系信任的人，裂缝会自己扩大。但这类判断也应保留边界：供应链转移、出口管制与客户囤货都有惯性，不会因一人离职即时反转。</div>
+    </div>
+
+    <div class="section">
+      <h2>七、给 IT / 产业链决策者的五个动作</h2>
+      <p><b>1. 把“路线图连续性”与“路线制定者风险”分开定价。</b>短期采购看产品、库存与合同承诺；中期规划看董事会继任、关键架构负责人与政府关系团队是否稳定。克雷斯稳住财务不等于 Blackwell/Rubin 的生态战略不会调整。</p>
+      <p><b>2. AI 基础设施预算加入政治波动准备金。</b>H200 的“先回美国检查 + 25% 关税”说明，对华芯片政策已经不是一次性许可，而是可持续调整的政策工具。数据中心、云服务商与车企智算采购都要做“许可收紧 / 延迟 / 区域绕行”三情景。</p>
+      <p><b>3. 供应链多元化不等于只看产能。</b>黄仁勋真正稀缺的是跨台积电、韩国存储、封测厂、云厂商与政府之间的信任网络。替代供应商务必评估：对方是否也能把工艺、产能、资本与政策节奏串起来，而不只是报价更低。</p>
+      <p><b>4. 地缘合规要前置到合同层。</b>围绕高性能 GPU、先进封装、HBM、高速互连的采购与联合研发，应把出口管制变更、最终用途审查、数据与模型跨境、政府审计条款写进主合同，而不是出问题后靠法务补丁。</p>
+      <p><b>5. 对“国家安全叙事”建立证据档案。</b>无论是企业高管、海外华人工程师，还是跨境供应链团队，涉及敏感技术交流时，要有可审计的合作记录、访问边界、披露流程和法务响应。视频里最沉重的教训是：当叙事跑在证据前面时，程序清白就是唯一护城河。</p>
+    </div>
+
+    <div class="section">
+      <h2>八、接下来两周看什么</h2>
+      <div class="timeline">
+        <div class="timeline-item"><div class="t-year">国会听证与传票</div><p>黄仁勋是否按 11/18 安排闭门说明；如果缺席，共和党议员已公开表示可发传票。注意问题会从个人私德扩展到 H200 许可、25% 关税与对华出口文件。</p></div>
+        <div class="timeline-item"><div class="t-year">独立调查边界</div><p>英伟达独立调查是否公布“国家安全或公司机密是否受损”的结论；若没有结论，董事会的四天转向会被持续追问。</p></div>
+        <div class="timeline-item"><div class="t-year">永久 CEO 人选</div><p>克雷斯是稳定过渡，还是正式候选？外部人选（苹果库克只是特朗普式玩笑，不是董事会声明）与内部产品/架构负责人之间的选择，决定英伟达进入“财务治理”还是“技术治理”时代。</p></div>
+        <div class="timeline-item"><div class="t-year">亚洲供应链表态</div><p>台积电、韩国存储、封测与服务器伙伴是否继续按原路线加码。真正的信号不是新闻稿，是 2027 年产能预订、预付款与联合扩产是否变化。</p></div>
+        <div class="timeline-item"><div class="t-year">中美芯片政策</div><p>H200 许可、25% 关税安排、后续 B 系列 / Rubin 对华政策是否会因国会压力收紧；北京如何反制或利用舆论窗口，也会反过来影响美企游说空间。</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>尾声：黄仁勋输掉的不是财富，而是“决定命运的权利”</h2>
+      <p>按片中数据，黄仁勋仍持有约 3.58% 的英伟达股份，价值千亿美元量级；他失去的不是股票，而是决定这家公司命运的权利。33 年，他赢下技术路线、资本市场与行业洗牌，最后却输给一场华盛顿权力游戏。对企业管理者的真正警示不在于私德，而在于：<b>当公司成为国家战略资产，创始人的个人政治资本也会被计入系统风险。</b></p>
+      <p>对旁观者而言，这件事还有另一层不舒服的启示：一个人要成功到什么程度，才不必反复证明自己属于这个国家？当血统、标签与政治纯洁开始替代理性、契约和实力，受损的不只是某一位 CEO，而是整个创新系统的可信度。</p>
+      <p style="color: var(--text-tertiary); font-size: 0.85rem;">来源：艾森 Essen《33年创始人，两周被扫地出门：谁扳倒了黄仁勋？》（2026-11-13，YouTube，47:11；本地 Whisper large-v3-turbo 中文语音转写整理，专名以原片与公开文件为准）；NVIDIA 2026-11-12 新闻稿与 SEC 8-K（2026-11-11 event date / 2026-11-12 filing）；BBC、CNN、TechCrunch、Fortune 等公开报道。视频截图均为原片画面。本页为内容整理与产业解读，不构成投资建议。</p>
+      <ul class="source-list">
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvidiaannouncesceotransiti.htm">SEC 附件：NVIDIA Announces CEO Transition（2026-11-12 新闻稿）</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm">SEC 8-K：NVIDIA CORPORATION, event date 2026-11-11</a></li>
+        <li><a href="https://www.bbc.co.uk/news/live/c6zjry11v8w1t">BBC live：Jensen Huang resigns as Nvidia CEO</a></li>
+        <li><a href="https://www.cnn.com/2026/11/12/tech/jensen-huang-nvidia-resigns">CNN：CFO Colette Kress to serve as interim leader</a></li>
+      </ul>
+    </div>
+  </article>
+</div>
+<!-- Waline 评论区 -->
+<link rel="stylesheet" href="assets/waline/waline.css" />
+<div id="waline-comments" style="max-width: 860px; margin: 40px auto; padding: 0 24px;"></div>
+<script src="assets/waline/waline.umd.js"></script>
+<script>
+  Waline.init({
+    el: '#waline-comments',
+    serverURL: 'https://comment.hosamzj.cn',
+    path: location.pathname.replace(/\.html$/, ''),
+    dark: 'body',
+    lang: 'zh-CN',
+    pageview: true
+  });
+</script>
+</body>
+</html>

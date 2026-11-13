@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微软 Outlook 服务故障简报 · 2026年11月13日</title>
+<!--
+设计判断：
+1. 锚点：编辑部快报（live newsroom）——深墨蓝底 + 电报式等宽注记 + 高亮琥珀强调色，像一页还在滚动更新的事件专刊。
+2. 封面概念：超尺度标题锁合。"仍未恢复" 四个超大字直接给出结论，顶部的状态行（等宽字体 + 闪烁小红点）充当第一眼的视觉事件，读者滑动前就知道主题与结论。
+3. 编辑标记：每节标题前的等宽编号「¶01」式切口，与首屏状态行的电报气质一致。
+-->
+<style>
+  :root {
+    --bg: #0d1526;
+    --bg-soft: #131e36;
+    --ink: #e8ecf5;
+    --ink-dim: #9aa7bd;
+    --accent: #ffb03b;
+    --alert: #ff6b5e;
+    --ok: #4cd6a2;
+    --line: rgba(255,255,255,.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+    line-height: 1.75;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+  .mono {
+    font-family: "SF Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- 首屏 ---------- */
+  header.hero {
+    padding: 26px 0 46px;
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(255,176,59,.16), transparent 60%),
+      radial-gradient(90% 70% at 0% 10%, rgba(77,124,214,.14), transparent 55%);
+  }
+  .statusline {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 12px; letter-spacing: .12em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--alert);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
+  h1.mega {
+    margin-top: 22px;
+    font-size: clamp(58px, 21vw, 96px);
+    line-height: 1.02;
+    letter-spacing: .02em;
+    font-weight: 700;
+  }
+  h1.mega .amber { color: var(--accent); }
+  .dek {
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--ink-dim);
+    max-width: 34em;
+  }
+  .meta {
+    margin-top: 26px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 12px; color: var(--ink-dim);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot { animation: none; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- 章节 ---------- */
+  section { padding: 34px 0 8px; }
+  .cut {
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 12px; letter-spacing: .2em;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .cut::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  h2 { font-size: 24px; line-height: 1.3; margin-bottom: 14px; font-weight: 700; }
+  p { margin-bottom: 14px; }
+  em { color: var(--ink); font-style: normal; font-weight: 700; }
+  .note {
+    font-size: 14px; color: var(--ink-dim);
+    border-left: 2px solid var(--accent);
+    padding-left: 14px; margin: 16px 0 6px;
+  }
+
+  /* ---------- 时间线 ---------- */
+  .timeline { list-style: none; margin: 6px 0 10px; }
+  .timeline li {
+    position: relative;
+    padding: 0 0 18px 24px;
+    border-left: 1px solid var(--line);
+    margin-left: 5px;
+  }
+  .timeline li:last-child { border-left-color: transparent; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -5px; top: 8px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .timeline li.recovered::before { background: var(--ok); border-color: var(--ok); }
+  .tl-time {
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 13px; color: var(--accent);
+    display: block; margin-bottom: 2px;
+  }
+  .timeline li.recovered .tl-time { color: var(--ok); }
+
+  /* ---------- 影响清单 ---------- */
+  ul.impact { list-style: none; }
+  ul.impact li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  ul.impact li:last-child { border-bottom: none; }
+  ul.impact .name { flex: 0 0 9.5em; font-weight: 700; }
+
+  /* ---------- 结尾 ---------- */
+  .sources {
+    font-size: 13px; color: var(--ink-dim);
+    padding: 22px 0 60px;
+  }
+  .sources strong { color: var(--ink); font-weight: 700; }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 18px 0 40px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 12px; color: var(--ink-dim);
+    display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  }
+  a { color: var(--accent); }
+  time[data-event-date] [data-date-absolute] { display: none; }
+  @media print {
+    time[data-event-date] [data-date-label] { display: none; }
+    time[data-event-date] [data-date-absolute] { display: inline; }
+    body { background: #fff; color: #111; }
+    header.hero { background: none; }
+  }
+</style>
+</head>
+<body data-visualization-style="general-editorial">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="statusline"><span class="dot"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-13 19:04</time> (北京时间)</div>
+    <h1 class="mega">仍未<br><span class="amber">恢复</span></h1>
+    <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断进入第二天：官方定性为「服务降级」，部分用户已恢复，全面恢复时间尚未公布。</p>
+    <div class="meta">
+      <span>事件编号 MO1550821 / EX1550543</span>
+      <span>事件开始：2026年11月12日</span>
+      <span>状态：服务降级</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="cut">¶01 发生了什么</div>
+    <h2>一场持续近 10 小时、波及全球的大断网</h2>
+    <p>美国东部时间 <em>2026 年 11 月 12 日</em> 起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断数小时，全球大量用户无法连接邮箱、收发邮件；到晚间，Outlook 故障报告一度达到 <em>138,058 起</em>的峰值，傍晚回落至约 3.4 万起<a citation-flag doc_id="4" doc_start="微软旗下Microsoft 365、Outlook、Teams及其他应用于美国东部时间11月12日持续中断多个小时" doc_end="到傍晚已降至约34490起。"></a></p>
+    <p>故障原因是「多台服务器因负载过高意外离线，并非访问流量激增」——受影响服务器上的一个核心进程过载、停止响应，造成容量损失<a citation-flag doc_id="15" doc_start="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失" doc_end="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失。"></a></p>
+    <p class="note">微软高管已公开致歉，明确表示<em>无证据显示本次事故由恶意网络攻击引发</em>。</p>
+  </section>
+
+  <section>
+    <div class="cut">¶02 恢复进展</div>
+    <h2>分批恢复中，尚未完全上线</h2>
+    <ul class="timeline">
+      <li>
+        <span class="tl-time">11月12日 · 美东 13:00 前后</span>
+        故障报告开始激增，Outlook、Teams、Copilot 等服务连接困难，微软启动排查。
+      </li>
+      <li>
+        <span class="tl-time">11月12日 · 美东 18:00 前后</span>
+        微软通报「观察到有限恢复，用户正逐步重新连接」，但恢复措施未达预期，出现反复——部分重新上线的服务器接收流量后再次失去响应。
+      </li>
+      <li>
+        <span class="tl-time">11月13日 · 全天</span>
+        微软将状态定为「服务降级」：正通过多条工作线排查流量失衡的根本原因，隔离部分基础设施、逐步重新引入流量，并暂停了所有部署变更以稳定系统。
+      </li>
+      <li>
+        <span class="tl-time">11月13日 · 亚太区进展</span>
+        微软确认<em>亚太地区部分受影响基础设施的恢复措施已经完成</em>，邮箱访问、延迟邮件投递等关键场景正在逐步改善；恢复工作正从亚太向其他地区推进。
+      </li>
+      <li class="recovered">
+        <span class="tl-time">待确认 · 官方未公布 ETA</span>
+        全面恢复上线的时间点——这正是本简报持续跟踪、确认后将第一时间通知的事项。
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cut">¶03 影响范围</div>
+    <h2>哪些服务受了影响</h2>
+    <ul class="impact">
+      <li><span class="name">Outlook / Exchange Online</span><span>影响最直接：邮箱连接、收发邮件受阻</span></li>
+      <li><span class="name">Microsoft Teams</span><span>受波及；北美区通话问题已先行解决</span></li>
+      <li><span class="name">Microsoft 365 Copilot</span><span>AI 助手服务连接异常</span></li>
+      <li><span class="name">SharePoint / Defender 等</span><span>部分管理、协作、安全防护功能故障或延迟</span></li>
+    </ul>
+    <p class="note">顺带一提：由世纪互联运营的 Microsoft 365 <em>国内版是独立云环境</em>，不受本次全球版故障影响。</p>
+  </section>
+
+  <section>
+    <div class="cut">¶04 波及之广</div>
+    <h2>从银行到政府，都在等微软修好</h2>
+    <p>这次故障波及多个行业与国家机构：日本部分银行和证券公司一度重新启用传真机确认交易，物流集团佐川急便暂停了车站与机场的当日行李寄存预约；瑞士历峰集团、美国 Workhorse 公司因此推迟财报发布；澳大利亚警方与情报机构、日本与新加坡部分政府系统也受到影响<a citation-flag doc_id="13" doc_start="日本部分银行及证券机构不得不重新启用传真机来确认交易" doc_end="部分政府系统受到影响。"></a></p>
+  </section>
+
+  <section>
+    <div class="cut">¶05 你现在可以做什么</div>
+    <h2>给等待恢复的用户</h2>
+    <ul class="impact">
+      <li><span class="name">不用反复重试</span><span>收发延迟与掉线属平台侧问题，频繁重试无益；注意避免重复发送同一封邮件，恢复后可能被多次投递</span></li>
+      <li><span class="name">不要盲目改配置</span><span>故障期间重装客户端、反复改密码、调整邮件规则都解决不了服务端问题，反而恢复后难以排查</span></li>
+      <li><span class="name">重要事项留后路</span><span>紧急沟通先电话确认，或暂用移动端 / 网页版轮询</span></li>
+    </ul>
+  </section>
+
+  <div class="sources">
+    <p><strong>信息来源</strong>：微软官方服务健康状态页（status.cloud.microsoft，2026-11-13 11:04 UTC 更新）、央视新闻、中新经纬、界面新闻、搜狐财经等公开报道。本简报为事件恢复期间的阶段性快照，最新状态以微软官方页面为准。</p>
+  </div>
+
+  <footer>
+    <span>微软 Outlook 服务恢复跟踪</span>
+    <span>持续更新中 · 直至确认恢复</span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const timeZone = 'Asia/Shanghai';
+  const nodes = [...document.querySelectorAll('time[data-event-date]')];
+  function refresh() {
+    for (const node of nodes) {
+      const date = node.getAttribute('datetime');
+      if (!date) continue;
+      const [year, month, day] = date.split('-').map(Number);
+      const formatter = new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' });
+      const parts = Object.fromEntries(formatter.formatToParts(new Date()).map(p => [p.type, p.value]));
+      const today = `${parts.year}-${parts.month}-${parts.day}`;
+      const next = new Date(Date.UTC(+parts.year, +parts.month - 1, +parts.day + 1));
+      const tomorrow = next.toISOString().slice(0, 10);
+      const absolute = `${year}年${month}月${day}日`;
+      node.setAttribute('aria-label', absolute);
+      node.querySelector('[data-date-absolute]').textContent = absolute;
+      node.querySelector('[data-date-label]').textContent =
+        date === today ? '今天' : date === tomorrow ? '明天' : absolute;
+    }
+  }
+  refresh();
+  setInterval(refresh, 1000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  window.addEventListener('pageshow', () => refresh());
+})();
+</script>
+</body>
+</html>

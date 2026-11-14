@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>微软 Outlook 服务故障简报 · 2026年11月13日</title>
+<title>微软 Outlook 服务故障简报 · 2026年11月14日</title>
 <!--
 设计判断：
 1. 锚点：编辑部快报（live newsroom）——深墨蓝底 + 电报式等宽注记 + 高亮琥珀强调色，像一页还在滚动更新的事件专刊。
@@ -161,29 +161,36 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="statusline"><span class="dot"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-13 22:00</time> (北京时间)</div>
-    <h1 class="mega">仍未<br><span class="amber">恢复</span></h1>
-    <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断进入第二天：北美、欧洲、亚太均已出现恢复信号，但服务容量尚未回到基线，全面恢复时间仍未公布。</p>
+    <div class="statusline"><span class="dot"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-14 11:10</time> (北京时间)</div>
+    <h1 class="mega">亚太<br><span class="amber">率先恢复</span></h1>
+    <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断接近尾声：<em>引发故障的底层问题已经修复</em>，各项服务全面恢复并趋于稳定，亚太地区恢复措施率先完成；官方尚未解除「服务降级」标记，完全恢复仍待正式确认。</p>
     <div class="meta">
       <span>事件编号 MO1550821 / EX1550543</span>
       <span>事件开始：2026年11月12日</span>
-      <span>状态：服务降级 / 部分恢复中</span>
+      <span>状态：服务降级</span>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-
   <section>
-    <div class="cut">¶01 发生了什么</div>
-    <h2>一场持续约 20 小时、波及 74 个国家和地区的大断网</h2>
-    <p>美国东部时间 <em>2026 年 11 月 12 日</em> 起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断，全球大量用户无法连接邮箱、收发邮件；故障报告一度达到 <em>13.8 万起</em>峰值，此后明显回落，但截至北京时间 11 月 13 日 21 时前后，Downdetector 仍记录到约 <em>1.17 万起</em>Outlook 问题报告。</p>
-    <p>微软目前的技术判断是：服务器负载并非由正常流量激增造成，而是部分服务器意外不可用；受影响服务器上负责建立安全连接 / 处理服务器健康检查的核心进程过载，导致服务器停止处理请求。微软已采取重启、隔离、流量调度、扩容和补丁验证等措施，但完整根因将在恢复完成后以事后报告公布。</p>
-    <p class="note">微软高管已公开致歉，明确表示<em>无证据显示本次事故由恶意网络攻击引发</em>；官方同时把邮件超时保护窗口延长至 48 小时，避免延迟邮件被退信。</p>
+    <div class="cut">¶01 焦点 · 亚太恢复进展</div>
+    <h2>亚太恢复措施完成，邮箱访问逐步改善</h2>
+    <p>微软在最新通报中表示，恢复工作已取得<em>进一步进展</em>：<em>亚太地区部分受影响基础设施的恢复措施已经完成</em>。"流量正在逐步恢复，我们看到关键客户场景有所改善，包括邮箱访问和延迟邮件处理。然而，部分用户可能仍会遇到间歇性问题。"</p>
+    <p>微软表示，目前的重点是将这些恢复措施<em>扩展至其他地区</em>受影响的基础设施，同时继续推进稳定性工作并增加支持容量，以提升服务的一致性。</p>
+    <p class="note">需要注意的是："恢复措施完成"并不等于全面恢复——部分用户仍可能遇到间歇性连接问题，属预期之内；频繁重试无益，恢复期间请留意可能出现的重复邮件。</p>
   </section>
 
   <section>
-    <div class="cut">¶02 恢复进展</div>
+    <div class="cut">¶02 发生了什么</div>
+    <h2>一场持续近 10 小时、波及全球的大断网</h2>
+    <p>美国东部时间 <em>2026 年 11 月 12 日</em> 起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断数小时，全球大量用户无法连接邮箱、收发邮件；到晚间，Outlook 故障报告一度达到 <em>138,058 起</em>的峰值，傍晚回落至约 3.4 万起<a citation-flag doc_id="4" doc_start="微软旗下Microsoft 365、Outlook、Teams及其他应用于美国东部时间11月12日持续中断多个小时" doc_end="到傍晚已降至约34490起。"></a></p>
+    <p>故障原因是「多台服务器因负载过高意外离线，并非访问流量激增」——受影响服务器上的一个核心进程过载、停止响应，造成容量损失<a citation-flag doc_id="15" doc_start="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失" doc_end="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失。"></a></p>
+    <p class="note">微软高管已公开致歉，明确表示<em>无证据显示本次事故由恶意网络攻击引发</em>。</p>
+  </section>
+
+  <section>
+    <div class="cut">¶03 恢复进展</div>
     <h2>分批恢复中，尚未完全上线</h2>
     <ul class="timeline">
       <li>
@@ -195,18 +202,22 @@
         微软通报「观察到有限恢复，用户正逐步重新连接」，但恢复措施未达预期，出现反复——部分重新上线的服务器接收流量后再次失去响应。
       </li>
       <li>
-        <span class="tl-time">11月13日 · 美东 05:28（北京 18:28）</span>
-        微软通报恢复动作正分阶段推进，多个工作负载有所改善，但服务健康仍不稳定，容量尚未回到基线。
+        <span class="tl-time">11月13日 · 全天</span>
+        微软将状态定为「服务降级」：正通过多条工作线排查流量失衡的根本原因，隔离部分基础设施、逐步重新引入流量，并暂停了所有部署变更以稳定系统。
+      </li>
+      <li class="recovered">
+        <span class="tl-time">11月13日 · 亚太区进展</span>
+        微软确认<em>亚太地区部分受影响基础设施的恢复措施已经完成</em>，邮箱访问、延迟邮件投递等关键场景正在逐步改善；恢复工作正从亚太向其他地区推进。
       </li>
       <li>
-        <span class="tl-time">11月13日 · 美东 06:11（北京 19:11）</span>
-        微软确认亚太地区部分受影响基础设施的恢复措施已完成，邮箱访问、延迟邮件投递等关键场景改善；同时维持 48 小时邮件超时保护，优先清理队列和积压邮件。
+        <span class="tl-time">11月14日 · 凌晨</span>
+        微软通报：引发故障的<em>底层问题已经修复</em>，各项服务全面恢复并趋于稳定；将在评估完成后发布完整事件报告，届时说明根本原因与后续改进措施。
       </li>
       <li>
-        <span class="tl-time">11月13日 · 美东 08:32（北京 21:32）</span>
-        最新通报称北美出现更广泛改善，欧洲大部分地区持续改善，亚太也传来积极恢复信号；但剩余基础设施仍可能有间歇性访问问题或邮件延迟。
+        <span class="tl-time">11月14日 · 收尾阶段</span>
+        官方状态页仍保留「服务降级」标记：因影响范围严重，微软将延长监测，待故障期间积压邮件全部补投完成后，才正式认定事件完全解决；完全恢复时间以官方后续通报为准。
       </li>
-      <li>
+      <li class="recovered">
         <span class="tl-time">待确认 · 官方未公布 ETA</span>
         全面恢复上线的时间点——这正是本简报持续跟踪、确认后将第一时间通知的事项。
       </li>
@@ -214,36 +225,35 @@
   </section>
 
   <section>
-    <div class="cut">¶03 影响范围</div>
+    <div class="cut">¶04 影响范围</div>
     <h2>哪些服务受了影响</h2>
     <ul class="impact">
-      <li><span class="name">Outlook / Exchange Online</span><span>影响最直接：网页版、桌面端、EAS/REST 连接和邮箱访问受阻，邮件投递可能延迟</span></li>
-      <li><span class="name">Microsoft Teams</span><span>核心通话、会议、群聊和标准频道大体可用；日历、邀请、编辑会议，以及私有/共享频道等依赖 Exchange 的场景受影响</span></li>
-      <li><span class="name">Microsoft 365 Copilot</span><span>AI 助手加载、响应和访问邮件 / 日历 / 文件等工作数据异常</span></li>
-      <li><span class="name">Intune / SharePoint / Defender</span><span>设备注册、合规检查、协作和安全防护等部分场景间歇性受影响</span></li>
-      <li><span class="name">Microsoft Azure</span><span>微软最新状态页标注：暂未检测到 Azure 问题</span></li>
+      <li><span class="name">Outlook / Exchange Online</span><span>影响最直接：邮箱连接、收发邮件受阻</span></li>
+      <li><span class="name">Microsoft Teams</span><span>受波及；北美区通话问题已先行解决</span></li>
+      <li><span class="name">Microsoft 365 Copilot</span><span>AI 助手服务连接异常</span></li>
+      <li><span class="name">SharePoint / Defender 等</span><span>部分管理、协作、安全防护功能故障或延迟</span></li>
     </ul>
     <p class="note">顺带一提：由世纪互联运营的 Microsoft 365 <em>国内版是独立云环境</em>，不受本次全球版故障影响。</p>
   </section>
 
   <section>
-    <div class="cut">¶04 波及之广</div>
+    <div class="cut">¶05 波及之广</div>
     <h2>从银行到政府，都在等微软修好</h2>
-    <p>这次故障波及多个行业与国家机构：日本部分银行和证券公司一度重新启用传真机确认交易，物流集团佐川急便暂停了车站与机场的当日行李寄存预约；瑞士历峰集团、美国 Workhorse 公司因此推迟财报发布；澳大利亚警方与情报机构、日本与新加坡部分政府系统也受到影响。美联社还报道，OpenAI 与 Anthropic 连接 Microsoft 365 工具也出现异常，显示故障正向 AI 工作流外溢。</p>
+    <p>这次故障波及多个行业与国家机构：日本部分银行和证券公司一度重新启用传真机确认交易，物流集团佐川急便暂停了车站与机场的当日行李寄存预约；瑞士历峰集团、美国 Workhorse 公司因此推迟财报发布；澳大利亚警方与情报机构、日本与新加坡部分政府系统也受到影响<a citation-flag doc_id="13" doc_start="日本部分银行及证券机构不得不重新启用传真机来确认交易" doc_end="部分政府系统受到影响。"></a></p>
   </section>
 
   <section>
-    <div class="cut">¶05 你现在可以做什么</div>
+    <div class="cut">¶06 你现在可以做什么</div>
     <h2>给等待恢复的用户</h2>
     <ul class="impact">
-      <li><span class="name">不用反复重试</span><span>收发延迟与掉线属平台侧问题，频繁重试无益；避免重复发送同一封邮件，恢复后可能被多次投递。微软已把邮件超时保护延至 48 小时，延迟邮件不等于丢失</span></li>
+      <li><span class="name">不用反复重试</span><span>收发延迟与掉线属平台侧问题，频繁重试无益；注意避免重复发送同一封邮件，恢复后可能被多次投递</span></li>
       <li><span class="name">不要盲目改配置</span><span>故障期间重装客户端、反复改密码、调整邮件规则都解决不了服务端问题，反而恢复后难以排查</span></li>
-      <li><span class="name">重要事项留后路</span><span>紧急沟通先电话确认，或暂用移动端 / 网页版轮询；内部管理员以 Microsoft 365 服务健康页的租户级状态为准</span></li>
+      <li><span class="name">重要事项留后路</span><span>紧急沟通先电话确认，或暂用移动端 / 网页版轮询</span></li>
     </ul>
   </section>
 
   <div class="sources">
-    <p><strong>信息来源</strong>：<a href="https://status.cloud.microsoft/m365/referrer=serviceStatusRedirect">微软官方 Microsoft 365 服务状态页</a>、<a href="https://apnews.com/article/microsoft-outage-outlook-email-365-status-down-d92547a821930290db2964388016979a">美联社</a>、<a href="https://www.nbcnews.com/tech/tech-news/live-blog/microsoft-outage-outlook-teams-updates-fix-rcna609118">NBC News</a>、<a href="https://www.cbsnews.com/newyork/news/microsoft-battling-major-outage/">CBS News</a>、Microsoft Q&A 与 Downdetector 公开报道。更新时间：2026-11-13 22:00（北京时间）/ 14:00 UTC。本简报为事件恢复期间的阶段性快照，最新状态以微软官方页面为准。</p>
+    <p><strong>信息来源</strong>：微软官方服务健康状态页（status.cloud.microsoft，2026-11-13 11:04 UTC 更新）、央视新闻、中新经纬、界面新闻、搜狐财经等公开报道。本简报为事件恢复期间的阶段性快照，最新状态以微软官方页面为准。</p>
   </div>
 
   <footer>
@@ -252,32 +262,5 @@
   </footer>
 </main>
 
-<script>
-(() => {
-  const timeZone = 'Asia/Shanghai';
-  const nodes = [...document.querySelectorAll('time[data-event-date]')];
-  function refresh() {
-    for (const node of nodes) {
-      const date = node.getAttribute('datetime');
-      if (!date) continue;
-      const [year, month, day] = date.split('-').map(Number);
-      const formatter = new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' });
-      const parts = Object.fromEntries(formatter.formatToParts(new Date()).map(p => [p.type, p.value]));
-      const today = `${parts.year}-${parts.month}-${parts.day}`;
-      const next = new Date(Date.UTC(+parts.year, +parts.month - 1, +parts.day + 1));
-      const tomorrow = next.toISOString().slice(0, 10);
-      const absolute = `${year}年${month}月${day}日`;
-      node.setAttribute('aria-label', absolute);
-      node.querySelector('[data-date-absolute]').textContent = absolute;
-      node.querySelector('[data-date-label]').textContent =
-        date === today ? '今天' : date === tomorrow ? '明天' : absolute;
-    }
-  }
-  refresh();
-  setInterval(refresh, 1000);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
-  window.addEventListener('pageshow', () => refresh());
-})();
-</script>
 </body>
 </html>

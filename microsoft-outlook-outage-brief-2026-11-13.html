@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>微软 Outlook 服务故障简报 · 2026年11月14日</title>
+<title>微软 Outlook 服务故障简报 · 2026年11月14日 · 已全面恢复</title>
 <!--
 设计判断：
 1. 锚点：编辑部快报（live newsroom）——深墨蓝底 + 电报式等宽注记 + 高亮琥珀强调色，像一页还在滚动更新的事件专刊。
@@ -161,13 +161,13 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="statusline"><span class="dot"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-14 11:10</time> (北京时间)</div>
-    <h1 class="mega">亚太<br><span class="amber">率先恢复</span></h1>
-    <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断接近尾声：<em>引发故障的底层问题已经修复</em>，各项服务全面恢复并趋于稳定，亚太地区恢复措施率先完成；官方尚未解除「服务降级」标记，完全恢复仍待正式确认。</p>
+    <div class="statusline"><span class="dot" style="background: var(--ok);"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-14 17:05</time> (北京时间)</div>
+    <h1 class="mega">全面<br><span class="amber">恢复</span></h1>
+    <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断正式结束：<em>「服务降级」标记已清除</em>，状态页显示 "All products are operational"，各项服务全面恢复并保持稳定。</p>
     <div class="meta">
       <span>事件编号 MO1550821 / EX1550543</span>
       <span>事件开始：2026年11月12日</span>
-      <span>状态：服务降级</span>
+      <span>状态：全面恢复 ✔</span>
     </div>
     <!-- 更新时间: 2026-11-14 -->
   </div>
@@ -176,23 +176,23 @@
 <main class="wrap">
   <section>
     <div class="cut">¶01 焦点 · 亚太恢复进展</div>
-    <h2>亚太恢复措施完成，邮箱访问逐步改善</h2>
-    <p>微软在最新通报中表示，恢复工作已取得<em>进一步进展</em>：<em>亚太地区部分受影响基础设施的恢复措施已经完成</em>。"流量正在逐步恢复，我们看到关键客户场景有所改善，包括邮箱访问和延迟邮件处理。然而，部分用户可能仍会遇到间歇性问题。"</p>
-    <p>微软表示，目前的重点是将这些恢复措施<em>扩展至其他地区</em>受影响的基础设施，同时继续推进稳定性工作并增加支持容量，以提升服务的一致性。</p>
-    <p class="note">需要注意的是："恢复措施完成"并不等于全面恢复——部分用户仍可能遇到间歇性连接问题，属预期之内；频繁重试无益，恢复期间请留意可能出现的重复邮件。</p>
+    <h2>亚太率先完成恢复，全球服务全面上线</h2>
+    <p><em>2026 年 11 月 14 日 17:00 前后（北京时间）</em>，微软官方状态页正式清除「服务降级」标记，横幅显示 <em>"All products are operational"</em>——本次全球性故障正式画上句号。此前率先完成恢复措施的亚太地区，邮箱访问与延迟邮件处理均已回归正常。</p>
+    <p>微软表示，将在评估完成后发布<em>完整事件报告</em>，说明根本原因与后续改进措施；发布时间尚未公布，这也是本简报接下来持续盯的事项。</p>
+    <p class="note">全面恢复初期，个别账户可能遇到积压邮件补投延迟或重复邮件，属清理积压的预期现象，无需改动本机配置。</p>
   </section>
 
   <section>
     <div class="cut">¶02 发生了什么</div>
     <h2>一场持续近 10 小时、波及全球的大断网</h2>
     <p>美国东部时间 <em>2026 年 11 月 12 日</em> 起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断数小时，全球大量用户无法连接邮箱、收发邮件；到晚间，Outlook 故障报告一度达到 <em>138,058 起</em>的峰值，傍晚回落至约 3.4 万起<a citation-flag doc_id="4" doc_start="微软旗下Microsoft 365、Outlook、Teams及其他应用于美国东部时间11月12日持续中断多个小时" doc_end="到傍晚已降至约34490起。"></a></p>
-    <p>故障原因是「多台服务器因负载过高意外离线，并非访问流量激增」——受影响服务器上的一个核心进程过载、停止响应，造成容量损失<a citation-flag doc_id="15" doc_start="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失" doc_end="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失。"></a></p>
+    <p>故障原因几经修正：微软最初归因于「多台服务器因负载过高意外离线」，随后修正为<em>此前一次网络容量升级中引入的缺陷</em>——受影响服务器上的一个核心进程因该缺陷停止响应，造成容量损失；并非网络攻击<a citation-flag doc_id="15" doc_start="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失" doc_end="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失。"></a></p>
     <p class="note">微软高管已公开致歉，明确表示<em>无证据显示本次事故由恶意网络攻击引发</em>。</p>
   </section>
 
   <section>
     <div class="cut">¶03 恢复进展</div>
-    <h2>分批恢复中，尚未完全上线</h2>
+    <h2>从分批恢复到全面恢复</h2>
     <ul class="timeline">
       <li>
         <span class="tl-time">11月12日 · 美东 13:00 前后</span>
@@ -214,13 +214,9 @@
         <span class="tl-time">11月14日 · 凌晨</span>
         微软通报：引发故障的<em>底层问题已经修复</em>，各项服务全面恢复并趋于稳定；将在评估完成后发布完整事件报告，届时说明根本原因与后续改进措施。
       </li>
-      <li>
-        <span class="tl-time">11月14日 · 收尾阶段</span>
-        官方状态页仍保留「服务降级」标记：因影响范围严重，微软将延长监测，待故障期间积压邮件全部补投完成后，才正式认定事件完全解决；完全恢复时间以官方后续通报为准。
-      </li>
       <li class="recovered">
-        <span class="tl-time">待确认 · 官方未公布 ETA</span>
-        全面恢复上线的时间点——这正是本简报持续跟踪、确认后将第一时间通知的事项。
+        <span class="tl-time">11月14日 · 17:00 前后（北京时间）</span>
+        官方状态页正式清除「服务降级」标记，横幅显示 <em>"All products are operational"</em>，本次事件确认全面恢复；完整事件报告待微软后续发布。
       </li>
     </ul>
   </section>
@@ -245,7 +241,7 @@
 
   <section>
     <div class="cut">¶06 你现在可以做什么</div>
-    <h2>给等待恢复的用户</h2>
+    <h2>恢复后的几件小事</h2>
     <ul class="impact">
       <li><span class="name">不用反复重试</span><span>收发延迟与掉线属平台侧问题，频繁重试无益；注意避免重复发送同一封邮件，恢复后可能被多次投递</span></li>
       <li><span class="name">不要盲目改配置</span><span>故障期间重装客户端、反复改密码、调整邮件规则都解决不了服务端问题，反而恢复后难以排查</span></li>
@@ -254,12 +250,12 @@
   </section>
 
   <div class="sources">
-    <p><strong>信息来源</strong>：微软官方服务健康状态页（status.cloud.microsoft，2026-11-13 11:04 UTC 更新）、央视新闻、中新经纬、界面新闻、搜狐财经等公开报道。本简报为事件恢复期间的阶段性快照，最新状态以微软官方页面为准。</p>
+    <p><strong>信息来源</strong>：微软官方服务健康状态页（status.cloud.microsoft，2026-11-14 复核：All products are operational）、央视新闻、中新经纬、界面新闻、搜狐财经等公开报道。本简报为事件恢复后的阶段性快照，最新状态以微软官方页面为准。</p>
   </div>
 
   <footer>
     <span>微软 Outlook 服务恢复跟踪</span>
-    <span>持续更新中 · 直至确认恢复</span>
+    <span>事件已全面恢复 · 完整事件报告待微软发布</span>
   </footer>
 </main>
 

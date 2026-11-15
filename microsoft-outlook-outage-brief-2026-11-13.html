@@ -7,7 +7,7 @@
 <!--
 设计判断：
 1. 锚点：编辑部快报（live newsroom）——深墨蓝底 + 电报式等宽注记 + 高亮琥珀强调色，像一页还在滚动更新的事件专刊。
-2. 封面概念：超尺度标题锁合。"仍未恢复" 四个超大字直接给出结论，顶部的状态行（等宽字体 + 闪烁小红点）充当第一眼的视觉事件，读者滑动前就知道主题与结论。
+2. 封面概念：超尺度标题锁合。"全面恢复" 超大字直接给出结论，顶部的状态行（等宽字体 + 闪烁小红点）充当第一眼的视觉事件，读者滑动前就知道主题与结论。
 3. 编辑标记：每节标题前的等宽编号「¶01」式切口，与首屏状态行的电报气质一致。
 -->
 <style>
@@ -148,6 +148,11 @@
     display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
   }
   a { color: var(--accent); }
+  /* 正文各节与首屏 .wrap 同轴居中（原稿 section 未包 .wrap，宽屏会拉到全宽） */
+  body > section, .sources, footer {
+    max-width: 680px; margin-left: auto; margin-right: auto;
+    padding-left: 22px; padding-right: 22px;
+  }
   time[data-event-date] [data-date-absolute] { display: none; }
   @media print {
     time[data-event-date] [data-date-label] { display: none; }
@@ -161,7 +166,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="statusline"><span class="dot" style="background: var(--ok);"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-14 19:05</time> (北京时间)</div>
+    <div class="statusline"><span class="dot" style="background: var(--ok);"></span>微服务通报 · 实时事件跟进 · 更新于 <time>2026-11-15 20:40</time> (北京时间)</div>
     <h1 class="mega">全面<br><span class="amber">恢复</span></h1>
     <p class="dek">微软 Outlook、Teams 与 Microsoft 365 全球大范围服务中断正式结束：<em>「服务降级」标记已清除</em>，状态页显示 "All products are operational"，各项服务全面恢复并保持稳定。</p>
     <div class="meta">
@@ -169,11 +174,10 @@
       <span>事件开始：11月12日 13:25（美东）</span>
       <span>状态：Service Restored（已恢复）✔</span>
     </div>
-    <!-- 更新时间: 2026-11-14 -->
+    <!-- 更新时间: 2026-11-15 -->
   </div>
 </header>
 
-<main class="wrap">
   <section>
     <div class="cut">¶01 焦点 · 亚太恢复进展</div>
     <h2>亚太率先完成恢复，全球服务全面上线</h2>
@@ -184,8 +188,8 @@
 
   <section>
     <div class="cut">¶02 发生了什么</div>
-    <h2>一场持续逾 24 小时、波及全球的大断网</h2>
-    <p>美国东部时间 <em>2026 年 11 月 12 日 13:25 前后</em>（北京时间 11 月 13 日凌晨 2:25）起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断逾 24 小时，全球大量用户无法连接邮箱、收发邮件；到晚间，Outlook 故障报告一度达到 <em>138,058 起</em>的峰值，傍晚回落至约 3.4 万起<a citation-flag doc_id="4" doc_start="微软旗下Microsoft 365、Outlook、Teams及其他应用于美国东部时间11月12日持续中断多个小时" doc_end="到傍晚已降至约34490起。"></a></p>
+    <h2>一场持续近两天、波及全球的大断网</h2>
+    <p>美国东部时间 <em>2026 年 11 月 12 日 13:25 前后</em>（北京时间 11 月 13 日凌晨 2:25）起，微软旗下 Outlook、Teams、Microsoft 365 等多项服务持续中断近两天，全球大量用户无法连接邮箱、收发邮件；到晚间，Outlook 故障报告一度达到 <em>138,058 起</em>的峰值，傍晚回落至约 3.4 万起<a citation-flag doc_id="4" doc_start="微软旗下Microsoft 365、Outlook、Teams及其他应用于美国东部时间11月12日持续中断多个小时" doc_end="到傍晚已降至约34490起。"></a></p>
     <p>故障原因几经修正：微软最初归因于「多台服务器因负载过高意外离线」，随后修正为<em>此前一次网络容量升级中引入的缺陷</em>——受影响服务器上的一个核心进程因该缺陷停止响应，造成容量损失；并非网络攻击<a citation-flag doc_id="15" doc_start="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失" doc_end="受影响服务器上的一个核心进程过载，导致服务器停止响应，并造成容量损失。"></a></p>
     <p class="note">微软高管已公开致歉，明确表示<em>无证据显示本次事故由恶意网络攻击引发</em>。</p>
   </section>
@@ -218,6 +222,10 @@
         <span class="tl-time">11月14日 · 17:00 前后（北京时间）</span>
         官方状态页正式清除「服务降级」标记，横幅显示 <em>"All products are operational"</em>，本次事件确认全面恢复；微软承诺<em>初步 PIR 两个工作日内、最终 PIR 五个工作日内</em>发布。
       </li>
+      <li class="recovered">
+        <span class="tl-time">11月15日 · 稳定性复检一通过</span>
+        恢复确认后约 24 小时，官方状态页持续显示 "All products are operational"，无反复、无回退；复检点二安排在 11 月 16 日。
+      </li>
     </ul>
   </section>
 
@@ -249,6 +257,26 @@
     </ul>
   </section>
 
+  <section>
+    <div class="cut">¶07 借鉴 · 对公司基础设施的启示</div>
+    <h2>问题点复盘与可借鉴的教训</h2>
+    <p>把官方调查记录与各方复盘放在一起看，这次事故链条并不复杂，但每一环都踩在基础设施设计的经典陷阱上，值得对照自查<a citation-flag doc_id="3" doc_start="从第一台服务器掉线到大面积恢复，用了约 26 个小时" doc_end="大量服务器进入异常状态，通不过自动化健康检查，被一批批移出服务，修好的服务器一接上流量又垮回去"></a>。</p>
+    <ul class="impact">
+      <li><span class="name">变更验证缺口</span><span>休眠缺陷随一次网络容量升级进入生产环境，直到后续另一次网络变更才被触发——任何变更都应假设"现有验证可能测不出休眠缺陷"，灰度发布、可回滚方案和变更后观察期缺一不可</span></li>
+      <li><span class="name">回滚能力的有效期</span><span>缺陷埋在"此前一次"升级里，由"后来一次"变更引爆——说明回滚窗口不能只覆盖变更当期：变更之间的依赖要可追踪，关键配置和版本要保留足够久的可回滚路径，升级"当时没出问题"不等于没问题</span></li>
+      <li><span class="name">级联过载正反馈</span><span>节点掉线→流量转移到剩余节点→安全连接进程过载→更多节点掉线，形成雪崩；除了容量冗余，必须有背压、限流与熔断机制，让系统能"先拒绝一部分流量"而不是"被全线压垮"</span></li>
+      <li><span class="name">健康检查放大效应</span><span>批量健康检查失败叠加流量重分配，会把局部异常放大成全局故障——健康检查判死与摘除节点需要更精细的阈值和速率控制</span></li>
+      <li><span class="name">健康检查是控制系统</span><span>值得单独强调：微软自己的缓解措施之一就是"验证替代健康检查方法"——等于承认原探针设计有缺陷：没有恐慌阈值、没有摘除速率上限、没有"灰度失效"概念，把只是变慢的服务器也一批批判死。探针还应与被测资源隔离，避免探测流量本身压垮被测对象</span></li>
+      <li><span class="name">组件健康≠用户可用</span><span>服务器进程都在运行、用户却登不进、发不出——这是本次事故的真实写照。除组件级指标外，还要部署用户视角的合成探针（DNS 解析→TLS 连接→认证→关键请求→预期响应），同时盯组件指标和用户真正能完成的核心动作</span></li>
+      <li><span class="name">重启不等于恢复</span><span>修复中的服务器重新接收流量后立即再次失去响应，微软被迫引入策略性流量阻断并分阶段恢复——恢复预案要与故障预案同等对待：逐步引流、每步验证，宁可慢也要稳</span></li>
+      <li><span class="name">单点依赖放大影响</span><span>Teams 日历、Copilot、SharePoint 部分功能都依赖 Exchange Online，核心组件一垮周边全停——应梳理关键业务对单一底层服务的依赖链，准备降级路径和备用通信渠道；跨地域备份也挡不住全局配置缺陷</span></li>
+      <li><span class="name">故障期纪律</span><span>微软在处置期间暂停了所有部署变更，为稳定让路——重大故障期间冻结变更、统一对外口径、明确指挥链，是处置效率的前提</span></li>
+      <li><span class="name">早期归因要留余地</span><span>微软对外口径三次修正：先是"多台服务器负载过高离线"，再是"服务器意外不可用"，最后才定为"容量升级引入的缺陷"。事故初期的归因应标注置信度、随证据及时修正，高敏感判断（如"是否网络攻击"）要主动、明确澄清——口径管理本身就是事件管理的一部分，改口越晚，外部信任损耗越大</span></li>
+      <li><span class="name">业务连续性与财务敞口</span><span>评级机构估算本次宕机的全球保险损失或在 3 亿至 5 亿美元之间；企业客户可凭事件编号按 SLA 申请费用抵扣，需在故障发生所在计费月结束后一个月内（最晚 2026 年 12 月 31 日）提交工单<a citation-flag doc_id="6" doc_start="信用评级机构估算" doc_end="全球保险损失可能在3亿至5亿美元之间"></a><a citation-flag doc_id="13" doc_start="申请必须在故障发生所在计费月份结束后的一个月内提交" doc_end="最晚需要在 2026 年 12 月 31 日前完成申请"></a></span></li>
+    </ul>
+    <p class="note">一句话总结：这次事故没有黑客、没有流量洪峰，败给的是"一次未充分验证的变更 + 一个缺少背压的正反馈循环"。对任何规模的基础设施，变更管理与过载保护这两课都值得反复对照自查。</p>
+  </section>
+
   <div class="sources">
     <p><strong>信息来源</strong>：微软官方服务健康状态页（status.cloud.microsoft，2026-11-14 复核：All products are operational）、微软事件公告 MO1550821（Service Restored）与 Microsoft Q&A（PIR 时间表）、央视新闻、中新经纬、界面新闻、搜狐财经等公开报道。本简报为事件恢复后的阶段性快照，最新状态以微软官方页面为准。</p>
   </div>
@@ -257,7 +285,7 @@
     <span>微软 Outlook 服务恢复跟踪</span>
     <span>事件已恢复（Service Restored）· 初步 PIR 约 11 月 18 日前</span>
   </footer>
-</main>
+
 
 </body>
 </html>
